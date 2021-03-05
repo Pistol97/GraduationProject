@@ -8,9 +8,10 @@ public class CameraControl : MonoBehaviour
     private Transform myTransform = null;
     public GameObject Target = null;
     private Transform targetTransform = null;
+    public GameObject player = null;
 
     public enum CameraViewPointState { FIRST, SECONE, THIRD}
-    public CameraViewPointState CameraState = CameraViewPointState.THIRD;
+    public CameraViewPointState CameraState = CameraViewPointState.FIRST;
 
     [Header("3인칭 카메라")]
     public float Distance = 5.0f; //타겟으로부터 떨어진 거리
@@ -58,7 +59,7 @@ public class CameraControl : MonoBehaviour
         myTransform.position -= currentRotation * Vector3.forward * Distance;
         myTransform.position = new Vector3(myTransform.position.x, currentHeight, myTransform.position.z);
 
-        myTransform.LookAt(targetTransform);
+        Target.transform.LookAt(targetTransform);
     }
     /// <summary>
     /// 모델 뷰
@@ -83,9 +84,20 @@ public class CameraControl : MonoBehaviour
         rotationY = rotationY + mouseY * SensitivityY;
         rotationY = (rotationY > 180.0f) ? rotationY - 360.0f : rotationY;
 
+        //카메라 회전 제한(수치조정~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+        //rotationX = Mathf.Clamp(rotationX, -80, 80);
+
         myTransform.localEulerAngles = new Vector3(-rotationY, rotationX, 0f);
 
         myTransform.position = FirstCameraSocket.position;
+
+        //메인카메라가 바라보는 방향
+        Vector3 dir = transform.localRotation * Vector3.forward;
+        //카메라가 바라보는 방향으로 플레이어도 바라보게
+        player.transform.localRotation = transform.localRotation;
+        //플레이어의 Rotation.x값 0
+        player.transform.localRotation = new Quaternion(0, transform.localRotation.y, 0, transform.localRotation.w);
+
     }
     private void LateUpdate()
     {
