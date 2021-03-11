@@ -41,9 +41,18 @@ MonoBehaviour:
   scale:
     overrideState: 0
     value: 1
+  color:
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
   depthThreshold:
-    overrideState: 1
-    value: 6
+    overrideState: 0
+    value: 1.5
+  depthNormalThreshold:
+    overrideState: 0
+    value: 0.5
+  depthNormalThresholdScale:
+    overrideState: 0
+    value: 7
   normalThreshold:
     overrideState: 0
     value: 0.4
