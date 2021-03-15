@@ -29,6 +29,8 @@ public class CameraControl : MonoBehaviour
     private float rotationY = 0.0f;
     public Transform FirstCameraSocket = null;
 
+    bool isShaderOn = false;
+
     private void Start()
     {
         myTransform = GetComponent<Transform>();
@@ -121,6 +123,13 @@ public class CameraControl : MonoBehaviour
                 FirstView();
                 break;
         }
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.gameObject.layer = 8;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            this.gameObject.layer = 0;
+        }
     }
 }
