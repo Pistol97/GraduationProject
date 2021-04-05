@@ -29,8 +29,6 @@ public class CameraControl : MonoBehaviour
     private float rotationY = 0.0f;
     public Transform FirstCameraSocket = null;
 
-    bool isShaderOn = false;
-
     private void Start()
     {
         myTransform = GetComponent<Transform>();
