@@ -41,16 +41,6 @@ public class PlayerControl : MonoBehaviour
         ApplyGravity();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Enemy")
-        {
-            horrorRange += 10;
-
-            Debug.Log(horrorRange);
-        }
-    }
-
     /// <summary>
     /// 이동 관련 함수
     /// </summary>
