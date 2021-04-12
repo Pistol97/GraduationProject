@@ -1,28 +1,80 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject m_item;//획득한 아이템
-    //public Image m_itemImage;//아이템 이미지
+    public static bool inventoryActivated = false;
 
-    //[SerializeField]
-    //private Text text_Count;
-    //[SerializeField]
-    //private GameObject go_CountImage;
+    //필요한 컴포넌트
+    [SerializeField]
+    private GameObject go_InventoryBase;
 
-    private void SetColor(float alpha)
+    [SerializeField]
+    private GameObject go_SlotParent;
+
+    //슬롯들
+    private Slot[] slots;
+
+    private void Start()
     {
-        //Color color = m_itemImage.color;
-        //color.a = alpha;
-        //m_itemImage.color = color;
+        slots = go_SlotParent.GetComponentsInChildren<Slot>();
     }
 
-    public void AddItem()
+    private void Update()
     {
+        TryOpenInventory();
+    }
 
-        Instantiate(m_item, transform);
-        //go_CountImage.SetActive(true);
+    private void TryOpenInventory()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryActivated = !inventoryActivated;
 
-        SetColor(1);
+            if(inventoryActivated)
+            {
+                OpenInventory();
+            }
+            else
+            {
+                CloseInventory();
+            }
+        }
+    }
+
+    private void OpenInventory()
+    {
+        go_InventoryBase.SetActive(true);
+    }
+
+    private void CloseInventory()
+    {
+        go_InventoryBase.SetActive(false);
+    }
+
+    public void AcquireItem(Item item, int count = 1)
+    {
+        //이미 존재하는 아이템일 경우
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i]._item != null)
+            {
+                  if(slots[i]._item.itemName == item.itemName)
+                  {
+                        slots[i].SetSlotCount(count);
+                        return;
+                  }
+            }
+        }
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i]._item == null)
+            {
+                slots[i].AddItem(item,count);
+                return;
+            }
+        }
     }
 }
