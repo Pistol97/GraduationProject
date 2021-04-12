@@ -28,11 +28,11 @@ public class Inventory : MonoBehaviour
 
     private void TryOpenInventory()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryActivated = !inventoryActivated;
 
-            if(inventoryActivated)
+            if (inventoryActivated)
             {
                 OpenInventory();
             }
@@ -55,26 +55,25 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item item, int count = 1)
     {
-        //이미 존재하는 아이템일 경우
         for (int i = 0; i < slots.Length; i++)
         {
+            //이미 존재하는 아이템일 경우
             if (slots[i]._item != null)
             {
-                  if(slots[i]._item.itemName == item.itemName)
-                  {
-                        slots[i].SetSlotCount(count);
-                        return;
-                  }
+                if (slots[i]._item.itemName == item.itemName)
+                {
+                    slots[i].SetSlotCount(count);
+                    return;
+                }
             }
-        }
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (slots[i]._item == null)
+            
+            //아이템 새로 추가
+            else
             {
-                slots[i].AddItem(item,count);
+                slots[i].AddItem(item, count);
                 return;
             }
         }
+
     }
 }

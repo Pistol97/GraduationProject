@@ -14,6 +14,13 @@ public class Slot : MonoBehaviour
     [SerializeField]
     private GameObject go_CountImage;
 
+    private void Start()
+    {
+        _itemImage = GetComponent<Image>();
+        go_CountImage = transform.GetChild(1).gameObject;
+        textCount = go_CountImage.transform.GetChild(0).GetComponent<Text>();
+    }
+
     /// <summary>
     /// 이미지의 투명도 조절
     /// </summary>
