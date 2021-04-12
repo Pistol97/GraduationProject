@@ -1266,6 +1266,7 @@ MonoBehaviour:
   selectableTag: item
   highlightMaterial: {fileID: 2100000, guid: ecbece20f303bd847884f1a8d0cfed82, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 616f2aaa8803f73478c5b99e66e91e57, type: 2}
+  inventory: {fileID: 1664514584}
 --- !u!4 &688433124
 Transform:
   m_ObjectHideFlags: 0
@@ -2391,6 +2392,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405923226}
   m_CullTransparentMesh: 0
+--- !u!1 &1446582157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8043626449715175735, guid: 95e9a157c70c20549a84783d545ac1e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3883037825419442316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1467726383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,6 +2576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664514582}
   - component: {fileID: 1664514583}
+  - component: {fileID: 1664514584}
   m_Layer: 5
   m_Name: Grid Setting
   m_TagString: Untagged
@@ -2620,6 +2628,19 @@ MonoBehaviour:
   m_Spacing: {x: 2, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 6
+--- !u!114 &1664514584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664514581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd51801762635fd47960d2d05c5f4777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_item: {fileID: 1446582157}
 --- !u!1 &1792625760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,5 +3230,6 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5636496969996234952, guid: 95e9a157c70c20549a84783d545ac1e2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95e9a157c70c20549a84783d545ac1e2, type: 3}

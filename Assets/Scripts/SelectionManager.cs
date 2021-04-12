@@ -14,6 +14,8 @@ public class SelectionManager : MonoBehaviour
 
     private Transform _selection;
 
+    [SerializeField]
+    private Inventory inventory;
     private void Start()
     {
         ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
@@ -35,27 +37,28 @@ public class SelectionManager : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit))
         {
             var selection = hit.transform;
-            if(selection.CompareTag(selectableTag))
+            if (selection.CompareTag(selectableTag))
             {
-                  var selectionRenderer = selection.GetComponent<Renderer>();
+                var selectionRenderer = selection.GetComponent<Renderer>();
 
-                  if(selectionRenderer != null)
-                  {
-                     selectionRenderer.material = highlightMaterial;
-                  }
+                if (selectionRenderer != null)
+                {
+                    selectionRenderer.material = highlightMaterial;
+                }
 
-                  if(Input.GetMouseButtonDown(0))
-                  {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    inventory.AddItem();
                     Destroy(hit.transform.gameObject);
-                  }
+                }
 
                 _selection = selection;
             }
         }
-     
-        
+
+
     }
 }
