@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-714966561242107988
+--- !u!114 &-391474205977548170
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TrasparentOutlinesPass
+  m_Name: EnemyOutlines
   m_Shader: {fileID: -6465566751694194690, guid: cd7cc9aab68fff84c8caddc8f99e35ec,
     type: 3}
   m_ShaderKeywords: 
@@ -66,7 +66,7 @@ Material:
     - Vector1_2B9CE965: 1
     - Vector1_3A43F350: 1
     - Vector1_3AFF1F2A: 0
-    - Vector1_46A2E2B3: 0.003
+    - Vector1_46A2E2B3: 0.001
     - Vector1_7919A207: 1
     - Vector1_9690AEEF: 1
     - Vector1_ACFD1D2F: 1
