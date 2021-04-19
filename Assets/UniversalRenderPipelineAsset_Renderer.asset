@@ -55,7 +55,8 @@ MonoBehaviour:
   - {fileID: 282363533560446007}
   - {fileID: 1578258925856471264}
   - {fileID: -4883490543176821215}
-  m_RendererFeatureMap: 37fc64432328eb03e0b8438f211ae7152156f78d395b3abc
+  - {fileID: 8467766741084492477}
+  m_RendererFeatureMap: 37fc64432328eb03e0b8438f211ae7152156f78d395b3abcbd5235a3fc8c8375
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
@@ -114,6 +115,45 @@ MonoBehaviour:
         m_Bits: 256
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: ec55bf455cbbb9a4d8a29451dd86c57f, type: 2}
+    overrideMaterialPassIndex: 0
+    overrideDepthState: 0
+    depthCompareFunction: 4
+    enableWrite: 1
+    stencilSettings:
+      overrideStencilState: 0
+      stencilReference: 0
+      stencilCompareFunction: 8
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
+    cameraSettings:
+      overrideCamera: 0
+      restoreCamera: 1
+      offset: {x: 0, y: 0, z: 0, w: 0}
+      cameraFieldOfView: 60
+--- !u!114 &8467766741084492477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
+  m_Name: ItemsOutline
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  settings:
+    passTag: ItemsOutline
+    Event: 300
+    filterSettings:
+      RenderQueueType: 0
+      LayerMask:
+        serializedVersion: 2
+        m_Bits: 1024
+      PassNames: []
+    overrideMaterial: {fileID: 2100000, guid: 84e1fba634644474db8c9a3bfb9b5099, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4

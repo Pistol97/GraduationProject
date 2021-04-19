@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3773018724105551036}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -42,7 +42,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -59,11 +59,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 2048
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 32bdf7b7335d472459c97fcf75b56565, type: 2}
   m_TargetDisplay: 0
@@ -274,13 +274,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shape: 0
-  Radius: 4.560269
+  Radius: 8.333333
   Size: {x: 0, y: 0, z: 0}
   Gradient: 0.25
   GradientColor: {r: 1, g: 1, b: 1, a: 0}
   Hide: 0
   pulse: {fileID: 5029165651591731032}
-  range: 4.560269
+  range: 8.333333
   sonarPing: {fileID: 6560876821817468010, guid: 7ffa3ae17eb9b634da119bcf4959d7f8,
     type: 3}
 --- !u!1 &3773018724784560316
@@ -687,7 +687,7 @@ Transform:
   m_GameObject: {fileID: 5343448770903405030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8.333333, y: 8.333333, z: 0}
   m_Children: []
   m_Father: {fileID: 3773018724534958279}
   m_RootOrder: 0
@@ -739,6 +739,6 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
