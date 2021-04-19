@@ -20,7 +20,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Assets/Shader/Outlines.mat
   m_Name: Outlines
+=======
+  m_Name: TrasparentOutlines
+>>>>>>> feature/UI:Assets/Shader/Outline/TrasparentOutlines.mat
   m_Shader: {fileID: -6465566751694194690, guid: cd7cc9aab68fff84c8caddc8f99e35ec,
     type: 3}
   m_ShaderKeywords: 
@@ -67,6 +71,7 @@ Material:
     - Vector1_2BEDB26F: 1
     - Vector1_3A43F350: 1
     - Vector1_3AFF1F2A: 0
+<<<<<<< HEAD:Assets/Shader/Outlines.mat
     - Vector1_3F065B48: 1
     - Vector1_3F4C5E6F: 1
     - Vector1_46A2E2B3: 0.001
@@ -74,6 +79,9 @@ Material:
     - Vector1_56ADAAC7: 1
     - Vector1_59183EC6: 0
     - Vector1_777DA3F0: 0.001
+=======
+    - Vector1_46A2E2B3: 0.001
+>>>>>>> feature/UI:Assets/Shader/Outline/TrasparentOutlines.mat
     - Vector1_7919A207: 1
     - Vector1_9690AEEF: 1
     - Vector1_A84726AC: 1
@@ -110,7 +118,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_ABD343AF: {r: 1, g: 1, b: 1, a: 0}
+<<<<<<< HEAD:Assets/Shader/Outlines.mat
     - Color_FBD425EC: {r: 1, g: 1, b: 1, a: 0}
+=======
+>>>>>>> feature/UI:Assets/Shader/Outline/TrasparentOutlines.mat
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

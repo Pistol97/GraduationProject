@@ -9,14 +9,22 @@ using UnityEngine;
 public class Sonar : MonoBehaviour
 {
     #region Personnal data
-
     public Shapes Shape = Shapes.Sphere;
     public float Radius;
+
     public Vector3 Size;
     public float Gradient;
     public Color GradientColor;
     public bool Hide = false;
+    #endregion
 
+    #region Sonar data
+    [SerializeField] private Transform pulse;
+    [SerializeField] private float range;
+    private float rangeMax = 10f;
+
+    List<Collider> detectedEnemy;
+    [SerializeField] private Transform sonarPing;
     #endregion
 
     /// <summary>
@@ -57,39 +65,25 @@ public class Sonar : MonoBehaviour
         AABB
     }
 
-    /// <summary>
-    /// Unity's "constructor"
-    /// </summary>
     private void Awake()
     {
         Sonar.Seers.Add(this);
+        detectedEnemy = new List<Collider>();
     }
 
-    /// <summary>
-    /// Unity's "destructor"
-    /// </summary>
     private void OnDestroy()
     {
         Sonar.Seers.Remove(this);
     }
 
-    /// <summary>
-    /// Every frame
-    /// </summary>
     private void Update()
     {
-        //At least one seer active this frame -> update needed
         Sonar.NeedUpdate = true;
-        Radius = Radius + (10f * Time.deltaTime);
-        if (20f <= Radius)
-        {
-            Radius = 0;
-        }
+        SonarPulseCast();
+        Radius = range;
+        pulse.localScale = new Vector3(Radius, Radius);
     }
 
-    /// <summary>
-    /// Every frame, after all regular Update()
-    /// </summary>
     private void LateUpdate()
     {
         //No update required (and/or already done by another seer)
@@ -138,5 +132,34 @@ public class Sonar : MonoBehaviour
         Shader.SetGlobalVectorArray("_SeerColor", Sonar.AllColor);
         Shader.SetGlobalFloatArray("_SeerShape", Sonar.AllShape);
         Shader.SetGlobalFloatArray("_SeerHider", Sonar.AllHider);
+    }
+
+    //적 감지 펄스
+    private void SonarPulseCast()
+    {
+        float rangeSpeed = 5f;
+        range += rangeSpeed * Time.deltaTime;
+
+        if (range > rangeMax)
+        {
+            range = 0f;
+            detectedEnemy.Clear();  //탐색 리스트 클리어
+        }
+
+        var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f, LayerMask.NameToLayer("Enemy"));
+
+        foreach (var hit in hits)
+        {
+            //적 감지
+            if (hit.transform.CompareTag("Enemy")
+                && !detectedEnemy.Contains(hit.collider))   //이미 탐색된 적은 무시, 한 번만 탐색
+            {
+                Debug.Log("Enemy Detected" + hit.transform.position);
+                detectedEnemy.Add(hit.collider);    //처음 탐색 되었을 시 추가
+
+                Instantiate(sonarPing, hit.transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
+            }
+        }
+
     }
 }
