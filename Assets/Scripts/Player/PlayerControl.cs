@@ -21,9 +21,6 @@ public class PlayerControl : MonoBehaviour
     private float gravity = 9.8f; //중력값
     private float verticalSpeed = 0.0f; //수직 속도
 
-    [Header("플레이어 상태 관련 변수")]
-    public float horrorRange;//공포 수치
-
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +37,6 @@ public class PlayerControl : MonoBehaviour
         //중력적용
         ApplyGravity();
     }
-
     /// <summary>
     /// 이동 관련 함수
     /// </summary>
