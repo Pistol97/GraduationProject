@@ -28,6 +28,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         myCharacterController = GetComponent<CharacterController>();
+
+
     }
 
     // Update is called once per frame

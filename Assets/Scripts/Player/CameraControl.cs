@@ -49,9 +49,9 @@ public class CameraControl : MonoBehaviour
         float currentHeight = myTransform.position.y;//현재 카메라의 높이 값
 
         //현재 각도에서 원하는 각도로 댐핑을 준다.
-        currentRoationAngle = Mathf.LerpAngle(currentRoationAngle, wantedRotationAngle, RotationDamping * Time.deltaTime);
+        //currentRoationAngle = Mathf.LerpAngle(currentRoationAngle, wantedRotationAngle, RotationDamping * Time.deltaTime);
         //현재 높이에서 원하는 높이로 댐핑을 준다.
-        currentHeight = Mathf.Lerp(currentHeight, wantedHeight, HeightDamping * Time.deltaTime);
+        //currentHeight = Mathf.Lerp(currentHeight, wantedHeight, HeightDamping * Time.deltaTime);
 
         Quaternion currentRotation = Quaternion.Euler(0f, currentRoationAngle, 0f);
 

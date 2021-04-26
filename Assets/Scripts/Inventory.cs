@@ -31,6 +31,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryActivated = !inventoryActivated;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
             if (inventoryActivated)
             {
@@ -39,6 +41,8 @@ public class Inventory : MonoBehaviour
             else
             {
                 CloseInventory();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }

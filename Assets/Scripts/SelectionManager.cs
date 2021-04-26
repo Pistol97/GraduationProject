@@ -119,4 +119,10 @@ public class SelectionManager : MonoBehaviour
         pickupActivated = false;
         actionText.gameObject.SetActive(false);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * range);
+    }
 }

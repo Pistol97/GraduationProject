@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour
+public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public Item _item;//획득한 아이템
     public int _itemCount;//아이템의 개수
@@ -34,8 +35,6 @@ public class Slot : MonoBehaviour
     /// <summary>
     /// 아이템 획득
     /// </summary>
-    /// <param name="item"></param>
-    /// <param name="count"></param>
     public void AddItem(Item item, int count = 1)
     {
         _item = item;
@@ -50,7 +49,6 @@ public class Slot : MonoBehaviour
     /// <summary>
     /// 아이템 개수 조정
     /// </summary>
-    /// <param name="count"></param>
     public void SetSlotCount(int count)
     {
         _itemCount += count;
@@ -73,5 +71,71 @@ public class Slot : MonoBehaviour
 
         textCount.text = "0";
         go_CountImage.SetActive(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+       if(eventData.button == PointerEventData.InputButton.Right)
+        {
+            if(_item != null)
+            {
+                //소모
+                Debug.Log(_item.itemName + "을 사용하였습니다.");
+                SetSlotCount(-1);
+            }
+        }
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if(_item != null)
+        {
+            DragSlot.instance.dragSlot = this;
+            DragSlot.instance.DragSetImage(_itemImage);
+            DragSlot.instance.transform.position = eventData.position;
+            this.GetComponent<Image>().raycastTarget = false;
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (_item != null)
+        {
+            DragSlot.instance.transform.position = eventData.position;
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        Debug.Log("EndDrag");
+        DragSlot.instance.SetColor(0);
+        DragSlot.instance.dragSlot = null;
+        this.GetComponent<Image>().raycastTarget = true;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        Debug.Log("OnDrop");
+        if (DragSlot.instance.dragSlot!= null)
+        {
+            ChangeSlot();
+        }
+    }
+
+    private void ChangeSlot()
+    {
+        Item tempItem = _item;
+        int tempItmeCount = _itemCount;
+
+        AddItem(DragSlot.instance.dragSlot._item, DragSlot.instance.dragSlot._itemCount);
+
+        if(tempItem != null)
+        {
+            DragSlot.instance.dragSlot.AddItem(tempItem, tempItmeCount);
+        }
+        else
+        {
+            DragSlot.instance.dragSlot.ClearSlot();
+        }
     }
 }
