@@ -11,23 +11,23 @@ public class DragSlot : MonoBehaviour
 
     //아이템 이미지
     [SerializeField]
-    private Image _imageItem;
+    private Image imageItem;
 
     private void Start()
     {
         instance = this;
     }
 
-    public void DragSetImage(Image itemmImage)
+    public void DragSetImage(Image _image)
     {
-        _imageItem.sprite = itemmImage.sprite;
+        imageItem.sprite = _image.sprite;
         SetColor(1);
     }
 
     public void SetColor(float alpha)
     {
-        Color color = _imageItem.color;
+        Color color = imageItem.color;
         color.a = alpha;
-        _imageItem.color = color;
+        imageItem.color = color;
     }
 }
