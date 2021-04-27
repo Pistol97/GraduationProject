@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -66,10 +64,9 @@ public class PlayerControl : MonoBehaviour
         Vector3 gravityVector = new Vector3(0.0f, verticalSpeed, 0.0f);
 
         //이번 프레임에 움직일 양
-        Vector3 moveAmount = (MoveDirection * speed * Time.deltaTime)+gravityVector;
+        Vector3 moveAmount = (MoveDirection * speed * Time.deltaTime) + gravityVector;
         //실제 이동
         collisionFlags = myCharacterController.Move(moveAmount);
-
     }
     /// <summary>
     /// 캐릭터의 이동 관련 변수 화면에 표시
@@ -81,7 +78,7 @@ public class PlayerControl : MonoBehaviour
 
         GUILayout.Label("현재 속도 :" + GetVelocitySpeed().ToString());
 
-        if (myCharacterController != null&& myCharacterController.velocity != Vector3.zero)
+        if (myCharacterController != null && myCharacterController.velocity != Vector3.zero)
         {
             //현재 내 캐릭터가 이동하는 방향(+크기)
             GUILayout.Label("current Velocity Vector :" + myCharacterController.velocity.ToString());
@@ -93,10 +90,10 @@ public class PlayerControl : MonoBehaviour
     /// 현재 내 캐릭터의 이속을 얻어온다.
     /// </summary>
     /// <returns></returns>
-    private float GetVelocitySpeed()
+    public float GetVelocitySpeed()
     {
         //멈춰있다면
-        if(myCharacterController.velocity==Vector3.zero)
+        if (myCharacterController.velocity == Vector3.zero)
         {
             //현재 속도 = 0
             CurrentVelocity = Vector3.zero;
@@ -118,7 +115,7 @@ public class PlayerControl : MonoBehaviour
     void BodyDirectionChange()
     {
         //움직임이 있다면
-        if(GetVelocitySpeed()>0.0f)
+        if (GetVelocitySpeed() > 0.0f)
         {
             Vector3 newForward = myCharacterController.velocity;
             newForward.y = 0.0f;
@@ -131,10 +128,11 @@ public class PlayerControl : MonoBehaviour
     void ApplyGravity()
     {
         //CollidedBelow가 세팅되었다면(바닥에 붙었다면)
-        if((collisionFlags & CollisionFlags.CollidedBelow)!=0)
+        if ((collisionFlags & CollisionFlags.CollidedBelow) != 0)
         {
             verticalSpeed = 0.0f;
-        }else
+        }
+        else
         {
             verticalSpeed -= gravity * Time.deltaTime;
         }

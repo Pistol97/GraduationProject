@@ -10,7 +10,7 @@ public class Sonar : MonoBehaviour
 {
     #region Personnal data
     public Shapes Shape = Shapes.Sphere;
-    public float Radius;
+    public float Radius = 0f;
 
     public Vector3 Size;
     public float Gradient;
@@ -20,8 +20,9 @@ public class Sonar : MonoBehaviour
 
     #region Sonar data
     [SerializeField] private Transform pulse;
-    [SerializeField] private float range;
-    private float rangeMax = 10f;
+    private float range = 0f;
+    private float rangeMax = 15f;
+    private float rangeSpeed = 5f;
 
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
@@ -137,13 +138,14 @@ public class Sonar : MonoBehaviour
     //적 감지 펄스
     private void SonarPulseCast()
     {
-        float rangeSpeed = 5f;
         range += rangeSpeed * Time.deltaTime;
 
-        if (range > rangeMax)
+        if (range >= rangeMax)
         {
-            range = 0f;
-            detectedEnemy.Clear();  //탐색 리스트 클리어
+            rangeSpeed = 0f;
+            //detectedEnemy.Clear();  //탐색 리스트 클리어
+            Destroy(pulse.gameObject);
+            Destroy(gameObject, 2f);
         }
 
         var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f, LayerMask.NameToLayer("Enemy"));
