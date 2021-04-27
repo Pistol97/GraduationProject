@@ -4389,6 +4389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3773018724784560310, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773018724784560310, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
       propertyPath: selectionMgr
       value: 
       objectReference: {fileID: 1541142992}
@@ -4397,6 +4402,11 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1541142991}
+    - target: {fileID: 3773018724784560310, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: velocityChangeSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3773018724784560311, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
       propertyPath: m_StepOffset

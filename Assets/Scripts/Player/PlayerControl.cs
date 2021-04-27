@@ -4,14 +4,14 @@ public class PlayerControl : MonoBehaviour
 {
     [Header("이동 관련 변수")]
     [Tooltip("기본이동속도")]//유니티 인스펙터에서 아래 변수에 마우스를 올렸을때 문자열이 뜸
-    public float MoveSpeed = 2.0f; //이동속도
-    public float DirectionRotateSpeed = 100.0f;//이동방향을 변경하기 위한 속도
-    public float BodyRotateSpeed = 2.0f;//몸통의 방향을 변경하기 위한 속도
+    public float moveSpeed = 2.0f; //이동속도
+    public float directionRotateSpeed = 100.0f;//이동방향을 변경하기 위한 속도
+    public float bodyRotateSpeed = 2.0f;//몸통의 방향을 변경하기 위한 속도
 
     [Range(0.01f, 5.0f)]//밑의 변수는 Range()안의 범위의 수만 가질 수 있다
-    public float VelocityChangeSpeed = 0.01f;//속도가 변경되기 위한 속도(0이되면 안됌)
-    private Vector3 CurrentVelocity = Vector3.zero;
-    private Vector3 MoveDirection = Vector3.zero;//이동방향
+    public float velocityChangeSpeed = 0.01f;//속도가 변경되기 위한 속도(0이되면 안됌)
+    private Vector3 currentVelocity = Vector3.zero;
+    private Vector3 moveDirection = Vector3.zero;//이동방향
     private CharacterController myCharacterController = null;
     private CollisionFlags collisionFlags = CollisionFlags.None;
     private float gravity = 9.8f; //중력값
@@ -48,8 +48,8 @@ public class PlayerControl : MonoBehaviour
         Vector3 direction=new Vector3(horizontal,0,vertical);
 
         Vector3 movedis = cameraTransform.rotation * direction;
-        MoveDirection = new Vector3(movedis.x, MoveDirection.y, movedis.z);
-        myCharacterController.Move(MoveDirection * MoveSpeed * Time.deltaTime);
+        moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
+        myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
     /// <summary>
     /// 캐릭터의 이동 관련 변수 화면에 표시
@@ -84,17 +84,17 @@ public class PlayerControl : MonoBehaviour
         if (myCharacterController.velocity == Vector3.zero)
         {
             //현재 속도 = 0
-            CurrentVelocity = Vector3.zero;
+            currentVelocity = Vector3.zero;
         }
         else
         {
             Vector3 goalVelocity = myCharacterController.velocity;
             goalVelocity.y = 0.0f;
-            CurrentVelocity = Vector3.Lerp(CurrentVelocity, goalVelocity, VelocityChangeSpeed * Time.deltaTime);
+            currentVelocity = Vector3.Lerp(currentVelocity, goalVelocity, velocityChangeSpeed * Time.deltaTime);
         }
 
         //currentVelocity의 크기 리턴
-        return CurrentVelocity.magnitude;
+        return currentVelocity.magnitude;
     }
     /// <summary>
     /// 몸통의 방향을 이동방향으로 바꾼다.
@@ -115,11 +115,11 @@ public class PlayerControl : MonoBehaviour
         //CollidedBelow가 세팅되었다면(바닥에 붙었다면)
         if ((collisionFlags & CollisionFlags.CollidedBelow) != 0)
         {
-            MoveDirection.y = 0.0f;
+            moveDirection.y = 0.0f;
         }
         else
         {
-            MoveDirection.y -= gravity * Time.deltaTime;
+            moveDirection.y -= gravity * Time.deltaTime;
         }
     }
 }

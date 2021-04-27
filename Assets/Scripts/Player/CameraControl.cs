@@ -10,9 +10,8 @@ public class CameraControl : MonoBehaviour
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
     private float rotationMinX = -80;
-    private float rotationMaxX = 50;
-
-    private void Update()
+    private float rotationMaxX = 80;
+    private void LateUpdate()
     {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
@@ -28,6 +27,7 @@ public class CameraControl : MonoBehaviour
             this.gameObject.layer = 0;
         }
     }
+
     public void NewFirstView(float mouseX, float mouseY)
     {
         rotationY += mouseX * SensitivityX;//마우스 위아래는 카메라의 x축
