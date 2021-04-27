@@ -77,6 +77,5 @@ public class Player : MonoBehaviour
         audioSource.clip = footsteps[footstep];
         wait = footsteps[footstep].length + 0.3f;
         audioSource.Play();
-        Debug.Log("Footsteps");
     }
 }
