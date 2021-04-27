@@ -126,4 +126,9 @@ public class SelectionManager : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * range);
     }
+
+    public Vector3 GetFront()
+    {
+        return transform.forward;
+    }
 }
