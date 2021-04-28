@@ -98,7 +98,6 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void BodyDirectionChange()
     {
-        //transform.LookAt(selectionMgr.GetFront());
         Vector3 targetDirection = selectionMgr.GetFront();
         Vector3 front = new Vector3(targetDirection.x, 0, targetDirection.z);
         Quaternion rotation = Quaternion.LookRotation(front.normalized);
@@ -107,7 +106,6 @@ public class PlayerControl : MonoBehaviour
     /// <summary>
     /// 플레이어의 몸통 방향 얻어온다.
     /// </summary>
-    /// <returns></returns>
     public Vector3 GetPlayerFront()
     {
         return transform.forward;

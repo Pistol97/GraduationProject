@@ -25,14 +25,14 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Inventory inven;
 
-    [Header("선택 비선택 시각적으로 보이게,,,")]
-    [SerializeField]
-    private Material highlightMaterial;//마우스 올렸을때의 material
+    //[Header("선택 비선택 시각적으로 보이게,,,")]
+    //[SerializeField]
+    //private Material highlightMaterial;//마우스 올렸을때의 material
 
-    [SerializeField]
-    private Material defaultMaterial;//마우스 올리기전 기본 material
+    //[SerializeField]
+    //private Material defaultMaterial;//마우스 올리기전 기본 material
 
-    private Transform selection;//하이라이트될 오브젝트 트렌스폼
+    //private Transform selection;//하이라이트될 오브젝트 트렌스폼
 
     private void Start()
     {
@@ -45,13 +45,13 @@ public class SelectionManager : MonoBehaviour
 
     private void Update()
     {
-        //하이라이트 비활성
-        if (selection != null)
-        {
-            var selectionRenderer = selection.GetComponent<Renderer>();
-            selectionRenderer.material = defaultMaterial;
-            selection = null;
-        }
+        ////하이라이트 비활성
+        //if (selection != null)
+        //{
+        //    var selectionRenderer = selection.GetComponent<Renderer>();
+        //    selectionRenderer.material = defaultMaterial;
+        //    selection = null;
+        //}
 
         CheckItem();
         TryAction();
@@ -86,20 +86,20 @@ public class SelectionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, range, layerMask))
         {
-            var _selection = hit.transform;
+            //var _selection = hit.transform;
 
             if (hit.transform.tag == "item")
             {
                 ItemInfoAppear();
 
-                var selectionRenderer = _selection.GetComponent<Renderer>();
+                //var selectionRenderer = _selection.GetComponent<Renderer>();
 
-                if (selectionRenderer != null)
-                {
-                    selectionRenderer.material = highlightMaterial;
-                }
+                //if (selectionRenderer != null)
+                //{
+                //    selectionRenderer.material = highlightMaterial;
+                //}
 
-                selection = _selection;
+                //selection = _selection;
             }
         }
         else
