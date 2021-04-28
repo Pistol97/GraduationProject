@@ -32,7 +32,7 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Material defaultMaterial;//마우스 올리기전 기본 material
 
-    private Transform _selection;//하이라이트될 오브젝트 트렌스폼
+    private Transform selection;//하이라이트될 오브젝트 트렌스폼
 
     private void Start()
     {
@@ -46,16 +46,17 @@ public class SelectionManager : MonoBehaviour
     private void Update()
     {
         //하이라이트 비활성
-        if (_selection != null)
+        if (selection != null)
         {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
+            var selectionRenderer = selection.GetComponent<Renderer>();
             selectionRenderer.material = defaultMaterial;
-            _selection = null;
+            selection = null;
         }
 
         CheckItem();
         TryAction();
     }
+
     private void TryAction()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -85,20 +86,20 @@ public class SelectionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, range, layerMask))
         {
-            var selection = hit.transform;
+            var _selection = hit.transform;
 
             if (hit.transform.tag == "item")
             {
                 ItemInfoAppear();
 
-                var selectionRenderer = selection.GetComponent<Renderer>();
+                var selectionRenderer = _selection.GetComponent<Renderer>();
 
                 if (selectionRenderer != null)
                 {
                     selectionRenderer.material = highlightMaterial;
                 }
 
-                _selection = selection;
+                selection = _selection;
             }
         }
         else
@@ -118,5 +119,11 @@ public class SelectionManager : MonoBehaviour
     {
         pickupActivated = false;
         actionText.gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * range);
     }
 }

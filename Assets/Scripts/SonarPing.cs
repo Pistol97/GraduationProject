@@ -11,7 +11,7 @@ public class SonarPing : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = spriteRenderer.color;
-        disappearTimerMax = 1f;
+        disappearTimerMax = 3f;
         disappearTimer = 0f;
     }
 

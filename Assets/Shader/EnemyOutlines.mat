@@ -20,7 +20,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Assets/Shader/EnemyOutlines.mat
   m_Name: EnemyOutlines
+=======
+  m_Name: TrasparentOutlines
+>>>>>>> develop:Assets/Shader/Outline/TrasparentOutlines.mat
   m_Shader: {fileID: -6465566751694194690, guid: cd7cc9aab68fff84c8caddc8f99e35ec,
     type: 3}
   m_ShaderKeywords: 
@@ -96,7 +100,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_ABD343AF: {r: 1, g: 0, b: 0, a: 0}
+    - Color_ABD343AF: {r: 1, g: 1, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

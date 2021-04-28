@@ -23,7 +23,41 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        TryOpenInventory();
+        //TryOpenInventory();
+        InputNumber();
+    }
+
+    private void InputNumber()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseItem(1);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem(2);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseItem(3);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            UseItem(4);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            UseItem(5);
+        }
+    }
+
+    private void UseItem(int _num)
+    {
+        if(slots[_num-1].itemCount>0)
+        {
+            Debug.Log(slots[_num - 1].item.itemName + "사용했습니다");
+            slots[_num - 1].SetSlotCount(-1);
+        }
     }
 
     private void TryOpenInventory()
@@ -31,6 +65,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryActivated = !inventoryActivated;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
             if (inventoryActivated)
             {
@@ -39,6 +75,8 @@ public class Inventory : MonoBehaviour
             else
             {
                 CloseInventory();
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
     }
@@ -58,9 +96,9 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우
-            if (slots[i]._item != null)
+            if (slots[i].item != null)
             {
-                if (slots[i]._item.itemName == item.itemName)
+                if (slots[i].item.itemName == item.itemName)
                 {
                     slots[i].SetSlotCount(count);
                     return;

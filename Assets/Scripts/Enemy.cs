@@ -11,10 +11,13 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public bool isChase;
 
+    private Animator animator;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -34,10 +37,12 @@ public class Enemy : MonoBehaviour
     {
         if(Vector3.Distance(target.position,gameObject.transform.position)<=10)
         {
+            animator.SetBool("IsWalk", true);
             isChase = true;
         }
         else
         {
+            animator.SetBool("IsWalk", false);
             isChase = false;
         }
     }
@@ -50,6 +55,4 @@ public class Enemy : MonoBehaviour
             rigid.angularVelocity = Vector3.zero;
         }
     }
-
-
 }
