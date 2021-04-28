@@ -70,6 +70,8 @@ public class Sonar : MonoBehaviour
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
+        range = 0f;
+        pulse.localScale = Vector3.zero;
     }
 
     private void OnDestroy()
@@ -82,7 +84,6 @@ public class Sonar : MonoBehaviour
         Sonar.NeedUpdate = true;
         SonarPulseCast();
         Radius = range;
-        pulse.localScale = new Vector3(Radius, Radius);
     }
 
     private void LateUpdate()
@@ -140,15 +141,25 @@ public class Sonar : MonoBehaviour
     {
         range += rangeSpeed * Time.deltaTime;
 
+        if (pulse)
+        {
+            pulse.localScale = new Vector3(Radius, Radius);
+        }
+
         if (range >= rangeMax)
         {
             rangeSpeed = 0f;
-            //detectedEnemy.Clear();  //탐색 리스트 클리어
-            Destroy(pulse.gameObject);
-            Destroy(gameObject, 2f);
+
+
+            if(pulse)
+            {
+                Destroy(pulse.gameObject);
+            }
+
+            Destroy(gameObject, 5f);
         }
 
-        var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f, LayerMask.NameToLayer("Enemy"));
+        var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f);
 
         foreach (var hit in hits)
         {
