@@ -70,11 +70,11 @@ public class Inventory : MonoBehaviour
 
             if (inventoryActivated)
             {
-                OpenInventory();
+                //OpenInventory();
             }
             else
             {
-                CloseInventory();
+                //CloseInventory();
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }

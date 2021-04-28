@@ -56,9 +56,6 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     private void OnGUI()
     {
-        //충돌정보
-        GUILayout.Label("충돌 :" + collisionFlags.ToString());
-
         GUILayout.Label("현재 속도 :" + GetVelocitySpeed().ToString());
 
         if (myCharacterController != null && myCharacterController.velocity != Vector3.zero)
@@ -106,6 +103,14 @@ public class PlayerControl : MonoBehaviour
         Vector3 front = new Vector3(targetDirection.x, 0, targetDirection.z);
         Quaternion rotation = Quaternion.LookRotation(front.normalized);
         transform.rotation = rotation;
+    }
+    /// <summary>
+    /// 플레이어의 몸통 방향 얻어온다.
+    /// </summary>
+    /// <returns></returns>
+    public Vector3 GetPlayerFront()
+    {
+        return transform.forward;
     }
     /// <summary>
     /// 중력 적용
