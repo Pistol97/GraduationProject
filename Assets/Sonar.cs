@@ -26,6 +26,9 @@ public class Sonar : MonoBehaviour
 
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
+
+    [SerializeField] private Material outline;
+    private Color outlineColor;
     #endregion
 
     /// <summary>
@@ -51,6 +54,9 @@ public class Sonar : MonoBehaviour
 
     #endregion
 
+    private float timer = 0f;
+    private float wait = 2f;
+
     /// <summary>
     /// Data changed and need to be re-sent to the shader
     /// </summary>
@@ -70,8 +76,7 @@ public class Sonar : MonoBehaviour
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
-        range = 0f;
-        pulse.localScale = Vector3.zero;
+        outline.SetColor("_OutlineColor", Color.white);
     }
 
     private void OnDestroy()
@@ -146,17 +151,29 @@ public class Sonar : MonoBehaviour
             pulse.localScale = new Vector3(Radius, Radius);
         }
 
+        //범위가 끝가지 다 되었을 경우
         if (range >= rangeMax)
         {
+            timer += Time.deltaTime;
             rangeSpeed = 0f;
 
 
-            if(pulse)
+            if (pulse)
             {
                 Destroy(pulse.gameObject);
             }
 
-            Destroy(gameObject, 5f);
+            float value = Mathf.Lerp(wait, 0f, timer / wait);
+            outlineColor.r = outlineColor.g = outlineColor.b = value;
+            outline.SetColor("_OutlineColor", outlineColor);
+
+            if (value <= 0f)
+            {
+                outline.SetColor("_OutlineColor", Color.white);
+
+                Sonar.Seers.Remove(this);
+                Destroy(gameObject, 1f);
+            }
         }
 
         var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f);
