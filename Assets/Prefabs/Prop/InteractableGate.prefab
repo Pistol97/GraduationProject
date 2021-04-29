@@ -340,9 +340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562c1c640e28eee4f8b776d1c24e7826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSound:
+  isLevel1: 0
+  isLevel2: 0
+  gateSounds:
   - {fileID: 8300000, guid: eda0a6ebad3002f42887647679e46edb, type: 3}
   - {fileID: 8300000, guid: 3ab8ed23e6374c0479a8a21806ed6736, type: 3}
+  - {fileID: 8300000, guid: 1f4092faf856e264298408dc8348ae99, type: 3}
 --- !u!82 &917695172976222408
 AudioSource:
   m_ObjectHideFlags: 0
@@ -452,7 +455,7 @@ GameObject:
   - component: {fileID: 8180111505486182311}
   - component: {fileID: 4202306337614220652}
   m_Layer: 0
-  m_Name: MovableGate
+  m_Name: InteractableGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
