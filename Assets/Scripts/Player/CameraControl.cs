@@ -16,8 +16,8 @@ public class CameraControl : MonoBehaviour
         //게임 일시정지시 카메라 멈춤..회전한당,,
         if (Time.deltaTime == 0)
         {
-            Vector3 cameraRotation = transform.forward;//이상하다,,
-            transform.eulerAngles = cameraRotation;
+            Vector3 cameraRotation = transform.forward;
+            transform.localEulerAngles = cameraRotation;
             return;
         }
 

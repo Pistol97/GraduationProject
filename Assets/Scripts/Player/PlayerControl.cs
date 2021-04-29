@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawRay(transform.position, transform.forward * 10);
+        Gizmos.DrawRay(transform.position, transform.forward * 5);
     }
     /// <summary>
     /// 현재 내 캐릭터의 이속을 얻어온다.

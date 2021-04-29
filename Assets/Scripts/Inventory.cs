@@ -53,6 +53,7 @@ public class Inventory : MonoBehaviour
 
     private void UseItem(int _num)
     {
+        //itemtype이 useable이 아니면 리턴
         if(slots[_num-1].item.itemType.ToString()!="Useable")
         {
             Debug.Log("사용할수없는아이템입니다");
