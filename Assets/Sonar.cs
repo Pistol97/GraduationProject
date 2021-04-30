@@ -21,11 +21,11 @@ public class Sonar : MonoBehaviour
     #region Sonar data
     [SerializeField] private Transform pulse;
     private float range = 0f;
-    private float rangeMax = 10f;
+    private float rangeMax = 15f;
     private float rangeSpeed = 5f;
 
     private float disappearTimer = 0f;
-    private float disappearTimerMax = 2f;
+    private float disappearTimerMax = 4f;
 
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
