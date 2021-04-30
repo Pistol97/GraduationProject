@@ -21,11 +21,15 @@ public class Sonar : MonoBehaviour
     #region Sonar data
     [SerializeField] private Transform pulse;
     private float range = 0f;
-    private float rangeMax = 15f;
+    private float rangeMax = 10f;
     private float rangeSpeed = 5f;
+
+    private float disappearTimer = 0f;
+    private float disappearTimerMax = 2f;
 
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
+    [SerializeField] private Material outline;
     #endregion
 
     /// <summary>
@@ -70,6 +74,9 @@ public class Sonar : MonoBehaviour
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
+
+        //사용시 외곽선 활성화
+        outline.SetFloat("_NormalStrength", 1f);
     }
 
     private void OnDestroy()
@@ -81,6 +88,7 @@ public class Sonar : MonoBehaviour
     {
         Sonar.NeedUpdate = true;
         SonarPulseCast();
+        Debug.Log(range);
         Radius = range;
     }
 
@@ -139,22 +147,29 @@ public class Sonar : MonoBehaviour
     {
         range += rangeSpeed * Time.deltaTime;
 
-        if(pulse)
+        if (pulse)
         {
             pulse.localScale = new Vector3(Radius, Radius);
         }
 
         if (range >= rangeMax)
         {
+            disappearTimer += Time.deltaTime;
+            outline.SetFloat("_NormalStrength", Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax));
+            Debug.Log(outline.GetFloat("_NormalStrength"));
             rangeSpeed = 0f;
             //detectedEnemy.Clear();  //탐색 리스트 클리어
 
-            if(pulse)
+            if (pulse)
             {
                 Destroy(pulse.gameObject);
             }
 
-            Destroy(gameObject, 2f);
+            if (0f >= outline.GetFloat("_NormalStrength"))
+            {
+                Sonar.Seers.Remove(this);
+                Destroy(gameObject);
+            }
         }
 
         var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f, LayerMask.NameToLayer("Enemy"));
