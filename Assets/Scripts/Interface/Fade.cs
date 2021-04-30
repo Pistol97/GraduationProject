@@ -39,10 +39,10 @@ public class Fade : MonoBehaviour
         time = 0f;
         panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0);
         Color alpha = panel.color;
-        while (alpha.a > 0f)
+        while (alpha.a < 1f)
         {
             time += Time.deltaTime / timeMax;
-            alpha.a = Mathf.Lerp(1, 0, time);
+            alpha.a = Mathf.Lerp(0, 1, time);
             panel.color = alpha;
             yield return null;
         }
@@ -62,10 +62,9 @@ public class Fade : MonoBehaviour
             panel.color = alpha;
             yield return null;
         }
-
         time = 0f;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
 
         while (alpha.a > 0f)
         {
