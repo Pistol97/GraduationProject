@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6747915000220481371}
   - component: {fileID: 8085427728342594146}
   - component: {fileID: 4383072237587333410}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Helmet Item
   m_TagString: item
   m_Icon: {fileID: 0}
@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47dd296157212bc4b9f8c47c86cbc4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bar_Fear: {fileID: 0}
+  Bar_Sonar: {fileID: 0}
+  SonarDisplay: {fileID: 0}
 --- !u!114 &4383072237587333410
 MonoBehaviour:
   m_ObjectHideFlags: 0
