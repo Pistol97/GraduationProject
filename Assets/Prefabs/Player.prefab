@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26d6faa1ec1d3a43ace0689f61ce46a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   directionRotateSpeed: 100
   bodyRotateSpeed: 2
   velocityChangeSpeed: 1
@@ -270,6 +270,7 @@ MonoBehaviour:
   sonar: {fileID: 3071520209680887489, guid: fabc39e4938d987409cc74d5ee6f4df3, type: 3}
   fearRange: 0
   maxFearRange: 100
+  use_sonar: 0
 --- !u!82 &5309715545247117234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -395,7 +396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3773018725522341038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3773018724784560312}
@@ -515,5 +516,3 @@ MonoBehaviour:
     m_Bits: 256
   actionText: {fileID: 0}
   inven: {fileID: 0}
-  highlightMaterial: {fileID: 2100000, guid: ecbece20f303bd847884f1a8d0cfed82, type: 2}
-  defaultMaterial: {fileID: 2100000, guid: 616f2aaa8803f73478c5b99e66e91e57, type: 2}

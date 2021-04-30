@@ -10,12 +10,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject sonar;
 
+
     [Header("플레이어 상태 변수")]
     [SerializeField]
     private float fearRange = 0;//공포 수치
 
     [SerializeField]
     private float maxFearRange = 100;//최대 공포 수치, 게임 오버
+
+    [Header("배터리 감소량")]
+    [SerializeField] private float use_sonar;
 
     private AudioSource audioSource;
     private PlayerControl playerControl;
@@ -47,10 +51,21 @@ public class Player : MonoBehaviour
             timer += Time.deltaTime;
         }
 
+        //소나 사용
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(sonar, transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
-            Bar_Sonar.value = Bar_Sonar.value - 1f;
+
+            if(0f >= Bar_Sonar.value - use_sonar)
+            {
+                Bar_Fear.value -= (Bar_Sonar.value - use_sonar);
+            }
+            Bar_Sonar.value = Bar_Sonar.value - use_sonar;
+
+            if(Bar_Fear.maxValue <= Bar_Fear.value)
+            {
+                //플레이어 사망 처리
+            }
         }
     }
 

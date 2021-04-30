@@ -37,8 +37,8 @@ public class SelectionManager : MonoBehaviour
     private void Update()
     {
         CheckItem();
-        CheckInteractable();
         TryAction();
+        CheckInteractable();
     }
 
     private void TryAction()
