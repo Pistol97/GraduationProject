@@ -82,7 +82,6 @@ public class Sonar : MonoBehaviour
         Sonar.NeedUpdate = true;
         SonarPulseCast();
         Radius = range;
-        pulse.localScale = new Vector3(Radius, Radius);
     }
 
     private void LateUpdate()
@@ -140,11 +139,21 @@ public class Sonar : MonoBehaviour
     {
         range += rangeSpeed * Time.deltaTime;
 
+        if(pulse)
+        {
+            pulse.localScale = new Vector3(Radius, Radius);
+        }
+
         if (range >= rangeMax)
         {
             rangeSpeed = 0f;
             //detectedEnemy.Clear();  //탐색 리스트 클리어
-            Destroy(pulse.gameObject);
+
+            if(pulse)
+            {
+                Destroy(pulse.gameObject);
+            }
+
             Destroy(gameObject, 2f);
         }
 
