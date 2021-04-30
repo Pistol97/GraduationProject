@@ -55,6 +55,7 @@ MonoBehaviour:
   sonarPing: {fileID: 6560876821817468010, guid: 7ffa3ae17eb9b634da119bcf4959d7f8,
     type: 3}
   outline: {fileID: 2100000, guid: ec55bf455cbbb9a4d8a29451dd86c57f, type: 2}
+  outline_enemy: {fileID: 2100000, guid: 2fe8bf3334532244fbfd45038ee48c59, type: 2}
 --- !u!82 &801287107898841146
 AudioSource:
   m_ObjectHideFlags: 0

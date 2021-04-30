@@ -38,12 +38,12 @@ public class EventMessage : MonoBehaviour, IDialogueEvent
 
     private void Blurring()
     {
-        if (origin.a <= GetComponent<Text>().color.a)
+        if (origin.a <= dialogue.color.a)
         {
             startBlur = true;
         }
 
-        else if (0f == GetComponent<Text>().color.a)
+        else if (0f == dialogue.color.a)
         {
             startBlur = false;
             disappearTimer = 0f;

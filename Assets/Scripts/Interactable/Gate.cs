@@ -78,7 +78,7 @@ public class Gate : MonoBehaviour, IInteractable
 
     private void AccessDenied()
     {
-        FindObjectOfType<EventMessage>().DisplayMessage("안열어줌");
+        FindObjectOfType<EventMessage>().DisplayMessage("접근 거부됨, 더 높은 등급의 권한 필요");
         audioSource.clip = gateSounds[2];
         audioSource.Play();
     }

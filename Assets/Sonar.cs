@@ -30,6 +30,7 @@ public class Sonar : MonoBehaviour
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
     [SerializeField] private Material outline;
+    [SerializeField] private Material outline_enemy;
     #endregion
 
     /// <summary>
@@ -77,6 +78,7 @@ public class Sonar : MonoBehaviour
 
         //사용시 외곽선 활성화
         outline.SetFloat("_NormalStrength", 1f);
+        outline_enemy.SetFloat("_NormalStrength", 1f);
     }
 
     private void OnDestroy()
@@ -155,7 +157,10 @@ public class Sonar : MonoBehaviour
         if (range >= rangeMax)
         {
             disappearTimer += Time.deltaTime;
-            outline.SetFloat("_NormalStrength", Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax));
+
+            var dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
+            outline.SetFloat("_NormalStrength", dissappear);
+            outline_enemy.SetFloat("_NormalStrength", dissappear);
             Debug.Log(outline.GetFloat("_NormalStrength"));
             rangeSpeed = 0f;
             //detectedEnemy.Clear();  //탐색 리스트 클리어

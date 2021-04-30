@@ -13,17 +13,21 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     public bool isChase = false;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] idle;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         ChaseDistance();
-
+        ChangeIdle();
         //if(isChase)
         //{
         //    nav.SetDestination(target.position);
@@ -56,6 +60,20 @@ public class Enemy : MonoBehaviour
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
+        }
+    }
+
+    private void ChangeIdle()
+    {
+        if(!audioSource.isPlaying)
+        {
+            audioSource.clip = idle[Random.Range(0, idle.Length - 1)];
+            audioSource.Play();
+        }
+
+        else
+        {
+            return;
         }
     }
 }

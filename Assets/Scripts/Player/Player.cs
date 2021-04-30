@@ -1,10 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip[] footsteps;
+    [SerializeField] private AudioClip dead_sound;
     [SerializeField] private Slider Bar_Fear;
     [SerializeField] private Slider Bar_Sonar;
 
@@ -24,8 +26,13 @@ public class Player : MonoBehaviour
     private AudioSource audioSource;
     private PlayerControl playerControl;
 
+    [SerializeField] private Image panel;
+
     private float timer = 0;
     private float wait = 0;
+
+    private float time = 0f;
+    private float timeMax = 0.5f;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -52,7 +59,7 @@ public class Player : MonoBehaviour
         }
 
         //소나 사용
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && Bar_Sonar.IsActive())
         {
             Instantiate(sonar, transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
 
@@ -64,27 +71,19 @@ public class Player : MonoBehaviour
 
             if(Bar_Fear.maxValue <= Bar_Fear.value)
             {
-                //플레이어 사망 처리
+                StartCoroutine(PlayerDie());
+                Debug.Log("플레이어 사망!");
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            IncreaseFear();
-
-            Debug.Log(fearRange);
+            StartCoroutine(PlayerDie());
         }
     }
-
-    private void IncreaseFear()
-    {
-        fearRange += 10;
-        Bar_Fear.value = fearRange / maxFearRange;
-    }
-
     public void PlayWalkFootstep()
     {
         int footstep = Random.Range(0, footsteps.Length - 1);
@@ -92,5 +91,37 @@ public class Player : MonoBehaviour
         audioSource.clip = footsteps[footstep];
         wait = footsteps[footstep].length + 0.3f;
         audioSource.Play();
+    }
+
+    public void UseCell(int val)
+    {
+        Bar_Sonar.value += val;
+    }
+
+    private IEnumerator PlayerDie()
+    {
+        Debug.Log("플레이어 사망!");
+        panel.gameObject.SetActive(true);
+        time = 0f;
+        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0);
+        Color alpha = panel.color;
+        while (alpha.a < 1f)
+        {
+            time += Time.deltaTime / timeMax;
+            alpha.a = Mathf.Lerp(0, 1, time);
+            panel.color = alpha;
+            yield return null;
+        }
+        time = 0f;
+
+        audioSource.clip = dead_sound;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(3f);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        SceneManager.LoadScene(0);
     }
 }

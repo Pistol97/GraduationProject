@@ -34,7 +34,7 @@ public class SelectionManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;   //마우스 커서를 고정시킴
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckItem();
         TryAction();

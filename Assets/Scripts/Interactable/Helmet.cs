@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +34,6 @@ public class Helmet : MonoBehaviour,IInteractable
 
     private void SonaActive()
     {
-
         Debug.Log("소나켜짐");
         Bar_Fear.gameObject.SetActive(true);
         Bar_Sonar.gameObject.SetActive(true);
