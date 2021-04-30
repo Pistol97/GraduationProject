@@ -8,10 +8,10 @@ public class Enemy : MonoBehaviour
     Rigidbody rigid;
     NavMeshAgent nav;
 
-    public Transform target;
-    public bool isChase;
-
+    [SerializeField]
+    private Transform target;
     private Animator animator;
+    public bool isChase = false;
 
     private void Awake()
     {
@@ -24,8 +24,10 @@ public class Enemy : MonoBehaviour
     {
         ChaseDistance();
 
-        if(isChase)
-        nav.SetDestination(target.position);
+        //if(isChase)
+        //{
+        //    nav.SetDestination(target.position);
+        //}
     }
 
     private void FixedUpdate()
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(target.position,gameObject.transform.position)<=10)
         {
             animator.SetBool("IsWalk", true);
+            nav.SetDestination(target.position);
             isChase = true;
         }
         else
