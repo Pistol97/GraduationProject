@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4827673256227612963}
   - component: {fileID: 7872133863066388392}
   - component: {fileID: 8445475905378595192}
+  - component: {fileID: 8862318865725845253}
   m_Layer: 0
   m_Name: Laptop_black_off
   m_TagString: Interactable
@@ -109,6 +110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnOn: {fileID: 2100000, guid: f10ad687f04139a4b873242e429166a7, type: 2}
+  message: "Level 1 \uC811\uADFC \uAD8C\uD55C \uBD80\uC5EC"
+  level1Access: 1
+  level2Access: 0
+  inven: {fileID: 0}
+  item: {fileID: 8862318865725845253}
 --- !u!82 &8445475905378595192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -205,3 +211,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8862318865725845253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe75bf637bdddd47a729e1afab21c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a389b48e222248a44be51cbb15e1d2da, type: 2}

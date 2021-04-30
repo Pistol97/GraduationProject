@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 8462747681451918144}
   - component: {fileID: 8462747681451918145}
   - component: {fileID: 8462747681451918150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ Transform:
   m_GameObject: {fileID: 2014284375893209625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.1538925, y: 1.03, z: -20.778137}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2704667466534405801}
   - {fileID: 7209536189042246183}
@@ -773,7 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2704667466534405801}
   - component: {fileID: 9096147101612421542}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,11 +12,16 @@ public class LaptopFin : MonoBehaviour,IInteractable
     public void ObjectInteract()
     {
         if (!Gate.level1)
+        {
             FindObjectOfType<EventMessage>().DisplayMessage("접근권한없음");
-        return;
+            return;
+        }
+
         if (!Gate.level2)
+        {
             FindObjectOfType<EventMessage>().DisplayMessage("접근권한없음");
-        return;
+            return;
+        }
 
         Time.timeScale = 0f;//시간 멈춤
 
