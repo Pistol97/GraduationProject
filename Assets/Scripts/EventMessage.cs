@@ -5,7 +5,7 @@ public class EventMessage : MonoBehaviour, IDialogueEvent
 {
     private bool startBlur;
     private float disappearTimer = 0f;
-    private float disappearTimerMax = 4f;
+    private float disappearTimerMax = 5f;
 
     private Text dialogue;
 

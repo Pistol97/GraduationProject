@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 223284647844022575}
   - component: {fileID: 3230614296113929553}
   - component: {fileID: 6747915000220481371}
+  - component: {fileID: 8085427728342594146}
   - component: {fileID: 4383072237587333410}
   m_Layer: 8
   m_Name: Helmet Item
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2605889706816966080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -456.04675, y: -209.831, z: -4.8903947}
-  m_LocalScale: {x: 0.5665722, y: 0.5665722, z: 0.5665722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,6 +95,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2439562, y: 0.32656857, z: 0.3358377}
   m_Center: {x: 0.000061035156, y: 0.0695909, z: 0.0071658483}
+--- !u!114 &8085427728342594146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605889706816966080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dd296157212bc4b9f8c47c86cbc4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4383072237587333410
 MonoBehaviour:
   m_ObjectHideFlags: 0
