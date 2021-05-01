@@ -46,6 +46,14 @@ public class Enemy : MonoBehaviour
             animator.SetBool("IsWalk", true);
             nav.SetDestination(target.position);
             isChase = true;
+            if (Vector3.Distance(target.position, gameObject.transform.position) <= 3)
+            {
+                animator.SetBool("IsAttack", true);
+            }
+            else
+            {
+                animator.SetBool("IsAttack", false);
+            }
         }
         else
         {

@@ -12,7 +12,7 @@ public class LaptopFin : MonoBehaviour,IInteractable
     public void ObjectInteract()
     {
         if (!Gate.level1)
-        { 
+        {
             FindObjectOfType<EventMessage>().DisplayMessage("접근권한없음");
             return;
         }

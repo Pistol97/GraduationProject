@@ -33,10 +33,14 @@ public class SelectionManager : MonoBehaviour
         Cursor.visible = false;                     //마우스 커서가 보이지 않게 함
         Cursor.lockState = CursorLockMode.Locked;   //마우스 커서를 고정시킴
     }
+    private void FixedUpdate()
+    {
+        
+        CheckItem();
+    }
 
     private void FixedUpdate()
     {
-        CheckItem();
         TryAction();
         CheckInteractable();
     }

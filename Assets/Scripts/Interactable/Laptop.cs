@@ -11,6 +11,12 @@ public class Laptop : MonoBehaviour, IInteractable
     [SerializeField] private bool level1Access;
     [SerializeField] private bool level2Access;
 
+    [SerializeField] private Inventory inven;
+
+    [SerializeField] private ItemPickUp item;
+
+    public bool isKey;
+
     private void Awake()
     {
         renderer = GetComponent<MeshRenderer>();
@@ -31,6 +37,10 @@ public class Laptop : MonoBehaviour, IInteractable
         else if (level2Access)
         {
             Gate.level2 = true;
+        }
+        if(isKey)
+        {
+            inven.AcquireItem(item.item);
         }
     }
 }
