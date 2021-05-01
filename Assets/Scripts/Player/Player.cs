@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
     private float timer = 0;
     private float wait = 0;
 
+    private float sonar_timer = 0;
+    private float sonar_cooltime = 7f;
+    private bool isSonar = false;
+
     private float time = 0f;
     private float timeMax = 0.5f;
     private void Awake()
@@ -59,8 +63,9 @@ public class Player : MonoBehaviour
         }
 
         //소나 사용
-        if(Input.GetKeyDown(KeyCode.Space) && Bar_Sonar.IsActive())
+        if(Input.GetKeyDown(KeyCode.Space) && Bar_Sonar.IsActive() && !isSonar)
         {
+            isSonar = true;
             Instantiate(sonar, transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
 
             if(0f >= Bar_Sonar.value - use_sonar)
@@ -75,12 +80,23 @@ public class Player : MonoBehaviour
                 Debug.Log("플레이어 사망!");
             }
         }
+
+        if(isSonar)
+        {
+            sonar_timer += Time.deltaTime;
+            if(sonar_timer >= sonar_cooltime)
+            {
+                sonar_timer = 0f;
+                isSonar = false;
+            }
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            GetComponent<CapsuleCollider>().isTrigger = false;
             StartCoroutine(PlayerDie());
         }
     }

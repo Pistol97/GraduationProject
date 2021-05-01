@@ -56,6 +56,7 @@ MonoBehaviour:
     type: 3}
   outline: {fileID: 2100000, guid: ec55bf455cbbb9a4d8a29451dd86c57f, type: 2}
   outline_enemy: {fileID: 2100000, guid: 2fe8bf3334532244fbfd45038ee48c59, type: 2}
+  outline_item: {fileID: 2100000, guid: 84e1fba634644474db8c9a3bfb9b5099, type: 2}
 --- !u!82 &801287107898841146
 AudioSource:
   m_ObjectHideFlags: 0

@@ -25,12 +25,13 @@ public class Sonar : MonoBehaviour
     private float rangeSpeed = 5f;
 
     private float disappearTimer = 0f;
-    private float disappearTimerMax = 4f;
+    private float disappearTimerMax = 3f;
 
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
     [SerializeField] private Material outline;
     [SerializeField] private Material outline_enemy;
+    [SerializeField] private Material outline_item;
     #endregion
 
     /// <summary>
@@ -79,6 +80,7 @@ public class Sonar : MonoBehaviour
         //사용시 외곽선 활성화
         outline.SetFloat("_NormalStrength", 1f);
         outline_enemy.SetFloat("_NormalStrength", 1f);
+        outline_item.SetFloat("_NormalStrength", 1f);
     }
 
     private void OnDestroy()
@@ -90,7 +92,6 @@ public class Sonar : MonoBehaviour
     {
         Sonar.NeedUpdate = true;
         SonarPulseCast();
-        Debug.Log(range);
         Radius = range;
     }
 
@@ -159,9 +160,12 @@ public class Sonar : MonoBehaviour
             disappearTimer += Time.deltaTime;
 
             var dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
+            Debug.Log(dissappear);
             outline.SetFloat("_NormalStrength", dissappear);
             outline_enemy.SetFloat("_NormalStrength", dissappear);
-            Debug.Log(outline.GetFloat("_NormalStrength"));
+            outline_item.SetFloat("_NormalStrength", dissappear);
+            //Debug.Log(outline.GetFloat("_NormalStrength"));
+
             rangeSpeed = 0f;
             //detectedEnemy.Clear();  //탐색 리스트 클리어
 
@@ -173,11 +177,11 @@ public class Sonar : MonoBehaviour
             if (0f >= outline.GetFloat("_NormalStrength"))
             {
                 Sonar.Seers.Remove(this);
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
         }
 
-        var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f, LayerMask.NameToLayer("Enemy"));
+        var hits = Physics.SphereCastAll(transform.position, range, Vector3.up, 0f);
 
         foreach (var hit in hits)
         {

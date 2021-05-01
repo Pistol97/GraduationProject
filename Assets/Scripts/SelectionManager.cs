@@ -48,7 +48,7 @@ public class SelectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //CheckItem();
+            CheckItem();
             CanPickUp();
         }
     }
@@ -88,15 +88,16 @@ public class SelectionManager : MonoBehaviour
     private void CheckInteractable()
     {
         var ray = Camera.main.ScreenPointToRay(ScreenCenter);
-        if(Physics.Raycast(ray, out hit, range))
+        if (Physics.Raycast(ray, out hit, range))
         {
-            if(hit.transform.CompareTag("Interactable"))
+            if (hit.transform.CompareTag("Interactable"))
             {
                 actionText.gameObject.SetActive(true);
                 actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
 
-                if(Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
+                    Debug.Log("상호작용 클릭");
                     hit.transform.GetComponent<IInteractable>().ObjectInteract();
                 }
             }
