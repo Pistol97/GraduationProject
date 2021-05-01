@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Capsule_Liqud
+  m_Name: Laptop
   m_Shader: {fileID: -6465566751694194690, guid: 269b2a20e9b689947ab2aa1de9484226,
     type: 3}
   m_ShaderKeywords: 
@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_A36F3C15:
-        m_Texture: {fileID: 2800000, guid: f60c5cb06a3ab414392431a12c6f8cf9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 72a44c93823b9bc45949ffaf9ef3b0f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_A41848FD:
-        m_Texture: {fileID: 2800000, guid: 0063d363552f05c4ab874ac29d65aef7, type: 3}
+        m_Texture: {fileID: 2800000, guid: e9ad44c1f9ba6e74d9599fbb670d4bfa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ac562b6d90a496d458def4ce5750cf94, type: 3}
+        m_Texture: {fileID: 2800000, guid: 94d8d5732cdfa2b40a5431f6e55df43c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

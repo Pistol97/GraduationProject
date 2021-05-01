@@ -35,21 +35,20 @@ public class SelectionManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
         CheckItem();
+        CheckInteractable();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         TryAction();
-        CheckInteractable();
     }
 
     private void TryAction()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CheckItem();
+            //CheckItem();
             CanPickUp();
         }
     }
