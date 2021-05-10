@@ -530,6 +530,6 @@ MonoBehaviour:
   range: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   actionText: {fileID: 0}
   inven: {fileID: 0}

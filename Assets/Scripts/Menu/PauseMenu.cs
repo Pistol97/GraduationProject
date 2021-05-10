@@ -45,16 +45,4 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;//시간 멈춤
         gamePaused = true;
     }
-
-    public void LoadMenu()
-    {
-        Debug.Log("LoadMenu");
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("QuitGame");
-        Application.Quit();
-    }
 }

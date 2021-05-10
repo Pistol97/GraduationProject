@@ -38,8 +38,6 @@ public class CameraControl : MonoBehaviour
 
     public void NewFirstView(float mouseX, float mouseY)
     {
-
-
         rotationY += mouseX * SensitivityX;//마우스 위아래는 카메라의 x축
         rotationX -= mouseY * SensitivityY;//마우스 좌우는 카메라의 y축
         rotationX = ClampAngle(rotationX, rotationMinX, rotationMaxX);

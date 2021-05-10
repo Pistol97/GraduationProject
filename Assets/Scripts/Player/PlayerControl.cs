@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
     [Range(0.01f, 5.0f)]//밑의 변수는 Range()안의 범위의 수만 가질 수 있다
     public float velocityChangeSpeed = 0.01f;//속도가 변경되기 위한 속도(0이되면 안됌)
     private Vector3 currentVelocity = Vector3.zero;
-    private Vector3 moveDirection = Vector3.zero;//이동방향
+    private Vector3 moveDirection;//이동방향
     private CharacterController myCharacterController = null;
     private CollisionFlags collisionFlags = CollisionFlags.None;
     private float gravity = 9.8f; //중력값
