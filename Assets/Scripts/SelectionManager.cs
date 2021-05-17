@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour
 {
-    Vector3 ScreenCenter;
+    Vector3 screenCenter;
 
     [SerializeField]
     private float range;//습득가능한 거리
@@ -13,10 +13,6 @@ public class SelectionManager : MonoBehaviour
     private bool pickupActivated = false;//습득 가능할 시 true
 
     private RaycastHit hit; //충돌체 정보 저장
-
-    //아이템 레이어에만 반응하도록 레이어 마스크를 설정
-    [SerializeField]
-    private LayerMask layerMask;
 
     //텍스트 출력
     [SerializeField]
@@ -28,7 +24,7 @@ public class SelectionManager : MonoBehaviour
     private void Start()
     {
         //화면 중간 벡터, 화면의 중간부분을 찾아서 레이를 쏘기 위함
-        ScreenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+        screenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
 
         Cursor.visible = false;                     //마우스 커서가 보이지 않게 함
         Cursor.lockState = CursorLockMode.Locked;   //마우스 커서를 고정시킴
@@ -68,7 +64,7 @@ public class SelectionManager : MonoBehaviour
 
     private void CheckItem()
     {
-        var ray = Camera.main.ScreenPointToRay(ScreenCenter);
+        var ray = Camera.main.ScreenPointToRay(screenCenter);
 
         if (Physics.Raycast(ray, out hit, range))
         {

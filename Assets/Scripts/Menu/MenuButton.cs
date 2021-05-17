@@ -9,19 +9,24 @@ public class MenuButton : MonoBehaviour
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
 
-    // Update is called once per frame
     void Update()
     {
 		if(menuButtonController.index == thisIndex)
 		{
 			animator.SetBool ("selected", true);
-			if(Input.GetAxis ("Submit") == 1){
+
+			if(Input.GetAxis ("Submit") == 1)
+			{
 				animator.SetBool ("pressed", true);
-			}else if (animator.GetBool ("pressed")){
+			}
+			else if (animator.GetBool ("pressed"))
+			{
 				animator.SetBool ("pressed", false);
 				animatorFunctions.disableOnce = true;
 			}
-		}else{
+		}
+		else
+		{
 			animator.SetBool ("selected", false);
 		}
     }

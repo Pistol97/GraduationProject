@@ -333,7 +333,7 @@ MonoBehaviour:
   index: 0
   keyDown: 0
   maxIndex: 2
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 459268286}
 --- !u!82 &459268286
 AudioSource:
   m_ObjectHideFlags: 0
@@ -463,6 +463,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 459268285}
     - target: {fileID: 2848986401695240812, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: menuButtonController
+      value: 
+      objectReference: {fileID: 459268285}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: sceneName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: buttonIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: menuButtonController
       value: 
@@ -711,6 +726,11 @@ PrefabInstance:
       objectReference: {fileID: 459268285}
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
+      propertyPath: sceneName
+      value: Demo_Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 459268285}
@@ -885,6 +905,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 459268285}
     - target: {fileID: 2848986401695240812, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: menuButtonController
+      value: 
+      objectReference: {fileID: 459268285}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: sceneName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: buttonIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: menuButtonController
       value: 
