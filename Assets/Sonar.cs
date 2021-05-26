@@ -24,11 +24,14 @@ public class Sonar : MonoBehaviour
     private float rangeMax = 15f;
     private float rangeSpeed = 5f;
 
+    private float disappearTimer = 0f;
+    private float disappearTimerMax = 3f;
+
     List<Collider> detectedEnemy;
     [SerializeField] private Transform sonarPing;
-
     [SerializeField] private Material outline;
-    private Color outlineColor;
+    [SerializeField] private Material outline_enemy;
+    [SerializeField] private Material outline_item;
     #endregion
 
     /// <summary>
@@ -54,9 +57,6 @@ public class Sonar : MonoBehaviour
 
     #endregion
 
-    private float timer = 0f;
-    private float wait = 2f;
-
     /// <summary>
     /// Data changed and need to be re-sent to the shader
     /// </summary>
@@ -76,7 +76,11 @@ public class Sonar : MonoBehaviour
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
-        outline.SetColor("_OutlineColor", Color.white);
+
+        //사용시 외곽선 활성화
+        outline.SetFloat("_NormalStrength", 1f);
+        outline_enemy.SetFloat("_NormalStrength", 1f);
+        outline_item.SetFloat("_NormalStrength", 1f);
     }
 
     private void OnDestroy()
@@ -151,28 +155,29 @@ public class Sonar : MonoBehaviour
             pulse.localScale = new Vector3(Radius, Radius);
         }
 
-        //범위가 끝가지 다 되었을 경우
         if (range >= rangeMax)
         {
-            timer += Time.deltaTime;
-            rangeSpeed = 0f;
+            disappearTimer += Time.deltaTime;
 
+            var dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
+            Debug.Log(dissappear);
+            outline.SetFloat("_NormalStrength", dissappear);
+            outline_enemy.SetFloat("_NormalStrength", dissappear);
+            outline_item.SetFloat("_NormalStrength", dissappear);
+            //Debug.Log(outline.GetFloat("_NormalStrength"));
+
+            rangeSpeed = 0f;
+            //detectedEnemy.Clear();  //탐색 리스트 클리어
 
             if (pulse)
             {
                 Destroy(pulse.gameObject);
             }
 
-            float value = Mathf.Lerp(wait, 0f, timer / wait);
-            outlineColor.r = outlineColor.g = outlineColor.b = value;
-            outline.SetColor("_OutlineColor", outlineColor);
-
-            if (value <= 0f)
+            if (0f >= outline.GetFloat("_NormalStrength"))
             {
-                outline.SetColor("_OutlineColor", Color.white);
-
                 Sonar.Seers.Remove(this);
-                Destroy(gameObject, 1f);
+                Destroy(gameObject, 0.5f);
             }
         }
 

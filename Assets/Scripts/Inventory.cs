@@ -53,9 +53,19 @@ public class Inventory : MonoBehaviour
 
     private void UseItem(int _num)
     {
+        //itemtype이 useable이 아니면 리턴
+        if(slots[_num-1].item.itemType.ToString()!="Useable")
+        {
+            FindObjectOfType<EventMessage>().DisplayMessage("사용 할 수 없는 아이템");
+            return;
+        }
         if(slots[_num-1].itemCount>0)
         {
-            Debug.Log(slots[_num - 1].item.itemName + "사용했습니다");
+            if("EnergyCell" == slots[_num - 1].item.itemName)
+            {
+                FindObjectOfType<Player>().UseCell(50);
+            }
+            FindObjectOfType<EventMessage>().DisplayMessage(slots[_num - 1].item.itemName + " 사용");
             slots[_num - 1].SetSlotCount(-1);
         }
     }
@@ -70,11 +80,11 @@ public class Inventory : MonoBehaviour
 
             if (inventoryActivated)
             {
-                OpenInventory();
+                //OpenInventory();
             }
             else
             {
-                CloseInventory();
+                //CloseInventory();
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }

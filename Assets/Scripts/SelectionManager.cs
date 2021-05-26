@@ -25,15 +25,6 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Inventory inven;
 
-    [Header("선택 비선택 시각적으로 보이게,,,")]
-    [SerializeField]
-    private Material highlightMaterial;//마우스 올렸을때의 material
-
-    [SerializeField]
-    private Material defaultMaterial;//마우스 올리기전 기본 material
-
-    private Transform selection;//하이라이트될 오브젝트 트렌스폼
-
     private void Start()
     {
         //화면 중간 벡터, 화면의 중간부분을 찾아서 레이를 쏘기 위함
@@ -42,18 +33,13 @@ public class SelectionManager : MonoBehaviour
         Cursor.visible = false;                     //마우스 커서가 보이지 않게 함
         Cursor.lockState = CursorLockMode.Locked;   //마우스 커서를 고정시킴
     }
+    private void FixedUpdate()
+    {
+        CheckItem();
+    }
 
     private void Update()
     {
-        //하이라이트 비활성
-        if (selection != null)
-        {
-            var selectionRenderer = selection.GetComponent<Renderer>();
-            selectionRenderer.material = defaultMaterial;
-            selection = null;
-        }
-
-        CheckItem();
         TryAction();
     }
 
@@ -61,8 +47,8 @@ public class SelectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CheckItem();
             CanPickUp();
+            CheckItem();
         }
     }
 
@@ -84,22 +70,22 @@ public class SelectionManager : MonoBehaviour
     {
         var ray = Camera.main.ScreenPointToRay(ScreenCenter);
 
-        if (Physics.Raycast(ray, out hit, range, layerMask))
+        if (Physics.Raycast(ray, out hit, range))
         {
-            var _selection = hit.transform;
-
             if (hit.transform.tag == "item")
             {
                 ItemInfoAppear();
+            }
+            else if (hit.transform.CompareTag("Interactable"))
+            {
+                actionText.gameObject.SetActive(true);
+                actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
 
-                var selectionRenderer = _selection.GetComponent<Renderer>();
-
-                if (selectionRenderer != null)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    selectionRenderer.material = highlightMaterial;
+                    Debug.Log("상호작용 클릭");
+                    hit.transform.GetComponent<IInteractable>().ObjectInteract();
                 }
-
-                selection = _selection;
             }
         }
         else
@@ -125,5 +111,10 @@ public class SelectionManager : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * range);
+    }
+
+    public Vector3 GetFront()
+    {
+        return transform.forward;
     }
 }
