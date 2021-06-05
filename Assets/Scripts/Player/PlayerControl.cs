@@ -36,7 +36,6 @@ public class PlayerControl : MonoBehaviour
         BodyDirectionChange();
         //중력적용
         ApplyGravity();
-
     }
     /// <summary>
     /// 캐릭터 이동 함수
@@ -52,29 +51,8 @@ public class PlayerControl : MonoBehaviour
         myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
     /// <summary>
-    /// 캐릭터의 이동 관련 변수 화면에 표시
-    /// </summary>
-    private void OnGUI()
-    {
-        GUILayout.Label("현재 속도 :" + GetVelocitySpeed().ToString());
-
-        if (myCharacterController != null && myCharacterController.velocity != Vector3.zero)
-        {
-            //현재 내 캐릭터가 이동하는 방향(+크기)
-            GUILayout.Label("current Velocity Vector :" + myCharacterController.velocity.ToString());
-            //현재 내 속도
-            GUILayout.Label("current Velocity Magnitude :" + myCharacterController.velocity.magnitude.ToString());
-        }
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawRay(transform.position, transform.forward * 5);
-    }
-    /// <summary>
     /// 현재 내 캐릭터의 이속을 얻어온다.
     /// </summary>
-    /// <returns></returns>
     public float GetVelocitySpeed()
     {
         //멈춰있다면

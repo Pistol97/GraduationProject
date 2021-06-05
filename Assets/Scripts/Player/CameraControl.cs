@@ -13,7 +13,7 @@ public class CameraControl : MonoBehaviour
     private float rotationMaxX = 80;
     private void LateUpdate()
     {
-        //게임 일시정지시 카메라 멈춤..회전한당,,
+        //게임 일시정지시 카메라 멈춤
         if (Time.deltaTime == 0)
         {
             Vector3 cameraRotation = transform.forward;

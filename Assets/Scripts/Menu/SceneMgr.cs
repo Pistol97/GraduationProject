@@ -5,8 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
 {
+    public static void OpenScene(string sceneName)
+    {
+        if(sceneName== "QuitGame")
+        {
+            QuitGame();
+            return;
+        }
+
+        Debug.Log(sceneName);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void GUISceneMenu()
+    {
+        SceneMenu();
+    }
+
+    public void GUIQuitGame()
+    {
+        QuitGame();
+    }
+
     public static void SceneMenu()
     {
+        Time.timeScale = 1.0f;//기본 시간
         Debug.Log("LoadMenu");
         SceneManager.LoadScene("MainMenu");
     }

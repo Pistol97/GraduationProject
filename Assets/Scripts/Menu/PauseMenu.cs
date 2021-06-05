@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool gamePaused = false;
-
     public GameObject pauseMenuUI;
 
     private void Update()
     {
         if (Time.deltaTime == 0)
+        {
             return;
+        }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(gamePaused)

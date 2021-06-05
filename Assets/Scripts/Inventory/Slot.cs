@@ -15,17 +15,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_CountImage;
 
-    private void Start()
-    {
-        //itemImage = transform.GetChild(0).GetComponent<Image>();
-        //go_CountImage = transform.GetChild(1).gameObject;
-        //textCount = go_CountImage.transform.GetChild(0).GetComponent<Text>();
-    }
-
     /// <summary>
     /// 이미지의 투명도 조절
     /// </summary>
-    /// <param name="alpha"></param>
     private void SetColor(float alpha)
     {
         Color color = itemImage.color;
@@ -93,7 +85,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
             DragSlot.instance.transform.position = eventData.position;
-            //this.GetComponent<Image>().raycastTarget = false;
         }
     }
 
@@ -110,7 +101,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         Debug.Log("EndDrag");
         DragSlot.instance.SetColor(0);
         DragSlot.instance.dragSlot = null;
-        //this.GetComponent<Image>().raycastTarget = true;
     }
 
     public void OnDrop(PointerEventData eventData)
