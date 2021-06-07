@@ -9,14 +9,19 @@ using UnityEngine.UI;
 /// </summary>
 public class Archive : MonoBehaviour
 {
-    public Text _noteText;
-
+    private Text _noteText;
+    private StoryButton[] _storyButtons;
     private void Awake()
     {
         _noteText = transform.GetChild(0).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
+        _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
     }
 
-    
+    private void Start()
+    {
+        PlayerDataManager.Instance.SyncArchiveData(_storyButtons);
+    }
+
     public void ShowSelectedNote(string text)
     {
         _noteText.text = text;

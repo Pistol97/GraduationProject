@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public partial class Player : MonoBehaviour
 {
     #region Components
     [SerializeField] private AudioClip[] _footsteps;

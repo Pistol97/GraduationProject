@@ -24,6 +24,13 @@ public class StoryButton : MonoBehaviour
 
     //TODO: 테스트용 SerializeField 제거
     [SerializeField]private bool _isUnlock;
+    public bool IsUnlock
+    {
+        set
+        {
+            _isUnlock = value;
+        }
+    }
 
     private void Awake()
     {
