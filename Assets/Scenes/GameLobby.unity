@@ -1979,41 +1979,49 @@ MonoBehaviour:
   npcQuestNum: {fileID: 343945553}
   description: {fileID: 184814459}
   back: {fileID: 83246996}
-  testquest: 0
-  questData:
-  - npcQuestNum: 1
-    sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
-    description: 111111111
-    reward: 
-  - npcQuestNum: 1
-    sprite: {fileID: 21300000, guid: 6bb9a8b267f6b634e9cbd29de8de8651, type: 3}
-    description: 2222222222222
-    reward: 
-  - npcQuestNum: 1
-    sprite: {fileID: 21300000, guid: 67482141eef494242bcb7b7d777bdf5b, type: 3}
-    description: 33333333333
-    reward: 
   npc1Quest:
   - npcQuestNum: 1
     sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
     description: 11111111111111111
+    questItem: dfdf
+    reward: "\uBCF4\uC0C1"
+  - npcQuestNum: 2
+    sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
+    description: 2222222222
+    questItem: adsf
+    reward: "\uBCF4\uC0C1"
+  - npcQuestNum: 3
+    sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
+    description: 3333333333
+    questItem: adfs
     reward: "\uBCF4\uC0C1"
   npc2Quest:
   - npcQuestNum: 1
     sprite: {fileID: 21300000, guid: 6bb9a8b267f6b634e9cbd29de8de8651, type: 3}
+    description: 2222222211111111111
+    questItem: 
+    reward: "\uBCF4\uC0C1"
+  - npcQuestNum: 1
+    sprite: {fileID: 21300000, guid: 0f574d927717cf246adc763bd95794b8, type: 3}
     description: 22222222222222222222222
+    questItem: 
+    reward: "\uBCF4\uC0C1"
+  - npcQuestNum: 1
+    sprite: {fileID: 21300000, guid: 24b4e9817bdb42143beb113595e52e18, type: 3}
+    description: 2222222222233333333333
+    questItem: 
     reward: "\uBCF4\uC0C1"
   npc3Quest:
   - npcQuestNum: 1
     sprite: {fileID: 21300000, guid: 67482141eef494242bcb7b7d777bdf5b, type: 3}
     description: 33333333333333333
+    questItem: 
     reward: "\uBCF4\uC0C1"
   npc1QuestNum: 0
   npc2QuestNum: 0
   npc3QuestNum: 0
-  questDictionary:
-    keys: []
-    values: []
+  currentNpc: 0
+  test: 0
 --- !u!1 &898415029
 GameObject:
   m_ObjectHideFlags: 0
