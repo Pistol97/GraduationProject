@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class State_PlayerCaught : StateMachineBehaviour
 {
@@ -9,6 +10,8 @@ public class State_PlayerCaught : StateMachineBehaviour
 
     private int _countLeft;
     private int _countRight;
+    private readonly int _MaxCount = 20;
+    private Slider _progressBar;
 
     [SerializeField] private float _tickDamage;
     
@@ -16,12 +19,14 @@ public class State_PlayerCaught : StateMachineBehaviour
     {
         _player = animator.GetComponent<Player>();
         _camControl = animator.transform.GetChild(0).GetComponent<CameraControl>();
+        var go = Instantiate(Resources.Load("UI/Bar_Shake"), _player.Hud.transform) as GameObject;
+        _progressBar = go.GetComponent<Slider>();
+        _progressBar.maxValue = _MaxCount;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player.FearRange += (2f * Time.deltaTime);
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             _countLeft++;
@@ -31,7 +36,9 @@ public class State_PlayerCaught : StateMachineBehaviour
             _countRight++;
         }
 
-        if (20 <= _countLeft + _countRight)
+        _progressBar.value = _countLeft + _countRight;
+
+        if (_MaxCount <= _countLeft + _countRight)
         {
             animator.SetBool("IsCaught", false);
             _camControl.enabled = true;
@@ -41,6 +48,7 @@ public class State_PlayerCaught : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<CapsuleCollider>().isTrigger = true;
+        Destroy(_progressBar.gameObject);
         _player.LookTarget = null;
         _countLeft = _countRight = 0;
     }

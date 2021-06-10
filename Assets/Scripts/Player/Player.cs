@@ -18,6 +18,12 @@ public partial class Player : MonoBehaviour
     private PlayerControl _playerControl;
     private GameObject _playerCam;
     private CameraControl _camControl;
+    private Animator _animator;
+    public Canvas Hud
+    {
+        get;
+        private set;
+    }
     #endregion
 
     public float FearRange
@@ -53,6 +59,7 @@ public partial class Player : MonoBehaviour
         _playerControl = GetComponent<PlayerControl>();
         _playerCam = transform.GetChild(0).gameObject;
         _camControl = transform.GetChild(0).GetComponent<CameraControl>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -61,6 +68,7 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
+        Hud = GameObject.Find("Canvas_HUD").GetComponent<Canvas>();
     }
 
     private void Update()
@@ -103,7 +111,7 @@ public partial class Player : MonoBehaviour
         {
             LookTarget = collision.transform.GetChild(1).gameObject;
             GetComponent<CapsuleCollider>().isTrigger = false;
-            StartButtonAction(LookTarget);
+            StartButtonAction();
         }
     }
     public void PlayWalkFootstep()
@@ -137,18 +145,18 @@ public partial class Player : MonoBehaviour
         }
     }
 
-    private void StartButtonAction(GameObject target)
+    private void StartButtonAction()
     {
-        if (!GetComponent<Animator>().GetBool("IsCaught"))
+        if (!_animator.GetBool("IsCaught"))
         {
             Debug.Log("Enter ShakeState");
             _camControl.enabled = false;
-            _playerCam.transform.LookAt(target.transform.position);
+            _playerCam.transform.LookAt(LookTarget.transform);
             FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
-            GetComponent<Animator>().SetBool("IsCaught", true);
+            _animator.SetBool("IsCaught", true);
+
         }
     }
-
     private IEnumerator PlayerDie()
     {
         Debug.Log("플레이어 사망!");
