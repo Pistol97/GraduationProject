@@ -3,58 +3,79 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public partial class Player : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] footsteps;
-    [SerializeField] private AudioClip dead_sound;
-    [SerializeField] private Slider Bar_Fear;
-    [SerializeField] private Slider Bar_Sonar;
+    #region Components
+    [SerializeField] private AudioClip[] _footsteps;
+    [SerializeField] private AudioClip _deadSound;
+    [SerializeField] private Slider _barFear;
+    [SerializeField] private Slider _barSonar;
+    [SerializeField] private GameObject _sonar;
 
-    [SerializeField] private GameObject sonar;
+    [SerializeField] private Image panel;
 
+    private AudioSource _audioSource;
+    private PlayerControl _playerControl;
+    private GameObject _playerCam;
+    private CameraControl _camControl;
+    private Animator _animator;
+    public Canvas Hud
+    {
+        get;
+        private set;
+    }
+    #endregion
 
-    [Header("플레이어 상태 변수")]
-    [SerializeField]
-    private float fearRange = 0;//공포 수치
+    public float FearRange
+    {
+        get;
+        set;
+    }
 
-    [SerializeField]
-    private float maxFearRange = 100;//최대 공포 수치, 게임 오버
+    private readonly float _maxFearRange = 100;//최대 공포 수치, 게임 오버
 
     [Header("배터리 감소량")]
     [SerializeField] private float use_sonar;
-
-    private AudioSource audioSource;
-    private PlayerControl playerControl;
-
-    [SerializeField] private Image panel;
 
     private float timer = 0;
     private float wait = 0;
 
     private float sonar_timer = 0;
     private float sonar_cooltime = 7f;
-    private bool isSonar = false;
+    private bool _isSonar = false;
 
     private float time = 0f;
     private float timeMax = 0.5f;
+
+    public GameObject LookTarget
+    {
+        private get;
+        set;
+    }
+
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        playerControl = GetComponent<PlayerControl>();
+        _audioSource = GetComponent<AudioSource>();
+        _playerControl = GetComponent<PlayerControl>();
+        _playerCam = transform.GetChild(0).gameObject;
+        _camControl = transform.GetChild(0).GetComponent<CameraControl>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
-        //공포 수치 초기화
-        Bar_Fear.value = 0f;
-        Bar_Sonar.value = 100f;
+        FearRange = 0f;
+        _barFear.value = FearRange;
+        _barFear.maxValue = _maxFearRange;
+        _barSonar.value = 100f;
+        Hud = GameObject.Find("Canvas_HUD").GetComponent<Canvas>();
     }
 
     private void Update()
     {
-        if (playerControl.GetVelocitySpeed() != 0)
+        if (_playerControl.GetVelocitySpeed() != 0)
         {
-            if (!audioSource.isPlaying && timer >= wait)
+            if (!_audioSource.isPlaying && timer >= wait)
             {
                 GetComponent<Player>().PlayWalkFootstep();
                 timer = 0f;
@@ -62,33 +83,25 @@ public class Player : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        //소나 사용
-        if(Input.GetKeyDown(KeyCode.Space) && Bar_Sonar.IsActive() && !isSonar)
-        {
-            isSonar = true;
-            Instantiate(sonar, transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
+        ActiveSonar();
 
-            if(0f >= Bar_Sonar.value - use_sonar)
-            {
-                Bar_Fear.value -= (Bar_Sonar.value - use_sonar);
-            }
-            Bar_Sonar.value = Bar_Sonar.value - use_sonar;
-
-            if(Bar_Fear.maxValue <= Bar_Fear.value)
-            {
-                StartCoroutine(PlayerDie());
-                Debug.Log("플레이어 사망!");
-            }
-        }
-
-        if(isSonar)
+        if (_isSonar)
         {
             sonar_timer += Time.deltaTime;
-            if(sonar_timer >= sonar_cooltime)
+            if (sonar_timer >= sonar_cooltime)
             {
                 sonar_timer = 0f;
-                isSonar = false;
+                _isSonar = false;
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        _barFear.value = FearRange;
+        if (_maxFearRange <= FearRange)
+        {
+            StartCoroutine(PlayerDie());
         }
     }
 
@@ -96,24 +109,54 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            LookTarget = collision.transform.GetChild(1).gameObject;
             GetComponent<CapsuleCollider>().isTrigger = false;
-            StartCoroutine(PlayerDie());
+            StartButtonAction();
         }
     }
     public void PlayWalkFootstep()
     {
-        int footstep = Random.Range(0, footsteps.Length - 1);
+        int footstep = Random.Range(0, _footsteps.Length - 1);
 
-        audioSource.clip = footsteps[footstep];
-        wait = footsteps[footstep].length + 0.3f;
-        audioSource.Play();
+        _audioSource.clip = _footsteps[footstep];
+        wait = _footsteps[footstep].length + 0.3f;
+        _audioSource.Play();
     }
 
     public void UseCell(int val)
     {
-        Bar_Sonar.value += val;
+        _barSonar.value += val;
     }
 
+    private void ActiveSonar()
+    {
+        //소나 사용
+        if (Input.GetKeyDown(KeyCode.Space) && _barSonar.IsActive() && !_isSonar)
+        {
+            _isSonar = true;
+            Instantiate(_sonar, transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
+
+            if (0f >= _barSonar.value - use_sonar)
+            {
+                FearRange -= (_barSonar.value - use_sonar);
+                _barFear.value = FearRange;
+            }
+            _barSonar.value = _barSonar.value - use_sonar;
+        }
+    }
+
+    private void StartButtonAction()
+    {
+        if (!_animator.GetBool("IsCaught"))
+        {
+            Debug.Log("Enter ShakeState");
+            _camControl.enabled = false;
+            _playerCam.transform.LookAt(LookTarget.transform);
+            FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
+            _animator.SetBool("IsCaught", true);
+
+        }
+    }
     private IEnumerator PlayerDie()
     {
         Debug.Log("플레이어 사망!");
@@ -130,8 +173,8 @@ public class Player : MonoBehaviour
         }
         time = 0f;
 
-        audioSource.clip = dead_sound;
-        audioSource.Play();
+        _audioSource.clip = _deadSound;
+        _audioSource.Play();
 
         yield return new WaitForSeconds(3f);
 

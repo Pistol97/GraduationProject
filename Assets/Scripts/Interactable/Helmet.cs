@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Helmet : MonoBehaviour,IInteractable
+public class Helmet : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private GameObject Bar_Fear;

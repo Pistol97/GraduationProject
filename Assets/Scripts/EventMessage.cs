@@ -1,60 +1,64 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class EventMessage : MonoBehaviour, IDialogueEvent
+public class EventMessage : MonoBehaviour
 {
-    private bool startBlur;
-    private float disappearTimer = 0f;
-    private float disappearTimerMax = 5f;
+    #region Variables
+    private bool _isStartBlur;
 
-    private Text dialogue;
+    private float _disappearTimer = 0f;
+    private readonly float _disappearTimerMax = 5f;
+    #endregion
 
-    private Color alpha;
-    private Color origin;
+    #region Components
+    private Text _dialogue;
 
-    
+    private Color _alpha;
+    private Color _originColor;
+    #endregion
+
     private void Awake()
     {
-        dialogue = GetComponent<Text>();
+        _dialogue = GetComponent<Text>();
+
         //원본 텍스트 컬러 저장
-        origin = new Color(
-            dialogue.color.r,
-            dialogue.color.g,
-            dialogue.color.b,
-            dialogue.color.a);
-        alpha = origin;
+        _originColor = new Color(
+            _dialogue.color.r,
+            _dialogue.color.g,
+            _dialogue.color.b,
+            _dialogue.color.a);
+        _alpha = _originColor;  //alpha값 초기화
     }
 
     private void LateUpdate()
     {
-        Blurring();
+        if (_isStartBlur)
+        {
+            Blurring();
+        }
+
     }
 
     public void DisplayMessage(string message)
     {
-        dialogue.text = message;
-        dialogue.color = origin;
+        _dialogue.text = message;
+        _dialogue.color = _originColor;
+        _disappearTimer = 0f;
+        _isStartBlur = true;
     }
 
-    private void Blurring()
+    public void Blurring()
     {
-        if (origin.a <= dialogue.color.a)
+        if (0f == _dialogue.color.a)
         {
-            startBlur = true;
+            _isStartBlur = false;
+            return;
         }
 
-        else if (0f == dialogue.color.a)
-        {
-            startBlur = false;
-            disappearTimer = 0f;
-        }
+        _disappearTimer += Time.deltaTime;
 
-        if (startBlur)
-        {
-            disappearTimer += Time.deltaTime;
-
-            alpha.a = Mathf.Lerp(disappearTimerMax, 0f, disappearTimer / disappearTimerMax);
-            dialogue.color = alpha;
-        }
+        //alpha값 보간
+        _alpha.a = Mathf.Lerp(_disappearTimerMax, 0f, _disappearTimer / _disappearTimerMax);    
+        _dialogue.color = _alpha;
     }
 }

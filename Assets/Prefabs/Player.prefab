@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e22df6dff44074b9a93494af348959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footsteps:
+  _footsteps:
   - {fileID: 8300000, guid: 3df44cb8345c78348a9031ad77b0cea7, type: 3}
   - {fileID: 8300000, guid: 1314468da00872e4db565d7dd68a1b41, type: 3}
   - {fileID: 8300000, guid: 3268165aab8bf464a9cb62e5481bb35b, type: 3}
@@ -280,14 +280,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a1a08be85888ad649b23d6c0d29d641b, type: 3}
   - {fileID: 8300000, guid: 8a3dea79ff0e9814d8472edefcebbf41, type: 3}
   - {fileID: 8300000, guid: 201eb7593cfefe94282ab0eaea6a59e5, type: 3}
-  dead_sound: {fileID: 8300000, guid: 08b246061f851914096c3cb7906ee4f0, type: 3}
-  Bar_Fear: {fileID: 0}
-  Bar_Sonar: {fileID: 0}
-  sonar: {fileID: 3071520209680887489, guid: fabc39e4938d987409cc74d5ee6f4df3, type: 3}
-  fearRange: 0
-  maxFearRange: 100
-  use_sonar: 0
+  _deadSound: {fileID: 8300000, guid: 08b246061f851914096c3cb7906ee4f0, type: 3}
+  _barFear: {fileID: 0}
+  _barSonar: {fileID: 0}
+  _sonar: {fileID: 3071520209680887489, guid: fabc39e4938d987409cc74d5ee6f4df3, type: 3}
   panel: {fileID: 0}
+  use_sonar: 12
 --- !u!82 &5309715545247117234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -528,8 +526,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 3
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1280
   actionText: {fileID: 0}
   inven: {fileID: 0}
