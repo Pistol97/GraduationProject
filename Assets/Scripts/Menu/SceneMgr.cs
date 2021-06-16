@@ -41,6 +41,13 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene("Demo_Stage");
     }
 
+    public void ScenePlayNonStatic()
+    {
+        Time.timeScale = 1.0f;//기본 시간
+        Debug.Log("Demo_Stage");
+        SceneManager.LoadScene("Demo_Stage");
+    }
+
     public static void QuitGame()
     {
         Debug.Log("QuitGame");

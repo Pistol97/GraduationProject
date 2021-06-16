@@ -37,6 +37,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         textCount.text = itemCount.ToString();
 
         SetColor(1);
+
+        //if (_item.itemName == QuestDataController.GetInstance().GetQuestItem())
+        //{
+        //    QuestDataController.GetInstance().SetQuest(1);
+        //}
     }
     /// <summary>
     /// 아이템 개수 조정

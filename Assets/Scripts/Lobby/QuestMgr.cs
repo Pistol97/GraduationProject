@@ -111,6 +111,11 @@ public class QuestMgr : MonoBehaviour
         QuestDataController.GetInstance().SetQuestItem(questItem);
     }
 
+    public void QuestStart()
+    {
+
+    }
+
     private void QuestSuccess()
     {
         if (QuestDataController.GetInstance().GetQuest()==0)

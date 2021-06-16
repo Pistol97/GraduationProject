@@ -21,6 +21,11 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Inventory inven;
 
+    //테스트
+    [Header("테스트")]
+    public bool questcomplete = false;
+    public string questItemName;
+
     private void Start()
     {
         //화면 중간 벡터, 화면의 중간부분을 찾아서 레이를 쏘기 위함
@@ -37,6 +42,7 @@ public class SelectionManager : MonoBehaviour
     private void Update()
     {
         TryAction();
+        questItemName = QuestDataController.GetInstance().GetQuestItem();
     }
 
     private void TryAction()
@@ -55,6 +61,14 @@ public class SelectionManager : MonoBehaviour
             if (hit.transform != null)
             {
                 Debug.Log(hit.transform.GetComponent<ItemPickUp>().item.itemName + "획득했습니다.");
+
+                //퀘스트 아이템인지 확인
+                if (hit.transform.GetComponent<ItemPickUp>().item.itemName == QuestDataController.GetInstance().GetQuestItem())
+                {
+                    QuestDataController.GetInstance().SetQuest(1);
+                    questcomplete = true;
+                }
+
                 inven.AcquireItem(hit.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hit.transform.gameObject);
                 InfoDisappear();
@@ -79,8 +93,10 @@ public class SelectionManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+
                     Debug.Log("상호작용 클릭");
                     hit.transform.GetComponent<IInteractable>().ObjectInteract();
+                    
                 }
             }
         }

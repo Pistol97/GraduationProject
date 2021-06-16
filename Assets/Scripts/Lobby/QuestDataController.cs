@@ -24,29 +24,7 @@ public class QuestDataController : MonoBehaviour
         return instance;
     }
 
-    //[SerializeField] private int[,] questProgress;
-
-    //[SerializeField] private int npcnum1;
-    //[SerializeField] private int npcnum2;
-    //[SerializeField] private int npcnum3;
-    //[SerializeField] private int npcquestnum1;
-    //[SerializeField] private int npcquestnum2;
-    //[SerializeField] private int npcquestnum3;
-
-    //private void Awake()
-    //{
-    //    questProgress = new int[2,2];
-    //}
-
-    //public void QuestSetComplete()
-    //{
-    //    PlayerPrefs.SetInt("QuestComplete", 0);
-    //}
-
-    //public void QuestSetFail()
-    //{
-    //    PlayerPrefs.SetInt("QuestComplete", 1);
-    //}
+    //private string questItmeName;
 
     public void SetQuest(int _ox)
     {
@@ -60,6 +38,7 @@ public class QuestDataController : MonoBehaviour
 
     public void SetQuestItem(string _item)
     {
+        //questItmeName = _item;
         PlayerPrefs.SetString("Item", _item);
     }
 
