@@ -27,6 +27,18 @@ public class SceneMgr : MonoBehaviour
         QuitGame();
     }
 
+    public void GUIScenePlay()
+    {
+        Time.timeScale = 1.0f;//기본 시간
+        Debug.Log("Demo_Stage");
+        SceneManager.LoadScene("Demo_Stage");
+    }
+
+    public void GUIGameLobby()
+    {
+        GameLobby();
+    }
+
     public static void SceneMenu()
     {
         Time.timeScale = 1.0f;//기본 시간
@@ -41,13 +53,12 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene("Demo_Stage");
     }
 
-    public void ScenePlayNonStatic()
+    public static void GameLobby()
     {
         Time.timeScale = 1.0f;//기본 시간
-        Debug.Log("Demo_Stage");
-        SceneManager.LoadScene("Demo_Stage");
+        Debug.Log("GameLobby");
+        SceneManager.LoadScene("GameLobby");
     }
-
     public static void QuitGame()
     {
         Debug.Log("QuitGame");
