@@ -19,8 +19,8 @@ public class PlayerDataManager : MonoBehaviour
     private class PlayerData
     {
         public bool[] Quests;
-        public bool[] Upgrades = new bool[9];
-        public bool[] Archives = new bool[9];
+        public bool[] Upgrades;
+        public bool[] Archives;
     }
 
     private PlayerData _playerData;
@@ -43,7 +43,7 @@ public class PlayerDataManager : MonoBehaviour
         if (!_instance)
         {
             _instance = this;
-
+            _playerData = new PlayerData();
             DontDestroyOnLoad(gameObject);
         }
 
@@ -124,6 +124,20 @@ public class PlayerDataManager : MonoBehaviour
         return JsonUtility.FromJson<T>(jsonData);
     }
 
+    public void SyncUpgradeData(ref int profileNumber)
+    {
+        for (int i = 0; i < _playerData.Upgrades.Length; i++)
+        {
+            if (!_playerData.Upgrades[i])
+            {
+                Debug.Log(profileNumber);
+                return;
+            }
+            profileNumber = i;
+        }
+    }
+
+
     /// <summary>
     /// 아카이브 데이터 연동 메소드
     /// </summary>
@@ -131,7 +145,8 @@ public class PlayerDataManager : MonoBehaviour
     public void SyncArchiveData(StoryButton[] storyButtons)
     {
         int i = 0;
-        foreach(var unlock in _playerData.Archives)
+        Debug.Log(_playerData.Archives);
+        foreach (var unlock in _playerData.Archives)
         {
             if(unlock)
             {
