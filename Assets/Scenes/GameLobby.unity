@@ -336,11 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 176790751}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &176790753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1004,7 +1002,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1277,11 +1275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 754693911}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &754693913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1799,11 +1795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 898415032}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &898415034
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1869,7 +1863,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -2239,11 +2233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 1003168357}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &1003168359
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2386,11 +2378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 1006152094}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &1006152096
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2665,7 +2655,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -3009,11 +2999,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 1272447658}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &1272447660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3531,11 +3519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 1446464759}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &1446464761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4116,11 +4102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 2014093661}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!1 &2027550670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4722,11 +4706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b98c9a2f2616da40903bc64ebff66b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storyText: {fileID: 2133276489}
-  buttonImage: {fileID: 2125541819}
+  _story: 
   unlockSprite: {fileID: 21300000, guid: fab70643b6bba4d418544e7cbe1e9b1b, type: 3}
-  story: 11111111111111111111111111111111111
-  isUnlock: 0
+  _isUnlock: 0
 --- !u!222 &2125541821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4826,6 +4808,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 887190223}
     m_Modifications:
+    - target: {fileID: 207875725921381241, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3,
+        type: 3}
+    - target: {fileID: 207875725921381241, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 207875725921381241, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 207875725921381241, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 207875726071209460, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
         type: 3}
       propertyPath: m_Name
@@ -5075,6 +5078,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 4316772872341292031, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3,
+        type: 3}
+    - target: {fileID: 4316772872341292031, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316772872341292031, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316772872341292031, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbbc3518bd40f544b8418e2a1df27d0, type: 3}
 --- !u!1001 &5001384557611185931
@@ -5084,6 +5108,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 887190223}
     m_Modifications:
+    - target: {fileID: 5001384557267240538, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3,
+        type: 3}
     - target: {fileID: 5001384557543409823, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5094,10 +5124,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1111402677}
+    - target: {fileID: 5001384557543409823, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: GUIScenePlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384557762444400, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: cdce8ae8cd819384f86d5b1b716e58aa,
+        type: 3}
+    - target: {fileID: 5001384557762444400, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384557762444400, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384557762444400, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5001384558452497124, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
         type: 3}
       propertyPath: m_Name
       value: QuestLounge
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384558452497124, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5001384558452497147, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
         type: 3}
@@ -5213,6 +5274,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 887190223}
     m_Modifications:
+    - target: {fileID: 5411185179218577399, guid: bff87414e04abe7428c9ce807fe97e1c,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3,
+        type: 3}
+    - target: {fileID: 5411185179218577399, guid: bff87414e04abe7428c9ce807fe97e1c,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411185179218577399, guid: bff87414e04abe7428c9ce807fe97e1c,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411185179218577399, guid: bff87414e04abe7428c9ce807fe97e1c,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5411185179555137418, guid: bff87414e04abe7428c9ce807fe97e1c,
         type: 3}
       propertyPath: m_Pivot.x

@@ -738,6 +738,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2226185742711941809, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
+      propertyPath: thisIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226185742711941809, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 459268285}
@@ -750,6 +755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneName
       value: Demo_Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: buttonIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
