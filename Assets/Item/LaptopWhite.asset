@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LaptopWhite
   m_EditorClassIdentifier: 
   itemName: Laptop White
-  itemType: 2
+  itemType: 3
   itemImage: {fileID: 21300000, guid: 9d73a14b4ec37bb488fe750d9148b3a3, type: 3}
   itemPrefab: {fileID: 8954340909290200625, guid: 332e169cb595fac40bc40269de71c0b1,
     type: 3}

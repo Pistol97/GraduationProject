@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 744289ef62e1b784aab5c458a9c749c1, type: 3}
-  m_Name: teapot
+  m_Name: QuestItem
   m_EditorClassIdentifier: 
-  itemName: TeaPot
-  itemType: 3
-  itemImage: {fileID: 21300000, guid: ca94b07aaea98674b916635795a8b6c3, type: 3}
-  itemPrefab: {fileID: 7551071944143651954, guid: c9c1eb4c9407f7947bc10bdd3e0d8589,
+  itemName: QuestItem
+  itemType: 2
+  itemImage: {fileID: 21300000, guid: fc081174032cfd7429d74d321915c10f, type: 3}
+  itemPrefab: {fileID: 8729000917972785667, guid: 181700b14c2a3ec4997ea682070a46e1,
     type: 3}

@@ -81,12 +81,15 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            
             inventoryActivated = !inventoryActivated;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
 
+
             if (inventoryActivated)
             {
+                Time.timeScale = 0f;
                 OpenInventory();
             }
             else
@@ -94,6 +97,7 @@ public class Inventory : MonoBehaviour
                 CloseInventory();
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Time.timeScale = 1.0f;//기본 시간
             }
         }
     }
