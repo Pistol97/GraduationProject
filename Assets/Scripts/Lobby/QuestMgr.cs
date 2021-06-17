@@ -24,60 +24,21 @@ public class QuestMgr : MonoBehaviour
     public List<QuestDataProperty> npc2Quest;
     public List<QuestDataProperty> npc3Quest;
 
-    //public List<List<QuestDataProperty>> Quest;
-
-    public int npc1QuestNum = 0;
-    public int npc2QuestNum = 0;
-    public int npc3QuestNum = 0;
+    public static int npc1QuestNum = 0;
+    public static int npc2QuestNum = 0;
+    public static int npc3QuestNum = 0;
 
     public int currentNpc;
 
-    public bool test=false;
-
-    Dictionary<int, List<QuestDataProperty>> testQuest;
-
-    private void Awake()
-    {
-        QuestDataController.GetInstance().SetQuest(0);
-
-        //Quest = new List<List<QuestDataProperty>>();
-        //Quest.Add(npc1Quest);
-        //Quest.Add(npc2Quest);
-        //Quest.Add(npc3Quest);
-
-        //testQuest = new Dictionary<int, List<QuestDataProperty>>();
-        //testQuest.Add(1, npc1Quest);
-        //testQuest.Add(2, npc2Quest);
-        //testQuest.Add(3, npc3Quest);
-    }
-
     private void Update()
     {
-        //for(int i=0;i<Quest.Count;i++)
-        //{
-        //    for(int j =0; j<Quest[i].Count;j++)
-        //    {
-        //        Debug.Log("퀘스트" + i+" = " + Quest[i][j].ToString());
-        //    }
-        //}
-
-        //foreach(KeyValuePair<int,QuestDataProperty> pair in testQuest)
-        //{
-        //}
-
-        if (test == true)
-            QuestDataController.GetInstance().SetQuest(1);
-
         QuestSuccess();
-    }
-
-    public void Show()
-    {
     }
 
     public void NPC1Quest()
     {
         currentNpc = 1;
+        //npc1QuestNum = QuestDataController.GetInstance().GetNPC1QuestNum();
 
         npc.sprite = npc1Quest[npc1QuestNum].sprite;
         npcQuestNum.text = npc1Quest[npc1QuestNum].npcQuestNum.ToString();
@@ -90,6 +51,7 @@ public class QuestMgr : MonoBehaviour
     public void NPC2Quest()
     {
         currentNpc = 2;
+        //npc2QuestNum = QuestDataController.GetInstance().GetNPC2QuestNum();
 
         npc.sprite = npc2Quest[npc2QuestNum].sprite;
         npcQuestNum.text = npc2Quest[npc2QuestNum].npcQuestNum.ToString();
@@ -102,6 +64,7 @@ public class QuestMgr : MonoBehaviour
     public void NPC3Quest()
     {
         currentNpc = 3;
+        //npc3QuestNum = QuestDataController.GetInstance().GetNPC3QuestNum();
 
         npc.sprite = npc3Quest[npc3QuestNum].sprite;
         npcQuestNum.text = npc3Quest[npc3QuestNum].npcQuestNum.ToString();
@@ -111,35 +74,35 @@ public class QuestMgr : MonoBehaviour
         QuestDataController.GetInstance().SetQuestItem(questItem);
     }
 
-    public void QuestStart()
-    {
-
-    }
-
     private void QuestSuccess()
     {
         if (QuestDataController.GetInstance().GetQuest()==0)
             return;
-
-        switch(currentNpc)
+        
+        if(QuestDataController.GetInstance().GetQuest() == 1)
         {
-            case 1:
-                npc1QuestNum += 1;
-                test = false;
-                QuestDataController.GetInstance().SetQuest(0);
-                break;
-            case 2:
-                npc2QuestNum += 1;
-                test = false;
-                QuestDataController.GetInstance().SetQuest(0);
-                break;
-            case 3:
-                npc3QuestNum += 1;
-                test = false;
-                QuestDataController.GetInstance().SetQuest(0);
-                break;
-            default:
-                break;
+            Debug.Log("QuestComplete");
+
+            switch (currentNpc)
+            {
+                case 1:
+                    npc1QuestNum += 1;
+                    NPC1Quest();
+                    QuestDataController.GetInstance().SetQuest(0);
+                    break;
+                case 2:
+                    npc2QuestNum += 1;
+                    NPC2Quest();
+                    QuestDataController.GetInstance().SetQuest(0);
+                    break;
+                case 3:
+                    npc3QuestNum += 1;
+                    NPC3Quest();
+                    QuestDataController.GetInstance().SetQuest(0);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

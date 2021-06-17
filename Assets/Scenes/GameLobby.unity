@@ -418,7 +418,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fa8a3799a9dfd3f49b634a62f43d710b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1602,6 +1602,10 @@ MonoBehaviour:
   questLounge: {fileID: 1378266607}
   upgrade: {fileID: 651636233}
   story: {fileID: 1578111860}
+  text_npcNum1: {fileID: 1187595745}
+  text_npcNum2: {fileID: 949553322}
+  text_npcNum3: {fileID: 703548693}
+  questMgr: {fileID: 887190225}
 --- !u!114 &887190225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,17 +1625,17 @@ MonoBehaviour:
   npc1Quest:
   - npcQuestNum: 1
     sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
-    description: 11111111111111111
+    description: "\uCFFC\uC2A4\uD2B8 1\uC785\uB2C8\uB2E4"
     questItem: QuestItem
     reward: "\uBCF4\uC0C1"
   - npcQuestNum: 2
-    sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
-    description: 2222222222
+    sprite: {fileID: 21300000, guid: 6bb9a8b267f6b634e9cbd29de8de8651, type: 3}
+    description: "\uCFFC\uC2A4\uD2B8 2\uC785\uB2C8\uB2E4"
     questItem: QuestItem
     reward: "\uBCF4\uC0C1"
   - npcQuestNum: 3
-    sprite: {fileID: 21300000, guid: e0c954214fd869146b2ee3b9473a823e, type: 3}
-    description: 3333333333
+    sprite: {fileID: 21300000, guid: 67482141eef494242bcb7b7d777bdf5b, type: 3}
+    description: "\uCFFC\uC2A4\uD2B8 3\uC785\uB2C8\uB2E4"
     questItem: QuestItem
     reward: "\uBCF4\uC0C1"
   npc2Quest:
@@ -1656,11 +1660,7 @@ MonoBehaviour:
     description: 33333333333333333
     questItem: 
     reward: "\uBCF4\uC0C1"
-  npc1QuestNum: 0
-  npc2QuestNum: 0
-  npc3QuestNum: 0
   currentNpc: 0
-  test: 0
 --- !u!1 &898415029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,7 +2847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e696ec592e5b99849a6527a2ee248ca7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3184,7 +3184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ea5fbfc5ac2c3ed41be99a9456b5d0af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fd588a05e0cd4da468032b14e4962dbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5264,6 +5264,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384558707750595, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384558707750595, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384558707750595, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5001384558707750605, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a7b1aae7e350940a3ed845b0a2aac3, type: 3}

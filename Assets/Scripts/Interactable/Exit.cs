@@ -26,6 +26,9 @@ public class Exit : MonoBehaviour, IInteractable
     private void ChangeScene()
     {
         //PlayerDataManager.Instance.SyncPlayerData();   //습득한 내용 플레이어 데이터와 동기화
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
         SceneManager.LoadScene("GameLobby");   //로비 전환
     }
 }

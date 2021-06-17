@@ -60,7 +60,7 @@ public class MenuButtonController : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.Return))
 			{
-				SceneMgr.ScenePlay();
+				SceneMgr.GameLobby();
 			}
 		}
 		if (index == 1)
