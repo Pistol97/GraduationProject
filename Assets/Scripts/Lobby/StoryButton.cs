@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -13,23 +11,16 @@ public class StoryButton : MonoBehaviour
     [TextArea]
     [SerializeField] private string _story;
 
-    [Header("잠금해제 스프라이트")]
-    [SerializeField]private Sprite unlockSprite;
-
     #region Components
     private Image _noteImage;
     private Button _button;
     private Archive _archive;
     #endregion
 
-    //TODO: 테스트용 SerializeField 제거
-    [SerializeField]private bool _isUnlock;
     public bool IsUnlock
     {
-        set
-        {
-            _isUnlock = value;
-        }
+        get;
+        set;
     }
 
     private void Awake()
@@ -42,12 +33,6 @@ public class StoryButton : MonoBehaviour
     private void Start()
     {
         _button.onClick.AddListener(ButtonClicked); //버튼 클릭 이벤트 추가
-
-        //노트 언락시 해금 스프라이트로 변경
-        if (_isUnlock)
-        {
-            _noteImage.sprite = unlockSprite;
-        }
     }
 
     /// <summary>
@@ -55,7 +40,7 @@ public class StoryButton : MonoBehaviour
     /// </summary>
     private void ButtonClicked()
     {
-        if (_isUnlock)
+        if (IsUnlock)
         {
             _archive.ShowSelectedNote(_story);  //언락시 해당 노트의 내용을 메소드를 통해 전달
         }

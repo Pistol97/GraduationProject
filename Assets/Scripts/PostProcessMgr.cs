@@ -18,7 +18,7 @@ public class PostProcessMgr : MonoBehaviour
 
     private void Start()
     {
-        PlayerDataManager.Instance.SyncUpgradeData(ref _profileNumber);
+        PlayerDataManager.Instance.SyncUpgradeProfile(ref _profileNumber);
         Debug.Log(_path + _profileNumber);
         _postprocessVolume.profile = Resources.Load(_path + _profileNumber) as VolumeProfile;
     }

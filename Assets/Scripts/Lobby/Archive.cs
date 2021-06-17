@@ -9,6 +9,9 @@ using UnityEngine.UI;
 /// </summary>
 public class Archive : MonoBehaviour
 {
+    [Header("잠금해제 스프라이트")]
+    [SerializeField] private Sprite _unlockSprite;
+
     private Text _noteText;
     private StoryButton[] _storyButtons;
     private void Awake()
@@ -20,6 +23,15 @@ public class Archive : MonoBehaviour
     private void Start()
     {
         PlayerDataManager.Instance.SyncArchiveData(_storyButtons);
+
+        foreach (var button in _storyButtons)
+        {
+            if (button.IsUnlock)
+            {
+                //노트 언락시 해금 스프라이트로 변경
+                button.GetComponent<Image>().sprite = _unlockSprite;
+            }
+        }
     }
 
     public void ShowSelectedNote(string text)

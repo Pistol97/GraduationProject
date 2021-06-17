@@ -19,8 +19,8 @@ public class PlayerDataManager : MonoBehaviour
     private class PlayerData
     {
         public bool[] Quests;
-        public bool[] Upgrades;
-        public bool[] Archives;
+        public bool[] Upgrades = new bool[3];
+        public bool[] Archives = new bool[9];
     }
 
     private PlayerData _playerData;
@@ -70,7 +70,7 @@ public class PlayerDataManager : MonoBehaviour
 
     private string ObjectToJson(object obj)
     {
-        return JsonUtility.ToJson(obj);
+        return JsonUtility.ToJson(obj, true);
     }
 
     /// <summary>
@@ -124,7 +124,70 @@ public class PlayerDataManager : MonoBehaviour
         return JsonUtility.FromJson<T>(jsonData);
     }
 
-    public void SyncUpgradeData(ref int profileNumber)
+    /// <summary>
+    /// 플레이어 인벤토리 데이터 저장 메소드
+    /// TODO: EnergyCell말고 Note아이템이 완성될 시 변경하여 적용 시킬 것
+    /// </summary>
+    /// <param name="inventory"></param>
+    public void GetInventoryData(Inventory inventory)
+    {
+        int max = _playerData.Archives.Length - 1;
+        int i = Random.Range(0, max);
+
+        foreach (var slot in inventory.Slots)
+        {
+            if (slot.item && "EnergyCell" == slot.item.itemName)
+            {
+                for (int count = 0; count < slot.itemCount;)
+                {
+                    if (_playerData.Archives[i])
+                    {
+                        i = Random.Range(0, max);
+                    }
+                    else
+                    {
+                        _playerData.Archives[i] = true;
+                        count++;
+                    }
+                }
+            }
+        }
+
+        foreach (var slot in inventory.QuickSlots)
+        {
+            if (slot.item && "EnergyCell" == slot.item.itemName)
+            {
+                for (int count = 0; count < slot.itemCount;)
+                {
+                    if (_playerData.Archives[i])
+                    {
+                        i = Random.Range(0, max);
+                    }
+                    else
+                    {
+                        _playerData.Archives[i] = true;
+                        count++;
+                    }
+                }
+            }
+        }
+    }
+
+
+    /// <summary>
+    /// 플레이어 데이터 저장 메소드
+    /// </summary>
+    public void SavePlayerData()
+    {
+        string json = ObjectToJson(_playerData);
+        CreateJsonFile(Application.dataPath, "PlayerData", json);
+    }
+
+    /// <summary>
+    /// 플레이어 업그레이드 프로필 연동 메소드
+    /// </summary>
+    /// <param name="profileNumber"></param>
+    public void SyncUpgradeProfile(ref int profileNumber)
     {
         for (int i = 0; i < _playerData.Upgrades.Length; i++)
         {
@@ -137,9 +200,25 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 로비 내 업그레이드 데이터 연동 메소드
+    /// </summary>
+    /// <param name="images"></param>
+    public void SyncUpgradeData(UpgradeButton[] upgradeButtons)
+    {
+        int i = 0;
+        foreach (var unlock in _playerData.Upgrades)
+        {
+            if (unlock)
+            {
+                upgradeButtons[i].IsUnlock = true;
+            }
+            i++;
+        }
+    }
 
     /// <summary>
-    /// 아카이브 데이터 연동 메소드
+    /// 로비 내 아카이브 데이터 연동 메소드
     /// </summary>
     /// <param name="storyButtons"></param>
     public void SyncArchiveData(StoryButton[] storyButtons)
@@ -148,12 +227,12 @@ public class PlayerDataManager : MonoBehaviour
         Debug.Log(_playerData.Archives);
         foreach (var unlock in _playerData.Archives)
         {
-            if(unlock)
+            if (unlock)
             {
                 storyButtons[i].IsUnlock = true;
             }
             i++;
         }
-        
+
     }
 }

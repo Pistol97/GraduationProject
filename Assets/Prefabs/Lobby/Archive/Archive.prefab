@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36872f0bd2adf964188a4401f2eaf52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _unlockSprite: {fileID: 21300000, guid: 37e7a31aeb7dd9a43ba458db7d83f1b5, type: 3}
 --- !u!1 &3564717381498581897
 GameObject:
   m_ObjectHideFlags: 0
