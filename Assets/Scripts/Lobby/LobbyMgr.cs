@@ -36,6 +36,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(true);
         upgrade.SetActive(false);
         story.SetActive(false);
+        AudioMgr.Instance.PlaySound("Click");
     }
 
     public void QuestLoungeButtonOn()
@@ -52,6 +53,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(false);
         upgrade.SetActive(true);
         story.SetActive(false);
+        AudioMgr.Instance.PlaySound("Click");
     }
 
     public void StroyButton()
@@ -59,6 +61,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(false);
         upgrade.SetActive(false);
         story.SetActive(true);
+        AudioMgr.Instance.PlaySound("Click");
     }
 
 
