@@ -17,15 +17,23 @@ public class Inventory : MonoBehaviour
     private GameObject go_QuickSlotParent;
 
     //슬롯들
-    private Slot[] slots;
+    public Slot[] Slots
+    {
+        get;
+        private set;
+    }
 
     //퀵슬롯들
-    private Slot[] quickSlots;
+    public Slot[] QuickSlots
+    {
+        get;
+        private set;
+    }
 
     private void Start()
     {
-        slots = go_SlotParent.GetComponentsInChildren<Slot>();
-        quickSlots = go_QuickSlotParent.GetComponentsInChildren<Slot>();
+        Slots = go_SlotParent.GetComponentsInChildren<Slot>();
+        QuickSlots = go_QuickSlotParent.GetComponentsInChildren<Slot>();
     }
 
     private void Update()
@@ -61,19 +69,19 @@ public class Inventory : MonoBehaviour
     private void UseItem(int _num)
     {
         //itemtype이 useable이 아니면 리턴
-        if(quickSlots[_num-1].item.itemType.ToString()!="Useable")
+        if(QuickSlots[_num-1].item.itemType.ToString()!="Useable")
         {
             FindObjectOfType<EventMessage>().DisplayMessage("사용 할 수 없는 아이템");
             return;
         }
-        if(quickSlots[_num-1].itemCount>0)
+        if(QuickSlots[_num-1].itemCount>0)
         {
-            if("EnergyCell" == quickSlots[_num - 1].item.itemName)
+            if("EnergyCell" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseCell(50);
             }
-            FindObjectOfType<EventMessage>().DisplayMessage(quickSlots[_num - 1].item.itemName + " 사용");
-            quickSlots[_num - 1].SetSlotCount(-1);
+            FindObjectOfType<EventMessage>().DisplayMessage(QuickSlots[_num - 1].item.itemName + " 사용");
+            QuickSlots[_num - 1].SetSlotCount(-1);
         }
     }
 
@@ -110,14 +118,14 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item item, int count = 1)
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우
-            if (slots[i].item != null)
+            if (Slots[i].item != null)
             {
-                if (slots[i].item.itemName == item.itemName)
+                if (Slots[i].item.itemName == item.itemName)
                 {
-                    slots[i].SetSlotCount(count);
+                    Slots[i].SetSlotCount(count);
                     return;
                 }
             }
@@ -125,7 +133,7 @@ public class Inventory : MonoBehaviour
             //아이템 새로 추가
             else
             {
-                slots[i].AddItem(item, count);
+                Slots[i].AddItem(item, count);
                 return;
             }
         }
