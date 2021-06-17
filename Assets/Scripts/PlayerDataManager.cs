@@ -224,7 +224,6 @@ public class PlayerDataManager : MonoBehaviour
     public void SyncArchiveData(StoryButton[] storyButtons)
     {
         int i = 0;
-        Debug.Log(_playerData.Archives);
         foreach (var unlock in _playerData.Archives)
         {
             if (unlock)
