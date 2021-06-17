@@ -8,11 +8,11 @@ public partial class Player : MonoBehaviour
     #region Components
     [SerializeField] private AudioClip[] _footsteps;
     [SerializeField] private AudioClip _deadSound;
-    [SerializeField] private Slider _barFear;
-    [SerializeField] private Slider _barSonar;
-    [SerializeField] private GameObject _sonar;
-
     [SerializeField] private Image panel;
+
+    private Slider _barFear;
+    private Slider _barSonar;
+    private GameObject _sonar;
 
     private AudioSource _audioSource;
     private PlayerControl _playerControl;
@@ -67,11 +67,13 @@ public partial class Player : MonoBehaviour
 
     private void Start()
     {
+        Hud = GameObject.Find("Canvas_HUD").GetComponent<Canvas>();
+        _barFear = Hud.transform.GetChild(2).GetComponent<Slider>();
+        _barSonar = Hud.transform.GetChild(3).GetComponent<Slider>();
         FearRange = 0f;
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
-        Hud = GameObject.Find("Canvas_HUD").GetComponent<Canvas>();
     }
 
     private void Update()
@@ -134,6 +136,7 @@ public partial class Player : MonoBehaviour
 
     private void ActiveSonar()
     {
+        _sonar = Resources.Load("Ability/Sonar") as GameObject;
         //소나 사용
         if (Input.GetKeyDown(KeyCode.Space) && _barSonar.IsActive() && !_isSonar)
         {
