@@ -22,16 +22,14 @@ public class Enemy : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        nav.speed = 1.0f;
     }
 
     private void Update()
     {
         ChaseDistance();
         ChangeIdle();
-        //if(isChase)
-        //{
-        //    nav.SetDestination(target.position);
-        //}
     }
 
     private void FixedUpdate()
@@ -57,6 +55,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            nav.SetDestination(this.transform.position);
             animator.SetBool("IsWalk", false);
             isChase = false;
         }
@@ -84,4 +83,5 @@ public class Enemy : MonoBehaviour
             return;
         }
     }
+
 }

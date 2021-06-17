@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyMgr : MonoBehaviour
 {
@@ -11,6 +12,24 @@ public class LobbyMgr : MonoBehaviour
     [SerializeField] private GameObject upgrade;
 
     [SerializeField] private GameObject story;
+
+    public Text text_npcNum1;
+    public Text text_npcNum2;
+    public Text text_npcNum3;
+
+    public QuestMgr questMgr;
+
+    private void Start()
+    {
+        questMgr = GetComponent<QuestMgr>();
+    }
+
+    private void Update()
+    {
+        text_npcNum1.text = QuestMgr.npc1QuestNum.ToString()+"/"+ questMgr.npc1Quest.Count;
+        text_npcNum2.text = QuestMgr.npc1QuestNum.ToString() + "/" + questMgr.npc2Quest.Count;
+        text_npcNum3.text = QuestMgr.npc1QuestNum.ToString() + "/" + questMgr.npc3Quest.Count;
+    }
 
     public void QuestButton()
     {

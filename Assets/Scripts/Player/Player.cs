@@ -32,6 +32,9 @@ public partial class Player : MonoBehaviour
         set;
     }
 
+    [SerializeField]
+    private GameObject quickInventory;
+
     private readonly float _maxFearRange = 100;//최대 공포 수치, 게임 오버
 
     [Header("배터리 감소량")]
@@ -114,6 +117,7 @@ public partial class Player : MonoBehaviour
             StartButtonAction();
         }
     }
+
     public void PlayWalkFootstep()
     {
         int footstep = Random.Range(0, _footsteps.Length - 1);
@@ -151,12 +155,29 @@ public partial class Player : MonoBehaviour
         {
             Debug.Log("Enter ShakeState");
             _camControl.enabled = false;
-            _playerCam.transform.LookAt(LookTarget.transform);
+            Vector3 TargetFront = LookTarget.transform.forward;
+            Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
+            _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
             FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
             _animator.SetBool("IsCaught", true);
 
+            quickInventory.SetActive(false);
+
         }
     }
+
+    private void PlayerInvincible()
+    {
+        this.GetComponent<CapsuleCollider>().enabled = false;
+        Invoke("PlayerInvincibleEnd", 5.0f);
+    }
+
+    private void PlayerInvincibleEnd()
+    {
+        quickInventory.SetActive(true);
+        this.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
     private IEnumerator PlayerDie()
     {
         Debug.Log("플레이어 사망!");

@@ -236,8 +236,8 @@ RectTransform:
   - {fileID: 2110415894}
   - {fileID: 6195006}
   - {fileID: 532400294}
-  - {fileID: 1358514526}
   - {fileID: 805087238}
+  - {fileID: 1358514526}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   keyDown: 0
-  maxIndex: 2
+  maxIndex: 1
   audioSource: {fileID: 459268286}
 --- !u!82 &459268286
 AudioSource:
@@ -466,7 +466,7 @@ PrefabInstance:
     - target: {fileID: 2226185742711941809, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: thisIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2226185742711941809, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -486,7 +486,7 @@ PrefabInstance:
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: buttonIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -506,7 +506,7 @@ PrefabInstance:
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -581,7 +581,7 @@ PrefabInstance:
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -148.5
+      value: -109.1
       objectReference: {fileID: 0}
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -754,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: sceneName
-      value: Demo_Stage
+      value: GameLobby
       objectReference: {fileID: 0}
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -980,7 +980,7 @@ PrefabInstance:
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4369065082735945914, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
@@ -1076,6 +1076,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MenuButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369065082735945917, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8157862164507402858, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}

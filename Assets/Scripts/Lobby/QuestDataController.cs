@@ -24,8 +24,6 @@ public class QuestDataController : MonoBehaviour
         return instance;
     }
 
-    //private string questItmeName;
-
     public void SetQuest(int _ox)
     {
         PlayerPrefs.SetInt("QuestComplete", _ox);
@@ -38,7 +36,6 @@ public class QuestDataController : MonoBehaviour
 
     public void SetQuestItem(string _item)
     {
-        //questItmeName = _item;
         PlayerPrefs.SetString("Item", _item);
     }
 
@@ -46,4 +43,38 @@ public class QuestDataController : MonoBehaviour
     {
         return PlayerPrefs.GetString("Item");
     }
+
+    /// <summary>
+    /// NPC 퀘스트 번호
+    /// </summary>
+
+    //public void SetNPC1QuestNum(int num)
+    //{
+    //    PlayerPrefs.SetInt("NPC1QuestNum", num);
+    //}
+
+    //public int GetNPC1QuestNum()
+    //{
+    //    return PlayerPrefs.GetInt("NPC1QuestNum");
+    //}
+
+    //public void SetNPC2QuestNum(int num)
+    //{
+    //    PlayerPrefs.SetInt("NPC2QuestNum", num);
+    //}
+
+    //public int GetNPC2QuestNum()
+    //{
+    //    return PlayerPrefs.GetInt("NPC2QuestNum");
+    //}
+
+    //public void SetNPC3QuestNum(int num)
+    //{
+    //    PlayerPrefs.SetInt("NPC3QuestNum", num);
+    //}
+
+    //public int GetNPC3QuestNum()
+    //{
+    //    return PlayerPrefs.GetInt("NPC3QuestNum");
+    //}
 }
