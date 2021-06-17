@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 3773018724784560311}
   - component: {fileID: 3773018724784560309}
   - component: {fileID: 1566461078049542174}
+  - component: {fileID: 6101019341860764169}
   - component: {fileID: 3773018724784560310}
   - component: {fileID: 3773018724784560308}
   - component: {fileID: 5309715545247117234}
@@ -241,6 +242,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &6101019341860764169
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3773018724784560316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d1b4fc3bc630f54591a744f96efe5d6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &3773018724784560310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,23 +291,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e22df6dff44074b9a93494af348959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footsteps:
-  - {fileID: 8300000, guid: 3df44cb8345c78348a9031ad77b0cea7, type: 3}
-  - {fileID: 8300000, guid: 1314468da00872e4db565d7dd68a1b41, type: 3}
-  - {fileID: 8300000, guid: 3268165aab8bf464a9cb62e5481bb35b, type: 3}
-  - {fileID: 8300000, guid: ec807f85432d910479357396232bf2ad, type: 3}
-  - {fileID: 8300000, guid: 9a1475833e5054147ae2c381ab22389f, type: 3}
-  - {fileID: 8300000, guid: a1a08be85888ad649b23d6c0d29d641b, type: 3}
-  - {fileID: 8300000, guid: 8a3dea79ff0e9814d8472edefcebbf41, type: 3}
-  - {fileID: 8300000, guid: 201eb7593cfefe94282ab0eaea6a59e5, type: 3}
-  dead_sound: {fileID: 8300000, guid: 08b246061f851914096c3cb7906ee4f0, type: 3}
-  Bar_Fear: {fileID: 0}
-  Bar_Sonar: {fileID: 0}
-  sonar: {fileID: 3071520209680887489, guid: fabc39e4938d987409cc74d5ee6f4df3, type: 3}
-  fearRange: 0
-  maxFearRange: 100
-  use_sonar: 0
+  _footsteps: []
+  _deadSound: {fileID: 0}
   panel: {fileID: 0}
+  quickInventory: {fileID: 0}
+  use_sonar: 0
 --- !u!82 &5309715545247117234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -435,6 +443,7 @@ MonoBehaviour:
   actionText: {fileID: 0}
   inven: {fileID: 0}
   questcomplete: 0
+  questItemName: 
 --- !u!20 &3773018725522341036
 Camera:
   m_ObjectHideFlags: 0
@@ -459,7 +468,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 20
   field of view: 60
   orthographic: 0
   orthographic size: 5

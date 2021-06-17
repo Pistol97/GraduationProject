@@ -112,11 +112,13 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
+        AudioMgr.Instance.PlaySound("Open_Inventory");
         go_InventoryBase.SetActive(true);
     }
 
     private void CloseInventory()
     {
+        AudioMgr.Instance.PlaySound("Close_Inventory");
         go_InventoryBase.SetActive(false);
     }
 

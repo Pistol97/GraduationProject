@@ -60,6 +60,7 @@ public class SelectionManager : MonoBehaviour
         {
             if (hit.transform != null)
             {
+                AudioMgr.Instance.PlaySound("PickUp");
                 Debug.Log(hit.transform.GetComponent<ItemPickUp>().item.itemName + "획득했습니다.");
 
                 //퀘스트 아이템인지 확인
