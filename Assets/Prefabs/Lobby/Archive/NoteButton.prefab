@@ -60,8 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _story: 
-  unlockSprite: {fileID: 21300000, guid: 37e7a31aeb7dd9a43ba458db7d83f1b5, type: 3}
-  _isUnlock: 0
+  _unlockSprite: {fileID: 21300000, guid: 37e7a31aeb7dd9a43ba458db7d83f1b5, type: 3}
 --- !u!114 &7706823268745973914
 MonoBehaviour:
   m_ObjectHideFlags: 0

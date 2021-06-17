@@ -184,10 +184,10 @@ public class PlayerDataManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어 업그레이드 데이터 연동 메소드
+    /// 플레이어 업그레이드 프로필 연동 메소드
     /// </summary>
     /// <param name="profileNumber"></param>
-    public void SyncUpgradeData(ref int profileNumber)
+    public void SyncUpgradeProfile(ref int profileNumber)
     {
         for (int i = 0; i < _playerData.Upgrades.Length; i++)
         {
@@ -200,9 +200,25 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 로비 내 업그레이드 데이터 연동 메소드
+    /// </summary>
+    /// <param name="images"></param>
+    public void SyncUpgradeData(UpgradeButton[] upgradeButtons)
+    {
+        int i = 0;
+        foreach (var unlock in _playerData.Upgrades)
+        {
+            if (unlock)
+            {
+                upgradeButtons[i].IsUnlock = true;
+            }
+            i++;
+        }
+    }
 
     /// <summary>
-    /// 아카이브 데이터 연동 메소드
+    /// 로비 내 아카이브 데이터 연동 메소드
     /// </summary>
     /// <param name="storyButtons"></param>
     public void SyncArchiveData(StoryButton[] storyButtons)
