@@ -30,15 +30,21 @@ public class QuestMgr : MonoBehaviour
 
     public int currentNpc;
 
+    public bool resetQuest=false;
+
     private void Update()
     {
         QuestSuccess();
+        
+        if(resetQuest == true)
+        {
+            QuestDataController.GetInstance().SetQuest(0);
+        }
     }
 
     public void NPC1Quest()
     {
         currentNpc = 1;
-        //npc1QuestNum = QuestDataController.GetInstance().GetNPC1QuestNum();
 
         npc.sprite = npc1Quest[npc1QuestNum].sprite;
         npcQuestNum.text = npc1Quest[npc1QuestNum].npcQuestNum.ToString();
@@ -86,16 +92,21 @@ public class QuestMgr : MonoBehaviour
             switch (currentNpc)
             {
                 case 1:
+                    Debug.Log(npc1Quest.Count);
+                    Debug.Log(npc1QuestNum);
+                    if (npc1QuestNum >= npc1Quest.Count-1) return;
                     npc1QuestNum += 1;
                     NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 case 2:
+                    if (npc2QuestNum >= npc2Quest.Count-1) return;
                     npc2QuestNum += 1;
                     NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 case 3:
+                    if (npc3QuestNum >= npc3Quest.Count-1) return;
                     npc3QuestNum += 1;
                     NPC3Quest();
                     QuestDataController.GetInstance().SetQuest(0);
@@ -104,5 +115,11 @@ public class QuestMgr : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void SetQuestIndex(int index)
+    {
+        if (index > npc1Quest.Count+1) return;
+        index += 1;
     }
 }

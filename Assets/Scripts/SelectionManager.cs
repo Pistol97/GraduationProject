@@ -25,6 +25,7 @@ public class SelectionManager : MonoBehaviour
     [Header("테스트")]
     public bool questcomplete = false;
     public string questItemName;
+    [SerializeField] GameObject txt_QuestComplete;
 
     private void Start()
     {
@@ -67,6 +68,8 @@ public class SelectionManager : MonoBehaviour
                 {
                     QuestDataController.GetInstance().SetQuest(1);
                     questcomplete = true;
+                    txt_QuestComplete.SetActive(true);
+                    Invoke("QuestCompleteSetActiveFalse", 2);
                 }
 
                 inven.AcquireItem(hit.transform.GetComponent<ItemPickUp>().item);
@@ -74,6 +77,11 @@ public class SelectionManager : MonoBehaviour
                 InfoDisappear();
             }
         }
+    }
+    void QuestCompleteSetActiveFalse()
+    {
+        txt_QuestComplete.SetActive(false);
+
     }
 
     private void CheckItem()

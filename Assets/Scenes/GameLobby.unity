@@ -429,7 +429,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fa8a3799a9dfd3f49b634a62f43d710b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 18ac5600698999a4998ab96fc35ebceb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1291,6 +1291,7 @@ MonoBehaviour:
     questItem: 
     reward: "\uBCF4\uC0C1"
   currentNpc: 0
+  resetQuest: 0
 --- !u!1 &949553320
 GameObject:
   m_ObjectHideFlags: 0
