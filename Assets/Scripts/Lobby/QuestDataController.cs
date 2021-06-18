@@ -33,7 +33,7 @@ public class QuestDataController : MonoBehaviour
 
     public int GetQuest()
     {
-        return PlayerPrefs.GetInt("QuestComplete",0);
+        return PlayerPrefs.GetInt("QuestComplete");
     }
     /// <summary>
     /// 퀘스트 아이템 이름
