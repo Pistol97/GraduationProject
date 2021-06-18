@@ -16,6 +16,7 @@ public class Item : ScriptableObject
         Useable,
         Ingredient,
         Quest,
+        Note,
         ETC
     }
 }

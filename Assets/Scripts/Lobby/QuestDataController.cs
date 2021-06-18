@@ -31,7 +31,7 @@ public class QuestDataController : MonoBehaviour
 
     public int GetQuest()
     {
-        return PlayerPrefs.GetInt("QuestComplete");
+        return PlayerPrefs.GetInt("QuestComplete",0);
     }
 
     public void SetQuestItem(string _item)

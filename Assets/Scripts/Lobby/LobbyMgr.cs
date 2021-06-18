@@ -17,6 +17,10 @@ public class LobbyMgr : MonoBehaviour
     public Text text_npcNum2;
     public Text text_npcNum3;
 
+    private int npcNum1;
+    private int npcNum2;
+    private int npcNum3;
+
     public QuestMgr questMgr;
 
     private void Start()
@@ -26,9 +30,7 @@ public class LobbyMgr : MonoBehaviour
 
     private void Update()
     {
-        text_npcNum1.text = QuestMgr.npc1QuestNum.ToString()+"/"+ questMgr.npc1Quest.Count;
-        text_npcNum2.text = QuestMgr.npc1QuestNum.ToString() + "/" + questMgr.npc2Quest.Count;
-        text_npcNum3.text = QuestMgr.npc1QuestNum.ToString() + "/" + questMgr.npc3Quest.Count;
+        SetQuestNum();
     }
 
     public void QuestButton()
@@ -64,5 +66,14 @@ public class LobbyMgr : MonoBehaviour
         AudioMgr.Instance.PlaySound("Click");
     }
 
+    private void SetQuestNum()
+    {
+        npcNum1 = QuestMgr.npc1QuestNum + 1;
+        npcNum2 = QuestMgr.npc2QuestNum + 1;
+        npcNum3 = QuestMgr.npc3QuestNum + 1;
 
+        text_npcNum1.text = npcNum1.ToString() + "/" + questMgr.npc1Quest.Count;
+        text_npcNum2.text = npcNum2.ToString() + "/" + questMgr.npc2Quest.Count;
+        text_npcNum3.text = npcNum3.ToString() + "/" + questMgr.npc3Quest.Count;
+    }
 }
