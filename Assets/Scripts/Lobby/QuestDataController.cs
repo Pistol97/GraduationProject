@@ -23,7 +23,9 @@ public class QuestDataController : MonoBehaviour
         }
         return instance;
     }
-
+    /// <summary>
+    /// 퀘스트 성공 여부
+    /// </summary>
     public void SetQuest(int _ox)
     {
         PlayerPrefs.SetInt("QuestComplete", _ox);
@@ -33,7 +35,9 @@ public class QuestDataController : MonoBehaviour
     {
         return PlayerPrefs.GetInt("QuestComplete",0);
     }
-
+    /// <summary>
+    /// 퀘스트 아이템 이름
+    /// </summary>
     public void SetQuestItem(string _item)
     {
         PlayerPrefs.SetString("Item", _item);
@@ -45,36 +49,15 @@ public class QuestDataController : MonoBehaviour
     }
 
     /// <summary>
-    /// NPC 퀘스트 번호
+    /// 현재 진행중인 퀘스트 넘버
     /// </summary>
+    public void SetCurrentQuestNpcNum(int _num)
+    {
+        PlayerPrefs.SetInt("QuestNpcNum",_num);
+    }
 
-    //public void SetNPC1QuestNum(int num)
-    //{
-    //    PlayerPrefs.SetInt("NPC1QuestNum", num);
-    //}
-
-    //public int GetNPC1QuestNum()
-    //{
-    //    return PlayerPrefs.GetInt("NPC1QuestNum");
-    //}
-
-    //public void SetNPC2QuestNum(int num)
-    //{
-    //    PlayerPrefs.SetInt("NPC2QuestNum", num);
-    //}
-
-    //public int GetNPC2QuestNum()
-    //{
-    //    return PlayerPrefs.GetInt("NPC2QuestNum");
-    //}
-
-    //public void SetNPC3QuestNum(int num)
-    //{
-    //    PlayerPrefs.SetInt("NPC3QuestNum", num);
-    //}
-
-    //public int GetNPC3QuestNum()
-    //{
-    //    return PlayerPrefs.GetInt("NPC3QuestNum");
-    //}
+    public int GetCurrentQuestNpcNum()
+    {
+        return PlayerPrefs.GetInt("QuestNpcNum",1);
+    }
 }
