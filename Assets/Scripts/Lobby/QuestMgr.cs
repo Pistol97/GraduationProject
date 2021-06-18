@@ -10,6 +10,7 @@ public class QuestMgr : MonoBehaviour
     {
         public int npcQuestNum;
         public Sprite sprite;
+        [TextArea]
         public string description;
         public string questItem;
         public string reward;
@@ -19,7 +20,7 @@ public class QuestMgr : MonoBehaviour
     public Text npcQuestNum;
     public Text description;
     public Button back;
-    
+
     public List<QuestDataProperty> npc1Quest;
     public List<QuestDataProperty> npc2Quest;
     public List<QuestDataProperty> npc3Quest;
@@ -30,13 +31,13 @@ public class QuestMgr : MonoBehaviour
 
     public int currentNpc;
 
-    public bool resetQuest=false;
+    public bool resetQuest = false;
 
     private void Update()
     {
         QuestSuccess();
-        
-        if(resetQuest == true)
+
+        if (resetQuest == true)
         {
             QuestDataController.GetInstance().SetQuest(0);
         }
@@ -83,10 +84,10 @@ public class QuestMgr : MonoBehaviour
 
     private void QuestSuccess()
     {
-        if (QuestDataController.GetInstance().GetQuest()==0)
+        if (QuestDataController.GetInstance().GetQuest() == 0)
             return;
-        
-        if(QuestDataController.GetInstance().GetQuest() == 1)
+
+        if (QuestDataController.GetInstance().GetQuest() == 1)
         {
             Debug.Log("QuestComplete");
 
@@ -95,19 +96,19 @@ public class QuestMgr : MonoBehaviour
                 case 1:
                     Debug.Log(npc1Quest.Count);
                     Debug.Log(npc1QuestNum);
-                    if (npc1QuestNum >= npc1Quest.Count-1) return;
+                    if (npc1QuestNum >= npc1Quest.Count - 1) return;
                     npc1QuestNum += 1;
                     NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 case 2:
-                    if (npc2QuestNum >= npc2Quest.Count-1) return;
+                    if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
                     NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 case 3:
-                    if (npc3QuestNum >= npc3Quest.Count-1) return;
+                    if (npc3QuestNum >= npc3Quest.Count - 1) return;
                     npc3QuestNum += 1;
                     NPC3Quest();
                     QuestDataController.GetInstance().SetQuest(0);
@@ -120,7 +121,7 @@ public class QuestMgr : MonoBehaviour
 
     private void SetQuestIndex(int index)
     {
-        if (index > npc1Quest.Count+1) return;
+        if (index > npc1Quest.Count + 1) return;
         index += 1;
     }
 }
