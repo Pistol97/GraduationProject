@@ -14,9 +14,10 @@ public class State_PlayerCaught : StateMachineBehaviour
     private Slider _progressBar;
 
     [SerializeField] private float _tickDamage;
-    
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        AudioMgr.Instance.PlayRandomSound("PlayerCaught");
         _player = animator.GetComponent<Player>();
         _camControl = animator.transform.GetChild(0).GetComponent<CameraControl>();
         var go = Instantiate(Resources.Load("UI/Bar_Shake"), _player.Hud.transform) as GameObject;

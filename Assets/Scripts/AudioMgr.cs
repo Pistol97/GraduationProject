@@ -9,7 +9,7 @@ public class AudioMgr : MonoBehaviour
     {
         public string Name;
 
-        public AudioClip Clip;
+        public AudioClip[] Clips;
 
         [Range(0f, 1f)]
         public float Volume;
@@ -27,7 +27,7 @@ public class AudioMgr : MonoBehaviour
     {
         get
         {
-            if(!_instance)
+            if (!_instance)
             {
                 return null;
             }
@@ -54,7 +54,6 @@ public class AudioMgr : MonoBehaviour
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.Clip;
             s.source.volume = s.Volume;
             s.source.pitch = s.Pitch;
             s.source.loop = s.IsLoop;
@@ -63,6 +62,22 @@ public class AudioMgr : MonoBehaviour
     public void PlaySound(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);
+        s.source.clip = s.Clips[0];
         s.source.Play();
+    }
+
+    public void PlayRandomSound(string name)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.Name == name);
+        int r = UnityEngine.Random.Range(0, s.Clips.Length - 1);
+        s.source.clip = s.Clips[r];
+        s.source.Play();
+    }
+
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.Name == name);
+        s.source.clip = s.Clips[0];
+        s.source.Stop();
     }
 }

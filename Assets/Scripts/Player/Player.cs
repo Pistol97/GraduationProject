@@ -44,7 +44,7 @@ public partial class Player : MonoBehaviour
     private float wait = 0;
 
     private float sonar_timer = 0;
-    private float sonar_cooltime = 7f;
+    private float sonar_cooltime = 5f;
     private bool _isSonar = false;
 
     private float time = 0f;
@@ -78,6 +78,16 @@ public partial class Player : MonoBehaviour
 
     private void Update()
     {
+        if (_isSonar)
+        {
+            sonar_timer += Time.deltaTime;
+            if (sonar_timer >= sonar_cooltime)
+            {
+                sonar_timer = 0f;
+                _isSonar = false;
+            }
+        }
+
         if (_playerControl.GetVelocitySpeed() != 0)
         {
             if (!_audioSource.isPlaying && timer >= wait)
@@ -89,16 +99,6 @@ public partial class Player : MonoBehaviour
         }
 
         ActiveSonar();
-
-        if (_isSonar)
-        {
-            sonar_timer += Time.deltaTime;
-            if (sonar_timer >= sonar_cooltime)
-            {
-                sonar_timer = 0f;
-                _isSonar = false;
-            }
-        }
     }
 
     private void LateUpdate()

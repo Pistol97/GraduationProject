@@ -45,44 +45,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - Name: Open_Inventory
-    Clip: {fileID: 8300000, guid: 7d10f17ad5695f647827bf12560c1d30, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: 7d10f17ad5695f647827bf12560c1d30, type: 3}
     Volume: 0.5
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: Close_Inventory
-    Clip: {fileID: 8300000, guid: 406994b53184851479d9b899901331e2, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: 406994b53184851479d9b899901331e2, type: 3}
     Volume: 0.3
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: PickUp
-    Clip: {fileID: 8300000, guid: 466a49acf9a505a44b3ca2ca95165177, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: 466a49acf9a505a44b3ca2ca95165177, type: 3}
     Volume: 0.5
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: Inventory_Click
-    Clip: {fileID: 8300000, guid: b90d2f59d6891fa4189e03a99cb99f7e, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: b90d2f59d6891fa4189e03a99cb99f7e, type: 3}
     Volume: 0.5
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: Inventory_Drag
-    Clip: {fileID: 8300000, guid: 10f761dee211470458734a9564738e51, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: 10f761dee211470458734a9564738e51, type: 3}
     Volume: 0.5
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: Inventory_Drop
-    Clip: {fileID: 8300000, guid: 8ba1b1c4bfc3df646bc17705cfd88d2e, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: 8ba1b1c4bfc3df646bc17705cfd88d2e, type: 3}
     Volume: 0.5
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: Click
-    Clip: {fileID: 8300000, guid: c6b3fdd393b24294699035cc477686dd, type: 3}
+    Clips:
+    - {fileID: 8300000, guid: c6b3fdd393b24294699035cc477686dd, type: 3}
     Volume: 0.5
+    Pitch: 0.5
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: BGM_Lobby
+    Clips:
+    - {fileID: 8300000, guid: 01c6308a57721af4ca76480b716ff752, type: 3}
+    Volume: 0.3
+    Pitch: 0.7
+    IsLoop: 1
+    source: {fileID: 0}
+  - Name: PlayerCaught
+    Clips:
+    - {fileID: 8300000, guid: 3cfcb7e0a0413114bbe55ef55be5ded4, type: 3}
+    - {fileID: 8300000, guid: 6394ea3855ddfec4c83bd56996ba7696, type: 3}
+    - {fileID: 8300000, guid: 389561f923d616a4594e7e3cb240a6bd, type: 3}
+    Volume: 0.7
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
