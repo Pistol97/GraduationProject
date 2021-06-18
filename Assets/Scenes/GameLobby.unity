@@ -907,12 +907,7 @@ MonoBehaviour:
     reward: "\uBCF4\uC0C1"
   - npcQuestNum: 2
     sprite: {fileID: 21300000, guid: 6bb9a8b267f6b634e9cbd29de8de8651, type: 3}
-    description: "\uCFFC\uC2A4\uD2B8 2\uC785\uB2C8\uB2E4"
-    questItem: QuestItem
-    reward: "\uBCF4\uC0C1"
-  - npcQuestNum: 3
-    sprite: {fileID: 21300000, guid: 67482141eef494242bcb7b7d777bdf5b, type: 3}
-    description: "\uCFFC\uC2A4\uD2B8 3\uC785\uB2C8\uB2E4"
+    description: "\uD018\uC2A4\uD2B8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4."
     questItem: QuestItem
     reward: "\uBCF4\uC0C1"
   npc2Quest:
@@ -928,16 +923,11 @@ MonoBehaviour:
       \uD310\uB2E8\uB418\uC5EC \uC2E4\uD5D8\uC2E4\uC5D0 \uC0AC\uC6A9\uD558\uACE0
       \uC788\uC9C0 \uC54A\uC740 \uC5D0\uB108\uC9C0 \uBC15\uC2A4\uB97C \uC870\uC0AC\uD55C
       \uD6C4 \uB300\uCC45\uC744 \uC138\uC6CC\uC57C \uD560\uAC70 \uAC19\uC2B5\uB2C8\uB2E4."
-    questItem: 
+    questItem: QuestItem
     reward: "\uBCF4\uC0C1"
   - npcQuestNum: 1
     sprite: {fileID: 21300000, guid: 0f574d927717cf246adc763bd95794b8, type: 3}
-    description: 22222222222222222222222
-    questItem: 
-    reward: "\uBCF4\uC0C1"
-  - npcQuestNum: 1
-    sprite: {fileID: 21300000, guid: 24b4e9817bdb42143beb113595e52e18, type: 3}
-    description: 2222222222233333333333
+    description: "\uD018\uC2A4\uD2B8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4."
     questItem: 
     reward: "\uBCF4\uC0C1"
   npc3Quest:
@@ -951,6 +941,11 @@ MonoBehaviour:
       \uC788\uC73C\uB2C8\uAE4C \uC704\uD5D8 \uD488\uBAA9\uC744 \uC880 \uAC00\uC838\uC640\uC904
       \uC218 \uC788\uB098? \uADF8\uB7FC \uC790\uB124\uB3C4 \uC548\uC804\uD558\uACE0
       \uC704\uC5D0\uC788\uB294 \uC0AC\uB78C\uB4E4\uB3C4 \uC548\uC804\uD574\uC9C8\uAC78\uC138."
+    questItem: QuestItem
+    reward: "\uBCF4\uC0C1"
+  - npcQuestNum: 1
+    sprite: {fileID: 21300000, guid: 5a206ee5219cb7547b474ac6f33f13bb, type: 3}
+    description: "\uD018\uC2A4\uD2B8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4."
     questItem: 
     reward: "\uBCF4\uC0C1"
   currentNpc: 0
