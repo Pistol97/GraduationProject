@@ -2415,6 +2415,11 @@ PrefabInstance:
       propertyPath: isLevel2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
+        type: 3}
+      propertyPath: isStageDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878680079576187834, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
         type: 3}
       propertyPath: m_Layer
@@ -8965,6 +8970,11 @@ PrefabInstance:
     - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
         type: 3}
       propertyPath: isLevel1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
+        type: 3}
+      propertyPath: isStageDoor
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878680079576187834, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
@@ -18704,6 +18714,11 @@ PrefabInstance:
     - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
         type: 3}
       propertyPath: isLevel2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
+        type: 3}
+      propertyPath: isStageDoor
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878680079576187834, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
@@ -51410,6 +51425,11 @@ PrefabInstance:
       propertyPath: isLevel2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4726000644763977627, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
+        type: 3}
+      propertyPath: isStageDoor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878680079576187834, guid: 00f5a7aed03568f4e9ccfa8e438d76b6,
         type: 3}
       propertyPath: m_Layer
@@ -61307,7 +61327,7 @@ PrefabInstance:
     - target: {fileID: 3773018724784560312, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -67.2
+      value: -118.1
       objectReference: {fileID: 0}
     - target: {fileID: 3773018724784560312, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
@@ -61317,7 +61337,7 @@ PrefabInstance:
     - target: {fileID: 3773018724784560312, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.6
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 3773018724784560312, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
