@@ -11,14 +11,28 @@ public class CameraControl : MonoBehaviour
     private float rotationY = 0.0f;
     private float rotationMinX = -80;
     private float rotationMaxX = 80;
+
+    float saveSensitivityX = 5.0f;
+    float saveSensitivityY = 5.0f;
+
     private void LateUpdate()
     {
         //게임 일시정지시 카메라 멈춤
         if (Time.deltaTime == 0)
         {
-            Vector3 cameraRotation = transform.forward;
-            transform.localEulerAngles = cameraRotation;
+            saveSensitivityX = SensitivityX;
+            saveSensitivityY = SensitivityY;
+
+            SensitivityX = 0;
+            SensitivityY = 0;
+            //Vector3 cameraRotation = transform.forward;
+            //transform.localEulerAngles = cameraRotation;
             return;
+        }
+        else
+        {
+            SensitivityX = 5.0f;
+            SensitivityY = 5.0f;
         }
 
         float mouseX = Input.GetAxis("Mouse X");

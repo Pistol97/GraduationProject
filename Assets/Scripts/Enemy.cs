@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            nav.Warp(this.transform.position);
             nav.SetDestination(this.transform.position);
             animator.SetBool("IsWalk", false);
             isChase = false;
