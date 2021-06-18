@@ -76,6 +76,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             if(item != null)
             {
+                AudioMgr.Instance.PlaySound("Inventory_Click");
                 //소모
                 Debug.Log(item.itemName + "을 사용하였습니다.");
                 SetSlotCount(-1);
@@ -87,6 +88,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     {
         if(item != null)
         {
+            AudioMgr.Instance.PlaySound("Inventory_Drag");
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
             DragSlot.instance.transform.position = eventData.position;
@@ -113,6 +115,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         Debug.Log("OnDrop");
         if (DragSlot.instance.dragSlot!= null)
         {
+            AudioMgr.Instance.PlaySound("Inventory_Drop");
             ChangeSlot();
         }
     }
