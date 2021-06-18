@@ -98,6 +98,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: clipboard
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 034cd8ba17da46d4cbe86e8daffd2d3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723625552210213825, guid: 034cd8ba17da46d4cbe86e8daffd2d3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838525920081226742, guid: 034cd8ba17da46d4cbe86e8daffd2d3c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 034cd8ba17da46d4cbe86e8daffd2d3c, type: 3}
 --- !u!4 &2039761971347295947 stripped

@@ -22,7 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245732042600600882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sci-Fi_PowerSupply
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: scifi_powersupply
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d86fbb3a8efb72942914c9903359b157,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86fbb3a8efb72942914c9903359b157, type: 3}

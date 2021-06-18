@@ -22,7 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562180713180055097}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sci-Fi_Prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,10 +121,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3973107660126017756, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3556817346404478780, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1840680963563420374, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
         type: 3}
       propertyPath: m_Name
       value: scifi_prop
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238249416642749085, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909334989756356583, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493207879455990265, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117044130540447792, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471496338278676438, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8376888327017635834, guid: 29cec77f8fdd35443b5ce1a08d453f9f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29cec77f8fdd35443b5ce1a08d453f9f, type: 3}

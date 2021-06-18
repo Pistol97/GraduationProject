@@ -13,12 +13,16 @@ public class ItemSpawnPoint : MonoBehaviour
 
     private void Start()
     {
-        if (_isQuestSpawn && !FindObjectOfType<QuestItem>())
+        if (_isQuestSpawn)
         {
             QuestItemSpawn();
         }
 
-        RandomItemSpawn();
+        else
+        {
+            RandomItemSpawn();
+        }
+
     }
 
     private void RandomItemSpawn()
@@ -45,16 +49,6 @@ public class ItemSpawnPoint : MonoBehaviour
 
     private void QuestItemSpawn()
     {
-        var percentage = Random.Range(0, 100);
-
-        if(0 <= percentage && 50 > percentage)
-        {
-            Instantiate(Resources.Load(_path + _questItem), transform.position, Quaternion.identity);
-        }
-
-        else
-        {
-            return;
-        }
+        Instantiate(Resources.Load(_path + _questItem), transform.position, Quaternion.identity);
     }
 }

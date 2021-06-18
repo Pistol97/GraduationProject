@@ -22,7 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5816044661838827525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tombstone_Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tombstone_skull
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ab73c8f90011b0843aab1be767ccc2b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab73c8f90011b0843aab1be767ccc2b2, type: 3}
