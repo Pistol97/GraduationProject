@@ -109,3 +109,24 @@ MonoBehaviour:
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
+  - Name: BGM_Stage
+    Clips:
+    - {fileID: 8300000, guid: 2dbd762d68ecf384ea4702a7b64ce5df, type: 3}
+    Volume: 0.05
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: Error
+    Clips:
+    - {fileID: 8300000, guid: 1f4092faf856e264298408dc8348ae99, type: 3}
+    Volume: 0.3
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: Use_Battery
+    Clips:
+    - {fileID: 8300000, guid: 8b862cb77c75ed5478a6aef11d590765, type: 3}
+    Volume: 0.3
+    Pitch: 0.8
+    IsLoop: 0
+    source: {fileID: 0}

@@ -74,6 +74,7 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
+        AudioMgr.Instance.PlaySound("BGM_Stage");
     }
 
     private void Update()

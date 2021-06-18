@@ -44,23 +44,23 @@ public class Inventory : MonoBehaviour
 
     private void InputNumber()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             UseItem(1);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             UseItem(2);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             UseItem(3);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             UseItem(4);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha5))
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             UseItem(5);
         }
@@ -69,16 +69,18 @@ public class Inventory : MonoBehaviour
     private void UseItem(int _num)
     {
         //itemtype이 useable이 아니면 리턴
-        if(QuickSlots[_num-1].item.itemType.ToString()!="Useable")
+        if (QuickSlots[_num - 1].item.itemType.ToString() != "Useable")
         {
             FindObjectOfType<EventMessage>().DisplayMessage("사용 할 수 없는 아이템");
+            AudioMgr.Instance.PlaySound("Error");
             return;
         }
-        if(QuickSlots[_num-1].itemCount>0)
+        if (QuickSlots[_num - 1].itemCount > 0)
         {
-            if("EnergyCell" == QuickSlots[_num - 1].item.itemName)
+            if ("EnergyCell" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseCell(50);
+                AudioMgr.Instance.PlaySound("Use_Battery");
             }
             FindObjectOfType<EventMessage>().DisplayMessage(QuickSlots[_num - 1].item.itemName + " 사용");
             QuickSlots[_num - 1].SetSlotCount(-1);
@@ -89,7 +91,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            
+
             inventoryActivated = !inventoryActivated;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -135,7 +137,7 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
-            
+
             //아이템 새로 추가
             else
             {
