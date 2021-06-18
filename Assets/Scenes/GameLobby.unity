@@ -1115,26 +1115,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2200773611430098148, guid: 55cd696fd38205a4a9c29de42af52181,
-        type: 3}
-      propertyPath: sounds.Array.data[0].Clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c6b3fdd393b24294699035cc477686dd, type: 3}
-    - target: {fileID: 2200773611430098148, guid: 55cd696fd38205a4a9c29de42af52181,
-        type: 3}
-      propertyPath: sounds.Array.data[0].Name
-      value: Click
-      objectReference: {fileID: 0}
-    - target: {fileID: 2200773611430098148, guid: 55cd696fd38205a4a9c29de42af52181,
-        type: 3}
-      propertyPath: sounds.Array.data[0].Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2200773611430098148, guid: 55cd696fd38205a4a9c29de42af52181,
-        type: 3}
-      propertyPath: sounds.Array.data[0].Volume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2200773611430098170, guid: 55cd696fd38205a4a9c29de42af52181,
         type: 3}
       propertyPath: m_Name
