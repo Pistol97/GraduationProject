@@ -72,10 +72,10 @@ public class SelectionManager : MonoBehaviour
                     txt_QuestComplete.SetActive(true);
                     Invoke("QuestCompleteSetActiveFalse", 2);
                 }
-
                 inven.AcquireItem(hit.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hit.transform.gameObject);
                 InfoDisappear();
+
             }
         }
     }

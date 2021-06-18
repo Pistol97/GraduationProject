@@ -52,12 +52,12 @@ public class QuestMgr : MonoBehaviour
 
         string questItem = npc1Quest[npc1QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(1);
     }
 
     public void NPC2Quest()
     {
         currentNpc = 2;
-        //npc2QuestNum = QuestDataController.GetInstance().GetNPC2QuestNum();
 
         npc.sprite = npc2Quest[npc2QuestNum].sprite;
         npcQuestNum.text = npc2Quest[npc2QuestNum].npcQuestNum.ToString();
@@ -65,12 +65,12 @@ public class QuestMgr : MonoBehaviour
 
         string questItem = npc2Quest[npc2QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(2);
     }
 
     public void NPC3Quest()
     {
         currentNpc = 3;
-        //npc3QuestNum = QuestDataController.GetInstance().GetNPC3QuestNum();
 
         npc.sprite = npc3Quest[npc3QuestNum].sprite;
         npcQuestNum.text = npc3Quest[npc3QuestNum].npcQuestNum.ToString();
@@ -78,6 +78,7 @@ public class QuestMgr : MonoBehaviour
 
         string questItem = npc3Quest[npc3QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(3);
     }
 
     private void QuestSuccess()

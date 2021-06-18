@@ -12,21 +12,13 @@ public class CameraControl : MonoBehaviour
     private float rotationMinX = -80;
     private float rotationMaxX = 80;
 
-    float saveSensitivityX = 5.0f;
-    float saveSensitivityY = 5.0f;
-
     private void LateUpdate()
     {
         //게임 일시정지시 카메라 멈춤
         if (Time.deltaTime == 0)
         {
-            saveSensitivityX = SensitivityX;
-            saveSensitivityY = SensitivityY;
-
             SensitivityX = 0;
             SensitivityY = 0;
-            //Vector3 cameraRotation = transform.forward;
-            //transform.localEulerAngles = cameraRotation;
             return;
         }
         else
@@ -64,5 +56,18 @@ public class CameraControl : MonoBehaviour
         if (angle > 360) angle -= 360;
 
         return Mathf.Clamp(angle, min, max);
+    }
+
+    public void CameraMovementStopForSec(int _sec)
+    {
+        SensitivityX = 0;
+        SensitivityY = 0;
+
+        Invoke("CameraMovementStart", _sec);
+    }
+    private void CameraMovementStart()
+    {
+        SensitivityX = 5.0f;
+        SensitivityY = 5.0f;
     }
 }

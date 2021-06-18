@@ -5,8 +5,19 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        Idle,
+        Chase,
+        Attack
+    }
+
+
     Rigidbody rigid;
     NavMeshAgent nav;
+
+    public float enemySightLength = 10f;
+    public float enemyAttackLength = 3f;
 
     [SerializeField]
     private Transform target;
@@ -39,12 +50,12 @@ public class Enemy : MonoBehaviour
 
     void ChaseDistance()
     {
-        if(Vector3.Distance(target.position,gameObject.transform.position)<=10)
+        if(Vector3.Distance(target.position,gameObject.transform.position)<= enemySightLength)
         {
             animator.SetBool("IsWalk", true);
             nav.SetDestination(target.position);
             isChase = true;
-            if (Vector3.Distance(target.position, gameObject.transform.position) <= 3)
+            if (Vector3.Distance(target.position, gameObject.transform.position) <= enemyAttackLength)
             {
                 animator.SetBool("IsAttack", true);
             }
@@ -55,7 +66,6 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            nav.Warp(this.transform.position);
             nav.SetDestination(this.transform.position);
             animator.SetBool("IsWalk", false);
             isChase = false;

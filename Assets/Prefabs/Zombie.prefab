@@ -402,10 +402,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3291978698733715466}
   - component: {fileID: 4838404143485398384}
+  - component: {fileID: 8462747681451918150}
   - component: {fileID: 8462747681451918151}
   - component: {fileID: 8462747681451918144}
   - component: {fileID: 8462747681451918145}
-  - component: {fileID: 8462747681451918150}
   - component: {fileID: 7138893761728261367}
   m_Layer: 9
   m_Name: Zombie
@@ -428,6 +428,7 @@ Transform:
   - {fileID: 2704667466534405801}
   - {fileID: 7209536189042246183}
   - {fileID: 3050528772989035148}
+  - {fileID: 2108403592768975437}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -450,6 +451,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8462747681451918150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014284375893209625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d9e46e08cbacc4c891f13afdebc819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySightLength: 10
+  enemyAttackLength: 3
+  target: {fileID: 0}
+  isChase: 0
+  idle:
+  - {fileID: 8300000, guid: 48076669ea0fcd643b9228dad7f8af40, type: 3}
+  - {fileID: 8300000, guid: 1b267b4712536ac4cbee204a6eaebf54, type: 3}
+  - {fileID: 8300000, guid: 643a0ca5cb746ad479cb6f319142cd60, type: 3}
+  - {fileID: 8300000, guid: b42e0fb86a3da4b46a7cb31cb78231d2, type: 3}
 --- !u!54 &8462747681451918151
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -501,25 +523,6 @@ NavMeshAgent:
   m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8462747681451918150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014284375893209625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d9e46e08cbacc4c891f13afdebc819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  isChase: 0
-  idle:
-  - {fileID: 8300000, guid: 48076669ea0fcd643b9228dad7f8af40, type: 3}
-  - {fileID: 8300000, guid: 1b267b4712536ac4cbee204a6eaebf54, type: 3}
-  - {fileID: 8300000, guid: 643a0ca5cb746ad479cb6f319142cd60, type: 3}
-  - {fileID: 8300000, guid: b42e0fb86a3da4b46a7cb31cb78231d2, type: 3}
 --- !u!82 &7138893761728261367
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2455,3 +2458,33 @@ Transform:
   m_Father: {fileID: 3825547746951270910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8951025765206762914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108403592768975437}
+  m_Layer: 0
+  m_Name: socket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108403592768975437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951025765206762914}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.638, z: 0.551}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3291978698733715466}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
