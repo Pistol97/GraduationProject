@@ -27,7 +27,7 @@ public class SelectionManager : MonoBehaviour
     public string questItemName;
     [SerializeField] GameObject txt_QuestComplete;
 
-    private GameObject _item;
+    private GameObject _gameObject;
 
     private void Start()
     {
@@ -53,29 +53,34 @@ public class SelectionManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             CanPickUp();
+            if (hit.transform.CompareTag("Interactable"))
+            {
+                Debug.Log("Use Interactable Object");
+                hit.transform.GetComponent<IInteractable>().ObjectInteract();
+            }
         }
     }
-
     private void CanPickUp()
     {
         if (pickupActivated)
         {
             if (hit.transform)
             {
-                Debug.Log(_item.GetComponent<ItemPickUp>().item.itemName + "획득했습니다.");
+                Debug.Log(_gameObject.GetComponent<ItemPickUp>().item.itemName + "획득했습니다.");
 
                 //퀘스트 아이템인지 확인
-                if (_item.GetComponent<ItemPickUp>().item.itemName == QuestDataController.GetInstance().GetQuestItem())
+                if (_gameObject.GetComponent<ItemPickUp>().item.itemName == QuestDataController.GetInstance().GetQuestItem())
                 {
                     QuestDataController.GetInstance().SetQuest(1);
                     questcomplete = true;
                     txt_QuestComplete.SetActive(true);
+                    AudioMgr.Instance.PlaySound("Inventory_Drop");
                     Invoke("QuestCompleteSetActiveFalse", 2);
                 }
 
-                inven.AcquireItem(_item.GetComponent<ItemPickUp>().item);
+                inven.AcquireItem(_gameObject.GetComponent<ItemPickUp>().item);
                 AudioMgr.Instance.PlaySound("PickUp");
-                Destroy(_item);
+                Destroy(_gameObject);
                 InfoDisappear();
             }
         }
@@ -100,12 +105,6 @@ public class SelectionManager : MonoBehaviour
             {
                 actionText.gameObject.SetActive(true);
                 actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Debug.Log("Use Interactable Object");
-                    hit.transform.GetComponent<IInteractable>().ObjectInteract();
-                }
             }
         }
         else
@@ -117,15 +116,15 @@ public class SelectionManager : MonoBehaviour
     private void ItemInfoAppear()
     {
         pickupActivated = true;
-        _item = hit.transform.gameObject;
+        _gameObject = hit.transform.gameObject;
         actionText.gameObject.SetActive(true);
-        actionText.text = _item.GetComponent<ItemPickUp>().item.itemName + "획득 " + "<color=yellow>" + "(E)" + "</color>";
+        actionText.text = _gameObject.GetComponent<ItemPickUp>().item.itemName + "획득 " + "<color=yellow>" + "(E)" + "</color>";
     }
 
     private void InfoDisappear()
     {
         pickupActivated = false;
-        _item = null;
+        _gameObject = null;
         actionText.gameObject.SetActive(false);
     }
 
