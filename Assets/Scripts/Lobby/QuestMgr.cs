@@ -18,7 +18,7 @@ public class QuestMgr : MonoBehaviour
 
     public Image npc;
     public Text npcQuestNum;
-    public Text description;
+    public QuestDialogue description;
     public Button back;
 
     public List<QuestDataProperty> npc1Quest;
@@ -49,7 +49,7 @@ public class QuestMgr : MonoBehaviour
 
         npc.sprite = npc1Quest[npc1QuestNum].sprite;
         npcQuestNum.text = npc1Quest[npc1QuestNum].npcQuestNum.ToString();
-        description.text = npc1Quest[npc1QuestNum].description;
+        description._description = npc1Quest[npc1QuestNum].description;
 
         string questItem = npc1Quest[npc1QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
@@ -62,7 +62,7 @@ public class QuestMgr : MonoBehaviour
 
         npc.sprite = npc2Quest[npc2QuestNum].sprite;
         npcQuestNum.text = npc2Quest[npc2QuestNum].npcQuestNum.ToString();
-        description.text = npc2Quest[npc2QuestNum].description;
+        description._description = npc2Quest[npc2QuestNum].description;
 
         string questItem = npc2Quest[npc2QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
@@ -75,7 +75,7 @@ public class QuestMgr : MonoBehaviour
 
         npc.sprite = npc3Quest[npc3QuestNum].sprite;
         npcQuestNum.text = npc3Quest[npc3QuestNum].npcQuestNum.ToString();
-        description.text = npc3Quest[npc3QuestNum].description;
+        description._description = npc3Quest[npc3QuestNum].description;
 
         string questItem = npc3Quest[npc3QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
