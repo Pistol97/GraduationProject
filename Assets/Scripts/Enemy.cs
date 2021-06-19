@@ -24,15 +24,18 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     public bool isChase = false;
 
-    private AudioSource audioSource;
+    private AudioSource[] audioSources;
+
     [SerializeField] private AudioClip[] idle;
+
+    private AudioClip[] walk;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
 
         nav.speed = 1.0f;
     }
@@ -50,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     void ChaseDistance()
     {
-        if(Vector3.Distance(target.position,gameObject.transform.position)<= enemySightLength)
+        if (Vector3.Distance(target.position, gameObject.transform.position) <= enemySightLength)
         {
             animator.SetBool("IsWalk", true);
             nav.SetDestination(target.position);
@@ -74,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     void FreezeVelocity()
     {
-        if(isChase)
+        if (isChase)
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
@@ -83,16 +86,25 @@ public class Enemy : MonoBehaviour
 
     private void ChangeIdle()
     {
-        if(!audioSource.isPlaying)
+        if (!audioSources[0].isPlaying)
         {
-            audioSource.clip = idle[Random.Range(0, idle.Length - 1)];
-            audioSource.Play();
+            audioSources[0].clip = idle[Random.Range(0, idle.Length - 1)];
+            audioSources[0].Play();
         }
 
         else
         {
             return;
         }
+    }
+
+    public void PlayWalk()
+    {
+        walk = Resources.LoadAll<AudioClip>("Sound/FX/Zombie");
+
+        int i = Random.Range(0, walk.Length - 1);
+        audioSources[1].clip = walk[i];
+        audioSources[1].Play();
     }
 
 }
