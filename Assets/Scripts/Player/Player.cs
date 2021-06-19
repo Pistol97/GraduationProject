@@ -119,7 +119,7 @@ public partial class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            LookTarget = collision.transform.GetChild(1).gameObject;
+            LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
             GetComponent<CapsuleCollider>().isTrigger = false;
             StartButtonAction();
         }
