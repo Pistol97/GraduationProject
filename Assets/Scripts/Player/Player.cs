@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public partial class Player : MonoBehaviour
 {
     #region Components
-    [SerializeField] private AudioClip[] _footsteps;
     [SerializeField] private AudioClip _deadSound;
     [SerializeField] private Image panel;
 
     private Slider _barFear;
     private Slider _barSonar;
     private GameObject _sonar;
+
+    private AudioClip[] _footsteps;
 
     private AudioSource _audioSource;
     private PlayerControl _playerControl;
@@ -56,6 +57,8 @@ public partial class Player : MonoBehaviour
         set;
     }
 
+    private readonly string _footstepsPath = "Sound/FX/Footsteps";
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -74,6 +77,7 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
+        AudioMgr.Instance.StopSound("BGM_Lobby");
         AudioMgr.Instance.PlaySound("BGM_Stage");
     }
 
@@ -123,10 +127,11 @@ public partial class Player : MonoBehaviour
 
     public void PlayWalkFootstep()
     {
-        int footstep = Random.Range(0, _footsteps.Length - 1);
+        _footsteps = Resources.LoadAll<AudioClip>(_footstepsPath);
+        int i = Random.Range(0, _footsteps.Length - 1);
 
-        _audioSource.clip = _footsteps[footstep];
-        wait = _footsteps[footstep].length + 0.3f;
+        _audioSource.clip = _footsteps[i];
+        wait = _footsteps[i].length + 0.3f;
         _audioSource.Play();
     }
 
