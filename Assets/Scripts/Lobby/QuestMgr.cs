@@ -91,7 +91,7 @@ public class QuestMgr : MonoBehaviour
         {
             Debug.Log("QuestComplete");
 
-            switch (currentNpc)
+            switch (QuestDataController.GetInstance().GetCurrentQuestNpcNum())
             {
                 case 1:
                     Debug.Log(npc1Quest.Count);
@@ -117,11 +117,5 @@ public class QuestMgr : MonoBehaviour
                     break;
             }
         }
-    }
-
-    private void SetQuestIndex(int index)
-    {
-        if (index > npc1Quest.Count + 1) return;
-        index += 1;
     }
 }
