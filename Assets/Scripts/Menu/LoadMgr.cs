@@ -30,6 +30,8 @@ public class LoadMgr : MonoBehaviour
 
     IEnumerator LoadCoroutine()
     {
+        yield return null;
+
         operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false;
 
