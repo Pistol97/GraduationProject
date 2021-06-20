@@ -176,18 +176,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &184814459 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5001384557762444400, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
-    type: 3}
-  m_PrefabInstance: {fileID: 5001384557611185931}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &216368351
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +412,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &309197617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5001384557762444403, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5001384557611185931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309197620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309197617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f8d4cffa4c7794690b40d61ca1d0ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &411013604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -944,7 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npc: {fileID: 576282565}
   npcQuestNum: {fileID: 1948956537}
-  description: {fileID: 184814459}
+  description: {fileID: 309197620}
   back: {fileID: 83246996}
   npc1Quest:
   - npcQuestNum: 1

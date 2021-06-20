@@ -2,13 +2,13 @@
     "Quests": [],
     "Upgrades": [
         false,
-        false,
+        true,
         false
     ],
     "Archives": [
         true,
-        false,
-        false,
+        true,
+        true,
         true,
         false,
         false,
