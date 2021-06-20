@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -9,7 +8,6 @@ using UnityEngine;
 public class Sonar : MonoBehaviour
 {
     #region Personnal data
-    public Shapes Shape = Shapes.Sphere;
     public float Radius = 0f;
 
     public Vector3 Size;
@@ -62,21 +60,14 @@ public class Sonar : MonoBehaviour
     /// </summary>
     static private bool NeedUpdate = true;
 
-    /// <summary>
-    /// Shape of the revealing zone
-    /// </summary>
-    public enum Shapes : int
-    {
-        Sphere,
-        Cylinder,
-        AABB
-    }
-
     private void Awake()
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
 
+        outline = Resources.Load<Material>("Shader/TrasparentOutlines");
+        outline_enemy = Resources.Load<Material>("Shader/EnemyOutline");
+        outline_item = Resources.Load<Material>("Shader/ItemOutline");
         //사용시 외곽선 활성화
         outline.SetFloat("_NormalStrength", 1f);
         outline_enemy.SetFloat("_NormalStrength", 1f);
@@ -91,8 +82,8 @@ public class Sonar : MonoBehaviour
     private void Update()
     {
         Sonar.NeedUpdate = true;
-        //SonarPulseCast();
-        //Radius = range;
+        // SonarPulseCast();
+        // Radius = range;
     }
 
     private void LateUpdate()
@@ -127,10 +118,6 @@ public class Sonar : MonoBehaviour
             if (Current.Hide == true) Sonar.AllHider[Cursor] = 1;
             else Sonar.AllHider[Cursor] = 0;
 
-            if (Current.Shape == Sonar.Shapes.Cylinder) Sonar.AllShape[Cursor] = 1;
-            else if (Current.Shape == Sonar.Shapes.AABB) Sonar.AllShape[Cursor] = 2;
-            else Sonar.AllShape[Cursor] = 0;
-
             Cursor++;
         }
 
@@ -141,7 +128,6 @@ public class Sonar : MonoBehaviour
         Shader.SetGlobalVectorArray("_SeerSize", Sonar.AllSize);
         Shader.SetGlobalFloatArray("_SeerGradient", Sonar.AllGradient);
         Shader.SetGlobalVectorArray("_SeerColor", Sonar.AllColor);
-        Shader.SetGlobalFloatArray("_SeerShape", Sonar.AllShape);
         Shader.SetGlobalFloatArray("_SeerHider", Sonar.AllHider);
     }
 
@@ -160,7 +146,7 @@ public class Sonar : MonoBehaviour
             disappearTimer += Time.deltaTime;
 
             var dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
-            Debug.Log(dissappear);
+            //Debug.Log(dissappear);
             outline.SetFloat("_NormalStrength", dissappear);
             outline_enemy.SetFloat("_NormalStrength", dissappear);
             outline_item.SetFloat("_NormalStrength", dissappear);
