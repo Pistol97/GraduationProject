@@ -82,8 +82,8 @@ public class Sonar : MonoBehaviour
     private void Update()
     {
         Sonar.NeedUpdate = true;
-        // SonarPulseCast();
-        // Radius = range;
+        SonarPulseCast();
+        Radius = range;
     }
 
     private void LateUpdate()
