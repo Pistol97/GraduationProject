@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -221,8 +221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_SizeDelta: {x: 5.000145, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505877256
 MonoBehaviour:
@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 1633085567}
   - component: {fileID: 1633085566}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,8 +980,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 4.999901, y: 0}
+  m_SizeDelta: {x: -10.000137, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2136302466
 GameObject:
@@ -1017,8 +1017,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00050354004, y: -0.000049114}
-  m_SizeDelta: {x: 800.0005, y: 414.13962}
+  m_AnchoredPosition: {x: -0.00050354004, y: 0.0001297}
+  m_SizeDelta: {x: 800.0005, y: 456.0554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2136302468
 MonoBehaviour:
@@ -1090,6 +1090,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 2.4999008, y: 0}
+  m_SizeDelta: {x: -5.000183, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

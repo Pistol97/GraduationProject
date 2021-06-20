@@ -64,4 +64,10 @@ public class SceneMgr : MonoBehaviour
         Debug.Log("QuitGame");
         Application.Quit();
     }
+    public void GameLoad()
+    {
+        Time.timeScale = 1.0f;//기본 시간
+        Debug.Log("GameLoad");
+        SceneManager.LoadScene("GameLoad");
+    }
 }

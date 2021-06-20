@@ -6,22 +6,22 @@ using UnityEngine.UI;
 
 public class LoadMgr : MonoBehaviour
 {
-    public string sceneName = "GameStage";
+    public string sceneName = "Demo_Stage";
     public Slider slider; // 여기에 슬라이더 오브젝트 할당
     private AsyncOperation operation;
 
-    public static LoadMgr instance;
+    //public static LoadMgr instance;
 
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
-    }
+    //void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //        Destroy(gameObject);
+    //}
 
     void Start()
     {
@@ -52,6 +52,6 @@ public class LoadMgr : MonoBehaviour
                     operation.allowSceneActivation = true;
             }
         }
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 }
