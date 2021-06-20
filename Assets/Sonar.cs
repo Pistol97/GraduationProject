@@ -60,6 +60,7 @@ public class Sonar : MonoBehaviour
     /// </summary>
     static private bool NeedUpdate = true;
 
+    [SerializeField] private bool _isTest;
     private void Awake()
     {
         Sonar.Seers.Add(this);
@@ -82,8 +83,13 @@ public class Sonar : MonoBehaviour
     private void Update()
     {
         Sonar.NeedUpdate = true;
-        SonarPulseCast();
-        Radius = range;
+
+        if (!_isTest)
+        {
+            SonarPulseCast();
+            Radius = range;
+        }
+
     }
 
     private void LateUpdate()

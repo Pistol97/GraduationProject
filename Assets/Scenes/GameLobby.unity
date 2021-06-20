@@ -949,7 +949,7 @@ MonoBehaviour:
     questItem: 
     reward: "\uBCF4\uC0C1"
   currentNpc: 0
-  resetQuest: 1
+  resetQuest: 0
 --- !u!1 &949553320
 GameObject:
   m_ObjectHideFlags: 0

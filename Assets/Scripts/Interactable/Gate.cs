@@ -3,12 +3,6 @@ using UnityEngine.UI;
 
 public class Gate : MonoBehaviour, IInteractable
 {
-    public static bool level1 = false;
-    public static bool level2 = false;
-
-    [SerializeField] private bool isLevel1;
-    [SerializeField] private bool isLevel2;
-
     [Header("할당 퀘스트 번호")]
     [SerializeField] private bool isStageDoor;
     [SerializeField] private bool quest1;
@@ -50,37 +44,7 @@ public class Gate : MonoBehaviour, IInteractable
     //인터페이스 함수
     public void ObjectInteract()
     {
-        if (isLevel1)
-        {
-            if (level1)
-            {
-                handle.SetBool("IsPull", true);
-                isActivate = true;
-                audioSource.clip = gateSounds[0];
-            }
-
-            else
-            {
-                AccessDenied();
-            }
-        }
-
-        else if (isLevel2)
-        {
-            if (level2)
-            {
-                handle.SetBool("IsPull", true);
-                isActivate = true;
-                audioSource.clip = gateSounds[0];
-            }
-
-            else
-            {
-                AccessDenied();
-            }
-        }
-
-        if(isStageDoor == true)
+        if (isStageDoor == true)
         {
             QuestStageUnlock();
         }
@@ -89,11 +53,11 @@ public class Gate : MonoBehaviour, IInteractable
     void QuestStageUnlock()
     {
         int currentQuestNum = QuestDataController.GetInstance().GetCurrentQuestNpcNum();
-        
-        switch(currentQuestNum)
+
+        switch (currentQuestNum)
         {
             case 1:
-                if(quest1 == true)
+                if (quest1 == true)
                 {
                     handle.SetBool("IsPull", true);
                     isActivate = true;

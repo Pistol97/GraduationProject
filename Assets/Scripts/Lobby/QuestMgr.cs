@@ -100,12 +100,14 @@ public class QuestMgr : MonoBehaviour
                     npc1QuestNum += 1;
                     NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
+                    PlayerDataManager.Instance.UnlockUpgradeProfile(1);
                     break;
                 case 2:
                     if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
                     NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
+                    PlayerDataManager.Instance.UnlockUpgradeProfile(2);
                     break;
                 case 3:
                     if (npc3QuestNum >= npc3Quest.Count - 1) return;

@@ -27,7 +27,7 @@ public class State_PlayerCaught : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player.FearRange += (2f * Time.deltaTime);
+        _player.FearRange += (_tickDamage * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.A))
         {
             _countLeft++;

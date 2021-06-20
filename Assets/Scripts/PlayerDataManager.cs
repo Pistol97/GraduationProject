@@ -181,6 +181,11 @@ public class PlayerDataManager : MonoBehaviour
         CreateJsonFile(Application.dataPath, "PlayerData", json);
     }
 
+    public void UnlockUpgradeProfile(int num)
+    {
+        _playerData.Upgrades[num] = true;
+    }
+
     /// <summary>
     /// 플레이어 업그레이드 프로필 연동 메소드
     /// </summary>
@@ -197,6 +202,8 @@ public class PlayerDataManager : MonoBehaviour
             profileNumber = i;
         }
     }
+
+
 
     /// <summary>
     /// 로비 내 업그레이드 데이터 연동 메소드

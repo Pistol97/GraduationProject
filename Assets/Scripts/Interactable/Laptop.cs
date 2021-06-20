@@ -28,17 +28,7 @@ public class Laptop : MonoBehaviour, IInteractable
         gameObject.tag = "Untagged";
         GetComponent<AudioSource>().Play();
         FindObjectOfType<EventMessage>().DisplayMessage(message);
-
-        if (level1Access)
-        {
-            Gate.level1 = true;
-        }
-
-        else if (level2Access)
-        {
-            Gate.level2 = true;
-        }
-        if(isKey)
+        if (isKey)
         {
             inven.AcquireItem(item.item);
         }

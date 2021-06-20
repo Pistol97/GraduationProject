@@ -45,7 +45,7 @@ public partial class Player : MonoBehaviour
     private float wait = 0;
 
     private float sonar_timer = 0;
-    private float sonar_cooltime = 5f;
+    private float sonar_cooltime = 6.5f;
     private bool _isSonar = false;
 
     private float time = 0f;
@@ -119,7 +119,8 @@ public partial class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
+            // LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
+            // Debug.Log(LookTarget.name);
             GetComponent<CapsuleCollider>().isTrigger = false;
             StartButtonAction();
         }
@@ -164,9 +165,9 @@ public partial class Player : MonoBehaviour
         {
             Debug.Log("Enter ShakeState");
             _camControl.enabled = false;
-            Vector3 TargetFront = LookTarget.transform.forward;
-            Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
-            _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
+            // Vector3 TargetFront = LookTarget.transform.forward;
+            // Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
+            // _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
             FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
             _animator.SetBool("IsCaught", true);
 
