@@ -77,7 +77,11 @@ public class AudioMgr : MonoBehaviour
     public void StopSound(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);
-        s.source.clip = s.Clips[0];
-        s.source.Stop();
+        if (s.source.isPlaying)
+        {
+            s.source.clip = s.Clips[0];
+            s.source.Stop();
+        }
+
     }
 }

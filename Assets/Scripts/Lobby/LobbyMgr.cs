@@ -26,6 +26,7 @@ public class LobbyMgr : MonoBehaviour
     private void Start()
     {
         questMgr = GetComponent<QuestMgr>();
+        AudioMgr.Instance.StopSound("BGM_Stage");
         AudioMgr.Instance.PlaySound("BGM_Lobby");
     }
 
