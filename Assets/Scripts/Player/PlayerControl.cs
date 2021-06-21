@@ -5,8 +5,6 @@ public class PlayerControl : MonoBehaviour
     [Header("이동 관련 변수")]
     [Tooltip("기본이동속도")]//유니티 인스펙터에서 아래 변수에 마우스를 올렸을때 문자열이 뜸
     public float moveSpeed = 2.0f; //이동속도
-    public float directionRotateSpeed = 100.0f;//이동방향을 변경하기 위한 속도
-    public float bodyRotateSpeed = 2.0f;//몸통의 방향을 변경하기 위한 속도
 
     [Range(0.01f, 5.0f)]//밑의 변수는 Range()안의 범위의 수만 가질 수 있다
     public float velocityChangeSpeed = 0.01f;//속도가 변경되기 위한 속도(0이되면 안됌)
@@ -20,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     private Transform cameraTransform;//카메라 transform 컴포넌트
     [SerializeField]
     private SelectionManager selectionMgr;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +79,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 front = new Vector3(targetDirection.x, 0, targetDirection.z);
         Quaternion rotation = Quaternion.LookRotation(front.normalized);
         transform.rotation = rotation;
+        //transform.Rotate(cameraControl.GetCameraRotationX(), cameraControl.GetCameraRotationY(), 0);
     }
     /// <summary>
     /// 플레이어의 몸통 방향 얻어온다.

@@ -7,8 +7,8 @@ public class CameraControl : MonoBehaviour
     [Header("1인칭 카메라")]
     public float SensitivityX = 5.0f;
     public float SensitivityY = 5.0f;
-    private float rotationX = 0.0f;
-    private float rotationY = 0.0f;
+    public float rotationX = 0.0f;
+    public float rotationY = 0.0f;
     private float rotationMinX = -80;
     private float rotationMaxX = 80;
 
@@ -69,5 +69,14 @@ public class CameraControl : MonoBehaviour
     {
         SensitivityX = 5.0f;
         SensitivityY = 5.0f;
+    }
+
+    public float GetCameraRotationX()
+    {
+        return rotationX;
+    }
+    public float GetCameraRotationY()
+    {
+        return rotationY;
     }
 }

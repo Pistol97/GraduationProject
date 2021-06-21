@@ -111,6 +111,7 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         if (_maxFearRange <= FearRange)
         {
+            QuestDataController.GetInstance().SetQuest(0);
             StartCoroutine(PlayerDie());
         }
     }
