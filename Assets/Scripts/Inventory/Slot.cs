@@ -127,8 +127,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
         AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
 
-        if(tempItem != null)
+        if (tempItem != null)
         {
+            if(tempItem.name == item.name)
+            {
+                SetSlotCount(tempItmeCount);
+                DragSlot.instance.dragSlot.ClearSlot();
+                return;
+            }
+
             DragSlot.instance.dragSlot.AddItem(tempItem, tempItmeCount);
         }
         else

@@ -137,6 +137,14 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
+            else if(QuickSlots[i].item != null)
+            {
+                if (QuickSlots[i].item.itemName == item.itemName)
+                {
+                    QuickSlots[i].SetSlotCount(count);
+                    return;
+                }
+            }
 
             //아이템 새로 추가
             else
