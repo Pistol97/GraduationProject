@@ -134,7 +134,7 @@ public class PlayerDataManager : MonoBehaviour
 
         foreach (var slot in inventory.Slots)
         {
-            if (slot.item && "EnergyCell" == slot.item.itemName)
+            if (slot.item && "Note" == slot.item.itemName)
             {
                 for (int count = 0; count < slot.itemCount;)
                 {
@@ -153,7 +153,7 @@ public class PlayerDataManager : MonoBehaviour
 
         foreach (var slot in inventory.QuickSlots)
         {
-            if (slot.item && "EnergyCell" == slot.item.itemName)
+            if (slot.item && "Note" == slot.item.itemName)
             {
                 for (int count = 0; count < slot.itemCount;)
                 {

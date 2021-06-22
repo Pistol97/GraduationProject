@@ -130,3 +130,17 @@ MonoBehaviour:
     Pitch: 0.8
     IsLoop: 0
     source: {fileID: 0}
+  - Name: QuestComplete
+    Clips:
+    - {fileID: 8300000, guid: 1b22530d6d013f64e86eb00375e21850, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: PlayerDie
+    Clips:
+    - {fileID: 8300000, guid: 08b246061f851914096c3cb7906ee4f0, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}

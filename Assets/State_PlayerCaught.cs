@@ -39,7 +39,7 @@ public class State_PlayerCaught : StateMachineBehaviour
 
         _progressBar.value = _countLeft + _countRight;
 
-        if (_MaxCount <= _countLeft + _countRight)
+        if (_MaxCount <= _countLeft + _countRight || !animator.GetBool("IsCaught"))
         {
             animator.SetBool("IsCaught", false);
             _camControl.enabled = true;

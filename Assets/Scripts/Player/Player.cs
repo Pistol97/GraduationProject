@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public partial class Player : MonoBehaviour
 {
     #region Components
-    [SerializeField] private AudioClip _deadSound;
     [SerializeField] private Image panel;
 
     private Slider _barFear;
@@ -45,11 +44,11 @@ public partial class Player : MonoBehaviour
     private float wait = 0;
 
     private float sonar_timer = 0;
-    private float sonar_cooltime = 6.5f;
+    private float sonar_cooltime = 6f;
     private bool _isSonar = false;
 
     private float time = 0f;
-    private float timeMax = 0.5f;
+    private float timeMax = 1f;
 
     public GameObject LookTarget
     {
@@ -58,6 +57,8 @@ public partial class Player : MonoBehaviour
     }
 
     private readonly string _footstepsPath = "Sound/FX/Footsteps";
+
+    private bool _isDead;
 
     private void Awake()
     {
@@ -109,9 +110,13 @@ public partial class Player : MonoBehaviour
     private void LateUpdate()
     {
         _barFear.value = FearRange;
-        if (_maxFearRange <= FearRange)
+        if (_maxFearRange <= FearRange && !_isDead)
         {
             QuestDataController.GetInstance().SetQuest(0);
+            _isDead = true;
+            GetComponent<Animator>().SetBool("IsCaught", false);
+            GetComponent<CapsuleCollider>().enabled = false;
+
             StartCoroutine(PlayerDie());
         }
     }
@@ -191,28 +196,26 @@ public partial class Player : MonoBehaviour
 
     private IEnumerator PlayerDie()
     {
-        Debug.Log("플레이어 사망!");
+        Debug.Log("Player Dead!");
         panel.gameObject.SetActive(true);
         time = 0f;
         panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0);
         Color alpha = panel.color;
+        AudioMgr.Instance.PlaySound("PlayerDie");
+        //panel.GetComponent<Animator>().Play("Fade", 0)
         while (alpha.a < 1f)
         {
+            Debug.Log(alpha.a);
             time += Time.deltaTime / timeMax;
             alpha.a = Mathf.Lerp(0, 1, time);
             panel.color = alpha;
             yield return null;
         }
-        time = 0f;
-
-        _audioSource.clip = _deadSound;
-        _audioSource.Play();
-
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("GameLobby");
     }
 }

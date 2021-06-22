@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2139,6 +2139,35 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -145
       objectReference: {fileID: 0}
+    - target: {fileID: 520870419669442613, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "\uCF54\uB4DC\uB124\uC784 M. \uC815\uBCF4\uBD80\uC5D0\uC11C \uC6B0\uB9AC\uC5D0\uAC8C
+        \uBCF4\uB0B4\uC900 \uC694\uC6D0\uC774\uB2E4. \uC774\uB984\uACFC \uB098\uC774
+        \uC544\uBB34\uAC83\uB3C4 \uC54C\uC9C0 \uBABB\uD55C\uB2E4. \uADF8\uC800 \uCF54\uB4DC\uB124\uC784\uC774
+        M\uC774\uB77C\uB294 \uAC83\uBC16\uC5D0\uB294... \uADF8\uB294 \uC544\uBB34\uB9D0
+        \uC5C6\uC774 \uC6B0\uB9AC\uAC00 \uC6D0\uD558\uB294 \uBAA8\uB4E0 \uAC83\uB4E4\uC744
+        '\uD0D1'\uC758 \uB0B4\uC678\uBD80\uC5D0\uC11C \uD574\uACB0\uD574\uC8FC\uACE0
+        \uC788\uB2E4. \uD558\uC9C0\uB9CC \uADF8\uB97C \uC815\uB9D0 \uC628\uC804\uD788
+        \uC2E0\uB8B0\uB97C \uD574\uC57C\uD560\uAE4C? \uC6B0\uB9AC\uB294 \uADF8\uC5D0
+        \uB300\uD574\uC11C \uC544\uC9C1 \uC544\uBB34\uAC83\uB3C4 \uBAA8\uB978\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 694501909175004536, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "'\uD0D1'\uC740 \uC6B0\uB9AC\uAC00 \uC815\uD654\uC791\uC5C5\uC744 \uD574\uC8FC\uACE0
+        \uC788\uB2E4\uB294 \uC0AC\uC2E4\uC5D0 \uACE0\uB9C8\uC6CC\uD558\uBA70 \uC790\uC2E0\uB4E4\uC774
+        \uAC00\uC9C0\uACE0 \uC788\uC73C\uB098 \uADF8\uB9AC \uD544\uC694\uC5C6\uB294
+        \uBB3C\uAC74\uB4E4\uC744 \uC815\uD654\uC791\uC5C5 \uC8FC\uBCC0 \uC9C0\uC5ED\uC5D0
+        \uC0DD\uC131\uC2DC\uCF1C\uC8FC\uACE4 \uD55C\uB2E4. \uADF8 \uC911\uC5D0\uC11C
+        \uAC00\uC7A5 \uC720\uC6A9\uD588\uB358 \uBB3C\uAC74\uC740 '\uC5D0\uB108\uC9C0
+        \uBC15\uC2A4'\uB77C\uB294 \uAC83\uC774\uB2E4. \uC544\uBB34\uB7F0 \uC788\uC9C0\uB9CC
+        \uAC70\uB300\uD55C \uC5D0\uB108\uC9C0\uB97C \uAC00\uC9C0\uACE0 \uC788\uB294
+        \uBC15\uC2A4\uB294 \uD070 \uC804\uB825\uC18C\uBAA8 \uC5C6\uC774 \uC2E4\uD5D8\uC2E4\uC744
+        \uC6B4\uC601\uD560 \uC218 \uC788\uB3C4\uB85D \uB3C4\uC640\uC92C\uB2E4. \uBB3C\uB860
+        \uC2E4\uD5D8\uC2E4\uC5D0 \uBB38\uC81C\uAC00 \uC0DD\uACBC\uC9C0\uB9CC \uBA48\uCD9C
+        \uC218 \uC5C6\uB2E4\uB294 \uAC83\uC774 \uBB38\uC81C\uC774\uAE34 \uD558\uC9C0\uB9CC."
+      objectReference: {fileID: 0}
     - target: {fileID: 694501909175004540, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2169,6 +2198,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -245
       objectReference: {fileID: 0}
+    - target: {fileID: 1587163380665454011, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "\uC815\uBCF4\uAD6D\uC758 \uB3C4\uC6C0\uC744 \uBC1B\uC544 '\uD0D1'\uC8FC\uBCC0\uC5D0
+        \uC788\uB294 \uB545\uB4E4\uC744 \uBAA8\uC870\uB9AC \uB9E4\uC785\uD558\uACE0
+        \uBCF5\uC9C0\uC2DC\uC124\uC744 \uC9D3\uB294\uB2E4\uB294 \uBA85\uBAA9\uC73C\uB85C
+        '\uD0D1'\uC8FC\uBCC0\uC744 \uBAA8\uC870\uB9AC \uBD09\uC1C4\uD588\uB2E4. '\uD0D1'\uC744
+        \uBA87 \uC77C\uB3D9\uC548 \uAD00\uCC30\uD55C \uACB0\uACFC '\uD0D1'\uC5D0\uC11C
+        \uB098\uC624\uB294 \uBD88\uBE5B\uC740 \uBD88\uADDC\uCE59\uC801\uC778 \uAC83\uC774
+        \uC544\uB2C8\uB77C \uADDC\uCE59\uC801\uC73C\uB85C \uB4DC\uB7EC\uB098\uBA70
+        \uBB54\uAC00 \uC6B0\uB9AC\uC5D0\uAC8C \uBA54\uC138\uC9C0\uB97C \uC8FC\uB824\uACE0
+        \uD558\uB294 \uB290\uB08C\uC744 \uBC1B\uB294\uB2E4. \uACFC\uC5F0 '\uD0D1'\uC774
+        \uC6B0\uB9AC\uC5D0\uAC8C \uBB34\uC5C7\uC744 \uC6D0\uD558\uB294 \uAC83\uC77C\uAE4C?"
+      objectReference: {fileID: 0}
     - target: {fileID: 1587163380665454015, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2198,6 +2241,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792991406389503274, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "\uBE44\uC11D. \uC790\uC2E0\uB4E4\uC758 \uC5B8\uC5B4 \uCCB4\uACC4\uB97C
+        \uB2F4\uC740 \uBB3C\uAC74\uC774\uC5C8\uB2E4. \uACFC\uAC70\uD615\uC73C\uB85C
+        \uAE30\uB85D\uD558\uB294 \uC774\uC720\uB294 \uBE44\uC11D\uC744 \uC5F0\uAD6C\uD558\uB358
+        \uC911 \uC54C\uC218\uC5C6\uB294 \uC5F0\uAE30\uC5D0 \uC624\uC5FC\uC774 \uB418\uBA74\uC11C
+        \uB9CC\uC9C8 \uC218 \uC5C6\uB294 \uBB3C\uAC74\uC774 \uB418\uC5B4\uBC84\uB838\uAE30
+        \uB54C\uBB38\uC774\uB2E4. \uB2E4\uD589\uD788\uB3C4 \uBE44\uC11D\uC744 \uC5F0\uAD6C\uD558\uB358
+        \uC790\uB8CC\uB294 \uC804\uBD80 \uC800\uC7A5\uD574\uB450\uC5C8\uC9C0\uB9CC
+        \uC6B0\uB9AC\uAC00 \uC54C\uC9C0 \uBABB\uD558\uB294 \uC228\uACA8\uC9C4 \uB0B4\uC6A9\uB4E4\uC5D0
+        \uB300\uD574\uC11C\uB294 \uC54C \uC218 \uC5C6\uAC8C \uB418\uC5C8\uB2E4\uB294
+        \uC0C1\uD669\uC774 \uC548\uD0C0\uAE5D\uB2E4. \uADF8\uB7EC\uB098 \uC5B4\uCA54
+        \uC218 \uC5C6\uB2E4. \uBE44\uC11D\uC740 \uC18C\uAC01\uB418\uC5B4\uC57C\uD55C\uB2E4."
       objectReference: {fileID: 0}
     - target: {fileID: 1792991406389503278, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
@@ -2259,6 +2317,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -245
       objectReference: {fileID: 0}
+    - target: {fileID: 2114171594270527516, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "\uC774\uC0C1\uD55C \uBC15\uC2A4 \uBAA8\uC591\uC758 \uC870\uAC01. '\uD0D1'\uC774
+        \uC65C \uC774\uAC83\uC744 \uC92C\uB294\uC9C0 \uC544\uC9C1\uB3C4 \uC758\uBB38\uC810\uC774
+        \uB0A8\uB294\uB2E4. \uBB34\uC5B8\uAC00\uAC00 \uC870\uAC01\uB418\uC788\uAE34
+        \uD55C\uB370 \uC774\uAC83\uC774 \uBB34\uC5C7\uC744 \uB098\uD0C0\uB0B4\uB294\uC9C0\uB97C
+        \uC798 \uBAA8\uB974\uACA0\uB2E4. \uC5ED\uC0AC \uD559\uC790\uC5D0 \uB530\uB974\uBA74
+        \uC544\uB9C8 \uC790\uC2E0\uB4E4\uC758 \uC5ED\uC0AC\uB97C \uAE30\uB85D\uD55C
+        \uBB3C\uAC74\uC778\uAC83 \uAC19\uB2E4\uACE0 \uCD94\uCE21\uC744 \uD558\uACE0
+        \uC788\uC9C0\uB9CC '\uD0D1'\uC740 \uD655\uC2E4\uD55C \uB2F5\uBCC0\uC744 \uC8FC\uACE0
+        \uC788\uC9C0 \uC54A\uB2E4. \uC6B0\uB9AC\uC5D0\uAC8C \uC8FC\uB294 \uC218\uC218\uAED8\uB07C\uC77C\uAE4C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564717380529689626, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0542b649e038d864eb398f9388fd6aca,
+        type: 3}
     - target: {fileID: 3564717380977629114, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_Name
@@ -2374,6 +2451,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3564717381614413201, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "\uCC98\uC74C \uB545\uC5D0 \uD30C\uBB4D\uD600\uC788\uB294 '\uD0D1'\uC744
+        \uC2E0\uACE0\uBC1B\uC558\uC744 \uB54C \uC5F0\uAD6C\uC6D0\uB4E4\uC774 \uBC1C\uACAC\uD588\uC744
+        \uB54C\uB294 \uADF8\uC800 \uC608\uC804\uC5D0 \uC544\uC774\uB4E4\uC774 \uCD94\uC5B5\uC73C\uB85C
+        \uBB3B\uC5B4\uB454 \uD0C0\uC784\uCEA1\uC290\uC778\uC904 \uC54C\uC558\uB2E4.
+        \uADF8\uB7EC\uB098 \uD30C\uD5E4\uCE58\uBA74 \uD30C\uD5E4\uCE60\uC218\uB85D
+        \uB098\uC624\uB294 '\uD0D1'\uC758 \uD06C\uAE30\uB294 \uC5B4\uB9C8\uBB34\uC2DC\uD588\uB2E4.
+        \uADF8\uB9AC\uACE0 \uD0D1\uC758 \uCD5C\uC0C1\uB2E8\uC5D0\uC11C \uBFDC\uC5B4\uC838\uB098\uC624\uB294
+        \uBD88\uBE5B\uC740 \uC8FC\uBCC0 \uC8FC\uBBFC\uB4E4\uC5D0\uAC8C '\uD0D1'\uC758
+        \uC874\uC7AC\uB97C \uB4E4\uD0AC \uC704\uD5D8\uC774 \uC874\uC7AC\uD558\uB294
+        \uC0C1\uD669\uC774\uB2E4.\r\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 3564717381614413205, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2434,6 +2525,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 5030023745979357988, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: " '\uD0D1'\uC740 \uC6B0\uB9AC\uC640 \uB300\uD654\uB97C \uB098\uB204\uB824\uACE0
+        \uD558\uACE0 \uC788\uB2E4. \uCC98\uC74C\uC73C\uB85C \uC6B0\uB9AC\uAC00 \uD574\uC11D\uD55C
+        '\uD0D1'\uC758 \uB300\uD654\uB294 - \uC6B0\uB9AC\uB294 \uB300\uD654\uB97C
+        \uC6D0\uD55C\uB2E4 - \uC600\uB2E4. \uC6B0\uB9AC\uB294 '\uD0D1'\uC5D0\uAC8C
+        \uB2F5\uBCC0\uC744 \uBC1B\uAE30 \uC704\uD574\uC11C\uB294 \uC5B4\uB5BB\uAC8C
+        \uBCF4\uB0B4\uC57C\uD558\uB294\uAC74\uC9C0\uAC00 \uBB38\uC81C\uC600\uB2E4.
+        \uC758\uC678\uB85C \uB2F5\uC740 \uAC04\uB2E8\uD588\uB2E4. \uBD88\uBE5B\uC744
+        \uC774\uC6A9\uD574\uC11C \uC6B0\uB9AC\uB294 \uB300\uD654\uB97C \uB098\uB204\uAE30
+        \uC2DC\uC791\uD588\uB2E4.\r\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 5877931206577051985, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2464,6 +2568,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -145
       objectReference: {fileID: 0}
+    - target: {fileID: 5877931206577051989, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "'\uD0D1'\uC758 \uC815\uD654\uC791\uC5C5\uC5D0 \uBB38\uC81C\uAC00 \uC0DD\uAE34
+        \uAC83\uC740 \uD0D1 \uC548\uC5D0 \uC5F0\uAE30\uAC00 \uBFDC\uC5B4\uC838\uB098\uC624\uBA74\uC11C
+        \uC774\uB8E8\uC5B4\uC84C\uB2E4. \uD0D1\uC758 \uC5F0\uAE30\uAC00 \uBAB8\uC5D0
+        \uB2FF\uB294 \uC21C\uAC04 \uBAA8\uB4E0 \uC0DD\uBB3C\uC740 \uC815\uC2E0\uC744
+        \uC783\uAC8C \uB418\uACE0 \uC0B4\uAC16\uC774\uB098 \uD138 \uB4F1\uC740 \uC804\uBD80
+        \uBC97\uACA8\uC84C\uB2E4. \uADF8 \uD6C4\uC5D0\uB294 \uBB34\uCC28\uBCC4\uC801\uC73C\uB85C
+        \uC0B4\uC544\uC788\uB294 \uBAA8\uB4E0 \uAC83\uB4E4\uC744 \uACF5\uACA9\uD588\uB2E4.
+        \uC6B0\uB9AC\uB294 \uD45C\uD53C\uB97C \uBD84\uC11D\uD558\uC5EC \uC6D0\uB798\uB300\uB85C
+        \uB418\uB3CC\uB9B4 \uC218 \uC788\uB294 \uBC29\uBC95\uC744 \uCC3E\uACE0 \uC788\uC73C\uB098...
+        \uC27D\uC9C0\uB294 \uC54A\uC740 \uC0C1\uD669\uC774\uB2E4."
+      objectReference: {fileID: 0}
     - target: {fileID: 8593341586673691170, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2493,6 +2611,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593341586673691174, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: _story
+      value: "'\uD0D1'\uACFC \uC5EC\uB7EC \uB300\uD654\uB97C \uB098\uB208 \uACB0\uACFC
+        '\uD0D1'\uC740 \uAD6C\uC870\uBB3C\uC774 \uC544\uB2C8\uB2E4. \uC2A4\uC2A4\uB85C
+        \uC0DD\uAC01\uD558\uB294 \uC544\uCE74\uC774\uBE0C\uB77C\uACE0 \uB9D0\uD558\uB294
+        \uAC83\uC774 \uAC00\uC7A5 \uB9DE\uB294 \uB2F5\uC77C \uAC83\uC774\uB2E4. \uD0D1\uC774
+        \uC6B0\uB9AC\uC5D0\uAC8C \uB300\uD654\uB97C \uB098\uB204\uB824\uACE0 \uD55C
+        \uC774\uC720\uB294 '\uD0D1'\uC5D0 \uBB38\uC81C\uAC00 \uC0DD\uACBC\uACE0,
+        \uADF8\uAC83\uC744 \uD574\uACB0\uD558\uB294 \uBC29\uBC95\uC740 \uC0B4\uC544\uC788\uB294
+        \uC0DD\uBB3C\uC774 \uC9C1\uC811 \uCC98\uB9AC\uB97C \uD574\uC918\uC57C\uD55C\uB2E4\uB294
+        \uB9D0\uC774\uC5C8\uB2E4."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b829915e2a9769343a402eca4e4d6d11, type: 3}
@@ -3185,12 +3316,12 @@ PrefabInstance:
     - target: {fileID: 207875726071209461, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 207875726071209461, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 207875726071209461, guid: bcc1d1caf73cc7e4b99f862f81be3e6e,
         type: 3}
@@ -3416,12 +3547,12 @@ PrefabInstance:
     - target: {fileID: 4316772871209649945, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4316772871209649945, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4316772871209649945, guid: 1bbbc3518bd40f544b8418e2a1df27d0,
         type: 3}
@@ -3800,12 +3931,12 @@ PrefabInstance:
     - target: {fileID: 5411185179555137418, guid: bff87414e04abe7428c9ce807fe97e1c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5411185179555137418, guid: bff87414e04abe7428c9ce807fe97e1c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5411185179555137418, guid: bff87414e04abe7428c9ce807fe97e1c,
         type: 3}

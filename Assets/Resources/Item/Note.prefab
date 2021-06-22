@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5948393325931602486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -118.69, y: 0.506, z: 2.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1555878987000671752}
   m_Father: {fileID: 0}
@@ -61,7 +61,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 10
   m_CollisionDetection: 0
 --- !u!65 &4535719824871184027
 BoxCollider:
@@ -74,8 +74,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.05, z: 0.35}
-  m_Center: {x: 0, y: -0.035, z: -0.2}
+  m_Size: {x: 0.3, y: 0.17887288, z: 0.4025827}
+  m_Center: {x: 0, y: -0.0060397685, z: -0.20352963}
 --- !u!1001 &5848573543386325825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,6 +87,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Clipboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 261361823088647550, guid: 7057809afba6f924daa0df9b73a8d659,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658837694659286129, guid: 7057809afba6f924daa0df9b73a8d659,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4953353859828370761, guid: 7057809afba6f924daa0df9b73a8d659,
         type: 3}
@@ -142,6 +152,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100810504537264865, guid: 7057809afba6f924daa0df9b73a8d659,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020207707562623702, guid: 7057809afba6f924daa0df9b73a8d659,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7057809afba6f924daa0df9b73a8d659, type: 3}

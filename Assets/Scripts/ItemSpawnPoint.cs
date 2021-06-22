@@ -29,12 +29,12 @@ public class ItemSpawnPoint : MonoBehaviour
     {
         var percentage = Random.Range(0, 100);
 
-        if (0 <= percentage && 30 > percentage)
+        if (0 <= percentage && 20 > percentage)
         {
             return;
         }
 
-        else if (30 <= percentage && 80 > percentage)
+        else if (20 <= percentage && 70 > percentage)
         {
             Instantiate(Resources.Load(_path + _energyCell), transform.position, Quaternion.identity);
             return;

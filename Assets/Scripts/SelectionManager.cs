@@ -74,7 +74,7 @@ public class SelectionManager : MonoBehaviour
                     QuestDataController.GetInstance().SetQuest(1);
                     questcomplete = true;
                     txt_QuestComplete.SetActive(true);
-                    AudioMgr.Instance.PlaySound("Inventory_Drop");
+                    AudioMgr.Instance.PlaySound("QuestComplete");
                     Invoke("QuestCompleteSetActiveFalse", 2);
                 }
 

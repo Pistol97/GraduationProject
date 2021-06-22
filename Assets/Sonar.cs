@@ -19,8 +19,8 @@ public class Sonar : MonoBehaviour
     #region Sonar data
     [SerializeField] private Transform pulse;
     private float range = 0f;
-    private float rangeMax = 15f;
-    private float rangeSpeed = 5f;
+    private float rangeMax = 20f;
+    private float rangeSpeed = 10f;
 
     private float disappearTimer = 0f;
     private float disappearTimerMax = 3f;
