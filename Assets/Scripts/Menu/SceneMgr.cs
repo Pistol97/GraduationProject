@@ -70,4 +70,10 @@ public class SceneMgr : MonoBehaviour
         Debug.Log("GameLoad");
         SceneManager.LoadScene("GameLoad");
     }
+
+    public void Epilogue()
+    {
+        Debug.Log("Epilogue");
+        SceneManager.LoadScene("Epilogue");
+    }
 }
