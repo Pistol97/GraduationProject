@@ -50,9 +50,7 @@ public class CameraControl : MonoBehaviour
         rotationX -= mouseY * SensitivityY;//마우스 좌우는 카메라의 y축
         rotationX = ClampAngle(rotationX, rotationMinX, rotationMaxX);
 
-        //transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
         player.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
-        //player.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
     }
     private float ClampAngle(float angle, float min, float max)
     {

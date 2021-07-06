@@ -54,72 +54,32 @@ public class QuestMgr : MonoBehaviour
 
     }
 
-    //중복 함수 고치기,,,
-    //public void NPCQuest(int _npcQuestNum, int _currentNpc)
-    //{
-    //    List<QuestDataProperty> QuestData = new List<QuestDataProperty>(2);
-
-    //    currentNpc = _currentNpc;
-        
-    //    switch(_currentNpc)
-    //    {
-    //        case 1:
-    //            QuestData = npc1Quest;
-    //            return;
-    //        case 2:
-    //            QuestData = npc2Quest;
-    //            return;
-    //        case 3:
-    //            QuestData = npc3Quest;
-    //            return;
-    //    }
-
-    //    npc.sprite = QuestData[_npcQuestNum].sprite;
-    //    npcQuestNum.text = QuestData[_npcQuestNum].npcQuestNum.ToString();
-    //    description._description = QuestData[_npcQuestNum].description;
-
-    //    string questItem = QuestData[_npcQuestNum].questItem;
-    //    QuestDataController.GetInstance().SetQuestItem(questItem);
-    //    QuestDataController.GetInstance().SetCurrentQuestNpcNum(currentNpc);
-    //}
-
-    public void NPC1Quest()
+    public void NPCQuest(int _npcQuestNum, int _currentNpc)
     {
-        currentNpc = 1;
+        List<QuestDataProperty> QuestData = new List<QuestDataProperty>();
 
-        npc.sprite = npc1Quest[npc1QuestNum].sprite;
-        npcQuestNum.text = npc1Quest[npc1QuestNum].npcQuestNum.ToString();
-        description._description = npc1Quest[npc1QuestNum].description;
+        currentNpc = _currentNpc;
 
-        string questItem = npc1Quest[npc1QuestNum].questItem;
+        switch (_currentNpc)
+        {
+            case 1:
+                QuestData = npc1Quest;
+                return;
+            case 2:
+                QuestData = npc2Quest;
+                return;
+            case 3:
+                QuestData = npc3Quest;
+                return;
+        }
+
+        npc.sprite = QuestData[_npcQuestNum].sprite;
+        npcQuestNum.text = QuestData[_npcQuestNum].npcQuestNum.ToString();
+        description._description = QuestData[_npcQuestNum].description;
+
+        string questItem = QuestData[_npcQuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
-        QuestDataController.GetInstance().SetCurrentQuestNpcNum(1);
-    }
-
-    public void NPC2Quest()
-    {
-        currentNpc = 2;
-
-        npc.sprite = npc2Quest[npc2QuestNum].sprite;
-        npcQuestNum.text = npc2Quest[npc2QuestNum].npcQuestNum.ToString();
-        description._description = npc2Quest[npc2QuestNum].description;
-
-        string questItem = npc2Quest[npc2QuestNum].questItem;
-        QuestDataController.GetInstance().SetQuestItem(questItem);
-        QuestDataController.GetInstance().SetCurrentQuestNpcNum(2);
-    }
-
-    public void NPC3Quest()
-    {
-        currentNpc = 3;
-
-        npc.sprite = npc3Quest[npc3QuestNum].sprite;
-        npcQuestNum.text = npc3Quest[npc3QuestNum].npcQuestNum.ToString();
-        description._description = npc3Quest[npc3QuestNum].description;
-
-        string questItem = npc3Quest[npc3QuestNum].questItem;
-        QuestDataController.GetInstance().SetQuestItem(questItem);
-        QuestDataController.GetInstance().SetCurrentQuestNpcNum(3);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(currentNpc);
     }
 
     private void QuestSuccess()
@@ -133,12 +93,12 @@ public class QuestMgr : MonoBehaviour
 
             switch (QuestDataController.GetInstance().GetCurrentQuestNpcNum())
             {
-                //어떻게 고치지,,
+                //중복 코드 수정
                 case 1:
                     if (npc1QuestNum >= npc1Quest.Count - 1) return;
                     npc1QuestNum += 1;
                     QuestDataController.GetInstance().SetNpc1QuestNum(npc1QuestNum);
-                    NPC1Quest();
+                    NPCQuest(npc1QuestNum,1);
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(1);
                     break;
@@ -146,7 +106,7 @@ public class QuestMgr : MonoBehaviour
                     if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
                     QuestDataController.GetInstance().SetNpc2QuestNum(npc2QuestNum);
-                    NPC2Quest();
+                    NPCQuest(npc2QuestNum, 2);
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(2);
                     break;
@@ -154,13 +114,22 @@ public class QuestMgr : MonoBehaviour
                     if (npc3QuestNum >= npc3Quest.Count - 1) return;
                     npc3QuestNum += 1;
                     QuestDataController.GetInstance().SetNpc3QuestNum(npc3QuestNum);
-                    NPC3Quest();
+                    NPCQuest(npc3QuestNum, 3);
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 default:
                     break;
             }
         }
+    }
+
+    private void NpcQuestSuccess(int _npcQuestNum, List<QuestDataProperty> _npcQuest, int _currentNpc)
+    {
+        if (_npcQuestNum >= _npcQuest.Count - 1) return;
+        _npcQuestNum += 1;
+        QuestDataController.GetInstance().SetNpc1QuestNum(_npcQuestNum);
+        NPCQuest(npc1QuestNum, _currentNpc);
+        QuestDataController.GetInstance().SetQuest(0);
     }
 
     private void SaveQuest(int _questId, bool _bool)

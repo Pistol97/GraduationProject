@@ -19,13 +19,18 @@ public class LobbyMgr : MonoBehaviour
 
     public QuestMgr questMgr;
 
-    [SerializeField] private int npcCount1;
-    [SerializeField] private int npcCount2;
-    [SerializeField] private int npcCount3;
+    private int npcCount1;
+    private int npcCount2;
+    private int npcCount3;
 
-    [SerializeField] private int npcNumCount1;
-    [SerializeField] private int npcNumCount2;
-    [SerializeField] private int npcNumCount3;
+    //npc 숫자
+    //[SerializeField] int npcNum;
+
+    //private int[] npcCount;
+
+    private int npcNumCount1;
+    private int npcNumCount2;
+    private int npcNumCount3;
 
     [SerializeField] Button btn_GameStart;
 
