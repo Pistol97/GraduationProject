@@ -1,19 +1,19 @@
 {
-  "Quests": [],
-  "Upgrades": [
-    false,
-    true,
-    false
-  ],
-  "Archives": [
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true
-  ]
+    "Quests": [],
+    "Upgrades": [
+        false,
+        true,
+        false
+    ],
+    "Archives": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+    ]
 }

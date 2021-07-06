@@ -886,12 +886,6 @@ MonoBehaviour:
   text_npcNum2: {fileID: 949553322}
   text_npcNum3: {fileID: 703548693}
   questMgr: {fileID: 887190225}
-  npcCount1: 0
-  npcCount2: 0
-  npcCount3: 0
-  npcNumCount1: 0
-  npcNumCount2: 0
-  npcNumCount3: 0
   btn_GameStart: {fileID: 83246996}
   AllQuestComplete: {fileID: 1071480471}
   btn_repeatMode: {fileID: 991856321}
@@ -3138,17 +3132,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 887190218}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -54,32 +54,43 @@ public class QuestMgr : MonoBehaviour
 
     }
 
-    public void NPCQuest(int _npcQuestNum, int _currentNpc)
+    public void NPC1Quest()
     {
-        List<QuestDataProperty> QuestData = new List<QuestDataProperty>();
+        currentNpc = 1;
 
-        currentNpc = _currentNpc;
+        npc.sprite = npc1Quest[npc1QuestNum].sprite;
+        npcQuestNum.text = npc1Quest[npc1QuestNum].npcQuestNum.ToString();
+        description._description = npc1Quest[npc1QuestNum].description;
 
-        switch (_currentNpc)
-        {
-            case 1:
-                QuestData = npc1Quest;
-                return;
-            case 2:
-                QuestData = npc2Quest;
-                return;
-            case 3:
-                QuestData = npc3Quest;
-                return;
-        }
-
-        npc.sprite = QuestData[_npcQuestNum].sprite;
-        npcQuestNum.text = QuestData[_npcQuestNum].npcQuestNum.ToString();
-        description._description = QuestData[_npcQuestNum].description;
-
-        string questItem = QuestData[_npcQuestNum].questItem;
+        string questItem = npc1Quest[npc1QuestNum].questItem;
         QuestDataController.GetInstance().SetQuestItem(questItem);
-        QuestDataController.GetInstance().SetCurrentQuestNpcNum(currentNpc);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(1);
+    }
+
+    public void NPC2Quest()
+    {
+        currentNpc = 2;
+
+        npc.sprite = npc2Quest[npc2QuestNum].sprite;
+        npcQuestNum.text = npc2Quest[npc2QuestNum].npcQuestNum.ToString();
+        description._description = npc2Quest[npc2QuestNum].description;
+
+        string questItem = npc2Quest[npc2QuestNum].questItem;
+        QuestDataController.GetInstance().SetQuestItem(questItem);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(2);
+    }
+
+    public void NPC3Quest()
+    {
+        currentNpc = 3;
+
+        npc.sprite = npc3Quest[npc3QuestNum].sprite;
+        npcQuestNum.text = npc3Quest[npc3QuestNum].npcQuestNum.ToString();
+        description._description = npc3Quest[npc3QuestNum].description;
+
+        string questItem = npc3Quest[npc3QuestNum].questItem;
+        QuestDataController.GetInstance().SetQuestItem(questItem);
+        QuestDataController.GetInstance().SetCurrentQuestNpcNum(3);
     }
 
     private void QuestSuccess()
@@ -93,47 +104,31 @@ public class QuestMgr : MonoBehaviour
 
             switch (QuestDataController.GetInstance().GetCurrentQuestNpcNum())
             {
-                //중복 코드 수정
                 case 1:
+                    Debug.Log(npc1Quest.Count);
+                    Debug.Log(npc1QuestNum);
                     if (npc1QuestNum >= npc1Quest.Count - 1) return;
                     npc1QuestNum += 1;
-                    QuestDataController.GetInstance().SetNpc1QuestNum(npc1QuestNum);
-                    NPCQuest(npc1QuestNum,1);
+                    NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(1);
                     break;
                 case 2:
                     if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
-                    QuestDataController.GetInstance().SetNpc2QuestNum(npc2QuestNum);
-                    NPCQuest(npc2QuestNum, 2);
+                    NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(2);
                     break;
                 case 3:
                     if (npc3QuestNum >= npc3Quest.Count - 1) return;
                     npc3QuestNum += 1;
-                    QuestDataController.GetInstance().SetNpc3QuestNum(npc3QuestNum);
-                    NPCQuest(npc3QuestNum, 3);
+                    NPC3Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
                 default:
                     break;
             }
         }
-    }
-
-    private void NpcQuestSuccess(int _npcQuestNum, List<QuestDataProperty> _npcQuest, int _currentNpc)
-    {
-        if (_npcQuestNum >= _npcQuest.Count - 1) return;
-        _npcQuestNum += 1;
-        QuestDataController.GetInstance().SetNpc1QuestNum(_npcQuestNum);
-        NPCQuest(npc1QuestNum, _currentNpc);
-        QuestDataController.GetInstance().SetQuest(0);
-    }
-
-    private void SaveQuest(int _questId, bool _bool)
-    {
-        PlayerDataManager.Instance.SetQuestData(_questId, _bool);
     }
 }
