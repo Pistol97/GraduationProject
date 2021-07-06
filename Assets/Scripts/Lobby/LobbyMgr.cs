@@ -31,6 +31,8 @@ public class LobbyMgr : MonoBehaviour
 
     [SerializeField] GameObject AllQuestComplete;
 
+    [SerializeField] GameObject btn_repeatMode;
+
     private void Start()
     {
         questMgr = GetComponent<QuestMgr>();
@@ -68,6 +70,12 @@ public class LobbyMgr : MonoBehaviour
         if (npcCount1 == npcNumCount1 && npcCount2 == npcNumCount2 && npcCount3 == npcNumCount3)
         {
             AllQuestComplete.SetActive(true);
+            QuestDataController.GetInstance().SetGameClear(1);
+            btn_repeatMode.SetActive(true);
+        }
+        else
+        {
+            btn_repeatMode.SetActive(false);
         }
     }
 

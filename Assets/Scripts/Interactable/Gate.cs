@@ -44,6 +44,12 @@ public class Gate : MonoBehaviour, IInteractable
     //인터페이스 함수
     public void ObjectInteract()
     {
+        if(QuestDataController.GetInstance().GetGameClear()==1)
+        {
+            OpenGate();
+            return;
+        }
+
         if (isStageDoor == true)
         {
             QuestStageUnlock();
@@ -59,9 +65,7 @@ public class Gate : MonoBehaviour, IInteractable
             case 1:
                 if (quest1 == true)
                 {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
+                    OpenGate();
                 }
                 else
                 {
@@ -71,9 +75,7 @@ public class Gate : MonoBehaviour, IInteractable
             case 2:
                 if (quest2 == true)
                 {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
+                    OpenGate();
                 }
                 else
                 {
@@ -83,9 +85,7 @@ public class Gate : MonoBehaviour, IInteractable
             case 3:
                 if (quest3 == true)
                 {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
+                    OpenGate();
                 }
                 else
                 {
@@ -95,6 +95,13 @@ public class Gate : MonoBehaviour, IInteractable
             default:
                 break;
         }
+    }
+
+    private void OpenGate()
+    {
+        handle.SetBool("IsPull", true);
+        isActivate = true;
+        audioSource.clip = gateSounds[0];
     }
 
     private void AccessDenied()

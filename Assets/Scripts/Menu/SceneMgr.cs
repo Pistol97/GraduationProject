@@ -66,7 +66,7 @@ public class SceneMgr : MonoBehaviour
     }
     public void GameLoad()
     {
-        Time.timeScale = 1.0f;//기본 시간
+        //Time.timeScale = 1.0f;//기본 시간
         Debug.Log("GameLoad");
         SceneManager.LoadScene("GameLoad");
     }

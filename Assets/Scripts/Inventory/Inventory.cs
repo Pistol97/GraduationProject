@@ -82,6 +82,11 @@ public class Inventory : MonoBehaviour
                 FindObjectOfType<Player>().UseCell(50);
                 AudioMgr.Instance.PlaySound("Use_Battery");
             }
+            else if("Syringe"== QuickSlots[_num - 1].item.itemName)
+            {
+                FindObjectOfType<Player>().UseCell(50);
+                AudioMgr.Instance.PlaySound("Use_Battery");
+            }
             FindObjectOfType<EventMessage>().DisplayMessage(QuickSlots[_num - 1].item.itemName + " 사용");
             QuickSlots[_num - 1].SetSlotCount(-1);
         }
@@ -129,6 +134,14 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < Slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우
+            if(QuickSlots[i].item != null)
+            {
+                if (QuickSlots[i].item.itemName == item.itemName)
+                {
+                    QuickSlots[i].SetSlotCount(count);
+                    return;
+                }
+            }
             if (Slots[i].item != null)
             {
                 if (Slots[i].item.itemName == item.itemName)
@@ -137,15 +150,6 @@ public class Inventory : MonoBehaviour
                     return;
                 }
             }
-            else if(QuickSlots[i].item != null)
-            {
-                if (QuickSlots[i].item.itemName == item.itemName)
-                {
-                    QuickSlots[i].SetSlotCount(count);
-                    return;
-                }
-            }
-
             //아이템 새로 추가
             else
             {
