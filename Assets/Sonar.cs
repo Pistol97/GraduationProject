@@ -26,6 +26,7 @@ public class Sonar : MonoBehaviour
     private float disappearTimerMax = 3f;
 
     List<Collider> detectedEnemy;
+    List<Collider> detectedItem;
     [SerializeField] private Transform sonarPing;
     [SerializeField] private Material outline;
     [SerializeField] private Material outline_enemy;
@@ -65,6 +66,7 @@ public class Sonar : MonoBehaviour
     {
         Sonar.Seers.Add(this);
         detectedEnemy = new List<Collider>();
+        detectedItem = new List<Collider>();
 
         outline = Resources.Load<Material>("Shader/TrasparentOutlines");
         outline_enemy = Resources.Load<Material>("Shader/EnemyOutline");
@@ -185,6 +187,16 @@ public class Sonar : MonoBehaviour
                 detectedEnemy.Add(hit.collider);    //처음 탐색 되었을 시 추가
 
                 Instantiate(sonarPing, hit.transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
+            }
+
+            else if (hit.transform.CompareTag("item")
+                && !detectedItem.Contains(hit.collider))
+                {
+                var ping = Instantiate(sonarPing, hit.transform.position, Quaternion.Euler(new Vector3(90f, 0f)));
+                detectedItem.Add(hit.collider);
+
+                ping.GetComponent<SonarPing>().PingColor = Color.yellow;
+                ping.transform.localScale = new Vector3(1f, 1f, 1f);
             }
         }
 

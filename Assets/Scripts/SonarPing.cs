@@ -7,6 +7,14 @@ public class SonarPing : MonoBehaviour
     private float disappearTimerMax;
     private Color color;
 
+    public Color PingColor
+    {
+        set
+        {
+            color = value;
+        }
+    }
+    
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
