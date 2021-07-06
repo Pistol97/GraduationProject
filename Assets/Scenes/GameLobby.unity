@@ -886,6 +886,12 @@ MonoBehaviour:
   text_npcNum2: {fileID: 949553322}
   text_npcNum3: {fileID: 703548693}
   questMgr: {fileID: 887190225}
+  npcCount1: 0
+  npcCount2: 0
+  npcCount3: 0
+  npcNumCount1: 0
+  npcNumCount2: 0
+  npcNumCount3: 0
   btn_GameStart: {fileID: 83246996}
   AllQuestComplete: {fileID: 1071480471}
   btn_repeatMode: {fileID: 991856321}
@@ -3863,6 +3869,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 887190223}
     m_Modifications:
+    - target: {fileID: 2676580713010745082, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2676580713010745082, guid: d9a7b1aae7e350940a3ed845b0a2aac3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

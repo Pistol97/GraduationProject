@@ -109,6 +109,7 @@ public class QuestMgr : MonoBehaviour
                     Debug.Log(npc1QuestNum);
                     if (npc1QuestNum >= npc1Quest.Count - 1) return;
                     npc1QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc1QuestNum(npc1QuestNum);
                     NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(1);
@@ -116,6 +117,7 @@ public class QuestMgr : MonoBehaviour
                 case 2:
                     if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc2QuestNum(npc2QuestNum);
                     NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     PlayerDataManager.Instance.UnlockUpgradeProfile(2);
@@ -123,6 +125,7 @@ public class QuestMgr : MonoBehaviour
                 case 3:
                     if (npc3QuestNum >= npc3Quest.Count - 1) return;
                     npc3QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc3QuestNum(npc3QuestNum);
                     NPC3Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;
