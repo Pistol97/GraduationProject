@@ -2540,12 +2540,6 @@ PrefabInstance:
         \uC788\uC9C0\uB9CC '\uD0D1'\uC740 \uD655\uC2E4\uD55C \uB2F5\uBCC0\uC744 \uC8FC\uACE0
         \uC788\uC9C0 \uC54A\uB2E4. \uC6B0\uB9AC\uC5D0\uAC8C \uC8FC\uB294 \uC218\uC218\uAED8\uB07C\uC77C\uAE4C?"
       objectReference: {fileID: 0}
-    - target: {fileID: 3564717380529689626, guid: b829915e2a9769343a402eca4e4d6d11,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0542b649e038d864eb398f9388fd6aca,
-        type: 3}
     - target: {fileID: 3564717380977629114, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_Name
@@ -2705,6 +2699,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 4156223991236990180, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1111402677}
+    - target: {fileID: 4156223991236990180, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Epilogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156223991236990180, guid: b829915e2a9769343a402eca4e4d6d11,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5030023745979357984, guid: b829915e2a9769343a402eca4e4d6d11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2835,7 +2844,8 @@ PrefabInstance:
         \uC0DD\uBB3C\uC774 \uC9C1\uC811 \uCC98\uB9AC\uB97C \uD574\uC918\uC57C\uD55C\uB2E4\uB294
         \uB9D0\uC774\uC5C8\uB2E4."
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4156223991236990105, guid: b829915e2a9769343a402eca4e4d6d11, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b829915e2a9769343a402eca4e4d6d11, type: 3}
 --- !u!1 &1468410719 stripped
 GameObject:
