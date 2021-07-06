@@ -11,11 +11,12 @@ public class Archive : MonoBehaviour
 {
     [Header("잠금해제 스프라이트")]
     [SerializeField] private Sprite _unlockSprite;
-
+    private GameObject _epilogue;
     private Text _noteText;
     private StoryButton[] _storyButtons;
     private void Awake()
     {
+        _epilogue = transform.GetChild(2).gameObject;
         _noteText = transform.GetChild(0).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
         _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
     }
@@ -23,6 +24,7 @@ public class Archive : MonoBehaviour
     private void Start()
     {
         PlayerDataManager.Instance.SyncArchiveData(_storyButtons);
+        int count = 0;
 
         foreach (var button in _storyButtons)
         {
@@ -30,7 +32,14 @@ public class Archive : MonoBehaviour
             {
                 //노트 언락시 해금 스프라이트로 변경
                 button.GetComponent<Image>().sprite = _unlockSprite;
+                count++;
             }
+        }
+
+        if(_storyButtons.Length <= count && !_epilogue.activeSelf)
+        {
+            _epilogue.SetActive(true);
+            Debug.Log("에필로그");
         }
     }
 
