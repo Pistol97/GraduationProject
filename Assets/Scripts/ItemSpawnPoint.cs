@@ -6,6 +6,7 @@ public class ItemSpawnPoint : MonoBehaviour
 
     private readonly string _energyCell = "EnergyCell";
     private readonly string _note = "Note";
+    private readonly string _syringe = "Syringe";
     private readonly string _questItem = "QuestItem";
 
     [SerializeField] private bool _isQuestSpawn;
@@ -29,12 +30,13 @@ public class ItemSpawnPoint : MonoBehaviour
     {
         var percentage = Random.Range(0, 100);
 
-        if (0 <= percentage && 20 > percentage)
+        if (0 <= percentage && 40 > percentage)
         {
+            Instantiate(Resources.Load(_path + _syringe), transform.position, Quaternion.identity);
             return;
         }
 
-        else if (20 <= percentage && 70 > percentage)
+        else if (40 <= percentage && 80 > percentage)
         {
             Instantiate(Resources.Load(_path + _energyCell), transform.position, Quaternion.identity);
             return;
