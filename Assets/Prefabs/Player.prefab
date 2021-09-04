@@ -274,8 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  directionRotateSpeed: 100
-  bodyRotateSpeed: 2
   velocityChangeSpeed: 1
   cameraTransform: {fileID: 3773018725522341035}
   selectionMgr: {fileID: 3773018725522341031}
@@ -291,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e22df6dff44074b9a93494af348959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deadSound: {fileID: 0}
   panel: {fileID: 0}
   quickInventory: {fileID: 0}
   use_sonar: 0
@@ -468,7 +465,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 20
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -509,6 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SensitivityX: 2
   SensitivityY: 2
+  rotationX: 0
+  rotationY: 0
 --- !u!114 &3773018725522341033
 MonoBehaviour:
   m_ObjectHideFlags: 0
