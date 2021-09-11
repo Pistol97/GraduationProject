@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject go_QuickSlotParent;
 
+
     //슬롯들
     public Slot[] Slots
     {
@@ -131,6 +132,7 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item item, int count = 1)
     {
+
         for (int i = 0; i < Slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우

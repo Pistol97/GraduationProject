@@ -29,6 +29,9 @@ public class SelectionManager : MonoBehaviour
 
     private GameObject _gameObject;
 
+    [Header("아이템 습득시 소음 증가량")]
+    public float addamount = 100f;
+
     private void Start()
     {
         //화면 중간 벡터, 화면의 중간부분을 찾아서 레이를 쏘기 위함
@@ -80,6 +83,7 @@ public class SelectionManager : MonoBehaviour
 
                 inven.AcquireItem(_gameObject.GetComponent<ItemPickUp>().item);
                 AudioMgr.Instance.PlaySound("PickUp");
+                NoiseSystemManager.GetInstance().AddFear(addamount);//소음 수치 증가
                 Destroy(_gameObject);
                 InfoDisappear();
             }
@@ -88,7 +92,6 @@ public class SelectionManager : MonoBehaviour
     void QuestCompleteSetActiveFalse()
     {
         txt_QuestComplete.SetActive(false);
-
     }
 
     private void CheckItem()

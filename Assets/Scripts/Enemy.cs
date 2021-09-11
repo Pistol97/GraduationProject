@@ -17,7 +17,9 @@ public class Enemy : MonoBehaviour
     NavMeshAgent nav;
 
     public float enemySightLength = 10f;
+    public float currentEnemySightLength = 10f;
     public float enemyAttackLength = 3f;
+    public int enemySightLevel = 1;
 
     [SerializeField]
     private Transform target;
@@ -39,11 +41,18 @@ public class Enemy : MonoBehaviour
 
         nav.speed = 1.0f;
     }
+    private void Start()
+    {
+        currentEnemySightLength = enemySightLength;
+    }
 
     private void Update()
     {
         ChaseDistance();
         ChangeIdle();
+
+        enemySightLevel = NoiseSystemManager.GetInstance().GetFearLevel();
+        SightLevel();
     }
 
     private void FixedUpdate()
@@ -51,9 +60,28 @@ public class Enemy : MonoBehaviour
         FreezeVelocity();
     }
 
+    void SightLevel()
+    {
+        switch(enemySightLevel)
+        {
+            case 1:
+                currentEnemySightLength = enemySightLength;
+                break;
+            case 2:
+                currentEnemySightLength = enemySightLength * 1.5f;
+                break;
+            case 3:
+                currentEnemySightLength = enemySightLength * 2f;
+                break;
+            case 4:
+                currentEnemySightLength = enemySightLength * 2.5f;
+                break;
+        }
+    }
+
     void ChaseDistance()
     {
-        if (Vector3.Distance(target.position, gameObject.transform.position) <= enemySightLength)
+        if (Vector3.Distance(target.position, gameObject.transform.position) <= currentEnemySightLength)
         {
             animator.SetBool("IsWalk", true);
             nav.SetDestination(target.position);
