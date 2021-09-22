@@ -62,8 +62,23 @@ public class AudioMgr : MonoBehaviour
     public void PlaySound(string name)
     {
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);
-        s.source.clip = s.Clips[0];
-        s.source.Play();
+        if (!s.source.isPlaying)
+        {
+            Debug.Log("Play sound: " + name);
+            s.source.clip = s.Clips[0];
+            s.source.Play();
+        }
+    }
+
+    public void PlaySound(string name , int index)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.Name == name);
+        if (!s.source.isPlaying || (s.source.isPlaying && s.source.clip != s.Clips[index]))
+        {
+            Debug.Log("Play sound: " + name + index);
+            s.source.clip = s.Clips[index];
+            s.source.Play();
+        }
     }
 
     public void PlayRandomSound(string name)
@@ -79,9 +94,20 @@ public class AudioMgr : MonoBehaviour
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);
         if (s.source.isPlaying)
         {
+            Debug.Log("Stop sound: " + name);
             s.source.clip = s.Clips[0];
             s.source.Stop();
         }
+    }
 
+    public void StopSound(string name, int index)
+    {
+        Sound s = Array.Find(sounds, Sound => Sound.Name == name);
+        if (s.source.isPlaying)
+        {
+            Debug.Log("Stop sound: " + name + index);
+            //s.source.clip = s.Clips[index];
+            s.source.Stop();
+        }
     }
 }
