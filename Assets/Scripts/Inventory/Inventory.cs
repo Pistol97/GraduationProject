@@ -16,6 +16,9 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject go_QuickSlotParent;
 
+    [SerializeField]
+    private GameObject go_ToolTip;
+
 
     //슬롯들
     public Slot[] Slots
@@ -128,6 +131,7 @@ public class Inventory : MonoBehaviour
     {
         AudioMgr.Instance.PlaySound("Close_Inventory");
         go_InventoryBase.SetActive(false);
+        go_ToolTip.SetActive(false);
     }
 
     public void AcquireItem(Item item, int count = 1)
