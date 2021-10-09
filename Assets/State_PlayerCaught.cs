@@ -49,7 +49,6 @@ public class State_PlayerCaught : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<CapsuleCollider>().isTrigger = true;
         Destroy(_progressBar.gameObject);
         _player.LookTarget = null;
         _countLeft = _countRight = 0;

@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private void Awake()
     {
-        player.GetComponent<CapsuleCollider>().isTrigger = true;
+        player.GetComponent<CharacterController>().detectCollisions = true;
+        //player.GetComponent<CapsuleCollider>().isTrigger = true;
         foreach(var line in outlines)
         {
             line.SetFloat("_NormalStrength", 0f);
