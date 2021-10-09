@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - item
   - Interactable
+  - Sonar
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Item
   - Sonar
   - Postprocessing
-  - 
+  - Whisper
   - 
   - 
   - 

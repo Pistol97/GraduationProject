@@ -18,6 +18,19 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Text actionText;
 
+    public Text ActionText
+    {
+        get
+        {
+            return actionText;
+        }
+
+        set
+        {
+            actionText = value;
+        }
+    }
+
     [SerializeField]
     private Inventory inven;
 
