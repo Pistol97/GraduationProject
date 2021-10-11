@@ -26,6 +26,8 @@ public partial class Player : MonoBehaviour
     }
     #endregion
 
+    public float feartest;
+
     public float FearRange
     {
         get;
@@ -109,7 +111,33 @@ public partial class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        FearRange = feartest;
         _barFear.value = FearRange;
+
+        if (0f <= FearRange / _maxFearRange * 100 && 30f > FearRange / _maxFearRange * 100)
+        {
+            AudioMgr.Instance.StopSound("Heartbeat", 0);
+            AudioMgr.Instance.StopSound("Heartbeat", 1);
+            AudioMgr.Instance.StopSound("Heartbeat", 2);
+            AudioMgr.Instance.StopSound("Panting");
+        }
+
+        if (30f <= FearRange / _maxFearRange * 100 && 50 > FearRange / _maxFearRange * 100)
+        {
+            AudioMgr.Instance.PlaySound("Heartbeat", 0);
+        }
+
+        else if (50 <= FearRange / _maxFearRange * 100 && 70 > FearRange / _maxFearRange * 100)
+        {
+            AudioMgr.Instance.PlaySound("Heartbeat", 1);
+        }
+
+        else if(70 < FearRange / _maxFearRange * 100)
+        {
+            AudioMgr.Instance.PlaySound("Heartbeat", 2);
+            AudioMgr.Instance.PlaySound("Panting");
+        }
+
         if (_maxFearRange <= FearRange && !_isDead)
         {
             QuestDataController.GetInstance().SetQuest(0);
@@ -119,6 +147,8 @@ public partial class Player : MonoBehaviour
 
             StartCoroutine(PlayerDie());
         }
+
+
     }
 
     private void OnTriggerEnter(Collider collision)

@@ -18,6 +18,19 @@ public class SelectionManager : MonoBehaviour
     [SerializeField]
     private Text actionText;
 
+    public Text ActionText
+    {
+        get
+        {
+            return actionText;
+        }
+
+        set
+        {
+            actionText = value;
+        }
+    }
+
     [SerializeField]
     private Inventory inven;
 
@@ -28,6 +41,8 @@ public class SelectionManager : MonoBehaviour
     [SerializeField] GameObject txt_QuestComplete;
 
     private GameObject _gameObject;
+
+    public Transform JumpTarget;
 
     private void Start()
     {
@@ -57,6 +72,16 @@ public class SelectionManager : MonoBehaviour
             {
                 Debug.Log("Use Interactable Object");
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (hit.transform.CompareTag("Jumpable"))
+            {
+                JumpTarget = hit.transform;
+                Debug.Log("점프!");
+                GetComponentInParent<Animator>().SetBool("IsJump", true);
             }
         }
     }
@@ -105,6 +130,11 @@ public class SelectionManager : MonoBehaviour
             {
                 actionText.gameObject.SetActive(true);
                 actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
+            }
+            if (hit.transform.CompareTag("Jumpable"))
+            {
+                actionText.gameObject.SetActive(true);
+                actionText.text = "뛰어넘기 " + "<color=yellow>" + "(F)" + "</color>";
             }
         }
         else

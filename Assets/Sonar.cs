@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Mark a transform as an invisibility revealer
@@ -7,6 +8,10 @@ using UnityEngine;
 [ExecuteInEditMode()]
 public class Sonar : MonoBehaviour
 {
+    private SphereCollider collider;
+
+    public float dissappear;
+
     #region Personnal data
     public float Radius = 0f;
 
@@ -75,6 +80,8 @@ public class Sonar : MonoBehaviour
         outline.SetFloat("_NormalStrength", 1f);
         outline_enemy.SetFloat("_NormalStrength", 1f);
         outline_item.SetFloat("_NormalStrength", 1f);
+
+        collider = GetComponent<SphereCollider>();
     }
 
     private void OnDestroy()
@@ -89,6 +96,7 @@ public class Sonar : MonoBehaviour
         if (!_isTest)
         {
             SonarPulseCast();
+            collider.radius = Radius;
             Radius = range;
         }
 
@@ -153,8 +161,7 @@ public class Sonar : MonoBehaviour
         {
             disappearTimer += Time.deltaTime;
 
-            var dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
-            //Debug.Log(dissappear);
+            dissappear = Mathf.Lerp(1f, 0f, disappearTimer / disappearTimerMax);
             outline.SetFloat("_NormalStrength", dissappear);
             outline_enemy.SetFloat("_NormalStrength", dissappear);
             outline_item.SetFloat("_NormalStrength", dissappear);

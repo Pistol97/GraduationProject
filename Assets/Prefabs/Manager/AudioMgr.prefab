@@ -144,3 +144,19 @@ MonoBehaviour:
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
+  - Name: Heartbeat
+    Clips:
+    - {fileID: 8300000, guid: e4168880b1b664e7b83bd610a7cbb879, type: 3}
+    - {fileID: 8300000, guid: bc66f92e4d60d4badb7ed6a87c1f1f96, type: 3}
+    - {fileID: 8300000, guid: c030b749eff17476aa850ecfba2ddf9a, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 1
+    source: {fileID: 0}
+  - Name: Panting
+    Clips:
+    - {fileID: 8300000, guid: b7e7b3a29b72a4727b988bd729075a14, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 1
+    source: {fileID: 0}
