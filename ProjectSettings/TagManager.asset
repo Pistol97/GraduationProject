@@ -8,6 +8,7 @@ TagManager:
   - item
   - Interactable
   - Sonar
+  - Jumpable
   layers:
   - Default
   - TransparentFX

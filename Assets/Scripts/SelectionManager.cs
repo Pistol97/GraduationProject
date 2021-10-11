@@ -42,6 +42,8 @@ public class SelectionManager : MonoBehaviour
 
     private GameObject _gameObject;
 
+    public Transform JumpTarget;
+
     private void Start()
     {
         //화면 중간 벡터, 화면의 중간부분을 찾아서 레이를 쏘기 위함
@@ -70,6 +72,16 @@ public class SelectionManager : MonoBehaviour
             {
                 Debug.Log("Use Interactable Object");
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (hit.transform.CompareTag("Jumpable"))
+            {
+                JumpTarget = hit.transform;
+                Debug.Log("점프!");
+                GetComponentInParent<Animator>().SetBool("IsJump", true);
             }
         }
     }
@@ -118,6 +130,11 @@ public class SelectionManager : MonoBehaviour
             {
                 actionText.gameObject.SetActive(true);
                 actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
+            }
+            if (hit.transform.CompareTag("Jumpable"))
+            {
+                actionText.gameObject.SetActive(true);
+                actionText.text = "뛰어넘기 " + "<color=yellow>" + "(F)" + "</color>";
             }
         }
         else
