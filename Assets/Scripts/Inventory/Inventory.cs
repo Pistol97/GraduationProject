@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private GameObject go_QuickSlotParent;
+
+    [SerializeField]
+    private GameObject go_ToolTip;
+
+    [SerializeField]
+    private GameObject go_Scripts;
 
     //슬롯들
     public Slot[] Slots
@@ -127,10 +134,30 @@ public class Inventory : MonoBehaviour
     {
         AudioMgr.Instance.PlaySound("Close_Inventory");
         go_InventoryBase.SetActive(false);
+        go_ToolTip.SetActive(false);
+    }
+
+    public void OpenScripts()
+    {
+        if(inventoryActivated)
+        {
+            go_SlotParent.SetActive(false);
+            go_Scripts.SetActive(true);
+        }
+    }
+
+    public void CloseScripts()
+    {
+        if (inventoryActivated)
+        {
+            go_SlotParent.SetActive(true);
+            go_Scripts.SetActive(false);
+        }
     }
 
     public void AcquireItem(Item item, int count = 1)
     {
+
         for (int i = 0; i < Slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우

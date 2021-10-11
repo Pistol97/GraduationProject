@@ -47,7 +47,8 @@ public class PlayerControl : MonoBehaviour
 
         Vector3 movedis = cameraTransform.rotation * direction;
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
-        myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        //myCharacterController.Move(transform.TransformDirection(moveDirection.normalized) * moveSpeed * Time.deltaTime);
+        myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime );
     }
     /// <summary>
     /// 현재 내 캐릭터의 이속을 얻어온다.

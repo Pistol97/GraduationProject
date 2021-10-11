@@ -12,15 +12,13 @@ public class CameraControl : MonoBehaviour
     private float rotationMinX = -80;
     private float rotationMaxX = 80;
 
-    [SerializeField] GameObject player;
-
     private void LateUpdate()
     {
         //게임 일시정지시 카메라 멈춤
         if (Time.deltaTime == 0)
         {
             SensitivityX = 0;
-            SensitivityY = 0;
+            SensitivityY = 0; 
             return;
         }
         else
@@ -50,7 +48,7 @@ public class CameraControl : MonoBehaviour
         rotationX -= mouseY * SensitivityY;//마우스 좌우는 카메라의 y축
         rotationX = ClampAngle(rotationX, rotationMinX, rotationMaxX);
 
-        player.transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
+        transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
     }
     private float ClampAngle(float angle, float min, float max)
     {

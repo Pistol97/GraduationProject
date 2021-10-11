@@ -19,6 +19,7 @@ public partial class Player : MonoBehaviour
     private GameObject _playerCam;
     private CameraControl _camControl;
     private Animator _animator;
+
     public Canvas Hud
     {
         get;
@@ -143,7 +144,8 @@ public partial class Player : MonoBehaviour
             QuestDataController.GetInstance().SetQuest(0);
             _isDead = true;
             GetComponent<Animator>().SetBool("IsCaught", false);
-            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<CharacterController>().detectCollisions=  false;
+            //GetComponent<CapsuleCollider>().enabled = false;
 
             StartCoroutine(PlayerDie());
         }
@@ -157,7 +159,8 @@ public partial class Player : MonoBehaviour
         {
             // LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
             // Debug.Log(LookTarget.name);
-            GetComponent<CapsuleCollider>().isTrigger = false;
+            GetComponent<CharacterController>().detectCollisions = false;
+            //GetComponent<CapsuleCollider>().isTrigger = false;
             StartButtonAction();
         }
     }
@@ -201,6 +204,8 @@ public partial class Player : MonoBehaviour
         {
             Debug.Log("Enter ShakeState");
             _camControl.enabled = false;
+            //mainCamera.transform.position = enemyAttackCameraSocket.position;
+
             // Vector3 TargetFront = LookTarget.transform.forward;
             // Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
             // _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
@@ -214,14 +219,14 @@ public partial class Player : MonoBehaviour
 
     private void PlayerInvincible()
     {
-        this.GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<CharacterController>().detectCollisions = false;
         Invoke("PlayerInvincibleEnd", 5.0f);
     }
 
     private void PlayerInvincibleEnd()
     {
         quickInventory.SetActive(true);
-        this.GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<CharacterController>().detectCollisions = true;
     }
 
     private IEnumerator PlayerDie()

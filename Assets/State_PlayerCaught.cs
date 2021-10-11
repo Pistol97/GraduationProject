@@ -23,6 +23,7 @@ public class State_PlayerCaught : StateMachineBehaviour
         var go = Instantiate(Resources.Load("UI/Bar_Shake"), _player.Hud.transform) as GameObject;
         _progressBar = go.GetComponent<Slider>();
         _progressBar.maxValue = _MaxCount;
+        NoiseSystemManager.GetInstance().AddFear(100f);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,7 +49,6 @@ public class State_PlayerCaught : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<CapsuleCollider>().isTrigger = true;
         Destroy(_progressBar.gameObject);
         _player.LookTarget = null;
         _countLeft = _countRight = 0;
