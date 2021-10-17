@@ -11,14 +11,16 @@ public class Archive : MonoBehaviour
 {
     [Header("잠금해제 스프라이트")]
     [SerializeField] private Sprite _unlockSprite;
+
     private GameObject _epilogue;
     private Text _noteText;
     private StoryButton[] _storyButtons;
+
     private void Awake()
     {
-        _epilogue = transform.GetChild(2).gameObject;
-        _noteText = transform.GetChild(0).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
         _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
+        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
+        _epilogue = transform.GetChild(2).gameObject;     
     }
 
     private void Start()
@@ -41,6 +43,14 @@ public class Archive : MonoBehaviour
             _epilogue.SetActive(true);
             Debug.Log("에필로그");
         }
+
+        gameObject.SetActive(false);
+    }
+
+    public void SetUnlock(int num)
+    {
+        _storyButtons[num].GetComponent<Image>().sprite = _unlockSprite;
+        _storyButtons[num].IsUnlock = true;
     }
 
     public void ShowSelectedNote(string text)

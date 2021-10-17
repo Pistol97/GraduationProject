@@ -15,7 +15,7 @@ public class Exit : MonoBehaviour, IInteractable
 
     public void ObjectInteract()
     {
-        PlayerDataManager.Instance.GetInventoryData(FindObjectOfType<Inventory>());
+        //PlayerDataManager.Instance.GetInventoryData(FindObjectOfType<Inventory>());
         PlayerDataManager.Instance.SavePlayerData();
         StartCoroutine(_fade.FadeOut());    //로비 전환 페이드 아웃 재생
 

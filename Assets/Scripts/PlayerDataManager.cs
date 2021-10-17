@@ -10,6 +10,10 @@ using UnityEngine;
 /// </summary>
 public class PlayerDataManager : MonoBehaviour
 {
+    //임시
+    [SerializeField]
+    private Archive _archive;
+
     /// <summary>
     /// 플레이어의 데이터를 저장하는 클래스
     /// </summary>
@@ -17,7 +21,6 @@ public class PlayerDataManager : MonoBehaviour
     private class PlayerData
     {
         public bool[] Quests = new bool[3];
-        public bool[] Upgrades = new bool[3];
         public bool[] Archives = new bool[9];
     }
 
@@ -124,52 +127,52 @@ public class PlayerDataManager : MonoBehaviour
 
     /// <summary>
     /// 플레이어 인벤토리 데이터 저장 메소드
-    /// TODO: EnergyCell말고 Note아이템이 완성될 시 변경하여 적용 시킬 것
+    /// 현재 더미
     /// </summary>
     /// <param name="inventory"></param>
-    public void GetInventoryData(Inventory inventory)
-    {
-        int max = _playerData.Archives.Length - 1;
-        int i = Random.Range(0, max);
+    //public void GetInventoryData(Inventory inventory)
+    //{
+    //    int max = _playerData.Archives.Length - 1;
+    //    int i = Random.Range(0, max);
 
-        foreach (var slot in inventory.Slots)
-        {
-            if (slot.item && "Note" == slot.item.itemName)
-            {
-                for (int count = 0; count < slot.itemCount;)
-                {
-                    if (_playerData.Archives[i])
-                    {
-                        i = Random.Range(0, max);
-                    }
-                    else
-                    {
-                        _playerData.Archives[i] = true;
-                        count++;
-                    }
-                }
-            }
-        }
+    //    foreach (var slot in inventory.Slots)
+    //    {
+    //        if (slot.item && "Note" == slot.item.itemName)
+    //        {
+    //            for (int count = 0; count < slot.itemCount;)
+    //            {
+    //                if (_playerData.Archives[i])
+    //                {
+    //                    i = Random.Range(0, max);
+    //                }
+    //                else
+    //                {
+    //                    _playerData.Archives[i] = true;
+    //                    count++;
+    //                }
+    //            }
+    //        }
+    //    }
 
-        foreach (var slot in inventory.QuickSlots)
-        {
-            if (slot.item && "Note" == slot.item.itemName)
-            {
-                for (int count = 0; count < slot.itemCount;)
-                {
-                    if (_playerData.Archives[i])
-                    {
-                        i = Random.Range(0, max);
-                    }
-                    else
-                    {
-                        _playerData.Archives[i] = true;
-                        count++;
-                    }
-                }
-            }
-        }
-    }
+    //    foreach (var slot in inventory.QuickSlots)
+    //    {
+    //        if (slot.item && "Note" == slot.item.itemName)
+    //        {
+    //            for (int count = 0; count < slot.itemCount;)
+    //            {
+    //                if (_playerData.Archives[i])
+    //                {
+    //                    i = Random.Range(0, max);
+    //                }
+    //                else
+    //                {
+    //                    _playerData.Archives[i] = true;
+    //                    count++;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
 
 
     /// <summary>
@@ -181,45 +184,10 @@ public class PlayerDataManager : MonoBehaviour
         CreateJsonFile(Application.dataPath, "PlayerData", json);
     }
 
-    public void UnlockUpgradeProfile(int num)
+    public void UnlockArchive(int num)
     {
-        _playerData.Upgrades[num] = true;
-    }
-
-    /// <summary>
-    /// 플레이어 업그레이드 프로필 연동 메소드
-    /// </summary>
-    /// <param name="profileNumber"></param>
-    public void SyncUpgradeProfile(ref int profileNumber)
-    {
-        for (int i = 0; i < _playerData.Upgrades.Length; i++)
-        {
-            if (!_playerData.Upgrades[i])
-            {
-                Debug.Log(profileNumber);
-                return;
-            }
-            profileNumber = i;
-        }
-    }
-
-
-
-    /// <summary>
-    /// 로비 내 업그레이드 데이터 연동 메소드
-    /// </summary>
-    /// <param name="images"></param>
-    public void SyncUpgradeData(UpgradeButton[] upgradeButtons)
-    {
-        int i = 0;
-        foreach (var unlock in _playerData.Upgrades)
-        {
-            if (unlock)
-            {
-                upgradeButtons[i].IsUnlock = true;
-            }
-            i++;
-        }
+        _playerData.Archives[num - 1] = true;
+        _archive.SetUnlock(num - 1);
     }
 
     /// <summary>

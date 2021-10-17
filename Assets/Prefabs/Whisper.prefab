@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 762257145337010814}
   - component: {fileID: 6460587107174524551}
   - component: {fileID: 7218279778752497825}
-  - component: {fileID: 4466329981547641528}
   - component: {fileID: 5177183692268497844}
+  - component: {fileID: 4466329981547641528}
   m_Layer: 13
   m_Name: Whisper
   m_TagString: Untagged
@@ -97,6 +97,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: -1, z: 0}
+--- !u!114 &5177183692268497844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4725485137935536731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572f71ddcd301964dbb6e9347cd373ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unlockArchiveNumber: 1
+  _noticeUI: {fileID: 6904025148594553, guid: 86e93b89ec04cf345841be9e2077d41f, type: 3}
+  _noticeProgressBar: {fileID: 1891307714038737324, guid: 599df7ba52a06434d9cafb8ac940ccd0,
+    type: 3}
 --- !u!82 &4466329981547641528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -193,18 +209,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5177183692268497844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4725485137935536731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572f71ddcd301964dbb6e9347cd373ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _noticeUI: {fileID: 6904025148594553, guid: 86e93b89ec04cf345841be9e2077d41f, type: 3}
-  _noticeProgressBar: {fileID: 1891307714038737324, guid: 599df7ba52a06434d9cafb8ac940ccd0,
-    type: 3}
