@@ -42,8 +42,6 @@ public class SelectionManager : MonoBehaviour
 
     private GameObject _gameObject;
 
-    public Transform JumpTarget;
-
     [Header("아이템 습득시 소음 증가량")]
     public float addamount = 100f;
 
@@ -75,16 +73,6 @@ public class SelectionManager : MonoBehaviour
             {
                 Debug.Log("Use Interactable Object");
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            if (hit.transform.CompareTag("Jumpable"))
-            {
-                JumpTarget = hit.transform;
-                Debug.Log("점프!");
-                GetComponentInParent<Animator>().SetBool("IsJump", true);
             }
         }
     }

@@ -7,45 +7,44 @@ public class State_Jump : StateMachineBehaviour
     private Transform _player;
     private Transform _JumpPos;
 
+    private float _speed = 0.05f;
+
+    private float _timer = 1f;
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = animator.GetComponent<Player>().transform;
-        _JumpPos = _player.GetComponentInChildren<SelectionManager>().JumpTarget;
+        _JumpPos = _player.GetComponent<Player>().JumpPos;
 
-        _JumpPos.GetComponent<BoxCollider>().isTrigger = true;
+        _JumpPos.GetComponentInParent<MeshCollider>().convex = true;
+        _JumpPos.GetComponentInParent<MeshCollider>().isTrigger = true;
+
+        _player.GetComponentInChildren<CameraControl>().enabled = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player.position = Vector3.MoveTowards(_player.position, _JumpPos.position, 0.5f);
+        _timer -= Time.deltaTime;
 
-        if(_player.position == _JumpPos.position)
+        _player.position = Vector3.Lerp(_player.position, _JumpPos.position, _speed);
+
+        if (0 >= _timer)
         {
-            _JumpPos.position = Vector3.zero;
+            _JumpPos.GetComponentInParent<MeshCollider>().isTrigger = false;
+            _JumpPos.GetComponentInParent<MeshCollider>().convex = false;
 
-            _JumpPos.GetComponent<BoxCollider>().isTrigger = false;
             animator.SetBool("IsJump", false);
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _player.GetComponentInChildren<CameraControl>().enabled = true;
 
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+        _timer = 1f;
+    }
 }

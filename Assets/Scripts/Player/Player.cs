@@ -63,6 +63,8 @@ public partial class Player : MonoBehaviour
 
     private bool _isDead;
 
+    public Transform JumpPos;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();

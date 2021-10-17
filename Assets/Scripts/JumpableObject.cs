@@ -2,15 +2,39 @@
 
 public class JumpableObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Transform _jumpPos;
+
+    private Player _player;
+
+    private void Awake()
     {
-        
+        _jumpPos = transform.GetChild(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            if (!_player)
+            {
+                _player = other.GetComponent<Player>();
+                _player.JumpPos = _jumpPos;
+            }
+
+            _player.GetComponentInChildren<SelectionManager>().ActionText.gameObject.SetActive(true);
+            _player.GetComponentInChildren<SelectionManager>().ActionText.text = "<color=yellow>" + " (F) " + "</color>" + "뛰어넘기";
+
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("플레이어 점프");
+                _player.GetComponent<Animator>().SetBool("IsJump", true);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _player = null;
     }
 }

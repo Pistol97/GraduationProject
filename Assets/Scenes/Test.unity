@@ -600,6 +600,31 @@ PrefabInstance:
       propertyPath: actionText
       value: 
       objectReference: {fileID: 2084944531}
+    - target: {fileID: 3773018725522341035, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9691412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773018725522341035, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773018725522341035, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773018725522341035, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.24650647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773018725522341035, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 28.542002
+      objectReference: {fileID: 0}
     - target: {fileID: 7782803870979473939, guid: 3b2a98e3e289e494fbcdaf9d256dac68,
         type: 3}
       propertyPath: _archive
@@ -618,6 +643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Whisper
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725485137935536731, guid: 234b4edfffa23e9428c0c548c1ac7062,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8633139260685279304, guid: 234b4edfffa23e9428c0c548c1ac7062,
         type: 3}
@@ -1168,6 +1198,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7202021869697761641, guid: 9a7437a1924341a4c8052128a291cb12,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7501692594286481405, guid: 9a7437a1924341a4c8052128a291cb12,
         type: 3}
       propertyPath: m_Name
@@ -1176,7 +1211,7 @@ PrefabInstance:
     - target: {fileID: 7501692594286481405, guid: 9a7437a1924341a4c8052128a291cb12,
         type: 3}
       propertyPath: m_TagString
-      value: Jumpable
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7437a1924341a4c8052128a291cb12, type: 3}
