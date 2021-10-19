@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: af2028b870a81314781563757a9c1c9e
   - enabled: 1
-    path: Assets/Scenes/Demo_Stage.unity
+    path: Assets/Scenes/Demo_Stage_Backup.unity
     guid: e2b8a6cd87d9e48489a9f06195e14a47
   - enabled: 1
     path: Assets/Scenes/GameLobby.unity
