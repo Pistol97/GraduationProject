@@ -156,6 +156,7 @@ MonoBehaviour:
   feartest: 0
   quickInventory: {fileID: 0}
   use_sonar: 12
+  JumpPos: {fileID: 0}
 --- !u!82 &5309715545247117234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -305,7 +306,6 @@ MonoBehaviour:
   questcomplete: 0
   questItemName: 
   txt_QuestComplete: {fileID: 0}
-  JumpTarget: {fileID: 0}
   addamount: 100
 --- !u!20 &3773018725522341036
 Camera:
@@ -542,6 +542,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2412265485144864889, guid: 00fc2d8b32614334eaf50bde81bdc6d7,
+        type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 56f36bf7c0c8f5b408ff8eb831719880,
+        type: 2}
     - target: {fileID: 2412265485144864894, guid: 00fc2d8b32614334eaf50bde81bdc6d7,
         type: 3}
       propertyPath: m_Name

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -9,8 +7,6 @@ public class PostProcessMgr : MonoBehaviour
     private Volume _postprocessVolume;
 
     private readonly string _path = "UpgradeProfile/Upgrade";
-
-    private int _profileNumber = 0;
 
     private Player _player;
 
