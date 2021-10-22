@@ -12,14 +12,19 @@ public class CameraControl : MonoBehaviour
     private float rotationMinX = -80;
     private float rotationMaxX = 80;
 
+    private void Awake()
+    {
+        rotationX = GetComponentInParent<Player>().transform.rotation.eulerAngles.x;
+        rotationY = GetComponentInParent<Player>().transform.rotation.eulerAngles.y;
+    }
+
     private void LateUpdate()
     {
         //게임 일시정지시 카메라 멈춤
         if (Time.deltaTime == 0)
         {
             SensitivityX = 0;
-            SensitivityY = 0; 
-            return;
+            SensitivityY = 0;
         }
         else
         {
@@ -50,6 +55,7 @@ public class CameraControl : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(rotationX, rotationY, 0);
     }
+
     private float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360) angle += 360;

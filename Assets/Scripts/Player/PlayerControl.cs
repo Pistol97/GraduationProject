@@ -29,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //이동
         NewMove();
         //회전
@@ -46,6 +47,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 direction=new Vector3(horizontal,0,vertical);
 
         Vector3 movedis = cameraTransform.rotation * direction;
+
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
         //myCharacterController.Move(transform.TransformDirection(moveDirection.normalized) * moveSpeed * Time.deltaTime);
         myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime );
