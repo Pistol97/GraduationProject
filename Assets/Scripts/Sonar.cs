@@ -5,10 +5,10 @@ using TMPro;
 /// <summary>
 /// Mark a transform as an invisibility revealer
 /// </summary>
-[ExecuteInEditMode()]
+//[ExecuteInEditMode()]
 public class Sonar : MonoBehaviour
 {
-    private SphereCollider collider;
+    private SphereCollider _collider;
 
     public float dissappear;
 
@@ -27,6 +27,8 @@ public class Sonar : MonoBehaviour
     private float rangeMax = 20f;
     private float rangeSpeed = 10f;
 
+    private Color _disappearColor = Color.red;
+
     private float disappearTimer = 0f;
     private float disappearTimerMax = 3f;
 
@@ -36,6 +38,7 @@ public class Sonar : MonoBehaviour
     [SerializeField] private Material outline;
     [SerializeField] private Material outline_enemy;
     [SerializeField] private Material outline_item;
+    [SerializeField] private Material _handprint;
     #endregion
 
     /// <summary>
@@ -76,12 +79,14 @@ public class Sonar : MonoBehaviour
         outline = Resources.Load<Material>("Shader/TrasparentOutlines");
         outline_enemy = Resources.Load<Material>("Shader/EnemyOutline");
         outline_item = Resources.Load<Material>("Shader/ItemOutline");
+
         //사용시 외곽선 활성화
         outline.SetFloat("_NormalStrength", 1f);
         outline_enemy.SetFloat("_NormalStrength", 1f);
         outline_item.SetFloat("_NormalStrength", 1f);
+        _handprint.SetColor("_Color", Color.red);
 
-        collider = GetComponent<SphereCollider>();
+        _collider = GetComponent<SphereCollider>();
     }
 
     private void OnDestroy()
@@ -96,7 +101,7 @@ public class Sonar : MonoBehaviour
         if (!_isTest)
         {
             SonarPulseCast();
-            collider.radius = Radius;
+            _collider.radius = Radius;
             Radius = range;
         }
 
@@ -165,6 +170,7 @@ public class Sonar : MonoBehaviour
             outline.SetFloat("_NormalStrength", dissappear);
             outline_enemy.SetFloat("_NormalStrength", dissappear);
             outline_item.SetFloat("_NormalStrength", dissappear);
+            _handprint.SetColor("_Color", new Color(_disappearColor.r, _disappearColor.g, _disappearColor.b, dissappear));
             //Debug.Log(outline.GetFloat("_NormalStrength"));
 
             rangeSpeed = 0f;

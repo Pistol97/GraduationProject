@@ -63,6 +63,8 @@ public partial class Player : MonoBehaviour
 
     private bool _isDead;
 
+    public Transform JumpPos;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -112,7 +114,7 @@ public partial class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        FearRange = feartest;
+        //FearRange = feartest;
         _barFear.value = FearRange;
 
         if (0f <= FearRange / _maxFearRange * 100 && 30f > FearRange / _maxFearRange * 100)
@@ -178,6 +180,11 @@ public partial class Player : MonoBehaviour
     public void UseCell(int val)
     {
         _barSonar.value += val;
+    }    
+    
+    public void UseSyringe(int val)
+    {
+        FearRange -= val;
     }
 
     private void ActiveSonar()

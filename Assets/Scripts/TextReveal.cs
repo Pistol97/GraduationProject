@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class TextReveal : MonoBehaviour
 {
-    private TextMeshPro tm;
-    private Sonar sonar;
+    private TextMeshPro _tm;
+    private Sonar _sonar;
 
     private void Awake()
     {
-        tm = GetComponentInChildren<TextMeshPro>();
-        tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, 0f);
+        _tm = GetComponentInChildren<TextMeshPro>();
+        _tm.color = new Color(_tm.color.r, _tm.color.g, _tm.color.b, 0f);
     }
 
     private void Update()
     {
-        if(sonar)
+        if(_sonar)
         {
-            tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, sonar.dissappear);
+            _tm.color = new Color(_tm.color.r, _tm.color.g, _tm.color.b, _sonar.dissappear);
         }
     }
 
@@ -25,7 +25,7 @@ public class TextReveal : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Sonar"))
         {
             Debug.Log("Text revealing");
-            sonar = other.GetComponent<Sonar>();
+            _sonar = other.GetComponent<Sonar>();
         }
     }
 }

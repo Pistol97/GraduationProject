@@ -71,6 +71,7 @@ MonoBehaviour:
   outline: {fileID: 2100000, guid: 8493976cc23cdb445abbda6e1c30948c, type: 2}
   outline_enemy: {fileID: 2100000, guid: 23ed39e1e6644f24f9faf3430bb824ac, type: 2}
   outline_item: {fileID: 2100000, guid: 406dfc98f769d174d898e5d9dd757b33, type: 2}
+  _handprint: {fileID: 2100000, guid: 9d84c989175dbd746ab7ed7145b9b647, type: 2}
   _isTest: 0
 --- !u!82 &801287107898841146
 AudioSource:
