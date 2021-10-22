@@ -43,8 +43,6 @@ public class Archive : MonoBehaviour
             _epilogue.SetActive(true);
             Debug.Log("에필로그");
         }
-
-        gameObject.SetActive(false);
     }
 
     public void SetUnlock(int num)

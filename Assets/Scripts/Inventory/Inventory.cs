@@ -91,8 +91,8 @@ public class Inventory : MonoBehaviour
             }
             else if("Syringe"== QuickSlots[_num - 1].item.itemName)
             {
-                FindObjectOfType<Player>().UseCell(50);
-                AudioMgr.Instance.PlaySound("Use_Battery");
+                FindObjectOfType<Player>().UseSyringe(50);
+                AudioMgr.Instance.PlaySound("Use_Syringe");
             }
             FindObjectOfType<EventMessage>().DisplayMessage(QuickSlots[_num - 1].item.itemName + " 사용");
             QuickSlots[_num - 1].SetSlotCount(-1);
