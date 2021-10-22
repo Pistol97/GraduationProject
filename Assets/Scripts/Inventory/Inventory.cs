@@ -184,6 +184,46 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
+    }
 
+    public bool FindItemWithName(string _item)
+    {
+        for(int i = 0; i<Slots.Length; i++)
+        {
+            if (Slots[i].item.itemName != null)
+            {
+
+                if (Slots[i].item.itemName == _item)
+                {
+                    Debug.Log(_item + "이(가) 있다");
+                    return true;
+                }
+                else
+                {
+                    Debug.Log(_item + "이(가) 없다");
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+    public void UseItemWithName(string _item)
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            if (Slots[i].item != null)
+            {
+                if (Slots[i].item.itemName == _item)
+                {
+                    Slots[i].SetSlotCount(-1);
+                    Debug.Log(_item + "사용");
+                }
+                else
+                {
+                    Debug.Log(_item + "이(가) 없다");
+                }
+            }
+        }
     }
 }

@@ -16,12 +16,23 @@ public class Gate : MonoBehaviour, IInteractable
     private AudioSource audioSource;
 
     private bool isActivate;
+
+    [SerializeField] private bool isKeyGate;
+    [SerializeField] private bool isKeyGateOpened;
+    [SerializeField] private Inventory inven;
+
+    [SerializeField] private NavmeshPathDraw navPath;
+    [SerializeField] private int gateNum =0;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         handle = transform.GetChild(0).GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        navPath = GetComponent<NavmeshPathDraw>();
         isActivate = false;
+
+        PlayerPrefs.SetInt("Gate", 0);
     }
 
     private void Update()
@@ -39,20 +50,53 @@ public class Gate : MonoBehaviour, IInteractable
             audioSource.clip = gateSounds[1];
             audioSource.Play();
         }
+
     }
 
     //인터페이스 함수
     public void ObjectInteract()
     {
-        if(QuestDataController.GetInstance().GetGameClear()==1)
+        //if (QuestDataController.GetInstance().GetGameClear() == 1)
+        //{
+        //    OpenGate();
+        //    return;
+        //}
+
+        //if (isStageDoor == true)
+        //{
+        //    QuestStageUnlock();
+        //}
+
+        if (isKeyGate == true && isKeyGateOpened ==false)
+        {
+            hasKey();
+        }
+        else if(isKeyGate == true && isKeyGateOpened == true)
         {
             OpenGate();
-            return;
         }
+    }
 
-        if (isStageDoor == true)
+    void hasKey()
+    {
+        bool haskey = false;
+
+        haskey = inven.FindItemWithName("Key");
+
+        if(haskey == true)
         {
-            QuestStageUnlock();
+            isKeyGateOpened = true;
+
+            PlayerPrefs.SetInt("Gate",this.gateNum);
+
+
+            OpenGate();
+            inven.UseItemWithName("Key");
+
+        }
+        else
+        {
+            AccessDenied();
         }
     }
 
