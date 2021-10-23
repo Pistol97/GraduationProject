@@ -3,12 +3,6 @@ using UnityEngine.UI;
 
 public class Gate : MonoBehaviour, IInteractable
 {
-    [Header("할당 퀘스트 번호")]
-    [SerializeField] private bool isStageDoor;
-    [SerializeField] private bool quest1;
-    [SerializeField] private bool quest2;
-    [SerializeField] private bool quest3;
-
     private Animator animator;
     private Animator handle;
 
@@ -56,22 +50,15 @@ public class Gate : MonoBehaviour, IInteractable
     //인터페이스 함수
     public void ObjectInteract()
     {
-        //if (QuestDataController.GetInstance().GetGameClear() == 1)
-        //{
-        //    OpenGate();
-        //    return;
-        //}
-
-        //if (isStageDoor == true)
-        //{
-        //    QuestStageUnlock();
-        //}
-
         if (isKeyGate == true && isKeyGateOpened ==false)
         {
             hasKey();
         }
         else if(isKeyGate == true && isKeyGateOpened == true)
+        {
+            OpenGate();
+        }
+        else
         {
             OpenGate();
         }
@@ -97,47 +84,6 @@ public class Gate : MonoBehaviour, IInteractable
         else
         {
             AccessDenied();
-        }
-    }
-
-    void QuestStageUnlock()
-    {
-        int currentQuestNum = QuestDataController.GetInstance().GetCurrentQuestNpcNum();
-
-        switch (currentQuestNum)
-        {
-            case 1:
-                if (quest1 == true)
-                {
-                    OpenGate();
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            case 2:
-                if (quest2 == true)
-                {
-                    OpenGate();
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            case 3:
-                if (quest3 == true)
-                {
-                    OpenGate();
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            default:
-                break;
         }
     }
 

@@ -2,21 +2,27 @@
 
 public class TextEventTrigger : MonoBehaviour
 {
-    [SerializeField] private string dialogue;
+    [SerializeField] private GameObject[] _eventObjects;
 
-    private EventMessage _eventMessage;
+    private AudioSource _audioSource;
 
-    private void Start()
+    private void Awake()
     {
-        _eventMessage = FindObjectOfType<EventMessage>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            _eventMessage.DisplayMessage(dialogue);
-            Destroy(gameObject);
+            _audioSource.Play();
+
+            foreach(var obj in _eventObjects)
+            {
+                obj.SetActive(true);
+            }
+
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 }
