@@ -62,10 +62,10 @@ public class Enemy : MonoBehaviour
     {
         ChaseDistance();
 
-        ChangeIdle();
-
         enemySightLevel = NoiseSystemManager.GetInstance().GetFearLevel();
         SightLevel();
+
+        ChangeIdle();
     }
 
     private void FixedUpdate()
@@ -106,6 +106,8 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetBool("IsWalk", false);
                 animator.SetBool("IsAttack", true);
+
+                Debug.Log("공격중");
             }
             else
             {
