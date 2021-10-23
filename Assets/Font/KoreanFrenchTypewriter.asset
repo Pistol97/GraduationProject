@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: KoreanFrenchTypewriter
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1311163871
   material: {fileID: -692754079247198555}
-  materialHashCode: 0
+  materialHashCode: 1955242143
   m_Version: 1.1.0
   m_SourceFontFileGUID: 56c75638ef2201a4c8b0907379fbc0a3
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 56c75638ef2201a4c8b0907379fbc0a3,
