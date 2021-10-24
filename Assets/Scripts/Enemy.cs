@@ -66,8 +66,6 @@ public class Enemy : MonoBehaviour
 
         enemySightLevel = NoiseSystemManager.GetInstance().GetFearLevel();
         SightLevel();
-
-        ChangeIdle();
     }
 
     private void FixedUpdate()
