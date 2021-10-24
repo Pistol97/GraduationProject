@@ -19,6 +19,9 @@ public partial class Player : MonoBehaviour
     private GameObject _playerCam;
     private CameraControl _camControl;
     private Animator _animator;
+    //private NavmeshPathDraw _navPath;
+
+    [SerializeField] private GameObject subCamera;
 
     public Canvas Hud
     {
@@ -72,6 +75,7 @@ public partial class Player : MonoBehaviour
         _playerCam = transform.GetChild(0).gameObject;
         _camControl = transform.GetChild(0).GetComponent<CameraControl>();
         _animator = GetComponentInChildren<Animator>();
+        //_navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
     }
 
     private void Start()
@@ -159,10 +163,9 @@ public partial class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            // LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
-            // Debug.Log(LookTarget.name);
+            LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
+            Debug.Log(LookTarget.name);
             GetComponent<CharacterController>().detectCollisions = false;
-            //GetComponent<CapsuleCollider>().isTrigger = false;
             StartButtonAction();
         }
     }
@@ -202,6 +205,8 @@ public partial class Player : MonoBehaviour
                 _barFear.value = FearRange;
             }
             _barSonar.value = _barSonar.value - use_sonar;
+
+            //_navPath.gameObject.SetActive(true);
         }
     }
 
@@ -210,18 +215,29 @@ public partial class Player : MonoBehaviour
         if (!_animator.GetBool("IsCaught"))
         {
             Debug.Log("Enter ShakeState");
-            _camControl.enabled = false;
-            //mainCamera.transform.position = enemyAttackCameraSocket.position;
 
-            // Vector3 TargetFront = LookTarget.transform.forward;
-            // Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
-            // _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
+            _camControl.enabled = false;
+
+            _playerCam.SetActive(false);
+            subCamera.SetActive(true);
+
+            ///Vector3 target = new Vector3(_playerCam.transform.position.x, _playerCam.transform.position.y, _playerCam.transform.position.z);
+
+            subCamera.transform.position = _playerCam.transform.position;
+            subCamera.transform.LookAt(LookTarget.transform);
+            //subCamera.transform.LookAt(target);
+
             FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
             _animator.SetBool("IsCaught", true);
 
             quickInventory.SetActive(false);
-
         }
+    }
+
+    public void ResetCamera()
+    {
+        _playerCam.SetActive(true);
+        subCamera.SetActive(false);
     }
 
     private void PlayerInvincible()

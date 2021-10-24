@@ -51,6 +51,7 @@ public class State_PlayerCaught : StateMachineBehaviour
     {
         Destroy(_progressBar.gameObject);
         _player.LookTarget = null;
+        _player.ResetCamera();
         _countLeft = _countRight = 0;
     }
 

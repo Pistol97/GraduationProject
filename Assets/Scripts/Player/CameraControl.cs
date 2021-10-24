@@ -31,20 +31,19 @@ public class CameraControl : MonoBehaviour
             SensitivityX = 5.0f;
             SensitivityY = 5.0f;
         }
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+            NewFirstView(mouseX, mouseY);
 
-        NewFirstView(mouseX, mouseY);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            this.gameObject.layer = 8;
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            this.gameObject.layer = 0;
-        }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                this.gameObject.layer = 8;
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                this.gameObject.layer = 0;
+            }
     }
 
     public void NewFirstView(float mouseX, float mouseY)
@@ -66,6 +65,7 @@ public class CameraControl : MonoBehaviour
 
     public void CameraMovementStopForSec(int _sec)
     {
+
         SensitivityX = 0;
         SensitivityY = 0;
 
@@ -75,6 +75,7 @@ public class CameraControl : MonoBehaviour
     {
         SensitivityX = 5.0f;
         SensitivityY = 5.0f;
+
     }
 
     public float GetCameraRotationX()
@@ -84,6 +85,17 @@ public class CameraControl : MonoBehaviour
     public float GetCameraRotationY()
     {
         return rotationY;
+    }
+
+    public void SetCameraRotation(GameObject _go)
+    {
+        //transform.rotation = _go.transform.rotation;
+        Vector3 vec = _go.transform.position - transform.position;
+        vec.Normalize();
+        Quaternion q = Quaternion.LookRotation(vec);
+        transform.rotation = q;
+
+        CameraMovementStopForSec(5);
     }
 
     public Vector3 GetCameraFront()

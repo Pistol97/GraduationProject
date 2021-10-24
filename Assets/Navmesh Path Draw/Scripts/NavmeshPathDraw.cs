@@ -25,7 +25,7 @@ public class NavmeshPathDraw : MonoBehaviour
         path = new NavMeshPath();
 
         if(lr.materials.Length == 0){
-            lr.material = Resources.Load("material/path_mat", typeof(Material)) as Material;
+            lr.material = Resources.Load("material/path_horror", typeof(Material)) as Material;
         }
 
         Draw();
@@ -61,6 +61,18 @@ public class NavmeshPathDraw : MonoBehaviour
         
         lr.positionCount = corners.Length;
         lr.SetPositions(corners);
+
+    }
+
+    private void StopDraw()
+    {
+        stopped = true;
+     
+        lr.gameObject.SetActive(false);
+
+        CancelInvoke();
+
+        Debug.Log("stopdraw");
     }
 
     //stop drawing the path
@@ -76,10 +88,22 @@ public class NavmeshPathDraw : MonoBehaviour
         if (!recalculatePath) return;
         if (!stopped) time += Time.deltaTime;
 
-        if(time >= recalculationTime && !stopped){
-            time = 0f;
-            currentPoints = PlayerPrefs.GetInt("Gate");
-            Draw();
+        //if(time >= recalculationTime && !stopped){
+        //    time = 0f;
+        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("spacebar pressed1");
+            
+            lr.gameObject.SetActive(true);
+
+            Invoke("StopDraw", 3.0f);
+
+            Debug.Log("spacebar pressed2");
         }
+
+       currentPoints = PlayerPrefs.GetInt("Gate");
+       Draw();
+
     }
 }
