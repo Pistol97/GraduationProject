@@ -94,12 +94,13 @@ public class Enemy : MonoBehaviour
 
     void ChaseDistance()
     {
-        nav.stoppingDistance = 2;
+        //nav.stoppingDistance = 2;
 
         if (Vector3.Distance(target.position, gameObject.transform.position) <= currentEnemySightLength)
         {
             animator.SetBool("IsWalk", true);
             nav.SetDestination(new Vector3(target.position.x, 0, target.position.z));
+            //this.transform.LookAt(target);
             isChase = true;
             isPatrol = false;
             if (Vector3.Distance(target.position, gameObject.transform.position) <= enemyAttackLength)

@@ -164,7 +164,6 @@ public partial class Player : MonoBehaviour
             LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
             Debug.Log(LookTarget.name);
             GetComponent<CharacterController>().detectCollisions = false;
-            //GetComponent<CapsuleCollider>().isTrigger = false;
             StartButtonAction();
         }
     }
@@ -218,14 +217,16 @@ public partial class Player : MonoBehaviour
             _playerCam.SetActive(false);
             subCamera.SetActive(true);
 
+            ///Vector3 target = new Vector3(_playerCam.transform.position.x, _playerCam.transform.position.y, _playerCam.transform.position.z);
+
             subCamera.transform.position = _playerCam.transform.position;
             subCamera.transform.LookAt(LookTarget.transform);
+            //subCamera.transform.LookAt(target);
 
             FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
             _animator.SetBool("IsCaught", true);
 
             quickInventory.SetActive(false);
-
         }
     }
 
