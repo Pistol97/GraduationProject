@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_EnemyWalk : StateMachineBehaviour
+public class State_EnemyIdle : StateMachineBehaviour
 {
     private Enemy enemy;
 
-    private float _timer = 0f;
-    private readonly int _wait = 7;
+    private float _timer;
+    private readonly int _wait = 10;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,25 +22,13 @@ public class State_EnemyWalk : StateMachineBehaviour
 
         if (0 >= (int)_timer % _wait)
         {
-            enemy.PlayScream();
+            enemy.PlayIdle();
         }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _timer = 0f;
+    }
 }

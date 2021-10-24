@@ -35,9 +35,11 @@ public class Enemy : MonoBehaviour
     private int currentPoint;
     public bool isPatrol = false;
     
-    private AudioSource _audioSource;
+    private AudioSource[] _audioSources;
 
     [SerializeField] private AudioClip[] idle;
+    [SerializeField] private AudioClip[] scream;
+    [SerializeField] private AudioClip[] attack;
 
     private AudioClip[] walk;
 
@@ -46,7 +48,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        _audioSource = GetComponent<AudioSource>();
+        _audioSources = GetComponents<AudioSource>();
 
         nav.speed = enemySpeed;
     }
@@ -166,26 +168,47 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //private void ChangeIdle()
-    //{
-    //    if (!_audioSource[0].isPlaying)
-    //    {
-    //        _audioSource[0].clip = idle[Random.Range(0, idle.Length - 1)];
-    //        _audioSource[0].Play();
-    //    }
-    //    else
-    //    {
-    //        return;
-    //    }
-    //}
+    public void PlayIdle()
+    {
+        if (!_audioSources[0].isPlaying)
+        {
+            _audioSources[0].clip = idle[Random.Range(0, 100) % idle.Length];
+            _audioSources[0].Play();
+        }
+        else
+        {
+            return;
+        }
+    }
+    
+    public void PlayScream()
+    {
+        if (!_audioSources[0].isPlaying)
+        {
+            _audioSources[0].clip = scream[Random.Range(0, 100) % idle.Length];
+            _audioSources[0].Play();
+        }
+        else
+        {
+            return;
+        }
+    }
 
     public void PlayWalk()
     {
         walk = Resources.LoadAll<AudioClip>("Sound/FX/Zombie");
 
         int i = Random.Range(0, walk.Length - 1);
-        _audioSource.clip = walk[i];
-        _audioSource.Play();
+        _audioSources[1].clip = walk[i];
+        _audioSources[1].Play();
     }
 
+    public void PlayAttack()
+    {
+        
+
+        int i = Random.Range(0, attack.Length - 1);
+        _audioSources[0].clip = attack[i];
+        _audioSources[0].Play();
+    }
 }
