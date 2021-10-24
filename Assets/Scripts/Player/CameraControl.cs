@@ -65,7 +65,6 @@ public class CameraControl : MonoBehaviour
 
     public void CameraMovementStopForSec(int _sec)
     {
-
         SensitivityX = 0;
         SensitivityY = 0;
 
@@ -75,7 +74,6 @@ public class CameraControl : MonoBehaviour
     {
         SensitivityX = 5.0f;
         SensitivityY = 5.0f;
-
     }
 
     public float GetCameraRotationX()

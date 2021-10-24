@@ -17,7 +17,6 @@ public class NavmeshPathDraw : MonoBehaviour
 
     [SerializeField] public int currentPoints = 0;
 
-
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -64,16 +63,6 @@ public class NavmeshPathDraw : MonoBehaviour
 
     }
 
-    private void StopDraw()
-    {
-        stopped = true;
-     
-        lr.gameObject.SetActive(false);
-
-        CancelInvoke();
-
-        Debug.Log("stopdraw");
-    }
 
     //stop drawing the path
     public void Stop()
@@ -88,22 +77,11 @@ public class NavmeshPathDraw : MonoBehaviour
         if (!recalculatePath) return;
         if (!stopped) time += Time.deltaTime;
 
-        //if(time >= recalculationTime && !stopped){
-        //    time = 0f;
-        //}
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (time >= recalculationTime && !stopped)
         {
-            Debug.Log("spacebar pressed1");
-            
-            lr.gameObject.SetActive(true);
-
-            Invoke("StopDraw", 3.0f);
-
-            Debug.Log("spacebar pressed2");
+            time = 0f;
+            currentPoints = PlayerPrefs.GetInt("Gate");
+            Draw();
         }
-
-       currentPoints = PlayerPrefs.GetInt("Gate");
-       Draw();
-
     }
 }
