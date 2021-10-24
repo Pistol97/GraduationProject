@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     private int currentPoint;
     public bool isPatrol = false;
     
-    private AudioSource[] audioSources;
+    private AudioSource _audioSource;
 
     [SerializeField] private AudioClip[] idle;
 
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        audioSources = GetComponents<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
 
         nav.speed = enemySpeed;
     }
@@ -61,8 +61,6 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         ChaseDistance();
-
-        ChangeIdle();
 
         enemySightLevel = NoiseSystemManager.GetInstance().GetFearLevel();
         SightLevel();
@@ -168,26 +166,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void ChangeIdle()
-    {
-        if (!audioSources[0].isPlaying)
-        {
-            audioSources[0].clip = idle[Random.Range(0, idle.Length - 1)];
-            audioSources[0].Play();
-        }
-        else
-        {
-            return;
-        }
-    }
+    //private void ChangeIdle()
+    //{
+    //    if (!_audioSource[0].isPlaying)
+    //    {
+    //        _audioSource[0].clip = idle[Random.Range(0, idle.Length - 1)];
+    //        _audioSource[0].Play();
+    //    }
+    //    else
+    //    {
+    //        return;
+    //    }
+    //}
 
     public void PlayWalk()
     {
         walk = Resources.LoadAll<AudioClip>("Sound/FX/Zombie");
 
         int i = Random.Range(0, walk.Length - 1);
-        audioSources[1].clip = walk[i];
-        audioSources[1].Play();
+        _audioSource.clip = walk[i];
+        _audioSource.Play();
     }
 
 }
