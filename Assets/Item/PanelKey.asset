@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 744289ef62e1b784aab5c458a9c749c1, type: 3}
-  m_Name: Key
+  m_Name: PanelKey
   m_EditorClassIdentifier: 
-  itemName: Key
-  itemDescription: "\uC5F4\uC1E0\uC785\uB2C8\uB2E4."
+  itemName: PanelKey
+  itemDescription: "PanelKey\uC785\uB2C8\uB2E4."
   itemType: 4
-  itemImage: {fileID: 21300000, guid: 4fb80bf3d194a2e40989027bd7268f37, type: 3}
-  itemPrefab: {fileID: 916447816750997065, guid: 76fde53c230b63742acdc522422bd1b6,
+  itemImage: {fileID: 21300000, guid: d3c5e83b33c7e6a4b814bcd697f1d192, type: 3}
+  itemPrefab: {fileID: 525687614771603224, guid: 9f52dd0f725e5e048aedccdf2c9dbffa,
     type: 3}
