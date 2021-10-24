@@ -494,6 +494,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavmeshPathDraw
       objectReference: {fileID: 0}
+    - target: {fileID: 2746013743044999982, guid: a6231d1f4001a2745bca00958b0d2163,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6231d1f4001a2745bca00958b0d2163, type: 3}
 --- !u!4 &2746013742125224439 stripped

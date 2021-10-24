@@ -39,6 +39,9 @@ public class Sonar : MonoBehaviour
     [SerializeField] private Material outline_enemy;
     [SerializeField] private Material outline_item;
     [SerializeField] private Material _handprint;
+
+    private NavmeshPathDraw _navPath;
+
     #endregion
 
     /// <summary>
@@ -87,6 +90,8 @@ public class Sonar : MonoBehaviour
         _handprint.SetColor("_Color", Color.red);
 
         _collider = GetComponent<SphereCollider>();
+
+        _navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
     }
 
     private void OnDestroy()
