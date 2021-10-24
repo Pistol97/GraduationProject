@@ -91,7 +91,6 @@ public class Sonar : MonoBehaviour
 
         _collider = GetComponent<SphereCollider>();
 
-        _navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
     }
 
     private void OnDestroy()

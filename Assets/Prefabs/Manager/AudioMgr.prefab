@@ -126,8 +126,8 @@ MonoBehaviour:
   - Name: Use_Battery
     Clips:
     - {fileID: 8300000, guid: 8b862cb77c75ed5478a6aef11d590765, type: 3}
-    Volume: 0.3
-    Pitch: 0.8
+    Volume: 0.5
+    Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: QuestComplete

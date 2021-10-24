@@ -118,7 +118,6 @@ public partial class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        //FearRange = feartest;
         _barFear.value = FearRange;
 
         if (0f <= FearRange / _maxFearRange * 100 && 30f > FearRange / _maxFearRange * 100)

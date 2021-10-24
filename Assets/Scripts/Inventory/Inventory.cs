@@ -84,9 +84,10 @@ public class Inventory : MonoBehaviour
         }
         if (QuickSlots[_num - 1].itemCount > 0)
         {
-            if ("EnergyCell" == QuickSlots[_num - 1].item.itemName)
+            if ("배터리" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseCell(50);
+                Debug.Log("배터리 사용");
                 AudioMgr.Instance.PlaySound("Use_Battery");
             }
             else if("Syringe"== QuickSlots[_num - 1].item.itemName)
