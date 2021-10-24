@@ -19,7 +19,7 @@ public partial class Player : MonoBehaviour
     private GameObject _playerCam;
     private CameraControl _camControl;
     private Animator _animator;
-    //private NavmeshPathDraw _navPath;
+    private NavmeshPathDraw _navPath;
 
     [SerializeField] private GameObject subCamera;
 
@@ -75,7 +75,7 @@ public partial class Player : MonoBehaviour
         _playerCam = transform.GetChild(0).gameObject;
         _camControl = transform.GetChild(0).GetComponent<CameraControl>();
         _animator = GetComponentInChildren<Animator>();
-        //_navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
+        _navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
     }
 
     private void Start()
@@ -206,8 +206,15 @@ public partial class Player : MonoBehaviour
             }
             _barSonar.value = _barSonar.value - use_sonar;
 
-            //_navPath.gameObject.SetActive(true);
+            _navPath.gameObject.SetActive(true);
+
+            Invoke("StopNavLine", 5f);
         }
+    }
+
+    private void StopNavLine()
+    {
+        _navPath.gameObject.SetActive(false);
     }
 
     private void StartButtonAction()
