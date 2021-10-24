@@ -62,10 +62,10 @@ public class Enemy : MonoBehaviour
     {
         ChaseDistance();
 
-        ChangeIdle();
-
         enemySightLevel = NoiseSystemManager.GetInstance().GetFearLevel();
         SightLevel();
+
+        ChangeIdle();
     }
 
     private void FixedUpdate()
@@ -94,18 +94,21 @@ public class Enemy : MonoBehaviour
 
     void ChaseDistance()
     {
-        nav.stoppingDistance = 2;
+        //nav.stoppingDistance = 2;
 
         if (Vector3.Distance(target.position, gameObject.transform.position) <= currentEnemySightLength)
         {
             animator.SetBool("IsWalk", true);
             nav.SetDestination(new Vector3(target.position.x, 0, target.position.z));
+            //this.transform.LookAt(target);
             isChase = true;
             isPatrol = false;
             if (Vector3.Distance(target.position, gameObject.transform.position) <= enemyAttackLength)
             {
                 animator.SetBool("IsWalk", false);
                 animator.SetBool("IsAttack", true);
+
+                Debug.Log("공격중");
             }
             else
             {
