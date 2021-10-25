@@ -75,8 +75,8 @@ public class SelectionManager : MonoBehaviour
 
                 if (null != hit.transform.GetComponent<ILockedObject>())
                 {
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("Key"));
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("PanelKey"));
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("열쇠"));
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("패널키"));
                 }
 
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();

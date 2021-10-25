@@ -5,7 +5,7 @@ using TMPro;
 /// <summary>
 /// Mark a transform as an invisibility revealer
 /// </summary>
-//[ExecuteInEditMode()]
+[ExecuteInEditMode()]
 public class Sonar : MonoBehaviour
 {
     private SphereCollider _collider;
