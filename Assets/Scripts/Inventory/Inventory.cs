@@ -226,5 +226,30 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+    } 
+    
+    public string UseKey(string _item)
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            if (Slots[i].item != null)
+            {
+                if (Slots[i].item.itemName == _item)
+                {
+                    Slots[i].SetSlotCount(-1);
+                    Debug.Log(_item + "사용");
+
+                    return _item;
+                }
+                else
+                {
+                    Debug.Log(_item + "이(가) 없다");
+
+                    return null;
+                }
+            }
+        }
+
+        return null;
     }
 }

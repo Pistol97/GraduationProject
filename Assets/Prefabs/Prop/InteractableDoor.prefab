@@ -129,9 +129,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f0a757cafc739458a75b5430a4e5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isLockedDoor: 0
+  _necessaryKey: 
   doorSounds:
   - {fileID: 8300000, guid: cf37d28b6af5bb24b9090e2b620169c8, type: 3}
   - {fileID: 8300000, guid: fa8a3799a9dfd3f49b634a62f43d710b, type: 3}
+  - {fileID: 8300000, guid: 7bb53a55a691b114aaeb941ea37cc9b6, type: 3}
+  - {fileID: 8300000, guid: 1389c8cfba2994848b4a3f15fbe8d644, type: 3}
 --- !u!82 &8882289430961272789
 AudioSource:
   m_ObjectHideFlags: 0

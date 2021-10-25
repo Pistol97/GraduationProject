@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class Door : MonoBehaviour, IInteractable, ILockedObject
 {
     private Animator animator;
     private AudioSource audioSource;
+
+    [SerializeField] private bool _isLockedDoor;
+    [SerializeField] private string _necessaryKey;
 
     [SerializeField] private AudioClip[] doorSounds;
 
@@ -13,20 +16,48 @@ public class Door : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void ObjectInteract()
+    public void TryUnlock(string name)
     {
-
-        if (!animator.GetBool("IsOpen"))
+        if(name == _necessaryKey)
         {
-            animator.SetBool("IsOpen", true);
-            audioSource.clip = doorSounds[0];
-            audioSource.Play();
+            _isLockedDoor = false;
+
+            AudioMgr.Instance.PlaySound("Unlock");
+            FindObjectOfType<EventMessage>().DisplayMessage(name + "를 사용했다");
         }
 
         else
         {
-            animator.SetBool("IsOpen", false);
-            audioSource.clip = doorSounds[1];
+            return;
         }
     }
+
+    public void ObjectInteract()
+    {
+        if(_isLockedDoor)
+        {
+            FindObjectOfType<EventMessage>().DisplayMessage("문이 잠겨 있다");
+            audioSource.clip = doorSounds[2];
+            audioSource.Play();
+        }
+
+
+        else
+        {
+            if (!animator.GetBool("IsOpen"))
+            {
+                animator.SetBool("IsOpen", true);
+                audioSource.clip = doorSounds[0];
+                audioSource.Play();
+            }
+
+            else
+            {
+                animator.SetBool("IsOpen", false);
+                audioSource.clip = doorSounds[1];
+            }
+        }
+    }
+
+
 }

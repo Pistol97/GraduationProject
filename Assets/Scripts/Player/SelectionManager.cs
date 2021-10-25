@@ -72,6 +72,13 @@ public class SelectionManager : MonoBehaviour
             if (hit.transform.CompareTag("Interactable"))
             {
                 Debug.Log("Use Interactable Object");
+
+                if (null != hit.transform.GetComponent<ILockedObject>())
+                {
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("Key"));
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("PanelKey"));
+                }
+
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();
             }
         }
@@ -84,15 +91,15 @@ public class SelectionManager : MonoBehaviour
             {
                 Debug.Log(_gameObject.GetComponent<ItemPickUp>().item.itemName + "획득했습니다.");
 
-                //퀘스트 아이템인지 확인
-                if (_gameObject.GetComponent<ItemPickUp>().item.itemName == QuestDataController.GetInstance().GetQuestItem())
-                {
-                    QuestDataController.GetInstance().SetQuest(1);
-                    questcomplete = true;
-                    txt_QuestComplete.SetActive(true);
-                    AudioMgr.Instance.PlaySound("QuestComplete");
-                    Invoke("QuestCompleteSetActiveFalse", 2);
-                }
+                ////퀘스트 아이템인지 확인
+                //if (_gameObject.GetComponent<ItemPickUp>().item.itemName == QuestDataController.GetInstance().GetQuestItem())
+                //{
+                //    QuestDataController.GetInstance().SetQuest(1);
+                //    questcomplete = true;
+                //    txt_QuestComplete.SetActive(true);
+                //    AudioMgr.Instance.PlaySound("QuestComplete");
+                //    Invoke("QuestCompleteSetActiveFalse", 2);
+                //}
 
                 inven.AcquireItem(_gameObject.GetComponent<ItemPickUp>().item);
                 AudioMgr.Instance.PlaySound("PickUp");
@@ -122,11 +129,11 @@ public class SelectionManager : MonoBehaviour
                 actionText.gameObject.SetActive(true);
                 actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
             }
-            if (hit.transform.CompareTag("Jumpable"))
-            {
-                actionText.gameObject.SetActive(true);
-                actionText.text = "뛰어넘기 " + "<color=yellow>" + "(F)" + "</color>";
-            }
+            //if (hit.transform.CompareTag("Jumpable"))
+            //{
+            //    actionText.gameObject.SetActive(true);
+            //    actionText.text = "뛰어넘기 " + "<color=yellow>" + "(F)" + "</color>";
+            //}
         }
         else
         {
