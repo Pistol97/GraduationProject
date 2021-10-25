@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744289ef62e1b784aab5c458a9c749c1, type: 3}
   m_Name: PanelKey
   m_EditorClassIdentifier: 
-  itemName: PanelKey
+  itemName: "\uD328\uB110 \uD0A4"
   itemDescription: "PanelKey\uC785\uB2C8\uB2E4."
   itemType: 4
   itemImage: {fileID: 21300000, guid: d3c5e83b33c7e6a4b814bcd697f1d192, type: 3}
