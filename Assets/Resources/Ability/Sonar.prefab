@@ -45,7 +45,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 16.666666
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3071520209680887503
 MonoBehaviour:
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissappear: 0.8888889
-  Radius: 20
+  Radius: 3.3333335
   Size: {x: 0, y: 0, z: 0}
   Gradient: 1
   GradientColor: {r: 1, g: 1, b: 1, a: 0}
@@ -71,7 +71,18 @@ MonoBehaviour:
   outline: {fileID: 2100000, guid: 8493976cc23cdb445abbda6e1c30948c, type: 2}
   outline_enemy: {fileID: 2100000, guid: 23ed39e1e6644f24f9faf3430bb824ac, type: 2}
   outline_item: {fileID: 2100000, guid: 406dfc98f769d174d898e5d9dd757b33, type: 2}
-  _handprint: {fileID: 2100000, guid: 9d84c989175dbd746ab7ed7145b9b647, type: 2}
+  _handprints:
+  - {fileID: 2100000, guid: 453c72d15759f4140bc5a878a499626a, type: 2}
+  - {fileID: 2100000, guid: dfab16d610fa44044be6e6a9400f1274, type: 2}
+  - {fileID: 2100000, guid: 3221c5694e7c50747861e19969a25b20, type: 2}
+  - {fileID: 2100000, guid: 0d9d5c60d6247684ba796ba82f471d24, type: 2}
+  - {fileID: 2100000, guid: 822718b6141a85647bbbb9fa6ffb8578, type: 2}
+  - {fileID: 2100000, guid: 41be9e9f9d4085746b54fd719cb44ab7, type: 2}
+  - {fileID: 2100000, guid: ee9629361170a244d864c764d00660c1, type: 2}
+  - {fileID: 2100000, guid: 0d7189af08c14144ebc11962aa174c71, type: 2}
+  - {fileID: 2100000, guid: 52469c33e1c70d54b8d5adcd809376b8, type: 2}
+  - {fileID: 2100000, guid: befb66b15c6360d4086e5854421eacc2, type: 2}
+  - {fileID: 2100000, guid: b94836d572e4c3b4f9dd55f5c0f570f6, type: 2}
   _isTest: 0
 --- !u!82 &801287107898841146
 AudioSource:
@@ -195,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 6114746493649430511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16.666666, y: 16.666666, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 0}
   m_Children: []
   m_Father: {fileID: 3071520209680887502}
   m_RootOrder: 0

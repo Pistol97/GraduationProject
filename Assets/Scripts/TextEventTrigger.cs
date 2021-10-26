@@ -25,4 +25,12 @@ public class TextEventTrigger : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
         }
     }
+
+    private void OnDestroy()
+    {
+        foreach(var obj in _eventObjects)
+        {
+            Destroy(obj);
+        }
+    }
 }

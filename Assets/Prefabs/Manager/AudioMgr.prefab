@@ -160,3 +160,10 @@ MonoBehaviour:
     Pitch: 1
     IsLoop: 1
     source: {fileID: 0}
+  - Name: Unlock
+    Clips:
+    - {fileID: 8300000, guid: 1389c8cfba2994848b4a3f15fbe8d644, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 1
+    source: {fileID: 0}

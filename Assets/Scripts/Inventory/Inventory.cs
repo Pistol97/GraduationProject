@@ -90,7 +90,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("배터리 사용");
                 AudioMgr.Instance.PlaySound("Use_Battery");
             }
-            else if("Syringe"== QuickSlots[_num - 1].item.itemName)
+            else if("진정제"== QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseSyringe(50);
                 AudioMgr.Instance.PlaySound("Use_Syringe");

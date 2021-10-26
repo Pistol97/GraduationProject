@@ -20,7 +20,9 @@ public class Archive : MonoBehaviour
     {
         _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
         _noteText = transform.GetChild(1).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
-        _epilogue = transform.GetChild(2).gameObject;     
+        _epilogue = transform.GetChild(2).gameObject;
+        transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     private void Start()

@@ -5,7 +5,7 @@ using TMPro;
 /// <summary>
 /// Mark a transform as an invisibility revealer
 /// </summary>
-[ExecuteInEditMode()]
+//[ExecuteInEditMode()]
 public class Sonar : MonoBehaviour
 {
     private SphereCollider _collider;
@@ -38,7 +38,7 @@ public class Sonar : MonoBehaviour
     [SerializeField] private Material outline;
     [SerializeField] private Material outline_enemy;
     [SerializeField] private Material outline_item;
-    [SerializeField] private Material _handprint;
+    [SerializeField] private Material[] _handprints;
 
     private NavmeshPathDraw _navPath;
 
@@ -87,7 +87,12 @@ public class Sonar : MonoBehaviour
         outline.SetFloat("_NormalStrength", 1f);
         outline_enemy.SetFloat("_NormalStrength", 1f);
         outline_item.SetFloat("_NormalStrength", 1f);
-        _handprint.SetColor("_Color", Color.red);
+
+        foreach (var print in _handprints)
+        {
+            print.SetColor("_Color", Color.red);
+        }
+
 
         _collider = GetComponent<SphereCollider>();
 
@@ -174,8 +179,11 @@ public class Sonar : MonoBehaviour
             outline.SetFloat("_NormalStrength", dissappear);
             outline_enemy.SetFloat("_NormalStrength", dissappear);
             outline_item.SetFloat("_NormalStrength", dissappear);
-            _handprint.SetColor("_Color", new Color(_disappearColor.r, _disappearColor.g, _disappearColor.b, dissappear));
-            //Debug.Log(outline.GetFloat("_NormalStrength"));
+
+            foreach (var print in _handprints)
+            {
+                print.SetColor("_Color", new Color(_disappearColor.r, _disappearColor.g, _disappearColor.b, dissappear));
+            }
 
             rangeSpeed = 0f;
             //detectedEnemy.Clear();  //탐색 리스트 클리어
