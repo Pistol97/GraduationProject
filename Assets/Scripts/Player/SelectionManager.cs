@@ -14,6 +14,14 @@ public class SelectionManager : MonoBehaviour
 
     private RaycastHit hit; //충돌체 정보 저장
 
+    public RaycastHit Hit
+    {
+        get
+        {
+            return hit;
+        }
+    }
+
     //텍스트 출력
     [SerializeField]
     private Text actionText;
@@ -72,6 +80,11 @@ public class SelectionManager : MonoBehaviour
             if (hit.transform.CompareTag("Interactable"))
             {
                 Debug.Log("Use Interactable Object");
+
+                if("End_Gate" == hit.transform.name)
+                {
+                    StartCoroutine(transform.parent.GetComponent<Player>().Fade.GameEnd());
+                }
 
                 if (null != hit.transform.GetComponent<ILockedObject>())
                 {

@@ -28,9 +28,15 @@ public partial class Player : MonoBehaviour
         get;
         private set;
     }
-    #endregion
 
-    public float feartest;
+    public FadeEffect Fade
+    {
+        get
+        {
+            return panel.GetComponent<FadeEffect>();
+        }
+    }
+    #endregion
 
     public float FearRange
     {
@@ -76,13 +82,14 @@ public partial class Player : MonoBehaviour
         _camControl = transform.GetChild(0).GetComponent<CameraControl>();
         _animator = GetComponentInChildren<Animator>();
         _navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
+        _navPath.gameObject.SetActive(false);
     }
 
     private void Start()
     {
         Hud = GameObject.Find("Canvas_HUD").GetComponent<Canvas>();
-        _barFear = Hud.transform.GetChild(2).GetComponent<Slider>();
-        _barSonar = Hud.transform.GetChild(3).GetComponent<Slider>();
+        _barFear = Hud.transform.GetChild(3).GetComponent<Slider>();
+        _barSonar = Hud.transform.GetChild(4).GetComponent<Slider>();
         FearRange = 0f;
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
@@ -280,6 +287,6 @@ public partial class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
-        SceneManager.LoadScene("GameLobby");
+        SceneManager.LoadScene("MainMenu");
     }
 }

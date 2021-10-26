@@ -215,7 +215,8 @@ public class Inventory : MonoBehaviour
         {
             if (Slots[i].item != null)
             {
-                if (Slots[i].item.itemName == _item)
+                if (Slots[i].item.itemName == _item 
+                    && FindObjectOfType<SelectionManager>().)
                 {
                     Slots[i].SetSlotCount(-1);
                     Debug.Log(_item + "사용");
