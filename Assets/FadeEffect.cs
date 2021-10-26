@@ -40,8 +40,14 @@ public class FadeEffect : MonoBehaviour
         gameObject.SetActive(true);
         _fadeout = true;
 
-        yield return new WaitForSeconds(2f);
+        Destroy(AudioMgr.Instance.gameObject);
 
+        GetComponent<AudioSource>().Play();
+
+        yield return new WaitForSeconds(5f);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
 }

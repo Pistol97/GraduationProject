@@ -753,16 +753,6 @@ PrefabInstance:
       objectReference: {fileID: 459268285}
     - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
         type: 3}
-      propertyPath: sceneName
-      value: Develop
-      objectReference: {fileID: 0}
-    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
-        type: 3}
-      propertyPath: buttonIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3924423839738127586, guid: 3c614e9cd35bf468b8d2f1689cc4cca8,
-        type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 459268285}

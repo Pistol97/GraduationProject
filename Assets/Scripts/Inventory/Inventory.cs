@@ -90,7 +90,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("배터리 사용");
                 AudioMgr.Instance.PlaySound("Use_Battery");
             }
-            else if("진정제"== QuickSlots[_num - 1].item.itemName)
+            else if ("진정제" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseSyringe(50);
                 AudioMgr.Instance.PlaySound("Use_Syringe");
@@ -140,7 +140,7 @@ public class Inventory : MonoBehaviour
 
     public void OpenScripts()
     {
-        if(inventoryActivated)
+        if (inventoryActivated)
         {
             go_SlotParent.SetActive(false);
             go_Scripts.SetActive(true);
@@ -162,7 +162,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < Slots.Length; i++)
         {
             //이미 존재하는 아이템일 경우
-            if(QuickSlots[i].item != null)
+            if (QuickSlots[i].item != null)
             {
                 if (QuickSlots[i].item.itemName == item.itemName)
                 {
@@ -189,7 +189,7 @@ public class Inventory : MonoBehaviour
 
     public bool FindItemWithName(string _item)
     {
-        for(int i = 0; i<Slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
             if (Slots[i].item.itemName != null)
             {
@@ -226,11 +226,11 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-    } 
-    
+    }
+
     public string UseKey(string _item)
     {
-        for (int i = 0; i < Slots.Length; i++)
+        for (int i = 0; i < QuickSlots.Length; i++)
         {
             //이미 존재하는 아이템일 경우
             if (QuickSlots[i].item != null)
@@ -244,6 +244,10 @@ public class Inventory : MonoBehaviour
                     return _item;
                 }
             }
+        }
+
+        for (int i = 0; i < Slots.Length; i++)
+        {
             if (Slots[i].item != null)
             {
                 if (Slots[i].item.itemName == _item
