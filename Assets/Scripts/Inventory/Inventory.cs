@@ -232,6 +232,18 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < Slots.Length; i++)
         {
+            //이미 존재하는 아이템일 경우
+            if (QuickSlots[i].item != null)
+            {
+                if (QuickSlots[i].item.itemName == _item
+                    && FindObjectOfType<SelectionManager>().Hit.transform.GetComponent<ILockedObject>().IsPair(_item))
+                {
+                    QuickSlots[i].SetSlotCount(-1);
+                    Debug.Log(_item + "사용");
+
+                    return _item;
+                }
+            }
             if (Slots[i].item != null)
             {
                 if (Slots[i].item.itemName == _item

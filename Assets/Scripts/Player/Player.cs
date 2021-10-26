@@ -194,6 +194,11 @@ public partial class Player : MonoBehaviour
     public void UseSyringe(int val)
     {
         FearRange -= val;
+
+        if(0 >= FearRange)
+        {
+            FearRange = 0;
+        }
     }
 
     private void ActiveSonar()
