@@ -33,16 +33,16 @@ public class NoiseSystemManager : MonoBehaviour
 
     private void Start()
     {
-        currentFear = 0;
-        fearLevel = 1;
-        MaxFear = 400;
-        fearSlider.maxValue = MaxFear;
+        //currentFear = 0;
+        //fearLevel = 1;
+        //MaxFear = 400;
+        //fearSlider.maxValue = MaxFear;
     }
 
     private void Update()
     {
-        fearSlider.value = currentFear;
-        SetFearLevel();
+        //fearSlider.value = currentFear;
+        //SetFearLevel();
     }
 
     public float GetFear()

@@ -32,6 +32,19 @@ public class Door : MonoBehaviour, IInteractable, ILockedObject
         }
     }
 
+    public bool IsPair(string name)
+    {
+        if(name == _necessaryKey)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
     public void ObjectInteract()
     {
         if(_isLockedDoor)

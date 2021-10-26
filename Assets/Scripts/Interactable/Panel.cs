@@ -25,6 +25,19 @@ public class Panel : MonoBehaviour, IInteractable, ILockedObject
         }
     }
 
+    public bool IsPair(string name)
+    {
+        if (name == _necessaryKey)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
     //인터페이스 함수
     public void ObjectInteract()
     {
