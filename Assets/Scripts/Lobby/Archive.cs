@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using System.Text;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -9,18 +12,45 @@ using UnityEngine.UI;
 /// </summary>
 public class Archive : MonoBehaviour
 {
+    [System.Serializable]
+    private class NoteData
+    {
+        public int ID = 0;
+        public bool IsUnlock = false;
+        public string Context = "";
+    }
+
+    [System.Serializable]
+    private class NoteDataRes
+    {
+        public NoteData[] NoteDatas = new NoteData[9];
+    }
+
+    private readonly string _fileName = "ArchiveData";
+
     [Header("잠금해제 스프라이트")]
     [SerializeField] private Sprite _unlockSprite;
 
-    private GameObject _epilogue;
-    private Text _noteText;
     private StoryButton[] _storyButtons;
+    private Text _noteText;
+
+    //private List<uint> _ids;
+
+    private List<NoteData> notes = new List<NoteData>(9);
+
+    private Dictionary<uint, NoteData> _datas;
 
     private void Awake()
     {
-        _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
-        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
-        _epilogue = transform.GetChild(2).gameObject;
+        //NoteDataRes datas = new NoteDataRes();
+
+        //string json = JsonManager.Instance.ObjectToJson(datas);
+
+        //JsonManager.Instance.CreateJsonFile(Application.dataPath, _fileName, json);
+
+        _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴, 배열
+        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();   //아카이브 메뉴 상에서 노트 내용을 표시하는 텍스트
+        
         transform.parent.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
@@ -38,12 +68,6 @@ public class Archive : MonoBehaviour
                 button.GetComponent<Image>().sprite = _unlockSprite;
                 count++;
             }
-        }
-
-        if(_storyButtons.Length <= count && !_epilogue.activeSelf)
-        {
-            _epilogue.SetActive(true);
-            Debug.Log("에필로그");
         }
     }
 

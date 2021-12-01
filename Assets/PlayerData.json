@@ -1,11 +1,6 @@
 {
-    "Quests": [
-        false,
-        false,
-        false
-    ],
     "Archives": [
-        false,
+        true,
         false,
         false,
         false,

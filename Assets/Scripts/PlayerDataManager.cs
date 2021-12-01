@@ -20,7 +20,6 @@ public class PlayerDataManager : MonoBehaviour
     [System.Serializable]
     private class PlayerData
     {
-        public bool[] Quests = new bool[3];
         public bool[] Archives = new bool[9];
     }
 
@@ -206,17 +205,5 @@ public class PlayerDataManager : MonoBehaviour
             i++;
         }
 
-    }
-
-    /// <summary>
-    /// 플레이어 업그레이드 프로필 연동 메소드
-    /// </summary>
-    public void SetQuestData(int _questId, bool _bool)
-    {
-        _playerData.Quests[_questId] = _bool;
-    }
-    public bool GetQuestData(int _questId)
-    {
-        return _playerData.Quests[_questId];
     }
 }
