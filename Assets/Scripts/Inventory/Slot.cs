@@ -80,16 +80,16 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       if(eventData.button == PointerEventData.InputButton.Right)
-        {
-            if(item != null)
-            {
-                AudioMgr.Instance.PlaySound("Inventory_Click");
-                //소모
-                Debug.Log(item.itemName + "을 사용하였습니다.");
-                SetSlotCount(-1);
-            }
-        }
+       //if(eventData.button == PointerEventData.InputButton.Right)
+       // {
+       //     if(item != null)
+       //     {
+       //         AudioMgr.Instance.PlaySound("Inventory_Click");
+       //         //소모
+       //         Debug.Log(item.itemName + "을 사용하였습니다.");
+       //         SetSlotCount(-1);
+       //     }
+       // }
     }
 
     public void OnBeginDrag(PointerEventData eventData)

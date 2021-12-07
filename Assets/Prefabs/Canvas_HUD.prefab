@@ -7897,6 +7897,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7846728438458824421, guid: 1ad3054d1d9a9314d87841ae1171f990,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7846728438458824422, guid: 1ad3054d1d9a9314d87841ae1171f990,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8478,6 +8483,11 @@ PrefabInstance:
     - target: {fileID: 6708260294743734274, guid: 69045da0a42a53a48bfade204b84719e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708260294743734275, guid: 69045da0a42a53a48bfade204b84719e,
+        type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708260294815179804, guid: 69045da0a42a53a48bfade204b84719e,
