@@ -23,7 +23,7 @@ public class Door : MonoBehaviour, IInteractable, ILockedObject
             _isLockedDoor = false;
 
             AudioMgr.Instance.PlaySound("Unlock");
-            FindObjectOfType<EventMessage>().DisplayMessage(name + "를 사용했다");
+            FindObjectOfType<EventMessage>().DisplayMessage("Use " + name);
         }
 
         else
@@ -49,7 +49,7 @@ public class Door : MonoBehaviour, IInteractable, ILockedObject
     {
         if(_isLockedDoor)
         {
-            FindObjectOfType<EventMessage>().DisplayMessage("문이 잠겨 있다");
+            FindObjectOfType<EventMessage>().DisplayMessage("It's locked");
             audioSource.clip = doorSounds[2];
             audioSource.Play();
         }

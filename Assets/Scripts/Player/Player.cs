@@ -245,7 +245,7 @@ public partial class Player : MonoBehaviour
             subCamera.transform.LookAt(LookTarget.transform);
             //subCamera.transform.LookAt(target);
 
-            FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
+            FindObjectOfType<EventMessage>().DisplayMessage("Bashing A + D to escape");
             _animator.SetBool("IsCaught", true);
 
             quickInventory.SetActive(false);

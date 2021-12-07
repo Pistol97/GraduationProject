@@ -57,7 +57,7 @@ public class WhisperObject : MonoBehaviour, IInteractable
     private void CollectWhispers(Player player)
     {
         _player.GetComponentInChildren<SelectionManager>().ActionText.gameObject.SetActive(true);
-        _player.GetComponentInChildren<SelectionManager>().ActionText.text = "<color=yellow>" + " (F) " + "</color>" + "누른채 유지";
+        _player.GetComponentInChildren<SelectionManager>().ActionText.text = "Hold" + "<color=yellow>" + " (F) " + "</color>";
 
         //몇 초간 키 연속 입력
         if (Input.GetKey(KeyCode.F) && _holdSec >= _currentSec)

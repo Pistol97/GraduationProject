@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744289ef62e1b784aab5c458a9c749c1, type: 3}
   m_Name: EnergyCell
   m_EditorClassIdentifier: 
-  itemName: "\uBC30\uD130\uB9AC"
-  itemDescription: "SONAR \uAC8C\uC774\uC9C0\uB97C \uCDA9\uC804\uD55C\uB2E4."
+  itemName: Battery
+  itemDescription: Fill the SONAR gauge.
   itemType: 0
   itemImage: {fileID: 21300000, guid: 24b4e9817bdb42143beb113595e52e18, type: 3}
   itemPrefab: {fileID: 8860734276067156624, guid: cc9309e7448d15c4d9d981d09d228530,

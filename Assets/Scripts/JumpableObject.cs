@@ -22,7 +22,7 @@ public class JumpableObject : MonoBehaviour
             }
 
             _player.GetComponentInChildren<SelectionManager>().ActionText.gameObject.SetActive(true);
-            _player.GetComponentInChildren<SelectionManager>().ActionText.text = "<color=yellow>" + " (F) " + "</color>" + "뛰어넘기";
+            _player.GetComponentInChildren<SelectionManager>().ActionText.text = "<color=yellow>" + " (F) " + "</color>" + "Jump over";
 
 
             if (Input.GetKeyDown(KeyCode.F))

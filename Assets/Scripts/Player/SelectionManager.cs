@@ -88,8 +88,8 @@ public class SelectionManager : MonoBehaviour
 
                 if (null != hit.transform.GetComponent<ILockedObject>())
                 {
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("열쇠"));
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("패널키"));
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("Key"));
+                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("PanelKey"));
                 }
 
                 hit.transform.GetComponent<IInteractable>().ObjectInteract();
@@ -140,7 +140,7 @@ public class SelectionManager : MonoBehaviour
             if (hit.transform.CompareTag("Interactable"))
             {
                 actionText.gameObject.SetActive(true);
-                actionText.text = "사용 " + "<color=yellow>" + "(E)" + "</color>";
+                actionText.text = "<color=yellow>" + "(E)" + "</color>" + "Use";
             }
             //if (hit.transform.CompareTag("Jumpable"))
             //{
@@ -159,7 +159,7 @@ public class SelectionManager : MonoBehaviour
         pickupActivated = true;
         _gameObject = hit.transform.gameObject;
         actionText.gameObject.SetActive(true);
-        actionText.text = _gameObject.GetComponent<ItemPickUp>().item.itemName + "획득 " + "<color=yellow>" + "(E)" + "</color>";
+        actionText.text = "<color=yellow>" + "(E)" + "</color>" + " Take " + _gameObject.GetComponent<ItemPickUp>().item.itemName;
     }
 
     private void InfoDisappear()

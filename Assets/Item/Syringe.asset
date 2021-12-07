@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744289ef62e1b784aab5c458a9c749c1, type: 3}
   m_Name: Syringe
   m_EditorClassIdentifier: 
-  itemName: "\uC9C4\uC815\uC81C"
-  itemDescription: "\uACF5\uD3EC\uC218\uCE58\uB97C \uC904\uC5EC\uC90D\uB2C8\uB2E4."
+  itemName: Sedative
+  itemDescription: Reduce fear gauge.
   itemType: 0
   itemImage: {fileID: 21300000, guid: dd5322e340419e843af8440b2cedf12a, type: 3}
   itemPrefab: {fileID: 8098227619664721683, guid: ef33527de185be84cab590f41a60cc27,

@@ -16,7 +16,7 @@ public class Panel : MonoBehaviour, IInteractable, ILockedObject
             _isLocked = false;
 
             AudioMgr.Instance.PlaySound("Unlock");
-            FindObjectOfType<EventMessage>().DisplayMessage(name + "를 사용했다");
+            FindObjectOfType<EventMessage>().DisplayMessage("Use " + name);
         }
 
         else
@@ -43,7 +43,7 @@ public class Panel : MonoBehaviour, IInteractable, ILockedObject
     {
         if (_isLocked)
         {
-            FindObjectOfType<EventMessage>().DisplayMessage("조작하려면 열쇠가 필요하다");
+            FindObjectOfType<EventMessage>().DisplayMessage("Need Panel Key");
             //audioSource.clip = doorSounds[2];
             //audioSource.Play();
         }

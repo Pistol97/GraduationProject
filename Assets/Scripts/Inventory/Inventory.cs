@@ -78,24 +78,24 @@ public class Inventory : MonoBehaviour
         //itemtype이 useable이 아니면 리턴
         if (QuickSlots[_num - 1].item.itemType.ToString() != "Useable")
         {
-            FindObjectOfType<EventMessage>().DisplayMessage("사용 할 수 없는 아이템");
+            FindObjectOfType<EventMessage>().DisplayMessage("Not usable item");
             AudioMgr.Instance.PlaySound("Error");
             return;
         }
         if (QuickSlots[_num - 1].itemCount > 0)
         {
-            if ("배터리" == QuickSlots[_num - 1].item.itemName)
+            if ("Battery" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseCell(50);
                 Debug.Log("배터리 사용");
                 AudioMgr.Instance.PlaySound("Use_Battery");
             }
-            else if ("진정제" == QuickSlots[_num - 1].item.itemName)
+            else if ("Sedative" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseSyringe(50);
                 AudioMgr.Instance.PlaySound("Use_Syringe");
             }
-            FindObjectOfType<EventMessage>().DisplayMessage(QuickSlots[_num - 1].item.itemName + " 사용");
+            FindObjectOfType<EventMessage>().DisplayMessage("Use " + QuickSlots[_num - 1].item.itemName);
             QuickSlots[_num - 1].SetSlotCount(-1);
         }
     }
