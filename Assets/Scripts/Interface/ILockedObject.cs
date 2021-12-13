@@ -1,5 +1,20 @@
-﻿public interface ILockedObject
+﻿using UnityEngine;
+
+public abstract class LockedObject : MonoBehaviour
 {
-    void TryUnlock(string name);
-    bool IsPair(string name);
+    protected bool _isLocked;
+    public bool IsLocked
+    {
+        get
+        {
+            return _isLocked;
+        }
+
+        set
+        {
+            _isLocked = value;
+        }
+    }
+
+    public abstract void TryUnlock(Inventory inventory);
 }

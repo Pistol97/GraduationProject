@@ -2,58 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Panel : MonoBehaviour, IInteractable, ILockedObject
+public class Panel : LockedObject, IInteractable
 {
-    [SerializeField] private bool _isLocked;
+    [SerializeField] private bool _isLockedPanel;
     [SerializeField] private string _necessaryKey;
 
     [SerializeField] private GameObject[] EventObjects;
 
-    public void TryUnlock(string name)
+    [SerializeField] private GameObject door;
+
+    private void Awake()
     {
-        if (name == _necessaryKey)
+        _isLocked = _isLockedPanel;
+    }
+
+    public override void TryUnlock(Inventory inventory)
+    {
+        if (inventory.FindItemWithName(_necessaryKey) && _isLocked)
         {
+            inventory.UseKey(_necessaryKey);
+
             _isLocked = false;
 
             AudioMgr.Instance.PlaySound("Unlock");
-            FindObjectOfType<EventMessage>().DisplayMessage("Use " + name);
+            FindObjectOfType<EventMessage>().DisplayMessage("Use " + _necessaryKey);
         }
 
         else
         {
+            FindObjectOfType<EventMessage>().DisplayMessage("Need Panel Key");
             return;
-        }
-    }
-
-    public bool IsPair(string name)
-    {
-        if (name == _necessaryKey)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
         }
     }
 
     //인터페이스 함수
     public void ObjectInteract()
     {
-        if (_isLocked)
+        foreach (var obj in EventObjects)
         {
-            FindObjectOfType<EventMessage>().DisplayMessage("Need Panel Key");
-            //audioSource.clip = doorSounds[2];
-            //audioSource.Play();
+            Destroy(obj);
         }
 
-        else
-        {
-            foreach(var obj in EventObjects)
-            {
-                Destroy(obj);
-            }
-        }
+        GetComponent<AudioSource>().Play();
+        FindObjectOfType<EventMessage>().DisplayMessage("Reset alert system");
+        door.GetComponent<LockedObject>().IsLocked = false;
+
+        GetComponent<BoxCollider>().enabled = false;
+
     }
 }

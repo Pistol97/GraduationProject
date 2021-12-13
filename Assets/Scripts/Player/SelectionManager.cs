@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour
@@ -81,18 +79,29 @@ public class SelectionManager : MonoBehaviour
             {
                 Debug.Log("Use Interactable Object");
 
+                //엔딩 게이트
                 if("End_Gate" == hit.transform.name)
                 {
                     StartCoroutine(transform.parent.GetComponent<Player>().Fade.GameEnd());
                 }
 
-                if (null != hit.transform.GetComponent<ILockedObject>())
+                //잠겨있는 오브젝트
+                if(!hit.transform.GetComponent<LockedObject>())
                 {
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("Key"));
-                    hit.transform.GetComponent<ILockedObject>().TryUnlock(inven.UseKey("PanelKey"));
+                    hit.transform.GetComponent<IInteractable>().ObjectInteract();
                 }
 
-                hit.transform.GetComponent<IInteractable>().ObjectInteract();
+                //잠금 해제된 오브젝트
+                else if(hit.transform.GetComponent<LockedObject>().IsLocked)
+                {
+                    hit.transform.GetComponent<LockedObject>().TryUnlock(inven);
+                }
+
+                //일반적인 상호 작용 가능한 오브젝트
+                else
+                {
+                    hit.transform.GetComponent<IInteractable>().ObjectInteract();
+                }
             }
         }
     }

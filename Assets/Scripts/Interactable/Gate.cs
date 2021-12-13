@@ -11,9 +11,7 @@ public class Gate : MonoBehaviour, IInteractable
 
     private bool isActivate;
 
-    [SerializeField] private bool isKeyGate;
-    [SerializeField] private bool isKeyGateOpened;
-    [SerializeField] private Inventory inven;
+    [SerializeField] private bool _isLockedGate;
 
     [SerializeField] private NavmeshPathDraw navPath;
     [SerializeField] private int gateNum =0;
@@ -50,40 +48,14 @@ public class Gate : MonoBehaviour, IInteractable
     //인터페이스 함수
     public void ObjectInteract()
     {
-        if (isKeyGate == true && isKeyGateOpened ==false)
-        {
-            hasKey();
-        }
-        else if(isKeyGate == true && isKeyGateOpened == true)
-        {
-            OpenGate();
-        }
-        else
-        {
-            OpenGate();
-        }
-    }
-
-    void hasKey()
-    {
-        bool haskey = false;
-
-        haskey = inven.FindItemWithName("Key");
-
-        if(haskey == true)
-        {
-            isKeyGateOpened = true;
-
-            PlayerPrefs.SetInt("Gate",this.gateNum);
-
-
-            OpenGate();
-            inven.UseItemWithName("Key");
-
-        }
-        else
+        if(_isLockedGate)
         {
             AccessDenied();
+        }
+
+        else
+        {
+            OpenGate();
         }
     }
 
@@ -96,7 +68,7 @@ public class Gate : MonoBehaviour, IInteractable
 
     private void AccessDenied()
     {
-        FindObjectOfType<EventMessage>().DisplayMessage("접근 거부됨, 더 높은 등급의 권한 필요");
+        FindObjectOfType<EventMessage>().DisplayMessage("Access Denied");
         audioSource.clip = gateSounds[2];
         audioSource.Play();
     }

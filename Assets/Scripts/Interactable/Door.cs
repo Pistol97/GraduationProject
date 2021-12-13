@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable, ILockedObject
+public class Door : LockedObject, IInteractable
 {
     private Animator animator;
     private AudioSource audioSource;
 
     [SerializeField] private bool _isLockedDoor;
+
     [SerializeField] private string _necessaryKey;
 
     [SerializeField] private AudioClip[] doorSounds;
@@ -14,61 +15,45 @@ public class Door : MonoBehaviour, IInteractable, ILockedObject
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        _isLocked = _isLockedDoor;
     }
 
-    public void TryUnlock(string name)
+    public override void TryUnlock(Inventory inventory)
     {
-        if(name == _necessaryKey)
+        if (inventory.FindItemWithName(_necessaryKey) && _isLocked)
         {
-            _isLockedDoor = false;
+            inventory.UseKey(_necessaryKey);
+
+            _isLocked = false;
 
             AudioMgr.Instance.PlaySound("Unlock");
-            FindObjectOfType<EventMessage>().DisplayMessage("Use " + name);
+            FindObjectOfType<EventMessage>().DisplayMessage("Use " + _necessaryKey);
         }
 
         else
         {
+            FindObjectOfType<EventMessage>().DisplayMessage("It's locked");
+
+            audioSource.clip = doorSounds[2];
+            audioSource.Play();
             return;
-        }
-    }
-
-    public bool IsPair(string name)
-    {
-        if(name == _necessaryKey)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
         }
     }
 
     public void ObjectInteract()
     {
-        if(_isLockedDoor)
+        if (!animator.GetBool("IsOpen"))
         {
-            FindObjectOfType<EventMessage>().DisplayMessage("It's locked");
-            audioSource.clip = doorSounds[2];
+            animator.SetBool("IsOpen", true);
+            audioSource.clip = doorSounds[0];
             audioSource.Play();
         }
 
-
         else
         {
-            if (!animator.GetBool("IsOpen"))
-            {
-                animator.SetBool("IsOpen", true);
-                audioSource.clip = doorSounds[0];
-                audioSource.Play();
-            }
-
-            else
-            {
-                animator.SetBool("IsOpen", false);
-                audioSource.clip = doorSounds[1];
-            }
+            animator.SetBool("IsOpen", false);
+            audioSource.clip = doorSounds[1];
         }
     }
 
