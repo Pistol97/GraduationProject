@@ -2,7 +2,9 @@
 # Project SONAR
 
 Project SONAR is a short horror adventure game.
+
 People rely heavily on sight among the five senses. If it was originally, I created the game imagining what would happen when the things I had seen were not properly visible. And Inspired by the submarine's use of sonar in the water.
+
 It is designed to make the player feel unknown fear by using only 'SONAR' equipment that shows only the outline of the surrounding objects in a trapped space where nothing is seen.
 
 [![youtube](https://img.youtube.com/vi/xHE5w7Zjk6k/0.jpg)](https://youtu.be/xHE5w7Zjk6k)
