@@ -174,3 +174,38 @@ MonoBehaviour:
     Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
+  - Name: DoorOpen
+    Clips:
+    - {fileID: 8300000, guid: cf37d28b6af5bb24b9090e2b620169c8, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: DoorClose
+    Clips:
+    - {fileID: 8300000, guid: fa8a3799a9dfd3f49b634a62f43d710b, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: DoorLocked
+    Clips:
+    - {fileID: 8300000, guid: 7bb53a55a691b114aaeb941ea37cc9b6, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: GateOpen
+    Clips:
+    - {fileID: 8300000, guid: eda0a6ebad3002f42887647679e46edb, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: GateClose
+    Clips:
+    - {fileID: 8300000, guid: 3ab8ed23e6374c0479a8a21806ed6736, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}

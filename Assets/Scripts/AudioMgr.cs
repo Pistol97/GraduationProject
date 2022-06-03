@@ -22,6 +22,9 @@ public class AudioMgr : MonoBehaviour
         public AudioSource source;
     }
 
+    [SerializeField]
+    private Sound[] sounds;
+
     private static AudioMgr _instance = null;
     public static AudioMgr Instance
     {
@@ -34,9 +37,6 @@ public class AudioMgr : MonoBehaviour
             return _instance;
         }
     }
-
-    [SerializeField]
-    private Sound[] sounds;
 
     private void Awake()
     {
@@ -70,6 +70,7 @@ public class AudioMgr : MonoBehaviour
         }
     }
 
+    // 단계적인 소리 재생에 사용 ex)심장박동
     public void PlaySound(string name , int index)
     {
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);

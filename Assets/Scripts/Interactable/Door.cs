@@ -3,18 +3,14 @@
 public class Door : LockedObject, IInteractable
 {
     private Animator animator;
-    private AudioSource audioSource;
 
     [SerializeField] private bool _isLockedDoor;
 
     [SerializeField] private string _necessaryKey;
 
-    [SerializeField] private AudioClip[] doorSounds;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
 
         _isLocked = _isLockedDoor;
     }
@@ -28,6 +24,7 @@ public class Door : LockedObject, IInteractable
             _isLocked = false;
 
             AudioMgr.Instance.PlaySound("Unlock");
+
             FindObjectOfType<EventMessage>().DisplayMessage("Use " + _necessaryKey);
         }
 
@@ -35,8 +32,7 @@ public class Door : LockedObject, IInteractable
         {
             FindObjectOfType<EventMessage>().DisplayMessage("It's locked");
 
-            audioSource.clip = doorSounds[2];
-            audioSource.Play();
+            AudioMgr.Instance.PlaySound("DoorLocked");
             return;
         }
     }
@@ -46,14 +42,13 @@ public class Door : LockedObject, IInteractable
         if (!animator.GetBool("IsOpen"))
         {
             animator.SetBool("IsOpen", true);
-            audioSource.clip = doorSounds[0];
-            audioSource.Play();
+            AudioMgr.Instance.PlaySound("DoorOpen");
         }
 
         else
         {
             animator.SetBool("IsOpen", false);
-            audioSource.clip = doorSounds[1];
+            AudioMgr.Instance.PlaySound("DoorClose");
         }
     }
 
