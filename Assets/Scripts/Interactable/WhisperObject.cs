@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class WhisperObject : MonoBehaviour, IInteractable
@@ -25,8 +23,6 @@ public class WhisperObject : MonoBehaviour, IInteractable
     private Player _player;
     private Slider _progressSlider;
 
-    
-
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -49,7 +45,9 @@ public class WhisperObject : MonoBehaviour, IInteractable
         Instantiate(_noticeUI, _player.Hud.transform);
 
         //아카이브에 노트 추가
-        _player.GetComponentInChildren<PlayerDataManager>().UnlockArchive(_unlockArchiveNumber);
+        //옵저버 패턴을 활용 해볼까
+
+        //_player.GetComponentInChildren<PlayerDataManager>().UnlockArchive(_unlockArchiveNumber);
 
         Destroy(gameObject, 0f);
     }

@@ -1,49 +1,40 @@
 {
     "NoteDatas": [
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        },
-        {
-            "ID": 0,
-            "IsUnlock": false,
-            "Context": ""
-        }
+      {
+        "ID": 0,
+        "Context": "When they first reported a The Tower buried in the ground, the researchers thought it was just a time capsule.\nBut, the size of The Tower that comes out the more you dig it up was enormous.\nAnd the lights emitted from the top of the tower pose a risk of being caught by the residents around it."
+      },
+      {
+        "ID": 1,
+        "Context": "With the help of the Intelligence Service, all the lands around the \"Tower\" were purchased and all the surroundings were blocked in the name of building welfare facilities.\nWhen I observed the Tower for a few days, the lights generated there appear regularly and seem to be trying to give us a message.\nWhat does The Tower want from us?"
+      },
+      {
+        "ID": 2,
+        "Context": "The Tower tried talking to us.\n\"We want a conversation.\" it was the first sentence we interpreted.\nWe try to continue our conversation with The Tower using lights."
+      },
+      {
+        "ID": 3,
+        "Context": "... After a lot of conversations with the Tower, concluded that was an huge archive.\nThe reason why The Tower tried to conversation was because there was a problem with the tower.\nThe Tower said,\n\"To solve it, living things have to deal with it\""
+      },
+      {
+        "ID": 4,
+        "Context": "While working on The Tower, that suddenly started spewing smoke.\nThe smoke stripped the skin of all living things.\nAnalyzing the epidermis to find a solution, but it seems impossible"
+      },
+      {
+        "ID": 5,
+        "Context": "CodeName M. The agent sent to us by the intelligence department. I don't know anything about name and age.\nWithout saying a word, he is solving everything we want inside and outside The Tower.\nBut we don't trust him yet."
+      },
+      {
+        "ID": 6,
+        "Context": "The Tower is grateful for the fact that it is doing purification work.\nAnd often creates amzing objects for us.\nThe most weird stuff among them is 'the energy box'.\nBoxes with huge energy helped run the laboratory without consuming much power.\nBut, the problem was that when there was a problem in the laboratory, it could not be stopped."
+      },
+      {
+        "ID": 7,
+        "Context": "A strange box-shaped piece,\nThere is still a question as to why The Tower gave this.\nAccording to historians, they are guessing that it is probably a thing that recorded their history, but the The Tower does not give a definite answer."
+      },
+      {
+        "ID": 8,
+        "Context": "The monument was a piece of the language system of The Tower.\nResearch datas were saved, but it is impossible to interpret it further due to the problem of the laboratory."
+      }
     ]
 }
