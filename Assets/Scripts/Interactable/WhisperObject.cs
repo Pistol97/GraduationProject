@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class WhisperObject : MonoBehaviour, IInteractable
+/// <summary>
+/// 획득했을 시 노트를 해금하는 클래스
+/// Observer Pattern
+/// </summary>
+public class WhisperObject : MonoBehaviour, IInteractable, NoteUnlockPublisher
 {
-    [SerializeField]
-    private int _unlockArchiveNumber;
+    [SerializeField] private int _unlockArchiveNumber;
 
     #region Prefabs
     [SerializeField]
@@ -16,12 +20,17 @@ public class WhisperObject : MonoBehaviour, IInteractable
 
     private GameObject _progressBar;
 
-    //획득 유지시간 타이머의 변수
+    #region Timer
+    //획득시 키 유지시간 타이머의 변수
     private float _currentSec;
     private readonly float _holdSec = 3f;
+    #endregion
 
     private Player _player;
     private Slider _progressSlider;
+
+    //옵저버를 담는 리스트
+    private List<NoteUnlockObserver> observers = new List<NoteUnlockObserver>();
 
     private void OnTriggerStay(Collider other)
     {
@@ -44,12 +53,28 @@ public class WhisperObject : MonoBehaviour, IInteractable
 
         Instantiate(_noticeUI, _player.Hud.transform);
 
-        //아카이브에 노트 추가
-        //옵저버 패턴을 활용 해볼까
-
-        //_player.GetComponentInChildren<PlayerDataManager>().UnlockArchive(_unlockArchiveNumber);
+        //아카이브, 플레이어 데이터에 노트 해금 알림
+        NotifyObserver();
 
         Destroy(gameObject, 0f);
+    }
+
+    public void AddObserver(NoteUnlockObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void DeleteObserver(NoteUnlockObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void NotifyObserver()
+    {
+        foreach(var observer in observers)
+        {
+            observer.UpdateUnlock(_unlockArchiveNumber);
+        }
     }
 
     private void CollectWhispers(Player player)
@@ -83,6 +108,7 @@ public class WhisperObject : MonoBehaviour, IInteractable
         if (Input.GetKeyUp(KeyCode.F))
         {
             _currentSec = 0f;
+            _progressSlider.value = 0f;
             Destroy(_progressBar);
         }
     }

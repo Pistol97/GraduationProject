@@ -75,21 +75,11 @@ public class JsonManager
             string jsonData = Encoding.UTF8.GetString(data);
             return JsonUtility.FromJson<T>(jsonData);
         }
-
         catch (FileNotFoundException e)
         {
             Debug.Log("File Not Found" + e);
 
             return default;
         }
-    }
-
-    /// <summary>
-    /// 플레이어 데이터 저장 메소드
-    /// </summary>
-    public void SaveData(object datas, string fileName)
-    {
-        string json = ObjectToJson(datas);
-        CreateJsonFile(Application.dataPath, fileName, json);
     }
 }

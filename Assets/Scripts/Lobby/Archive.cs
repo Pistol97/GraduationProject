@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 게임상에서 얻은 문서를 열람할 수 있도록 하는 아카이브 오브젝트
-/// 직접 내용을 변경하기 보다 외부 객체에 의해 내용을 변경하도록 유도
+/// Observer Pattern
 /// </summary>
-public class Archive : MonoBehaviour
+public class Archive : MonoBehaviour, NoteUnlockObserver
 {
     /// <summary>
     /// 노트 데이터 형태를 정의하는 클래스
@@ -42,30 +42,33 @@ public class Archive : MonoBehaviour
     //아카이브에 노트 내용을 표시하는 객체
     private Text _noteText;
 
-    private void Awake()
+    //퍼블리셔로부터 알림을 받아 노트 해금
+    public void UpdateUnlock(int noteNumber)
     {
-        InitArchive();
+        //배열 인덱스에 맞춰 -1
+        UnlockNote(noteNumber - 1);
+    }
 
-        //게임 시작 초기에 비활성화된 상태
+    public void InitArchive()
+    {
+        _noteDatas = new NoteDataRes();
+
+        //노트 데이터를 JSON으로부터 가져옴
+        _noteDatas = JsonManager.Instance.LoadJsonFile<NoteDataRes>(Application.dataPath, _fileName);
+
+        //필요한 하위 컴포넌트들을 불러옴
+        _notes = GetComponentsInChildren<Note>();
+        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();
+
+        SetNoteData();
+
+        //비활성화
         transform.parent.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
-    private void InitArchive()
-    {
-        _noteDatas = new NoteDataRes();
-
-        _noteDatas = JsonManager.Instance.LoadJsonFile<NoteDataRes>(Application.dataPath, _fileName);
-
-        //컴포넌트들을 불러옴
-        _notes = GetComponentsInChildren<Note>();
-        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();
-
-        UnlockNotes();
-    }
-
     //플레이어 데이터에서 해금 내용을 불러와 해금
-    private void UnlockNotes()
+    private void SetNoteData()
     {
         int index = 0;
 
@@ -75,13 +78,18 @@ public class Archive : MonoBehaviour
         {
             if (unlock[index])
             {
-                note.GetComponent<Image>().sprite = _unlockSprite;
-                note.IsUnlock = unlock[index];
-                note.Context = _noteDatas.NoteDatas[index].Context;
+                UnlockNote(index);
             }
-
+            //노트 내용 입력
+            note.Context = _noteDatas.NoteDatas[index].Context;
             index++;
         }
+    }
+
+    private void UnlockNote(int index)
+    {
+        _notes[index].GetComponent<Image>().sprite = _unlockSprite;
+        _notes[index].IsUnlock = true;
     }
 
     public void ShowSelectedNote(string text)

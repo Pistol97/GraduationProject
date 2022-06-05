@@ -11,8 +11,20 @@ public class GameManager : MonoBehaviour
     {
         InitGameManager();
 
+        Archive archive = FindObjectOfType<Archive>();
+
+        //옵저버 등록
+        foreach (var whisperObject in FindObjectsOfType<WhisperObject>())
+        {
+            whisperObject.AddObserver(PlayerDataManager.Instance);
+            whisperObject.AddObserver(archive);
+        }
+
         //플레이어 데이터 불러오기
         PlayerDataManager.Instance.InitPlayerData();
+
+        //아카이브 초기 설정 실행 
+        archive.InitArchive();
     }
 
     private void InitGameManager()
@@ -23,4 +35,5 @@ public class GameManager : MonoBehaviour
             line.SetFloat("_NormalStrength", 0f);
         }
     }
+
 }

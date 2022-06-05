@@ -1,13 +1,10 @@
-﻿using System.IO;
-using System.Text;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 /// <summary>
 /// 플레이어 데이터 관리 클래스
-/// Singleton Pattern
+/// Singleton Pattern, Observer Pattern
 /// </summary>
-public class PlayerDataManager
+public class PlayerDataManager : NoteUnlockObserver
 {
     /// <summary>
     /// 플레이어의 데이터 형태
@@ -29,6 +26,10 @@ public class PlayerDataManager
         }
     }
 
+    //저장될 파일명
+    private readonly string _fileName = "PlayerData";
+
+    #region Singleton
     private static PlayerDataManager _instance = null;
     public static PlayerDataManager Instance
     {
@@ -42,30 +43,39 @@ public class PlayerDataManager
             return _instance;
         }
     }
+    #endregion
+
+    //퍼블리셔로부터 알림을 받아 노트 해금
+    public void UpdateUnlock(int noteNumber)
+    {
+        //해당 노트 해금
+        //배열 인덱스에 맞춰 -1
+        _playerData.ArchiveUnlock[noteNumber - 1] = true;
+        //갱신된 데이터 저장
+        CreatePlayerData();
+    }
 
     public void InitPlayerData()
     {
         _playerData = new PlayerData();
 
-        if (default != JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, "PlayerData"))
+        //플레이어 데이터 불러오기에 성공했을 경우
+        if (default != JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, _fileName))
         {
-            _playerData = JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, "PlayerData");
+            _playerData = JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, _fileName);
         }
         
+        //플레이어 데이터 불러오기에 실패 했을시
         else
         {
             Debug.Log("Load PlayerData Fail!");
-            string json = JsonManager.Instance.ObjectToJson(_playerData);
-            JsonManager.Instance.CreateJsonFile(Application.dataPath, "PlayerData", json);
+            CreatePlayerData();
         }
     }
 
-    public void SavePlayerData()
+    public void CreatePlayerData()
     {
         string json = JsonManager.Instance.ObjectToJson(_playerData);
         JsonManager.Instance.CreateJsonFile(Application.dataPath, "PlayerData", json);
     }
-
-    //상태 변경 함수
-    //구독한 아카이브에 변경됨을 알림
 }
