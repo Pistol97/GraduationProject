@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// 초기화, 동기화 등 실행 순서 설정을 담당하는 클래스
+/// 초기 설정 등 중요한 게임 로직 순서 설정을 담당하는 클래스
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    public Material[] outlines;
+    [SerializeField] private Material[] outlines;
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
         Archive archive = FindObjectOfType<Archive>();
 
-        //옵저버 등록
+        //Subject에 옵저버 등록
         foreach (var whisperObject in FindObjectsOfType<WhisperObject>())
         {
             whisperObject.AddObserver(PlayerDataManager.Instance);
@@ -29,11 +29,10 @@ public class GameManager : MonoBehaviour
 
     private void InitGameManager()
     {
-        //게임 시작시 모든 Outline 비활성화
+        //게임 시작시 모든 Outline 초기화
         foreach (var line in outlines)
         {
             line.SetFloat("_NormalStrength", 0f);
         }
     }
-
 }

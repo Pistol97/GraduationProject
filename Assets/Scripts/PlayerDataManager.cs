@@ -4,7 +4,7 @@
 /// 플레이어 데이터 관리 클래스
 /// Singleton Pattern, Observer Pattern
 /// </summary>
-public class PlayerDataManager : NoteUnlockObserver
+public class PlayerDataManager : INoteUnlockObserver
 {
     /// <summary>
     /// 플레이어의 데이터 형태
@@ -45,7 +45,7 @@ public class PlayerDataManager : NoteUnlockObserver
     }
     #endregion
 
-    //퍼블리셔로부터 알림을 받아 노트 해금
+    //Subject로부터 알림을 받아 노트 해금
     public void UpdateUnlock(int noteNumber)
     {
         //해당 노트 해금

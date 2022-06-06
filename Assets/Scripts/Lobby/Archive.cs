@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// 게임상에서 얻은 문서를 열람할 수 있도록 하는 아카이브 오브젝트
 /// Observer Pattern
 /// </summary>
-public class Archive : MonoBehaviour, NoteUnlockObserver
+public class Archive : MonoBehaviour, INoteUnlockObserver
 {
     /// <summary>
     /// 노트 데이터 형태를 정의하는 클래스
@@ -31,7 +31,7 @@ public class Archive : MonoBehaviour, NoteUnlockObserver
     private NoteDataRes _noteDatas;
 
     //저장될 파일명
-    private readonly string _fileName = "ArchiveData";
+    private readonly string _fileName = "NoteData";
 
     [Header("잠금해제 스프라이트")]
     [SerializeField] private Sprite _unlockSprite;
@@ -42,7 +42,7 @@ public class Archive : MonoBehaviour, NoteUnlockObserver
     //아카이브에 노트 내용을 표시하는 객체
     private Text _noteText;
 
-    //퍼블리셔로부터 알림을 받아 노트 해금
+    //Subject로부터 알림을 받아 노트 해금
     public void UpdateUnlock(int noteNumber)
     {
         //배열 인덱스에 맞춰 -1

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// 획득했을 시 노트를 해금하는 클래스
 /// Observer Pattern
 /// </summary>
-public class WhisperObject : MonoBehaviour, IInteractable, NoteUnlockPublisher
+public class WhisperObject : MonoBehaviour, IInteractable, INoteUnlockPublisher
 {
     [SerializeField] private int _unlockArchiveNumber;
 
@@ -30,7 +30,7 @@ public class WhisperObject : MonoBehaviour, IInteractable, NoteUnlockPublisher
     private Slider _progressSlider;
 
     //옵저버를 담는 리스트
-    private List<NoteUnlockObserver> observers = new List<NoteUnlockObserver>();
+    private List<INoteUnlockObserver> observers = new List<INoteUnlockObserver>();
 
     private void OnTriggerStay(Collider other)
     {
@@ -59,12 +59,12 @@ public class WhisperObject : MonoBehaviour, IInteractable, NoteUnlockPublisher
         Destroy(gameObject, 0f);
     }
 
-    public void AddObserver(NoteUnlockObserver observer)
+    public void AddObserver(INoteUnlockObserver observer)
     {
         observers.Add(observer);
     }
 
-    public void DeleteObserver(NoteUnlockObserver observer)
+    public void DeleteObserver(INoteUnlockObserver observer)
     {
         observers.Remove(observer);
     }
