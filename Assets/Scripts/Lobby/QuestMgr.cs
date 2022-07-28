@@ -33,14 +33,25 @@ public class QuestMgr : MonoBehaviour
 
     public bool resetQuest = false;
 
+    private void Start()
+    {
+        npc1QuestNum = QuestDataController.GetInstance().GetNpc1QuestNum();
+        npc2QuestNum = QuestDataController.GetInstance().GetNpc2QuestNum();
+        npc3QuestNum = QuestDataController.GetInstance().GetNpc3QuestNum();
+    }
+
     private void Update()
     {
-        QuestSuccess();
-
         if (resetQuest == true)
         {
             QuestDataController.GetInstance().SetQuest(0);
+            QuestDataController.GetInstance().SetNpc1QuestNum(0);
+            QuestDataController.GetInstance().SetNpc2QuestNum(0);
+            QuestDataController.GetInstance().SetNpc3QuestNum(0);
         }
+
+        QuestSuccess();
+
     }
 
     public void NPC1Quest()
@@ -98,20 +109,23 @@ public class QuestMgr : MonoBehaviour
                     Debug.Log(npc1QuestNum);
                     if (npc1QuestNum >= npc1Quest.Count - 1) return;
                     npc1QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc1QuestNum(npc1QuestNum);
                     NPC1Quest();
                     QuestDataController.GetInstance().SetQuest(0);
-                    PlayerDataManager.Instance.UnlockUpgradeProfile(1);
+                    //PlayerDataManager.Instance.UnlockUpgradeProfile(1);
                     break;
                 case 2:
                     if (npc2QuestNum >= npc2Quest.Count - 1) return;
                     npc2QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc2QuestNum(npc2QuestNum);
                     NPC2Quest();
                     QuestDataController.GetInstance().SetQuest(0);
-                    PlayerDataManager.Instance.UnlockUpgradeProfile(2);
+                    //PlayerDataManager.Instance.UnlockUpgradeProfile(2);
                     break;
                 case 3:
                     if (npc3QuestNum >= npc3Quest.Count - 1) return;
                     npc3QuestNum += 1;
+                    QuestDataController.GetInstance().SetNpc3QuestNum(npc3QuestNum);
                     NPC3Quest();
                     QuestDataController.GetInstance().SetQuest(0);
                     break;

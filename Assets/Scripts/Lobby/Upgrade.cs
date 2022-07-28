@@ -17,7 +17,7 @@ public class Upgrade : MonoBehaviour
 
     private void Start()
     {
-        PlayerDataManager.Instance.SyncUpgradeData(_upgradeButtons);
+        //PlayerDataManager.Instance.SyncUpgradeData(_upgradeButtons);
 
         foreach(var button in _upgradeButtons)
         {

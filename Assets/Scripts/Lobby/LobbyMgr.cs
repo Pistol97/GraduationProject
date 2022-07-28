@@ -31,11 +31,13 @@ public class LobbyMgr : MonoBehaviour
 
     [SerializeField] GameObject AllQuestComplete;
 
+    [SerializeField] GameObject btn_repeatMode;
+
     private void Start()
     {
         questMgr = GetComponent<QuestMgr>();
-        AudioMgr.Instance.StopSound("BGM_Stage");
-        AudioMgr.Instance.PlaySound("BGM_Lobby");
+        AudioManager.Instance.StopSound("BGM_Stage");
+        AudioManager.Instance.PlaySound("BGM_Lobby");
     }
 
     private void Update()
@@ -50,7 +52,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(true);
         upgrade.SetActive(false);
         story.SetActive(false);
-        AudioMgr.Instance.PlaySound("Click");
+        AudioManager.Instance.PlaySound("Click");
     }
 
     public void QuestLoungeButtonOn()
@@ -68,6 +70,12 @@ public class LobbyMgr : MonoBehaviour
         if (npcCount1 == npcNumCount1 && npcCount2 == npcNumCount2 && npcCount3 == npcNumCount3)
         {
             AllQuestComplete.SetActive(true);
+            QuestDataController.GetInstance().SetGameClear(1);
+            btn_repeatMode.SetActive(true);
+        }
+        else
+        {
+            btn_repeatMode.SetActive(false);
         }
     }
 
@@ -98,7 +106,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(false);
         upgrade.SetActive(true);
         story.SetActive(false);
-        AudioMgr.Instance.PlaySound("Click");
+        AudioManager.Instance.PlaySound("Click");
     }
 
     public void StroyButton()
@@ -106,7 +114,7 @@ public class LobbyMgr : MonoBehaviour
         quest.SetActive(false);
         upgrade.SetActive(false);
         story.SetActive(true);
-        AudioMgr.Instance.PlaySound("Click");
+        AudioManager.Instance.PlaySound("Click");
     }
 
     private void SetQuestNum()

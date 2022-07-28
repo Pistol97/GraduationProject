@@ -3,104 +3,60 @@ using UnityEngine.UI;
 
 public class Gate : MonoBehaviour, IInteractable
 {
-    [Header("할당 퀘스트 번호")]
-    [SerializeField] private bool isStageDoor;
-    [SerializeField] private bool quest1;
-    [SerializeField] private bool quest2;
-    [SerializeField] private bool quest3;
-
     private Animator animator;
-    private Animator handle;
 
-    [SerializeField] private AudioClip[] gateSounds;
-    private AudioSource audioSource;
+    [SerializeField] private bool _isLockedGate;
 
-    private bool isActivate;
+    [SerializeField] private NavmeshPathDraw navPath;
+    [SerializeField] private int gateNum = 0;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        handle = transform.GetChild(0).GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-        isActivate = false;
+        navPath = GetComponent<NavmeshPathDraw>();
+
+        PlayerPrefs.SetInt("Gate", 0);
     }
 
     private void Update()
     {
-        if (isActivate && !handle.GetBool("IsPull"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Gate_Close"))
         {
-            Debug.Log("Door Open");
-            animator.SetBool("IsOpen", true);
-            audioSource.Play();
-            isActivate = false;
+            AudioManager.Instance.PlaySound("GateClose");
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Gate_Close") && !audioSource.isPlaying)
-        {
-            audioSource.clip = gateSounds[1];
-            audioSource.Play();
-        }
     }
 
     //인터페이스 함수
     public void ObjectInteract()
     {
-        if (isStageDoor == true)
+        if (_isLockedGate)
         {
-            QuestStageUnlock();
+            AccessDenied();
+        }
+
+        else
+        {
+            OpenGate();
         }
     }
 
-    void QuestStageUnlock()
+    private void OpenGate()
     {
-        int currentQuestNum = QuestDataController.GetInstance().GetCurrentQuestNpcNum();
-
-        switch (currentQuestNum)
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Gate_Open") &&
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Gate_Close"))
         {
-            case 1:
-                if (quest1 == true)
-                {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            case 2:
-                if (quest2 == true)
-                {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            case 3:
-                if (quest3 == true)
-                {
-                    handle.SetBool("IsPull", true);
-                    isActivate = true;
-                    audioSource.clip = gateSounds[0];
-                }
-                else
-                {
-                    AccessDenied();
-                }
-                break;
-            default:
-                break;
+            Debug.Log("Door Open");
+            animator.SetBool("IsOpen", true);
+
+            AudioManager.Instance.PlaySound("GateOpen");
         }
     }
 
     private void AccessDenied()
     {
-        FindObjectOfType<EventMessage>().DisplayMessage("접근 거부됨, 더 높은 등급의 권한 필요");
-        audioSource.clip = gateSounds[2];
-        audioSource.Play();
+        FindObjectOfType<EventMessage>().DisplayMessage("Access Denied");
+        
+        AudioManager.Instance.PlaySound("Error");
     }
 }

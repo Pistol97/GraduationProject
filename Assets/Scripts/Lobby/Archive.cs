@@ -3,35 +3,93 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 게임상에서 얻은 문서를 열람할 수 있도록 하는 아카이브 오브젝트
-/// 직접 내용을 변경하기 보다 외부 객체에 의해 내용을 변경하도록 유도하였다.
-/// !중요!
-/// 객체 구조 변경시 반드시 확인 할 것
+/// Observer Pattern
 /// </summary>
-public class Archive : MonoBehaviour
+public class Archive : MonoBehaviour, INoteUnlockObserver
 {
+    /// <summary>
+    /// 노트 데이터 형태를 정의하는 클래스
+    /// </summary>
+    [System.Serializable]
+    private class NoteData
+    {
+        public int ID = 0;
+        public string Context = "";
+    }
+
+    /// <summary>
+    /// Unity에서 제공하는 JsonUtility는 직렬화가 되어있지 않기 때문에 직접적인 클래스 배열을 읽지 못한다.
+    /// 또 다른 클래스로 감싸 직렬화한다.
+    /// </summary>
+    [System.Serializable]
+    private class NoteDataRes
+    {
+        public NoteData[] NoteDatas = new NoteData[9];
+    }
+
+    //NoteData 배열을 담고 있는 객체
+    private NoteDataRes _noteDatas;
+
+    //저장될 파일명
+    private readonly string _fileName = "NoteData";
+
     [Header("잠금해제 스프라이트")]
     [SerializeField] private Sprite _unlockSprite;
 
+    //아카이브 내의 노트들
+    private Note[] _notes;
+
+    //아카이브에 노트 내용을 표시하는 객체
     private Text _noteText;
-    private StoryButton[] _storyButtons;
-    private void Awake()
+
+    //Subject로부터 알림을 받아 노트 해금
+    public void UpdateUnlock(int noteNumber)
     {
-        _noteText = transform.GetChild(0).GetComponentInChildren<Text>();   //자식의 자식 UI Text컴포넌트를 가져옴
-        _storyButtons = GetComponentsInChildren<StoryButton>(); //자식 객체로부터 노트들을 받아옴
+        //배열 인덱스에 맞춰 -1
+        UnlockNote(noteNumber - 1);
     }
 
-    private void Start()
+    public void InitArchive()
     {
-        PlayerDataManager.Instance.SyncArchiveData(_storyButtons);
+        _noteDatas = new NoteDataRes();
 
-        foreach (var button in _storyButtons)
+        //노트 데이터를 JSON으로부터 가져옴
+        _noteDatas = JsonManager.Instance.LoadJsonFile<NoteDataRes>(Application.dataPath, _fileName);
+
+        //필요한 하위 컴포넌트들을 불러옴
+        _notes = GetComponentsInChildren<Note>();
+        _noteText = transform.GetChild(1).GetComponentInChildren<Text>();
+
+        SetNoteData();
+
+        //비활성화
+        transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+    //플레이어 데이터에서 해금 내용을 불러와 해금
+    private void SetNoteData()
+    {
+        int index = 0;
+
+        bool[] unlock = PlayerDataManager.Instance.ArchiveUnlockData;
+
+        foreach (var note in _notes)
         {
-            if (button.IsUnlock)
+            if (unlock[index])
             {
-                //노트 언락시 해금 스프라이트로 변경
-                button.GetComponent<Image>().sprite = _unlockSprite;
+                UnlockNote(index);
             }
+            //노트 내용 입력
+            note.Context = _noteDatas.NoteDatas[index].Context;
+            index++;
         }
+    }
+
+    private void UnlockNote(int index)
+    {
+        _notes[index].GetComponent<Image>().sprite = _unlockSprite;
+        _notes[index].IsUnlock = true;
     }
 
     public void ShowSelectedNote(string text)

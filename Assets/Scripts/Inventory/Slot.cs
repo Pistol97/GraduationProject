@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public Item item;//획득한 아이템
     public int itemCount;//아이템의 개수
@@ -14,6 +14,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     private Text textCount;
     [SerializeField]
     private GameObject go_CountImage;
+
+    [SerializeField]
+    private ToolTip toolTipSlot;
+
+    private void Start()
+    {
+        toolTipSlot = FindObjectOfType<ToolTip>();
+    }
 
     /// <summary>
     /// 이미지의 투명도 조절
@@ -72,23 +80,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       if(eventData.button == PointerEventData.InputButton.Right)
-        {
-            if(item != null)
-            {
-                AudioMgr.Instance.PlaySound("Inventory_Click");
-                //소모
-                Debug.Log(item.itemName + "을 사용하였습니다.");
-                SetSlotCount(-1);
-            }
-        }
+       //if(eventData.button == PointerEventData.InputButton.Right)
+       // {
+       //     if(item != null)
+       //     {
+       //         AudioMgr.Instance.PlaySound("Inventory_Click");
+       //         //소모
+       //         Debug.Log(item.itemName + "을 사용하였습니다.");
+       //         SetSlotCount(-1);
+       //     }
+       // }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(item != null)
         {
-            AudioMgr.Instance.PlaySound("Inventory_Drag");
+            AudioManager.Instance.PlaySound("Inventory_Drag");
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
             DragSlot.instance.transform.position = eventData.position;
@@ -115,7 +123,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         Debug.Log("OnDrop");
         if (DragSlot.instance.dragSlot!= null)
         {
-            AudioMgr.Instance.PlaySound("Inventory_Drop");
+            AudioManager.Instance.PlaySound("Inventory_Drop");
             ChangeSlot();
         }
     }
@@ -142,5 +150,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             DragSlot.instance.dragSlot.ClearSlot();
         }
+    }
+
+    //마우스가 슬롯에 들어갈 때
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(item != null)
+        toolTipSlot.ShowToolTip(item, transform.position);
+    }
+
+    //마우스가 슬롯에서 빠져나올때
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        toolTipSlot.HideToolTip();
     }
 }

@@ -403,8 +403,8 @@ GameObject:
   - component: {fileID: 3291978698733715466}
   - component: {fileID: 4838404143485398384}
   - component: {fileID: 8462747681451918150}
-  - component: {fileID: 8462747681451918151}
   - component: {fileID: 8462747681451918144}
+  - component: {fileID: 8462747681451918151}
   - component: {fileID: 8462747681451918145}
   - component: {fileID: 7138893761728261367}
   - component: {fileID: 7197253708572935394}
@@ -423,7 +423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014284375893209625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.1538925, y: 1.03, z: -20.778137}
+  m_LocalPosition: {x: 15.1538925, y: 0.958, z: -20.778137}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2704667466534405801}
@@ -464,15 +464,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d9e46e08cbacc4c891f13afdebc819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpeed: 1
   enemySightLength: 10
+  currentEnemySightLength: 10
   enemyAttackLength: 3
+  enemySightLevel: 1
   target: {fileID: 0}
   isChase: 0
+  isPatrolZombie: 0
+  patrolPoints: []
+  currentPoint: 0
+  isPatrol: 0
   idle:
   - {fileID: 8300000, guid: 48076669ea0fcd643b9228dad7f8af40, type: 3}
   - {fileID: 8300000, guid: 1b267b4712536ac4cbee204a6eaebf54, type: 3}
   - {fileID: 8300000, guid: 643a0ca5cb746ad479cb6f319142cd60, type: 3}
   - {fileID: 8300000, guid: b42e0fb86a3da4b46a7cb31cb78231d2, type: 3}
+--- !u!65 &8462747681451918144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014284375893209625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 1.06, z: 0}
 --- !u!54 &8462747681451918151
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -489,19 +509,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &8462747681451918144
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014284375893209625}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8462747681451918145
 NavMeshAgent:
   m_ObjectHideFlags: 0

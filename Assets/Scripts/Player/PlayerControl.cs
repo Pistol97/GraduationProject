@@ -29,10 +29,11 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //이동
         NewMove();
         //회전
-        BodyDirectionChange();
+        //BodyDirectionChange();
         //중력적용
         ApplyGravity();
     }
@@ -46,8 +47,10 @@ public class PlayerControl : MonoBehaviour
         Vector3 direction=new Vector3(horizontal,0,vertical);
 
         Vector3 movedis = cameraTransform.rotation * direction;
+
         moveDirection = new Vector3(movedis.x, moveDirection.y, movedis.z);
-        myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+        //myCharacterController.Move(transform.TransformDirection(moveDirection.normalized) * moveSpeed * Time.deltaTime);
+        myCharacterController.Move(moveDirection * moveSpeed * Time.deltaTime );
     }
     /// <summary>
     /// 현재 내 캐릭터의 이속을 얻어온다.
@@ -79,7 +82,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 front = new Vector3(targetDirection.x, 0, targetDirection.z);
         Quaternion rotation = Quaternion.LookRotation(front.normalized);
         transform.rotation = rotation;
-        //transform.Rotate(cameraControl.GetCameraRotationX(), cameraControl.GetCameraRotationY(), 0);
+        transform.rotation = Quaternion.Euler(targetDirection.x, 0, targetDirection.z);
     }
     /// <summary>
     /// 플레이어의 몸통 방향 얻어온다.

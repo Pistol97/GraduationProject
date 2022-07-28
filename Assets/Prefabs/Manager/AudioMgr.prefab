@@ -126,8 +126,8 @@ MonoBehaviour:
   - Name: Use_Battery
     Clips:
     - {fileID: 8300000, guid: 8b862cb77c75ed5478a6aef11d590765, type: 3}
-    Volume: 0.3
-    Pitch: 0.8
+    Volume: 0.5
+    Pitch: 1
     IsLoop: 0
     source: {fileID: 0}
   - Name: QuestComplete
@@ -140,6 +140,71 @@ MonoBehaviour:
   - Name: PlayerDie
     Clips:
     - {fileID: 8300000, guid: 08b246061f851914096c3cb7906ee4f0, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: Heartbeat
+    Clips:
+    - {fileID: 8300000, guid: e4168880b1b664e7b83bd610a7cbb879, type: 3}
+    - {fileID: 8300000, guid: bc66f92e4d60d4badb7ed6a87c1f1f96, type: 3}
+    - {fileID: 8300000, guid: c030b749eff17476aa850ecfba2ddf9a, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 1
+    source: {fileID: 0}
+  - Name: Panting
+    Clips:
+    - {fileID: 8300000, guid: b7e7b3a29b72a4727b988bd729075a14, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 1
+    source: {fileID: 0}
+  - Name: Unlock
+    Clips:
+    - {fileID: 8300000, guid: 1389c8cfba2994848b4a3f15fbe8d644, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: Use_Syringe
+    Clips:
+    - {fileID: 8300000, guid: 4f18837d34ad7564dbef7a142686146a, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: DoorOpen
+    Clips:
+    - {fileID: 8300000, guid: cf37d28b6af5bb24b9090e2b620169c8, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: DoorClose
+    Clips:
+    - {fileID: 8300000, guid: fa8a3799a9dfd3f49b634a62f43d710b, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: DoorLocked
+    Clips:
+    - {fileID: 8300000, guid: 7bb53a55a691b114aaeb941ea37cc9b6, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: GateOpen
+    Clips:
+    - {fileID: 8300000, guid: eda0a6ebad3002f42887647679e46edb, type: 3}
+    Volume: 1
+    Pitch: 1
+    IsLoop: 0
+    source: {fileID: 0}
+  - Name: GateClose
+    Clips:
+    - {fileID: 8300000, guid: 3ab8ed23e6374c0479a8a21806ed6736, type: 3}
     Volume: 1
     Pitch: 1
     IsLoop: 0

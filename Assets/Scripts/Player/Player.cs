@@ -19,10 +19,22 @@ public partial class Player : MonoBehaviour
     private GameObject _playerCam;
     private CameraControl _camControl;
     private Animator _animator;
+    private NavmeshPathDraw _navPath;
+
+    [SerializeField] private GameObject subCamera;
+
     public Canvas Hud
     {
         get;
         private set;
+    }
+
+    public FadeEffect Fade
+    {
+        get
+        {
+            return panel.GetComponent<FadeEffect>();
+        }
     }
     #endregion
 
@@ -60,6 +72,8 @@ public partial class Player : MonoBehaviour
 
     private bool _isDead;
 
+    public Transform JumpPos;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -67,6 +81,8 @@ public partial class Player : MonoBehaviour
         _playerCam = transform.GetChild(0).gameObject;
         _camControl = transform.GetChild(0).GetComponent<CameraControl>();
         _animator = GetComponentInChildren<Animator>();
+        _navPath = transform.GetChild(1).GetComponent<NavmeshPathDraw>();
+        _navPath.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -78,8 +94,8 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
-        AudioMgr.Instance.StopSound("BGM_Lobby");
-        AudioMgr.Instance.PlaySound("BGM_Stage");
+        AudioManager.Instance.StopSound("BGM_Lobby");
+        AudioManager.Instance.PlaySound("BGM_Stage");
     }
 
     private void Update()
@@ -110,24 +126,52 @@ public partial class Player : MonoBehaviour
     private void LateUpdate()
     {
         _barFear.value = FearRange;
+
+        if (0f <= FearRange / _maxFearRange * 100 && 30f > FearRange / _maxFearRange * 100)
+        {
+            AudioManager.Instance.StopSound("Heartbeat", 0);
+            AudioManager.Instance.StopSound("Heartbeat", 1);
+            AudioManager.Instance.StopSound("Heartbeat", 2);
+            AudioManager.Instance.StopSound("Panting");
+        }
+
+        if (30f <= FearRange / _maxFearRange * 100 && 50 > FearRange / _maxFearRange * 100)
+        {
+            AudioManager.Instance.PlayStepSound("Heartbeat", 0);
+        }
+
+        else if (50 <= FearRange / _maxFearRange * 100 && 70 > FearRange / _maxFearRange * 100)
+        {
+            AudioManager.Instance.PlayStepSound("Heartbeat", 1);
+        }
+
+        else if(70 < FearRange / _maxFearRange * 100)
+        {
+            AudioManager.Instance.PlayStepSound("Heartbeat", 2);
+            AudioManager.Instance.PlaySound("Panting");
+        }
+
         if (_maxFearRange <= FearRange && !_isDead)
         {
             QuestDataController.GetInstance().SetQuest(0);
             _isDead = true;
             GetComponent<Animator>().SetBool("IsCaught", false);
-            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<CharacterController>().detectCollisions=  false;
+            //GetComponent<CapsuleCollider>().enabled = false;
 
             StartCoroutine(PlayerDie());
         }
+
+
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            // LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
-            // Debug.Log(LookTarget.name);
-            GetComponent<CapsuleCollider>().isTrigger = false;
+            LookTarget = collision.GetComponentInParent<Enemy>().transform.GetChild(1).gameObject;
+            Debug.Log(LookTarget.name);
+            GetComponent<CharacterController>().detectCollisions = false;
             StartButtonAction();
         }
     }
@@ -145,6 +189,16 @@ public partial class Player : MonoBehaviour
     public void UseCell(int val)
     {
         _barSonar.value += val;
+    }    
+    
+    public void UseSyringe(int val)
+    {
+        FearRange -= val;
+
+        if(0 >= FearRange)
+        {
+            FearRange = 0;
+        }
     }
 
     private void ActiveSonar()
@@ -162,7 +216,16 @@ public partial class Player : MonoBehaviour
                 _barFear.value = FearRange;
             }
             _barSonar.value = _barSonar.value - use_sonar;
+
+            _navPath.gameObject.SetActive(true);
+
+            Invoke("StopNavLine", 5f);
         }
+    }
+
+    private void StopNavLine()
+    {
+        _navPath.gameObject.SetActive(false);
     }
 
     private void StartButtonAction()
@@ -170,28 +233,41 @@ public partial class Player : MonoBehaviour
         if (!_animator.GetBool("IsCaught"))
         {
             Debug.Log("Enter ShakeState");
+
             _camControl.enabled = false;
-            // Vector3 TargetFront = LookTarget.transform.forward;
-            // Vector3 TargetPosition = new Vector3(TargetFront.x, TargetFront.y, TargetFront.z);
-            // _playerCam.transform.rotation = Quaternion.LookRotation(TargetPosition);
-            FindObjectOfType<EventMessage>().DisplayMessage("A + D를 연타하여 탈출");
+
+            _playerCam.SetActive(false);
+            subCamera.SetActive(true);
+
+            ///Vector3 target = new Vector3(_playerCam.transform.position.x, _playerCam.transform.position.y, _playerCam.transform.position.z);
+
+            subCamera.transform.position = _playerCam.transform.position;
+            subCamera.transform.LookAt(LookTarget.transform);
+            //subCamera.transform.LookAt(target);
+
+            FindObjectOfType<EventMessage>().DisplayMessage("Bashing A + D to escape");
             _animator.SetBool("IsCaught", true);
 
             quickInventory.SetActive(false);
-
         }
+    }
+
+    public void ResetCamera()
+    {
+        _playerCam.SetActive(true);
+        subCamera.SetActive(false);
     }
 
     private void PlayerInvincible()
     {
-        this.GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<CharacterController>().detectCollisions = false;
         Invoke("PlayerInvincibleEnd", 5.0f);
     }
 
     private void PlayerInvincibleEnd()
     {
         quickInventory.SetActive(true);
-        this.GetComponent<CapsuleCollider>().enabled = true;
+        GetComponent<CharacterController>().detectCollisions = true;
     }
 
     private IEnumerator PlayerDie()
@@ -201,7 +277,7 @@ public partial class Player : MonoBehaviour
         time = 0f;
         panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0);
         Color alpha = panel.color;
-        AudioMgr.Instance.PlaySound("PlayerDie");
+        AudioManager.Instance.PlaySound("PlayerDie");
         //panel.GetComponent<Animator>().Play("Fade", 0)
         while (alpha.a < 1f)
         {
@@ -216,6 +292,6 @@ public partial class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
-        SceneManager.LoadScene("GameLobby");
+        SceneManager.LoadScene("MainMenu");
     }
 }

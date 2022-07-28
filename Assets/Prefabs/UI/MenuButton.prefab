@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuButtonController: {fileID: 0}
-  buttonIndex: 2
-  sceneName: QuitGame
+  buttonIndex: 0
+  sceneName: Develop
 --- !u!114 &2848986401695240812
 MonoBehaviour:
   m_ObjectHideFlags: 0
