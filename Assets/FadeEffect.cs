@@ -40,7 +40,7 @@ public class FadeEffect : MonoBehaviour
         gameObject.SetActive(true);
         _fadeout = true;
 
-        Destroy(AudioMgr.Instance.gameObject);
+        Destroy(AudioManager.Instance.gameObject);
 
         GetComponent<AudioSource>().Play();
 

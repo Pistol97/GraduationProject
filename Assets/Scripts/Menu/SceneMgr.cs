@@ -74,7 +74,7 @@ public class SceneMgr : MonoBehaviour
     public void Epilogue()
     {
         Debug.Log("Epilogue");
-        AudioMgr.Instance.StopSound("BGM_Lobby");
+        AudioManager.Instance.StopSound("BGM_Lobby");
         SceneManager.LoadScene("Epilogue");
     }
 }

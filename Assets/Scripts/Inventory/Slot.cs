@@ -96,7 +96,7 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
     {
         if(item != null)
         {
-            AudioMgr.Instance.PlaySound("Inventory_Drag");
+            AudioManager.Instance.PlaySound("Inventory_Drag");
             DragSlot.instance.dragSlot = this;
             DragSlot.instance.DragSetImage(itemImage);
             DragSlot.instance.transform.position = eventData.position;
@@ -123,7 +123,7 @@ public class Slot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler, IPoi
         Debug.Log("OnDrop");
         if (DragSlot.instance.dragSlot!= null)
         {
-            AudioMgr.Instance.PlaySound("Inventory_Drop");
+            AudioManager.Instance.PlaySound("Inventory_Drop");
             ChangeSlot();
         }
     }

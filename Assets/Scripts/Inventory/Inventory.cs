@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
         if (QuickSlots[_num - 1].item.itemType.ToString() != "Useable")
         {
             FindObjectOfType<EventMessage>().DisplayMessage("Not usable item");
-            AudioMgr.Instance.PlaySound("Error");
+            AudioManager.Instance.PlaySound("Error");
             return;
         }
         if (QuickSlots[_num - 1].itemCount > 0)
@@ -88,12 +88,12 @@ public class Inventory : MonoBehaviour
             {
                 FindObjectOfType<Player>().UseCell(50);
                 Debug.Log("배터리 사용");
-                AudioMgr.Instance.PlaySound("Use_Battery");
+                AudioManager.Instance.PlaySound("Use_Battery");
             }
             else if ("Sedative" == QuickSlots[_num - 1].item.itemName)
             {
                 FindObjectOfType<Player>().UseSyringe(50);
-                AudioMgr.Instance.PlaySound("Use_Syringe");
+                AudioManager.Instance.PlaySound("Use_Syringe");
             }
             FindObjectOfType<EventMessage>().DisplayMessage("Use " + QuickSlots[_num - 1].item.itemName);
             QuickSlots[_num - 1].SetSlotCount(-1);
@@ -127,13 +127,13 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
-        AudioMgr.Instance.PlaySound("Open_Inventory");
+        AudioManager.Instance.PlaySound("Open_Inventory");
         go_InventoryBase.SetActive(true);
     }
 
     private void CloseInventory()
     {
-        AudioMgr.Instance.PlaySound("Close_Inventory");
+        AudioManager.Instance.PlaySound("Close_Inventory");
         go_InventoryBase.SetActive(false);
         go_ToolTip.SetActive(false);
     }

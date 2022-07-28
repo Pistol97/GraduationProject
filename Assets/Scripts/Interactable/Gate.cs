@@ -22,7 +22,7 @@ public class Gate : MonoBehaviour, IInteractable
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Gate_Close"))
         {
-            AudioMgr.Instance.PlaySound("GateClose");
+            AudioManager.Instance.PlaySound("GateClose");
         }
 
     }
@@ -49,7 +49,7 @@ public class Gate : MonoBehaviour, IInteractable
             Debug.Log("Door Open");
             animator.SetBool("IsOpen", true);
 
-            AudioMgr.Instance.PlaySound("GateOpen");
+            AudioManager.Instance.PlaySound("GateOpen");
         }
     }
 
@@ -57,6 +57,6 @@ public class Gate : MonoBehaviour, IInteractable
     {
         FindObjectOfType<EventMessage>().DisplayMessage("Access Denied");
         
-        AudioMgr.Instance.PlaySound("Error");
+        AudioManager.Instance.PlaySound("Error");
     }
 }

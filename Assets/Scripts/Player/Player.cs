@@ -94,8 +94,8 @@ public partial class Player : MonoBehaviour
         _barFear.value = FearRange;
         _barFear.maxValue = _maxFearRange;
         _barSonar.value = 100f;
-        AudioMgr.Instance.StopSound("BGM_Lobby");
-        AudioMgr.Instance.PlaySound("BGM_Stage");
+        AudioManager.Instance.StopSound("BGM_Lobby");
+        AudioManager.Instance.PlaySound("BGM_Stage");
     }
 
     private void Update()
@@ -129,26 +129,26 @@ public partial class Player : MonoBehaviour
 
         if (0f <= FearRange / _maxFearRange * 100 && 30f > FearRange / _maxFearRange * 100)
         {
-            AudioMgr.Instance.StopSound("Heartbeat", 0);
-            AudioMgr.Instance.StopSound("Heartbeat", 1);
-            AudioMgr.Instance.StopSound("Heartbeat", 2);
-            AudioMgr.Instance.StopSound("Panting");
+            AudioManager.Instance.StopSound("Heartbeat", 0);
+            AudioManager.Instance.StopSound("Heartbeat", 1);
+            AudioManager.Instance.StopSound("Heartbeat", 2);
+            AudioManager.Instance.StopSound("Panting");
         }
 
         if (30f <= FearRange / _maxFearRange * 100 && 50 > FearRange / _maxFearRange * 100)
         {
-            AudioMgr.Instance.PlaySound("Heartbeat", 0);
+            AudioManager.Instance.PlayStepSound("Heartbeat", 0);
         }
 
         else if (50 <= FearRange / _maxFearRange * 100 && 70 > FearRange / _maxFearRange * 100)
         {
-            AudioMgr.Instance.PlaySound("Heartbeat", 1);
+            AudioManager.Instance.PlayStepSound("Heartbeat", 1);
         }
 
         else if(70 < FearRange / _maxFearRange * 100)
         {
-            AudioMgr.Instance.PlaySound("Heartbeat", 2);
-            AudioMgr.Instance.PlaySound("Panting");
+            AudioManager.Instance.PlayStepSound("Heartbeat", 2);
+            AudioManager.Instance.PlaySound("Panting");
         }
 
         if (_maxFearRange <= FearRange && !_isDead)
@@ -277,7 +277,7 @@ public partial class Player : MonoBehaviour
         time = 0f;
         panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 0);
         Color alpha = panel.color;
-        AudioMgr.Instance.PlaySound("PlayerDie");
+        AudioManager.Instance.PlaySound("PlayerDie");
         //panel.GetComponent<Animator>().Play("Fade", 0)
         while (alpha.a < 1f)
         {

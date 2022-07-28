@@ -2,31 +2,33 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioMgr : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
     [System.Serializable]
     private class Sound
     {
+        //효과음 명
         public string Name;
-
+        //사운드 파일을 담는 배열
         public AudioClip[] Clips;
 
+        //소리 크기
         [Range(0f, 1f)]
         public float Volume;
 
+        //음높이
         [Range(.1f, 3f)]
         public float Pitch;
-
+        //반복 재생
         public bool IsLoop;
-
+        //재생할 AudioSource 컴포넌트
         public AudioSource source;
     }
 
-    [SerializeField]
-    private Sound[] sounds;
+    [SerializeField] private Sound[] sounds;
 
-    private static AudioMgr _instance = null;
-    public static AudioMgr Instance
+    private static AudioManager _instance = null;
+    public static AudioManager Instance
     {
         get
         {
@@ -71,7 +73,7 @@ public class AudioMgr : MonoBehaviour
     }
 
     // 단계적인 소리 재생에 사용 ex)심장박동
-    public void PlaySound(string name , int index)
+    public void PlayStepSound(string name , int index)
     {
         Sound s = Array.Find(sounds, Sound => Sound.Name == name);
         if (!s.source.isPlaying || (s.source.isPlaying && s.source.clip != s.Clips[index]))

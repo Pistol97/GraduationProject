@@ -23,7 +23,7 @@ public class Door : LockedObject, IInteractable
 
             _isLocked = false;
 
-            AudioMgr.Instance.PlaySound("Unlock");
+            AudioManager.Instance.PlaySound("Unlock");
 
             FindObjectOfType<EventMessage>().DisplayMessage("Use " + _necessaryKey);
         }
@@ -32,7 +32,7 @@ public class Door : LockedObject, IInteractable
         {
             FindObjectOfType<EventMessage>().DisplayMessage("It's locked");
 
-            AudioMgr.Instance.PlaySound("DoorLocked");
+            AudioManager.Instance.PlaySound("DoorLocked");
             return;
         }
     }
@@ -42,13 +42,13 @@ public class Door : LockedObject, IInteractable
         if (!animator.GetBool("IsOpen"))
         {
             animator.SetBool("IsOpen", true);
-            AudioMgr.Instance.PlaySound("DoorOpen");
+            AudioManager.Instance.PlaySound("DoorOpen");
         }
 
         else
         {
             animator.SetBool("IsOpen", false);
-            AudioMgr.Instance.PlaySound("DoorClose");
+            AudioManager.Instance.PlaySound("DoorClose");
         }
     }
 

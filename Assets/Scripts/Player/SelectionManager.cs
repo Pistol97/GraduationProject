@@ -124,7 +124,7 @@ public class SelectionManager : MonoBehaviour
                 //}
 
                 inven.AcquireItem(_gameObject.GetComponent<ItemPickUp>().item);
-                AudioMgr.Instance.PlaySound("PickUp");
+                AudioManager.Instance.PlaySound("PickUp");
                 NoiseSystemManager.GetInstance().AddFear(addamount);//소음 수치 증가
                 Destroy(_gameObject);
                 InfoDisappear();

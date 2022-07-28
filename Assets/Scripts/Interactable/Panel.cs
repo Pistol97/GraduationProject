@@ -24,7 +24,7 @@ public class Panel : LockedObject, IInteractable
 
             _isLocked = false;
 
-            AudioMgr.Instance.PlaySound("Unlock");
+            AudioManager.Instance.PlaySound("Unlock");
             FindObjectOfType<EventMessage>().DisplayMessage("Use " + _necessaryKey);
         }
 
