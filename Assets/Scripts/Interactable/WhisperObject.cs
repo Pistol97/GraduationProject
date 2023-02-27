@@ -45,20 +45,6 @@ public class WhisperObject : MonoBehaviour, IInteractable, INoteUnlockPublisher
         }
     }
 
-    public void ObjectInteract()
-    {
-        Debug.Log("Collect Note");
-
-        Destroy(_progressBar);
-
-        Instantiate(_noticeUI, _player.Hud.transform);
-
-        //아카이브, 플레이어 데이터에 노트 해금 알림
-        NotifyObserver();
-
-        Destroy(gameObject, 0f);
-    }
-
     public void AddObserver(INoteUnlockObserver observer)
     {
         observers.Add(observer);
@@ -75,6 +61,20 @@ public class WhisperObject : MonoBehaviour, IInteractable, INoteUnlockPublisher
         {
             observer.UpdateUnlock(_unlockArchiveNumber);
         }
+    }
+
+    public void ObjectInteract()
+    {
+        Debug.Log("Collect Note");
+
+        Destroy(_progressBar);
+
+        Instantiate(_noticeUI, _player.Hud.transform);
+
+        //아카이브, 플레이어 데이터에 노트 해금 알림
+        NotifyObserver();
+
+        Destroy(gameObject, 0f);
     }
 
     private void CollectWhispers(Player player)

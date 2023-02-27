@@ -42,13 +42,6 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
     //아카이브에 노트 내용을 표시하는 객체
     private Text _noteText;
 
-    //Subject로부터 알림을 받아 노트 해금
-    public void UpdateUnlock(int noteNumber)
-    {
-        //배열 인덱스에 맞춰 -1
-        UnlockNote(noteNumber - 1);
-    }
-
     public void InitArchive()
     {
         _noteDatas = new NoteDataRes();
@@ -65,6 +58,20 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
         //비활성화
         transform.parent.gameObject.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    //인터페이스 메소드
+    //Subject로부터 알림을 받아 노트 해금
+    public void UpdateUnlock(int noteNumber)
+    {
+        //배열 인덱스에 맞춰 -1
+        UnlockNote(noteNumber - 1);
+    }
+
+    private void UnlockNote(int index)
+    {
+        _notes[index].GetComponent<Image>().sprite = _unlockSprite;
+        _notes[index].IsUnlock = true;
     }
 
     //플레이어 데이터에서 해금 내용을 불러와 해금
@@ -84,12 +91,6 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
             note.Context = _noteDatas.NoteDatas[index].Context;
             index++;
         }
-    }
-
-    private void UnlockNote(int index)
-    {
-        _notes[index].GetComponent<Image>().sprite = _unlockSprite;
-        _notes[index].IsUnlock = true;
     }
 
     public void ShowSelectedNote(string text)
