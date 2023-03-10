@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Archive : MonoBehaviour, INoteUnlockObserver
 {
     /// <summary>
-    /// 노트 데이터 형태를 정의하는 클래스
+    /// 노트 데이터 클래스
     /// </summary>
     [System.Serializable]
     private class NoteData
@@ -18,7 +18,7 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
     }
 
     /// <summary>
-    /// Unity에서 제공하는 JsonUtility는 직렬화가 되어있지 않기 때문에 직접적인 클래스 배열을 읽지 못한다.
+    /// Unity에서 제공하는 JsonUtility는 직렬화가 되어있지 않기 때문에 클래스 배열을 직접 읽지 못한다.
     /// 또 다른 클래스로 감싸 직렬화한다.
     /// </summary>
     [System.Serializable]
@@ -53,6 +53,7 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
         _notes = GetComponentsInChildren<Note>();
         _noteText = transform.GetChild(1).GetComponentInChildren<Text>();
 
+        //노트 데이터 입력
         SetNoteData();
 
         //비활성화
@@ -68,17 +69,26 @@ public class Archive : MonoBehaviour, INoteUnlockObserver
         UnlockNote(noteNumber - 1);
     }
 
+    /// <summary>
+    /// 해당하는 인덱스의 노트를 아카이브에서 해금함
+    /// </summary>
+    /// <param name="index">해당 노트 인덱스</param>
     private void UnlockNote(int index)
     {
+        //해금 스프라이트 교체
         _notes[index].GetComponent<Image>().sprite = _unlockSprite;
+        //해당 노트 해금
         _notes[index].IsUnlock = true;
     }
 
-    //플레이어 데이터에서 해금 내용을 불러와 해금
+    /// <summary>
+    /// 플레이어 데이터에서 해금 사항 불러오기 및 노트 내용 입력
+    /// </summary>
     private void SetNoteData()
     {
         int index = 0;
 
+        //저장된 플레이어 데이터 중 해금 여부를 불러옴
         bool[] unlock = PlayerDataManager.Instance.ArchiveUnlockData;
 
         foreach (var note in _notes)

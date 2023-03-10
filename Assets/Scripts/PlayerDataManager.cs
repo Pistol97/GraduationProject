@@ -7,11 +7,12 @@
 public class PlayerDataManager : INoteUnlockObserver
 {
     /// <summary>
-    /// 플레이어의 데이터 형태
+    /// 플레이어 데이터 클래스
     /// </summary>
     [System.Serializable]
     private class PlayerData
     {
+        //아카이브 해금 여부 저장
         public bool[] ArchiveUnlock = new bool[9];
     }
 
@@ -45,6 +46,7 @@ public class PlayerDataManager : INoteUnlockObserver
     }
     #endregion
 
+    //인터페이스 메소드
     //Subject로부터 알림을 받아 노트 해금
     public void UpdateUnlock(int noteNumber)
     {
@@ -55,24 +57,33 @@ public class PlayerDataManager : INoteUnlockObserver
         CreatePlayerData();
     }
 
+    /// <summary>
+    /// 플레이어 데이터 초기화
+    /// 게임 시작 초기에 플레이어 데이터를 불러온다
+    /// </summary>
     public void InitPlayerData()
     {
         _playerData = new PlayerData();
 
-        //플레이어 데이터 불러오기에 성공했을 경우
+        //플레이어 데이터 불러오기 성공
         if (default != JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, _fileName))
         {
             _playerData = JsonManager.Instance.LoadJsonFile<PlayerData>(Application.dataPath, _fileName);
         }
         
-        //플레이어 데이터 불러오기에 실패 했을시
+        //플레이어 데이터 불러오기 실패
         else
         {
             Debug.Log("Load PlayerData Fail!");
+
+            //플레이어 데이터 생성
             CreatePlayerData();
         }
     }
 
+    /// <summary>
+    /// 플레이어 데이터 생성
+    /// </summary>
     public void CreatePlayerData()
     {
         string json = JsonManager.Instance.ObjectToJson(_playerData);
